@@ -1,0 +1,95 @@
+/* General body styling */
+body {
+    font-family: "Times New Roman", Times, serif;
+    max-width: 800px;
+    margin: auto;
+    background-color: #262626; /* Granite-like dark background */
+    color: white;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Heading styling */
+h1, h2 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Link styling */
+a {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Centered contact info styling */
+.center {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Section styling */
+.section {
+    margin-top: 20px;
+}
+
+/* Remove bullets for most lists */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 10px 0;
+}
+
+/* Apply bullets only to specific experience items */
+.experience-item ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* Item styling within specific lists */
+.experience-item ul li {
+    margin-bottom: 5px;
+}
+
+/* Table layout for Experience and Education */
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    color: white;
+}
+
+td {
+    color: white;
+}
+
+td.job-title {
+    font-weight: bold;
+}
+
+td.job-details {
+    font-style: italic;
+}
+
+td.dates {
+    text-align: right;
+    font-style: italic;
+}
