@@ -16,8 +16,18 @@ class HTMLContentEncoder(HTMLParser):
         self.encoded_content += f'</{tag}>'
     
     def handle_data(self, data):
-        # Encode each character in the data to its corresponding HTML numeric entity
-        self.encoded_content += ''.join(f'&#x{ord(char):x};' for char in data)
+        # Trim the data to avoid issues with leading or trailing whitespace
+        trimmed_data = data.strip()
+        if trimmed_data:
+            # Encode each character in the trimmed data to its corresponding HTML numeric entity
+            self.encoded_content += ''.join(f'&#x{ord(char):x};' for char in trimmed_data)
+        # If the original data had leading or trailing whitespace, preserve it
+        if data.startswith(' ') and trimmed_data:
+            self.encoded_content = self.encoded_content.lstrip()
+            self.encoded_content = ' ' + self.encoded_content
+        if data.endswith(' ') and trimmed_data:
+            self.encoded_content = self.encoded_content.rstrip()
+            self.encoded_content += ' '
     
     def handle_entityref(self, name):
         self.encoded_content += f'&{name};'
@@ -41,6 +51,6 @@ def encode_html_content(input_file_path, output_file_path):
 
 # Specify the path to your input and output files
 input_path = 'index.html'
-output_path = 'encoded.html'
+output_path = 'encoded2.html'
 
 encode_html_content(input_path, output_path)
