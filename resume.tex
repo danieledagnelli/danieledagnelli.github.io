@@ -1,0 +1,174 @@
+\documentclass[letterpaper,11pt,usenames,dvipsnames]{article}
+\usepackage{lmodern}
+\usepackage{xcolor} % Load color package without additional options
+
+% Define granite color
+\definecolor{granite}{rgb}{0.15, 0.15, 0.15} % Adjust the RGB values for a granite-like appearance
+\pagecolor{granite} % Set the page background color to granite
+\color{white} % Set text color to white
+
+% Other packages and document settings remain the same
+\usepackage{enumitem}
+\setlist[itemize]{label=\textbullet}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, % Enable link colors
+    linkcolor=white, % Set link color to white (or another color)
+    citecolor=white, % Set citation color
+    filecolor=white, % Set file link color
+    urlcolor=white   % Set URL color
+}
+
+\usepackage{fancyhdr}
+\usepackage[normalem]{ulem}
+
+% Modify fancyhdr settings
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Margin adjustments
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{white}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+% Custom commands
+\newcommand{\resumeItem}[1]{ \item\small{{#1 \vspace{-2pt}}}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \hspace{0.5em}\textbf{\textit{\small#3}} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+% Document content remains the same
+
+
+%----------HEADING----------
+
+% In your document
+\begin{center}
+    \textbf{\Huge \scshape Daniele D'Agnelli} \\ \vspace{1pt}
+\href{https://www.linkedin.com/in/dagnelli/}{linkedin.com/in/dagnelli}
+ \\ 
+    London, United Kingdom
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Summary}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+        \item{Senior Engagement Manager with 12+ years in Professional Services, leading high-impact digital transformations that drive revenue growth and cost efficiency. Experienced in delivering AI solutions for complex challenges across Manufacturing, Healthcare, Oil\&Gas, Telecom, and Financial Services sectors for global enterprises. Skilled in aligning cross-functional teams and collaborating with senior leadership on programs exceeding \$15M, consistently exceeding metrics in adoption, customer satisfaction (NPS), and operational efficiency. Known for building trust-based client relationships and adept at navigating ambiguity. Technically proficient with expertise in software engineering, solution architecture, cloud engineering, and advanced machine learning, including LLMs and Generative AI.}
+    }
+ \end{itemize}
+
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {C3 AI}{London, United Kingdom}
+      {Senior Engagement Manager}{June 2024 -- Present}
+      \begin{itemize}[leftmargin=0.15in, label={}]
+        \item \small{Responsible for the rollout and adoption of an AI-enabled Predictive Maintenance application for a Swiss building materials manufacturer, spanning over 100 plants, 2,000+ end users, and a total contract value exceeding \$10M.}
+      \end{itemize}
+      \vspace{-1em} 
+      \resumeItemListStart
+        \resumeItem{Partnered with cross-functional teams, including Product and Sales, to craft value-driven use cases, translating them into technical and functional requirements, detailed specifications, and actionable project plans.}
+        \resumeItem{Expanded relationships by identifying new use cases and incremental staffing needs.}
+        \resumeItem{Defined scope, requirements, timelines, and success metrics for projects, emphasizing customer self-sufficiency on the platform.}
+        \resumeItem{Led project governance activities, including project planning, weekly reviews, cross-functional meetings, and executive status reports, ensuring alignment and transparency throughout project lifecycles.}
+        \resumeItem{Directed all implementation activities, supervising teams across Application Development, Data Integration, Data Science, QA, and DevOps to ensure timely and successful delivery.}
+        \resumeItem{Established trusted advisor relationships with clients, tracking and mitigating risks to maintain high customer satisfaction (CSAT) consistently achieving NPS Score \textgreater70.}
+        \resumeItem{Played a key role in recruiting and attracting top talent to build a strong, client-focused services team.}
+      \resumeItemListEnd
+      
+\vspace{-1.5em} % Adjust this value as needed
+    \resumeSubheading
+      {}{}
+      {Engagement Manager}{August 2021 -- May 2024}
+            \begin{itemize}[leftmargin=0.15in, label={}]
+        \item \small{Led strategic initiatives across all Business Units and Partners, managing program with a \$15M budget and reporting directly to the VP of Customer Services.}
+      \end{itemize}
+      \vspace{0.2em} 
+
+
+    \resumeSubheading
+      {Deloitte}{London, United Kingdom}
+      {Manager}{October 2018 -- July 2021}
+      \begin{itemize}[leftmargin=0.15in, label={}]
+        \item \small{Grew Deloitte UK's Anaplan practice from inception to 25+ practitioners, leading the first enterprise-wide deployment for a large British telco.}
+      \end{itemize}
+
+    \resumeSubheading
+      {Accenture}{London, United Kingdom}
+      {Management Consultant}{April 2017 -- September 2018}
+      \vspace{0.2em} 
+
+
+    \resumeSubheading
+  {Codec}{Dublin, Ireland}
+  {Consultant}{January 2015 -- March 2017}
+        \vspace{0.2em} 
+
+
+\resumeSubheading
+  {Accenture}{Milan, Italy}
+  {Software Engineer}{April 2012 -- December 2014}
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Abertay University}{Dundee, UK}
+      {MSc Ethical Hacking and Cybersecurity (Distinction)}{2021 -- 2023}
+
+    \resumeSubheading
+      {University of Bari Aldo Moro}{Bari, Italy}
+      {BSc Computer Science}{2005 -- 2011}
+  \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Certifications}{: Prince2 Practitioner} \\
+     \textbf{Languages}{: Fluent in English and Italian (native)}
+    }}
+ \end{itemize}
+
+
+
+\end{document}
