@@ -1,0 +1,89 @@
+---
+
+---
+
+<nav>
+    <ul class="navigation__links">
+        <li><a href="#">blog</a></li>
+        <li><a href="#">books</a></li>
+        <li><a href="#">links</a></li>
+        <li><a href="/about">about</a></li>
+    </ul>
+</nav>
+
+<style>
+    nav {
+        display: flex;
+        justify-content: center; /* Center the navigation links */
+        align-items: center; /* Align items vertically */
+    }
+
+    .navigation__links {
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping to a new row if there isn’t enough space */
+        justify-content: center; /* Center-align wrapped items */
+        gap: 0.5em; /* Add spacing between items */
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .navigation__links li {
+        list-style: none; /* Remove bullets */
+    }
+
+    .navigation__links a {
+        text-decoration: none;
+        color: inherit;
+        padding: 0.5rem 1rem;
+        display: inline-block; /* Ensure proper spacing and wrapping */
+    }
+
+    .navigation__links a:hover {
+        color: white;
+    }
+
+    .navigation__links a::after {
+        content: " →";
+    }
+
+    .navigation__links a::before {
+        content: "[ ] ";
+    }
+
+    .navigation__links a.active::before {
+        content: "[x] ";
+    }
+
+    .navigation__links a.active::after {
+        content: "\00A0\00A0";
+    }
+
+    .navigation__links a.active:hover {
+        color: inherit;
+        cursor: default;
+    }
+
+    @media (max-width: 768px) {
+        .navigation__links {
+            gap: 0.3em; /* Slightly smaller gap on mobile */
+        }
+
+        .navigation__links a {
+            padding: 0.5rem 0.8rem; /* Reduce padding for smaller screens */
+        }
+    }
+</style>
+<script>
+    const normalizePath = (path: string): string => path.replace(/\/$/, ""); // Define 'path' as a string
+
+    const { pathname } = window.location;
+
+    const activeNavigationElement = document.querySelector<HTMLAnchorElement>(
+        `nav a[href="${normalizePath(pathname)}"]`,
+    );
+
+    if (activeNavigationElement) {
+        activeNavigationElement.classList.add("active");
+        activeNavigationElement.removeAttribute("href"); // Remove the href attribute
+    }
+</script>

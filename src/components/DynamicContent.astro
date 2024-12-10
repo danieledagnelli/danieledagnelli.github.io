@@ -1,0 +1,69 @@
+---
+import Loading from "./Loading.astro";
+
+// Calculate the delay on the server side
+const delay = Math.floor(Math.random() * 1000);
+---
+
+<div id="dynamicContent" class="dynamic__content" data-delay={delay}>
+    <div id="loadingComponent" class="loading-center">
+        <Loading delay={delay} />
+    </div>
+    <div id="slotComponent" style="display: none;">
+        <slot />
+    </div>
+</div>
+
+<style>
+    .dynamic__content {
+        border: 0.01em solid #37ff142a;
+        margin: 1em;
+        padding: 0.5em;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative; /* For absolute positioning of children */
+        text-align: left;
+        overflow: hidden; /* Prevent children from overflowing borders */
+    }
+
+    /* Center the loading component */
+    .loading-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute; /* Keep centered without stretching over borders */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: inherit; /* Ensure inner padding matches outer container */
+        pointer-events: none; /* Allow clicks to pass through to other components */
+    }
+
+    #slotComponent {
+        width: 100%;
+    }
+</style>
+
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get the delay value from the data attribute
+        const dynamicContent = document.getElementById('dynamicContent');
+        const delay = parseInt(dynamicContent.getAttribute('data-delay'), 10);
+
+        const loadingComponent = document.getElementById('loadingComponent');
+        const slotComponent = document.getElementById('slotComponent');
+
+        setTimeout(() => {
+            if (loadingComponent) {
+                loadingComponent.style.display = 'none';
+            }
+            if (slotComponent) {
+                slotComponent.style.display = 'block';
+            }
+        }, delay);
+    });
+</script>

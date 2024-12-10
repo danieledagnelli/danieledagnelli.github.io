@@ -1,0 +1,23 @@
+---
+type Props = {
+    title: string;
+};
+const { title } = Astro.props;
+---
+
+<footer class="foot">&copy; 2025 fhack it</footer>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+        margin: 0;
+    }
+
+    .foot {
+        text-align: center;
+        margin: 1em;
+        cursor: default;
+    }
+</style>

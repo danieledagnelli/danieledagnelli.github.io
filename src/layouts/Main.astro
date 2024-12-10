@@ -1,0 +1,47 @@
+---
+import "../styles/global.css";
+import "../components/Footer.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import DynamicContent from "../components/DynamicContent.astro";
+import LastChanged from "../components/LastChanged.astro";
+
+type Props = {
+    title: string;
+    last_modified: string;
+};
+const { title, last_modified } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="description" content="al and stuff" />
+        <title>{title}</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    </head>
+    <body>
+        <main class="content">
+            <!-- <slot /> -->
+            <Header />
+            <Navigation />
+            <DynamicContent>
+                    <slot />
+            </DynamicContent>
+            <LastChanged last_modified={`${last_modified}`} />
+        </main>
+        <Footer title={`${title}`}/>
+    </body>
+</html>
+
+<style>
+    .content {
+        flex: 1; /* Allow main content to grow */
+        display: flex; /* Use flexbox for child alignment */
+        flex-direction: column; /* Stack children vertically */
+    }
+</style>

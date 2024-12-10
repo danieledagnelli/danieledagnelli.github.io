@@ -1,0 +1,87 @@
+---
+type Props = {
+    last_modified: string;
+};
+
+const { last_modified } = Astro.props;
+
+const timeSince = (dateString: string): string => {
+    let date: Date;
+
+    // Check if the input is a valid Unix timestamp
+    if (/^\d+$/.test(dateString)) {
+        const timestamp = parseInt(dateString, 10);
+        date = new Date(timestamp * 1000); // Convert seconds to milliseconds
+    } else {
+        date = new Date(dateString);
+    }
+
+    if (isNaN(date.getTime())) {
+        console.error(`Invalid date string: "${dateString}"`);
+        return "Invalid date";
+    }
+
+    const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+
+    const intervals = [
+        { label: "year", seconds: 31536000 },
+        { label: "month", seconds: 2592000 },
+        { label: "week", seconds: 604800 },
+        { label: "day", seconds: 86400 },
+        { label: "hour", seconds: 3600 },
+        { label: "minute", seconds: 60 }
+    ];
+
+    const interval = intervals.find(i => seconds >= i.seconds);
+    if (interval) {
+        const count = Math.floor(seconds / interval.seconds);
+        return `${count} ${interval.label}${count > 1 ? "s" : ""} ago`;
+    }
+    return "just now";
+};
+
+
+const formatDateWithTimezone = (dateString: string): string => {
+    let date: Date;
+
+    // Check if the input is a valid Unix timestamp
+    if (/^\d+$/.test(dateString)) {
+        const timestamp = parseInt(dateString, 10);
+        date = new Date(timestamp * 1000); // Convert seconds to milliseconds
+    } else {
+        date = new Date(dateString);
+    }
+
+    if (isNaN(date.getTime())) {
+        console.error(`Invalid date string: "${dateString}"`);
+        return "Invalid date";
+    }
+
+    return new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        timeZoneName: "short"
+    }).format(date);
+};
+
+---
+
+<div>
+    <p class="last__changed" title={last_modified ? formatDateWithTimezone(last_modified) : "Unknown"}>
+        Last changed: {last_modified ? timeSince(last_modified) : "Unknown"} 
+</div>
+
+<style>
+    div {
+        text-align: right;
+        margin: 1em;
+    }
+    .last__changed {
+        font-size: smaller;
+        cursor: default;
+    }
+</style>

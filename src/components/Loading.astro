@@ -1,0 +1,18 @@
+---
+type Props = {
+    delay: number;
+};
+const { delay } = Astro.props;
+---
+
+<div class="loading-box">
+    Loading ...
+</div>
+
+<style>
+    .loading-box {
+        border: 0.1em solid #39ff14;
+        padding: 1em;
+        text-align: center;
+    }
+</style>

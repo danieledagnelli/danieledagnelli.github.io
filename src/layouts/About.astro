@@ -1,0 +1,43 @@
+---
+import Main from "../layouts/Main.astro";
+import { siteMetadata } from "../siteMetadata";
+import type { MarkdownLayoutProps } from "astro";
+
+type Props = MarkdownLayoutProps<{
+    title: string;
+    subtitle: string;
+    created: string;
+    last_modified: string;
+    author: string;
+}>;
+
+const { title, subtitle, created, last_modified, author } =
+    Astro.props.frontmatter;
+---
+
+<Main
+    title={`${siteMetadata.title} → ${title}`}
+    last_modified={`${last_modified}`}
+>
+    <h3>
+        {subtitle}
+    </h3>
+    <div>
+        <slot />
+    </div>
+    <style>
+        h3 {
+            font-size: inherit;
+            font-weight: inherit;
+            margin-bottom: 0.1em;
+        }
+        h3::before {
+            content: ":";
+        }
+
+        div {
+            margin-top: 0em;
+            padding-left: 1em;
+        }
+    </style>
+</Main>
