@@ -1,11 +1,8 @@
 ---
-type Props = {
-    title: string;
-};
-const { title } = Astro.props;
+import { siteMetadata } from '../siteMetadata';
 ---
 
-<footer class="foot">&copy; 2025 {title}</footer>
+<footer class="foot">&copy; 2025 {siteMetadata.title}</footer>
 
 <style>
     body {
