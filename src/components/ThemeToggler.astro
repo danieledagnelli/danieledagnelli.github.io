@@ -1,0 +1,46 @@
+<button aria-label="Switch Mode" class="switch-mode-button">
+    <div class="image-container">
+        <img src="/src/assets/businessgreen.png" alt="Business Mode" class="switch-mode-image" />
+        <img src="/src/assets/pirateblack.png" alt="Hacker Mode" class="switch-mode-image" />
+    </div>
+</button>
+
+<style>
+.switch-mode-button {
+    position: relative; /* Establishes a containing block for absolute positioning */
+    width: 20px; /* Set button width */
+    height: 20px; /* Set button height */
+    padding: 0; /* Remove default padding */
+    border: 0.01em solid #39ff14; /* Add border with specified color */
+    background: linear-gradient(to bottom, #39ff14, #2ecc71); /* Gradient for 3D look */
+    cursor: pointer; /* Add pointer cursor */
+    overflow: hidden; /* Ensure content doesn't overflow the button */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.switch-mode-button:active {
+    transform: translate(1px, 1px); 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Reduce shadow for pressed effect */
+}
+
+.image-container {
+    position: relative; /* Container for stacking images */
+    width: 100%; /* Match the button's width */
+    height: 100%; /* Match the button's height */
+}
+
+.switch-mode-image {
+    position: absolute; /* Stack images on top of each other */
+    top: 0;
+    left: 0;
+    width: 100%; /* Fit within the container's width */
+    height: 100%; /* Fit within the container's height */
+    object-fit: contain; /* Ensure proportional scaling */
+}
+
+.switch-mode-image:nth-child(2) {
+    opacity: 0;
+}
+
+</style>

@@ -1,16 +1,28 @@
 ---
+import ThemeToggler from "./ThemeToggler.astro";
+
 
 ---
 
 <nav>
     <ul class="navigation__links">
         <li><a href="#">blog</a></li>
-        <li><a href="/about">about</a></li>
+        <li><a href="#">other 1</a></li>
+        <li><a href="#">other 2</a></li>
+        <li><a href="#">other 3</a></li>
+
+        <!-- <li><a href="/resume">resume</a></li> -->
     </ul>
+    <div class="theme-toggler-container">
+        <ThemeToggler />
+    </div>
 </nav>
 
 <style>
-    nav {
+    .theme-toggler-container {
+        margin-right: 1em;
+    }
+nav {
         display: flex;
         justify-content: center; /* Center the navigation links */
         align-items: center; /* Align items vertically */
