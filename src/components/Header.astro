@@ -3,4 +3,12 @@ import { siteMetadata } from "../siteMetadata";
 import ThemeToggler from "./ThemeToggler.astro";
 ---
 
-<h1><a href="/">{siteMetadata.title}</a></h1>
+<div class="theme-toggler-container">
+    <h1><a href="/">{siteMetadata.title}</a></h1>
+    <ThemeToggler />
+</div>
+<style>
+    .theme-toggler-container {
+        margin-right: 1em;
+    }
+</style>
