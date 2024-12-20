@@ -1,16 +1,32 @@
-* {
-    background-color: #101010;
-    text-transform: lowercase;
-    color: #39ff14;
-    /* font-family: "Courier New", Courier, monospace; */
-    font: 0.9rem "Courier New", Courier, monospace;
+html {
+    --background: #101010;
+    --text-color: #39ff14;
+    --text-transformation: none;
+    --font: 0.9rem "Courier New", Courier, monospace;
+    --link-color: white;
+
 }
 
+/* html.business {
+    --background: white;
+    --text-color: #101010;
+    --text-transformation: lowercase;
+    --font: font: "Roboto", sans-serif;
+    --link-color: blue;
+} */
+
 body {
+    background-color: var(--background);
+    text-transform: var(--text-transformation);
+    color: var(--text-color);
+    /* font-family: "Courier New", Courier, monospace; */
+    font: var(--font);
+
     margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensure full height of the viewport */
+    min-height: 100vh;
+    /* Ensure full height of the viewport */
 }
 
 main {
@@ -41,7 +57,3 @@ a {
     padding: 0.5rem 1rem;
 }
 
-a:hover {
-    color: white;
-
-}

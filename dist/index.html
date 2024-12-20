@@ -1,23 +1,224 @@
-<!DOCTYPE html><html lang="en" data-astro-cid-hsp6otuf> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro v5.0.4"><meta name="description" content="al and stuff"><title>daniele d&#39;agnelli → home</title><link rel="icon" type="image/x-icon" href="favicon.ico"><style>*{background-color:#101010;text-transform:lowercase;color:#39ff14;font-family:Courier New,Courier,monospace;font:.9rem Courier New,Courier,monospace}body{margin:0;display:flex;flex-direction:column;min-height:100vh}main{text-align:center;font-weight:400;margin:0;padding:0;box-sizing:border-box}h1,h2{font-size:inherit;font-weight:inherit}a{text-decoration:none;color:inherit;padding:.5rem 1rem}a:hover{color:#fff}body{display:flex;flex-direction:column;min-height:100vh;margin:0}.foot[data-astro-cid-sz7xmlte]{text-align:center;margin:1em;cursor:default}nav[data-astro-cid-pux6a34n]{display:flex;justify-content:center;align-items:center}.navigation__links[data-astro-cid-pux6a34n]{display:flex;flex-wrap:wrap;justify-content:center;gap:.5em;padding:0;margin:0 auto}.navigation__links[data-astro-cid-pux6a34n] li[data-astro-cid-pux6a34n]{list-style:none}.navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n]{text-decoration:none;color:inherit;padding:.5rem 1rem;display:inline-block}.navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n]:hover{color:#fff}.navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n]:after{content:" →"}.navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n]:before{content:"[ ] "}.navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n].active:before{content:"[x] "}.navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n].active:after{content:"  "}.navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n].active:hover{color:inherit;cursor:default}@media (max-width: 768px){.navigation__links[data-astro-cid-pux6a34n]{gap:.3em}.navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n]{padding:.5rem .8rem}}.loading-box[data-astro-cid-52om46wh]{border:.1em solid #39ff14;padding:1em;text-align:center}.dynamic__content[data-astro-cid-jg636ida]{border:.01em solid #37ff142a;margin:1em;padding:.5em;flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;text-align:left;overflow:hidden}.loading-center[data-astro-cid-jg636ida]{display:flex;justify-content:center;align-items:center;position:absolute;inset:0;padding:inherit;pointer-events:none}#slotComponent[data-astro-cid-jg636ida]{width:100%}div[data-astro-cid-ktn7fiwo]{text-align:right;margin:1em}.last__changed[data-astro-cid-ktn7fiwo]{font-size:smaller;cursor:default}.content[data-astro-cid-hsp6otuf]{flex:1;display:flex;flex-direction:column}
-</style></head> <body data-astro-cid-hsp6otuf> <main class="content" data-astro-cid-hsp6otuf> <!-- <slot /> --> <h1><a href="/">daniele d&#39;agnelli</a></h1> <nav data-astro-cid-pux6a34n> <ul class="navigation__links" data-astro-cid-pux6a34n> <li data-astro-cid-pux6a34n><a href="#" data-astro-cid-pux6a34n>blog</a></li> <li data-astro-cid-pux6a34n><a href="#" data-astro-cid-pux6a34n>books</a></li> <li data-astro-cid-pux6a34n><a href="#" data-astro-cid-pux6a34n>links</a></li> <li data-astro-cid-pux6a34n><a href="/about" data-astro-cid-pux6a34n>about</a></li> </ul> </nav>  <script type="module">const a=t=>t.replace(/\/$/,""),{pathname:n}=window.location,e=document.querySelector(`nav a[href="${a(n)}"]`);e&&(e.classList.add("active"),e.removeAttribute("href"));</script> <div id="dynamicContent" class="dynamic__content" data-delay="695" data-astro-cid-jg636ida> <div id="loadingComponent" class="loading-center" data-astro-cid-jg636ida> <div class="loading-box" data-astro-cid-52om46wh>
-Loading ...
-</div>  </div> <div id="slotComponent" style="display: none;" data-astro-cid-jg636ida>    </div> </div>  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Get the delay value from the data attribute
-        const dynamicContent = document.getElementById('dynamicContent');
-        const delay = parseInt(dynamicContent.getAttribute('data-delay'), 10);
+<!DOCTYPE html>
+<html lang="en" data-astro-cid-hsp6otuf>
 
-        const loadingComponent = document.getElementById('loadingComponent');
-        const slotComponent = document.getElementById('slotComponent');
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Astro v5.0.4">
+    <meta name="description" content="al and stuff">
+    <title>daniele d&#39;agnelli → home</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        * {
+            background-color: #101010;
+            text-transform: lowercase;
+            color: #39ff14;
+            font-family: Courier New, Courier, monospace;
+            font: .9rem Courier New, Courier, monospace
+        }
 
-        setTimeout(() => {
-            if (loadingComponent) {
-                loadingComponent.style.display = 'none';
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh
+        }
+
+        main {
+            text-align: center;
+            font-weight: 400;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        h1,
+        h2 {
+            font-size: inherit;
+            font-weight: inherit
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            padding: .5rem 1rem
+        }
+
+        a:hover {
+            color: #fff
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0
+        }
+
+        .foot[data-astro-cid-sz7xmlte] {
+            text-align: center;
+            margin: 1em;
+            cursor: default
+        }
+
+        nav[data-astro-cid-pux6a34n] {
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+
+        .navigation__links[data-astro-cid-pux6a34n] {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: .5em;
+            padding: 0;
+            margin: 0 auto
+        }
+
+        .navigation__links[data-astro-cid-pux6a34n] li[data-astro-cid-pux6a34n] {
+            list-style: none
+        }
+
+        .navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n] {
+            text-decoration: none;
+            color: inherit;
+            padding: .5rem 1rem;
+            display: inline-block
+        }
+
+        .navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n]:hover {
+            color: #fff
+        }
+
+        .navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n]:after {
+            content: " →"
+        }
+
+        .navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n]:before {
+            content: "[ ] "
+        }
+
+        .navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n].active:before {
+            content: "[x] "
+        }
+
+        .navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n].active:after {
+            content: "  "
+        }
+
+        .navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n].active:hover {
+            color: inherit;
+            cursor: default
+        }
+
+        @media (max-width: 768px) {
+            .navigation__links[data-astro-cid-pux6a34n] {
+                gap: .3em
             }
-            if (slotComponent) {
-                slotComponent.style.display = 'block';
+
+            .navigation__links[data-astro-cid-pux6a34n] a[data-astro-cid-pux6a34n] {
+                padding: .5rem .8rem
             }
-        }, delay);
-    });
-</script> <div data-astro-cid-ktn7fiwo> <p class="last__changed" title="December 8, 2024 at 3:51:53 PM UTC" data-astro-cid-ktn7fiwo>
-Last changed: 1 day ago </p></div>  </main> <footer class="foot" data-astro-cid-sz7xmlte>&copy; 2025 daniele d&#39;agnelli → home</footer>  </body></html>
+        }
+
+        .loading-box[data-astro-cid-52om46wh] {
+            border: .1em solid #39ff14;
+            padding: 1em;
+            text-align: center
+        }
+
+        .dynamic__content[data-astro-cid-jg636ida] {
+            border: .01em solid #37ff142a;
+            margin: 1em;
+            padding: .5em;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            text-align: left;
+            overflow: hidden
+        }
+
+        .loading-center[data-astro-cid-jg636ida] {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            inset: 0;
+            padding: inherit;
+            pointer-events: none
+        }
+
+        #slotComponent[data-astro-cid-jg636ida] {
+            width: 100%
+        }
+
+        div[data-astro-cid-ktn7fiwo] {
+            text-align: right;
+            margin: 1em
+        }
+
+        .last__changed[data-astro-cid-ktn7fiwo] {
+            font-size: smaller;
+            cursor: default
+        }
+
+        .content[data-astro-cid-hsp6otuf] {
+            flex: 1;
+            display: flex;
+            flex-direction: column
+        }
+    </style>
+</head>
+
+<body data-astro-cid-hsp6otuf>
+    <main class="content" data-astro-cid-hsp6otuf> <!-- <slot /> -->
+        <h1><a href="/">daniele d&#39;agnelli</a></h1>
+        <nav data-astro-cid-pux6a34n>
+            <ul class="navigation__links" data-astro-cid-pux6a34n>
+                <li data-astro-cid-pux6a34n><a href="#" data-astro-cid-pux6a34n>blog</a></li>
+                <li data-astro-cid-pux6a34n><a href="#" data-astro-cid-pux6a34n>books</a></li>
+                <li data-astro-cid-pux6a34n><a href="#" data-astro-cid-pux6a34n>links</a></li>
+                <li data-astro-cid-pux6a34n><a href="/about" data-astro-cid-pux6a34n>about</a></li>
+            </ul>
+        </nav>
+        <script
+            type="module">const a = t => t.replace(/\/$/, ""), { pathname: n } = window.location, e = document.querySelector(`nav a[href="${a(n)}"]`); e && (e.classList.add("active"), e.removeAttribute("href"));</script>
+        <div id="dynamicContent" class="dynamic__content" data-delay="695" data-astro-cid-jg636ida>
+            <div id="loadingComponent" class="loading-center" data-astro-cid-jg636ida>
+                <div class="loading-box" data-astro-cid-52om46wh>
+                    Loading ...
+                </div>
+            </div>
+            <div id="slotComponent" style="display: none;" data-astro-cid-jg636ida> </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Get the delay value from the data attribute
+                const dynamicContent = document.getElementById('dynamicContent');
+                const delay = parseInt(dynamicContent.getAttribute('data-delay'), 10);
+
+                const loadingComponent = document.getElementById('loadingComponent');
+                const slotComponent = document.getElementById('slotComponent');
+
+                setTimeout(() => {
+                    if (loadingComponent) {
+                        loadingComponent.style.display = 'none';
+                    }
+                    if (slotComponent) {
+                        slotComponent.style.display = 'block';
+                    }
+                }, delay);
+            });
+        </script>
+        <div data-astro-cid-ktn7fiwo>
+            <p class="last__changed" title="December 8, 2024 at 3:51:53 PM UTC" data-astro-cid-ktn7fiwo>
+                Last changed: 1 day ago </p>
+        </div>
+    </main>
+    <footer class="foot" data-astro-cid-sz7xmlte>&copy; 2025 daniele d&#39;agnelli → home</footer>
+</body>
+
+</html>
