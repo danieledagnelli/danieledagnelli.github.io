@@ -1,7 +1,7 @@
 html {
     --background: #101010;
     --text-color: #39ff14;
-    --text-transformation: none;
+    --text-transformation: lowercase;
     --font: 0.9rem "Courier New", Courier, monospace;
     --link-color: white;
 
