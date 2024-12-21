@@ -18,9 +18,21 @@ const { delay } = Astro.props;
     const totalDelay = Number(loadingBox.dataset.delay);
     const interval = totalDelay / 4;
     const dots = document.querySelectorAll('.dot');
+
+    function randomInterval(min: number, max: number) {
+        return Math.random() * (max - min) + min;
+    }
+
     dots.forEach((dot, index) => {
         setTimeout(() => {
-            (dot as HTMLElement).style.opacity = '1';
+            const blink = () => {
+                (dot as HTMLElement).style.opacity = (dot as HTMLElement).style.opacity === '1' ? '0' : '1';
+                setTimeout(blink, randomInterval(50, 300)); // Random blink interval between 50ms and 300ms
+            };
+            blink();
+            setTimeout(() => {
+                (dot as HTMLElement).style.opacity = '1'; // Ensure dot is visible at the end
+            }, totalDelay);
         }, interval * (index + 1));
     });
 
@@ -42,10 +54,24 @@ const { delay } = Astro.props;
         padding: 1em;
         text-align: center;
         position: relative; /* Needed for absolute positioning of the counter */
+        animation: flicker 1s linear infinite;
+    }
+
+    @keyframes flicker {
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+            opacity: 1;
+        }
+        20%, 24%, 55% {
+            opacity: 0;
+        }
+        22% {
+            opacity: 0.5;
+        }
     }
 
     .dot {
         opacity: 0;
+        transition: opacity 0.2s ease-in-out;
     }
 
     .counter {
