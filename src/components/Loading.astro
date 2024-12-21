@@ -10,36 +10,48 @@ const { delay } = Astro.props;
     <span class="dot">.</span>
     <span class="dot">.</span>
     <span class="dot">.</span>
+    <span class="counter">0 ms</span>
 </div>
 
-
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const loadingBox = document.querySelector('.loading-box') as HTMLElement;
-        const totalDelay = Number(loadingBox.dataset.delay); // Use dataset to access data attributes
-        // console.log('Total Delay:', totalDelay);
-        // if (isNaN(totalDelay)) {
-        //     console.error('Delay is NaN, check data-delay attribute');
-        // }
-        const interval = totalDelay / 4;
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach((dot, index) => {
-            setTimeout(() => {
-                (dot as HTMLElement).style.opacity = '1';
-            }, interval * (index + 1));
-        });
+    const loadingBox = document.querySelector('.loading-box') as HTMLElement;
+    const totalDelay = Number(loadingBox.dataset.delay);
+    const interval = totalDelay / 4;
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        setTimeout(() => {
+            (dot as HTMLElement).style.opacity = '1';
+        }, interval * (index + 1));
     });
-</script>
 
+    // Counter for milliseconds
+    const counter = document.querySelector('.counter') as HTMLElement;
+    let ms = 0;
+    const msInterval = setInterval(() => {
+        ms++;
+        counter.textContent = `${ms} ms`;
+        if (ms >= totalDelay) {
+            clearInterval(msInterval);
+        }
+    }, 1);
+</script>
 
 <style>
     .loading-box {
         border: 0.1em solid #39ff14;
         padding: 1em;
         text-align: center;
+        position: relative; /* Needed for absolute positioning of the counter */
     }
 
     .dot {
         opacity: 0;
+    }
+
+    .counter {
+        position: absolute;
+        bottom: 0.2em;
+        right: 0.2em;
+        font-size: 0.5em; /* Even smaller font size for the counter */
     }
 </style>
