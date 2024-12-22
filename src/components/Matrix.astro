@@ -1,0 +1,238 @@
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: black;
+    }
+    .matrix-effect {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+        pointer-events: none;
+    }
+</style>
+
+<div id="matrixEffect" class="matrix-effect"></div>
+
+<script>
+    // A subset of half-width Katakana, Western letters, numerals, and symbols
+    const matrixChars = [
+        // Half-width Katakana
+        "ｦ",
+        "ｧ",
+        "ｨ",
+        "ｩ",
+        "ｪ",
+        "ｫ",
+        "ｬ",
+        "ｭ",
+        "ｮ",
+        "ｯ",
+        "ｰ",
+        "ｱ",
+        "ｲ",
+        "ｳ",
+        "ｴ",
+        "ｵ",
+        "ｶ",
+        "ｷ",
+        "ｸ",
+        "ｹ",
+        "ｺ",
+        "ｻ",
+        "ｼ",
+        "ｽ",
+        "ｾ",
+        "ｿ",
+        "ﾀ",
+        "ﾁ",
+        "ﾂ",
+        "ﾃ",
+        "ﾄ",
+        "ﾅ",
+        "ﾆ",
+        "ﾇ",
+        "ﾈ",
+        "ﾉ",
+        "ﾊ",
+        "ﾋ",
+        "ﾌ",
+        "ﾍ",
+        "ﾎ",
+        "ﾏ",
+        "ﾐ",
+        "ﾑ",
+        "ﾒ",
+        "ﾓ",
+        "ﾔ",
+        "ﾕ",
+        "ﾖ",
+        "ﾗ",
+        "ﾘ",
+        "ﾙ",
+        "ﾚ",
+        "ﾛ",
+        "ﾜ",
+        "ﾝ",
+        // Latin letters
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+        // Numerals
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        // Symbols
+        "!",
+        "@",
+        "#",
+        "$",
+        "%",
+        "&",
+        "*",
+        "(",
+        ")",
+        "+",
+        "-",
+        "/",
+        ":",
+        ";",
+        "<",
+        ">",
+    ];
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Create canvas and context
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+            console.error("Failed to get 2D context");
+            return;
+        }
+
+        const matrixEffect = document.getElementById("matrixEffect");
+        if (matrixEffect) {
+            matrixEffect.appendChild(canvas);
+        }
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const fontSize = 16;
+        const columns = Math.floor(canvas.width / fontSize);
+
+        // Track y-position of each column's "drop"
+        const drops = Array(columns).fill(1);
+
+        function drawMatrix() {
+            if (!ctx) {
+                return;
+            }
+            // Slightly dark background to fade old characters
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#0f0";
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const char =
+                    matrixChars[Math.floor(Math.random() * matrixChars.length)];
+
+                // Randomly decide if this particular character should be mirrored
+                const shouldMirror = Math.random() < 0.15; // ~15% chance to mirror
+
+                if (shouldMirror) {
+                    // Save the current drawing state
+                    ctx.save();
+                    // Move origin to the character's center, then scale horizontally by -1
+                    ctx.translate(
+                        (i + 0.5) * fontSize,
+                        (drops[i] + 0.5) * fontSize,
+                    );
+                    ctx.scale(-1, 1);
+                    // Draw the mirrored character. We offset by half fontSize to center it.
+                    ctx.fillText(char, -0.5 * fontSize, 0.5 * fontSize);
+                    // Restore the original state
+                    ctx.restore();
+                } else {
+                    // Normal draw (no mirroring)
+                    ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+                }
+
+                // Move drop downward; occasionally reset to top
+                if (
+                    drops[i] * fontSize > canvas.height &&
+                    Math.random() > 0.975
+                ) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 40);
+    });
+</script>
