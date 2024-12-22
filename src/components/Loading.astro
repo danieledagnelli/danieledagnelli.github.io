@@ -14,30 +14,34 @@ const { delay } = Astro.props;
 </div>
 
 <script>
-    const loadingBox = document.querySelector('.loading-box') as HTMLElement;
+    const loadingBox = document.querySelector(".loading-box") as HTMLElement;
     const totalDelay = Number(loadingBox.dataset.delay);
     const interval = totalDelay / 4;
-    const dots = document.querySelectorAll('.dot');
+    const dots = document.querySelectorAll(".dot");
 
     function randomInterval(min: number, max: number) {
         return Math.random() * (max - min) + min;
     }
 
     dots.forEach((dot, index) => {
-        setTimeout(() => {
-            const blink = () => {
-                (dot as HTMLElement).style.opacity = (dot as HTMLElement).style.opacity === '1' ? '0' : '1';
-                setTimeout(blink, randomInterval(50, 300)); // Random blink interval between 50ms and 300ms
-            };
-            blink();
-            setTimeout(() => {
-                (dot as HTMLElement).style.opacity = '1'; // Ensure dot is visible at the end
-            }, totalDelay);
-        }, interval * (index + 1));
+        setTimeout(
+            () => {
+                const blink = () => {
+                    (dot as HTMLElement).style.opacity =
+                        (dot as HTMLElement).style.opacity === "1" ? "0" : "1";
+                    setTimeout(blink, randomInterval(50, 300)); // Random blink interval between 50ms and 300ms
+                };
+                blink();
+                setTimeout(() => {
+                    (dot as HTMLElement).style.opacity = "1"; // Ensure dot is visible at the end
+                }, totalDelay);
+            },
+            interval * (index + 1),
+        );
     });
 
     // Counter for milliseconds
-    const counter = document.querySelector('.counter') as HTMLElement;
+    const counter = document.querySelector(".counter") as HTMLElement;
     let ms = 0;
     const msInterval = setInterval(() => {
         ms++;
@@ -51,17 +55,29 @@ const { delay } = Astro.props;
 <style>
     .loading-box {
         border: 0.1em solid #39ff14;
+        background-color: black;
+        background-opacity: 1;
         padding: 1em;
         text-align: center;
         position: relative; /* Needed for absolute positioning of the counter */
         animation: flicker 1s linear infinite;
+        z-index: 99999;
     }
 
     @keyframes flicker {
-        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        0%,
+        19%,
+        21%,
+        23%,
+        25%,
+        54%,
+        56%,
+        100% {
             opacity: 1;
         }
-        20%, 24%, 55% {
+        20%,
+        24%,
+        55% {
             opacity: 0;
         }
         22% {

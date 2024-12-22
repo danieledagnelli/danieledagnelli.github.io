@@ -6,11 +6,13 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import DynamicContent from "../components/DynamicContent.astro";
 import LastChanged from "../components/LastChanged.astro";
+import MatrixComponent from "../components/Matrix.astro";
 
 type Props = {
     title: string;
     last_modified: string;
 };
+const timeout : number = 5000;
 const { title, last_modified } = Astro.props;
 ---
 
@@ -18,7 +20,7 @@ const { title, last_modified } = Astro.props;
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="Content-Language" content="en">
+        <meta http-equiv="Content-Language" content="en" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content={Astro.generator} />
         <meta name="description" content="al and stuff" />
@@ -26,12 +28,14 @@ const { title, last_modified } = Astro.props;
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
     </head>
     <body>
+        <MatrixComponent delay={timeout} />
+
         <main class="content">
             <!-- <slot /> -->
             <Header />
             <Navigation />
-            <DynamicContent>
-                    <slot />
+            <DynamicContent delay={timeout}>
+                <slot />
             </DynamicContent>
             <LastChanged last_modified={`${last_modified}`} />
         </main>

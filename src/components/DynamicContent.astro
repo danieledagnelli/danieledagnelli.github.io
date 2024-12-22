@@ -1,8 +1,11 @@
 ---
-import Loading from "./Loading.astro"; 
+import Loading from "./Loading.astro";
 
 // Calculate the delay on the server side
-const delay = Math.floor(Math.random() * 0);
+type Props = {
+    delay: number;
+};
+const { delay } = Astro.props;
 ---
 
 <div id="dynamicContent" class="dynamic__content" data-delay={delay}>
@@ -50,22 +53,21 @@ const delay = Math.floor(Math.random() * 0);
     }
 </style>
 
-
 <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener("DOMContentLoaded", () => {
         // Get the delay value from the data attribute
-        const dynamicContent = document.getElementById('dynamicContent');
-        const delay = parseInt(dynamicContent.getAttribute('data-delay'), 10);
+        const dynamicContent = document.getElementById("dynamicContent");
+        const delay = parseInt(dynamicContent.getAttribute("data-delay"), 10);
 
-        const loadingComponent = document.getElementById('loadingComponent');
-        const slotComponent = document.getElementById('slotComponent');
+        const loadingComponent = document.getElementById("loadingComponent");
+        const slotComponent = document.getElementById("slotComponent");
 
         setTimeout(() => {
             if (loadingComponent) {
-                loadingComponent.style.display = 'none';
+                loadingComponent.style.display = "none";
             }
             if (slotComponent) {
-                slotComponent.style.display = 'block';
+                slotComponent.style.display = "block";
             }
         }, delay);
     });
