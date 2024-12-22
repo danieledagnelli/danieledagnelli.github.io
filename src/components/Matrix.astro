@@ -19,11 +19,9 @@
 </style>
 
 <div id="matrixEffect" class="matrix-effect"></div>
-
 <script>
     // A subset of half-width Katakana, Western letters, numerals, and symbols
     const matrixChars = [
-        // Half-width Katakana
         "ｦ",
         "ｧ",
         "ｨ",
@@ -80,7 +78,6 @@
         "ﾛ",
         "ﾜ",
         "ﾝ",
-        // Latin letters
         "A",
         "B",
         "C",
@@ -133,7 +130,6 @@
         "x",
         "y",
         "z",
-        // Numerals
         "0",
         "1",
         "2",
@@ -144,7 +140,6 @@
         "7",
         "8",
         "9",
-        // Symbols
         "!",
         "@",
         "#",
@@ -183,8 +178,12 @@
         const fontSize = 16;
         const columns = Math.floor(canvas.width / fontSize);
 
-        // Track y-position of each column's "drop"
-        const drops = Array(columns).fill(1);
+        // Initialize each column to start randomly within bounds
+        const drops = Array(columns)
+            .fill(0)
+            .map(() => Math.floor((Math.random() * -canvas.height) / fontSize));
+
+        const distortions: { y: number; thickness: number; opacity: number; }[] = []; // Array to track active horizontal distortion lines
 
         function drawMatrix() {
             if (!ctx) {
@@ -205,34 +204,85 @@
                 const shouldMirror = Math.random() < 0.15; // ~15% chance to mirror
 
                 if (shouldMirror) {
-                    // Save the current drawing state
                     ctx.save();
-                    // Move origin to the character's center, then scale horizontally by -1
                     ctx.translate(
                         (i + 0.5) * fontSize,
-                        (drops[i] + 0.5) * fontSize,
+                        (drops[i] + 0.5) * fontSize
                     );
                     ctx.scale(-1, 1);
-                    // Draw the mirrored character. We offset by half fontSize to center it.
                     ctx.fillText(char, -0.5 * fontSize, 0.5 * fontSize);
-                    // Restore the original state
                     ctx.restore();
                 } else {
-                    // Normal draw (no mirroring)
                     ctx.fillText(char, i * fontSize, drops[i] * fontSize);
                 }
 
-                // Move drop downward; occasionally reset to top
+                // Move drop downward; occasionally reset to the top
                 if (
                     drops[i] * fontSize > canvas.height &&
                     Math.random() > 0.975
                 ) {
-                    drops[i] = 0;
+                    drops[i] = Math.floor(
+                        (Math.random() * -canvas.height) / fontSize
+                    );
                 }
                 drops[i]++;
             }
+
+            // Draw horizontal distortion lines
+            distortions.forEach((distortion, index) => {
+                ctx.fillStyle = `rgba(0, 0, 0, ${distortion.opacity})`;
+                ctx.fillRect(
+                    0,
+                    distortion.y,
+                    canvas.width,
+                    distortion.thickness
+                );
+
+                // Fade out distortion lines over time
+                distortion.opacity -= 0.02;
+                if (distortion.opacity <= 0) {
+                    distortions.splice(index, 1);
+                }
+            });
+        }
+
+        function addDistortionLine() {
+            const y = Math.random() * canvas.height; // Random vertical position
+            const thickness = Math.random() * 10 + 5; // Random thickness (5px-15px)
+            distortions.push({ y, thickness, opacity: 1 });
+        }
+
+        function addErraticBlinkEffect() {
+            setInterval(
+                () => {
+                    const shouldBlinkWhite = Math.random() > 0.5;
+
+                    if (shouldBlinkWhite) {
+                        canvas.style.backgroundColor = "white";
+                        canvas.style.opacity = "1"; // Fully visible white
+                    } else {
+                        canvas.style.backgroundColor = "black";
+                        const randomOpacity = Math.random(); // Random dim effect
+                        // const randomOpacity = 0; // Random dim effect
+
+                        canvas.style.opacity = randomOpacity.toString();
+                    }
+
+                    // Reset to normal state
+                    setTimeout(
+                        () => {
+                            canvas.style.backgroundColor = "black";
+                            canvas.style.opacity = "1";
+                        },
+                        Math.random() * 100 + 50
+                    ); // Duration between 50ms to 150ms
+                },
+                Math.random() * 500 + 100
+            ); // Frequency between 100ms to 600ms
         }
 
         setInterval(drawMatrix, 40);
+        setInterval(addDistortionLine, Math.random() * 1000 + 500); // New distortion line every 500ms-1500ms
+        addErraticBlinkEffect();
     });
 </script>
