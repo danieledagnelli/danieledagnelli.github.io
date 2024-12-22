@@ -186,65 +186,65 @@
         const distortions: { y: number; thickness: number; opacity: number; }[] = []; // Array to track active horizontal distortion lines
 
         function drawMatrix() {
-            if (!ctx) {
-                return;
-            }
-            // Slightly dark background to fade old characters
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (!ctx) {
+        return;
+    }
+    // Slightly dark background to fade old characters
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = "#0f0";
-            ctx.font = `${fontSize}px monospace`;
+    for (let i = 0; i < drops.length; i++) {
+        const char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
 
-            for (let i = 0; i < drops.length; i++) {
-                const char =
-                    matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        // Highlighting the bottom-most character
+        const isBottomMost = drops[i] * fontSize > canvas.height && Math.random() > 0.975;
 
-                // Randomly decide if this particular character should be mirrored
-                const shouldMirror = Math.random() < 0.15; // ~15% chance to mirror
-
-                if (shouldMirror) {
-                    ctx.save();
-                    ctx.translate(
-                        (i + 0.5) * fontSize,
-                        (drops[i] + 0.5) * fontSize
-                    );
-                    ctx.scale(-1, 1);
-                    ctx.fillText(char, -0.5 * fontSize, 0.5 * fontSize);
-                    ctx.restore();
-                } else {
-                    ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-                }
-
-                // Move drop downward; occasionally reset to the top
-                if (
-                    drops[i] * fontSize > canvas.height &&
-                    Math.random() > 0.975
-                ) {
-                    drops[i] = Math.floor(
-                        (Math.random() * -canvas.height) / fontSize
-                    );
-                }
-                drops[i]++;
-            }
-
-            // Draw horizontal distortion lines
-            distortions.forEach((distortion, index) => {
-                ctx.fillStyle = `rgba(0, 0, 0, ${distortion.opacity})`;
-                ctx.fillRect(
-                    0,
-                    distortion.y,
-                    canvas.width,
-                    distortion.thickness
-                );
-
-                // Fade out distortion lines over time
-                distortion.opacity -= 0.02;
-                if (distortion.opacity <= 0) {
-                    distortions.splice(index, 1);
-                }
-            });
+        // Color for the bottom-most character
+        if (isBottomMost) {
+            ctx.fillStyle = "#FF6347"; // Highlight with a Tomato color
+        } else {
+            ctx.fillStyle = "#0f0"; // Regular green color
         }
+
+        ctx.font = `${fontSize}px monospace`;
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+        // Move drop downward; occasionally reset to the top
+        if (isBottomMost) {
+            drops[i] = Math.floor((Math.random() * -canvas.height) / fontSize);
+        }
+        drops[i]++;
+    }
+
+    // Draw horizontal distortion lines
+    distortions.forEach((distortion, index) => {
+    // Choose color based on the vertical position modulo 3 to cycle through colors
+    let color = 'rgba(0, 127, 255, '; // Default color
+    switch (Math.floor(distortion.y / distortion.thickness) % 3) {
+        case 0:
+            color = 'rgba(255, 255, 255, '; // Electric Blue with varying opacity
+            break;
+        case 1:
+            color = 'rgba(57, 255, 20, '; // Neon Green with varying opacity
+            break;
+        case 2:
+            color = 'rgba(255, 0, 255, '; // Magenta with varying opacity
+            break;
+    }
+    ctx.fillStyle = color + distortion.opacity + ')';
+    ctx.fillRect(0, distortion.y, canvas.width, distortion.thickness);
+
+    // Fade out distortion lines over time
+    distortion.opacity -= 0.02;
+    if (distortion.opacity <= 0) {
+        distortions.splice(index, 1);
+    }
+});
+
+}
+
+setInterval(drawMatrix, 40);
+
 
         function addDistortionLine() {
             const y = Math.random() * canvas.height; // Random vertical position
