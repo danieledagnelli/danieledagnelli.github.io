@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Conway’s Game of Life - Dynamic Seeding</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="lifeCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById("lifeCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Resize the canvas to fill the entire window
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+
+      rows = canvas.height;
+      cols = canvas.width;
+
+      grid = createGrid(rows, cols);
+      randomizeGridDynamic(grid);
+    });
+
+    // Initial setup
+    resizeCanvas();
+
+    // Each cell is 1px
+    let cellSize = 1;
+
+    // Number of rows/cols based on canvas size
+    let rows = canvas.height;
+    let cols = canvas.width;
+
+    // Create the initial grid
+    let grid = createGrid(rows, cols);
+
+    // Seed the grid with a dynamic number of alive cells
+    randomizeGridDynamic(grid);
+
+    // Start the simulation
+    requestAnimationFrame(updateAndRender);
+
+    // ----------- Functions -----------
+
+    // Create a 2D array of dead cells
+    function createGrid(rows, cols) {
+      const newGrid = [];
+      for (let r = 0; r < rows; r++) {
+        newGrid.push(new Array(cols).fill(0));
+      }
+      return newGrid;
+    }
+
+    // Dynamically pick how many random cells to seed
+    function randomizeGridDynamic(grid) {
+      // Clear the grid
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          grid[r][c] = 0;
+        }
+      }
+
+      // Total number of cells
+      const totalCells = rows * cols;
+
+      // Choose a fraction of cells, say 1% (0.01).
+      // Then clamp between some min and max to keep it sane.
+      const fraction = 0.01; // 1% of total
+      let numberOfRandomCells = Math.floor(totalCells * fraction);
+
+      // Clamp the values
+      const minCells = 10000;      // At least 100 cells seeded
+      const maxCells = 50000;   // At most 100k to keep performance reasonable
+
+      if (numberOfRandomCells < minCells) {
+        numberOfRandomCells = minCells;
+      } else if (numberOfRandomCells > maxCells) {
+        numberOfRandomCells = maxCells;
+      }
+
+      // Randomly seed that many cells
+      for (let i = 0; i < numberOfRandomCells; i++) {
+        const randomRow = Math.floor(Math.random() * rows);
+        const randomCol = Math.floor(Math.random() * cols);
+        grid[randomRow][randomCol] = 1;
+      }
+    }
+
+    function updateAndRender() {
+      grid = getNextGeneration(grid);
+      drawGrid(grid);
+      requestAnimationFrame(updateAndRender);
+    }
+
+    function getNextGeneration(currentGrid) {
+      const nextGen = createGrid(rows, cols);
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const neighbors = countNeighbors(currentGrid, r, c);
+          const isAlive = currentGrid[r][c];
+
+          // Conway's rules
+          if (isAlive === 1 && (neighbors === 2 || neighbors === 3)) {
+            nextGen[r][c] = 1;  // Survives
+          } else if (isAlive === 0 && neighbors === 3) {
+            nextGen[r][c] = 1;  // Birth
+          } else {
+            nextGen[r][c] = 0;  // Dies or stays dead
+          }
+        }
+      }
+      return nextGen;
+    }
+
+    function countNeighbors(grid, row, col) {
+      let sum = 0;
+      for (let dr = -1; dr <= 1; dr++) {
+        for (let dc = -1; dc <= 1; dc++) {
+          if (dr === 0 && dc === 0) continue; // skip the cell itself
+          const rr = row + dr;
+          const cc = col + dc;
+          if (rr < 0 || rr >= rows || cc < 0 || cc >= cols) continue; // out of bounds
+          sum += grid[rr][cc];
+        }
+      }
+      return sum;
+    }
+
+    function drawGrid(grid) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#39ff14"; // neon green
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (grid[r][c] === 1) {
+            ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
