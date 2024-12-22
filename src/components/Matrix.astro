@@ -10,9 +10,8 @@ const { delay } = Astro.props;
     html {
         margin: 0;
         padding: 0;
-        height: 100%;
-        overflow: hidden;
-        background: black;
+        height: 100%; /* You may adjust or remove this if it conflicts with other content */
+        background: var(--background);
     }
     .matrix-effect {
         position: fixed;
@@ -22,8 +21,10 @@ const { delay } = Astro.props;
         height: 100vh;
         z-index: 2;
         pointer-events: none;
+        overflow: hidden; /* Ensure that only the effect container is non-scrollable */
     }
 </style>
+
 
 <div id="matrixEffect" class="matrix-effect" fade-out={delay}></div>
 
