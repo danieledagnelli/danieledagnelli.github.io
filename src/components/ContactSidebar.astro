@@ -1,26 +1,5 @@
 ---
-/**
- * 1. Imports (placeholders)
- *    - If you need other Astro components or npm packages, import them here.
- */
-// import SomeOtherComponent from '../components/SomeOtherComponent.astro';
-
-/**
- * 2. Props interface
- *    - If you plan to pass data (e.g. from a parent .astro/.md file),
- *      you can declare your props type here.
- */
-export interface Props {
-  name?: string;
-  nickname?: string;
-  statusEmoji?: string;
-  statusMessage?: string;
-  bio?: string;
-  location?: string;
-  email?: string;
-  website?: string;
-  orgs?: string[]; // e.g. array of org logo URLs
-}
+import { siteMetadata } from "../siteMetadata";
 
 /**
  * 3. Data loading (placeholder)
@@ -36,16 +15,14 @@ export interface Props {
  *      If using TypeScript, it’ll match the interface you defined.
  */
 const {
-  name = "Daniele D'Agnelli",
-  nickname = "yourhandle",
-  statusEmoji = "🍕",
-  statusMessage = "probably eating pizza",
-  bio = "old school",
-  location = "London, UK",
-  email = "daniele dagnelli net",
-  website = "https://example.com",
-  orgs = [],
-} = Astro.props;
+  name,
+  github_handle,
+  bsky_handle,
+  linkedin_handle,
+  bio,
+  location,
+  email,
+} = siteMetadata;
 ---
 
 <div class="container">
@@ -120,10 +97,10 @@ const {
         </svg>
         <a
           rel="nofollow me"
-          href="https://github.com/danieledagnelli"
+          href={`https://github.com/${github_handle}`}
           target="_blank"
         >
-          danieledagnelli
+          {github_handle}
         </a>
       </li>
       <!-- Bluesky -->
@@ -146,10 +123,10 @@ const {
         </svg>
         <a
           rel="nofollow me"
-          href="https://bsky.app/profile/dagnelli.net"
+          href={`https://bsky.app/profile/${bsky_handle}`}
           target="_blank"
         >
-          @dagnelli.net
+          @{bsky_handle}
         </a>
       </li>
 
@@ -180,10 +157,10 @@ const {
         </svg>
         <a
           rel="nofollow me"
-          href="https://www.linkedin.com/in/dagnelli"
+          href={`https://www.linkedin.com/in/${linkedin_handle}`}
           target="_blank"
         >
-          in/dagnelli
+          in/{linkedin_handle}
         </a>
       </li>
 

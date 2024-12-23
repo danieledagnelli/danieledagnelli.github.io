@@ -2,8 +2,20 @@
 import Main from "../layouts/Main.astro";
 import ContactSidebar from "../components/ContactSidebar.astro";
 import { siteMetadata } from "../siteMetadata";
+import ContactMain from "../components/ContactMain.astro";
 ---
 
 <Main title={`${siteMetadata.title} → Contact`} last_modified="1734771487">
-    <ContactSidebar />
+    <div class="container">
+        <ContactSidebar />
+        <ContactMain />
+    </div>
 </Main>
+<style>
+    .container {
+        display: flex;
+        justify-content: left; /* Aligns children (sidebar and main content) to the start of the flex container */
+        align-items: stretch; /* Ensures children expand vertically */
+        height: 100vh; /* Full viewport height */
+    }
+</style>
