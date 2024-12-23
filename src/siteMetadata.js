@@ -1,7 +1,6 @@
 export const siteMetadata = {
   title: 'daniele d\'agnelli',
   description: 'old school',
-
   name: "Daniele D'Agnelli",
   github_handle: "danieledagnelli",
   bsky_handle: "dagnelli.net",

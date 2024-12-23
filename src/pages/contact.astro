@@ -1,21 +1,23 @@
 ---
 import Main from "../layouts/Main.astro";
 import ContactSidebar from "../components/ContactSidebar.astro";
+import Whoami from "../components/Whoami.astro";
+
 import { siteMetadata } from "../siteMetadata";
-import ContactMain from "../components/ContactMain.astro";
 ---
 
 <Main title={`${siteMetadata.title} → Contact`} last_modified="1734771487">
     <div class="container">
         <ContactSidebar />
-        <ContactMain />
+        <Whoami />
     </div>
 </Main>
+
 <style>
     .container {
         display: flex;
-        justify-content: left; /* Aligns children (sidebar and main content) to the start of the flex container */
-        align-items: stretch; /* Ensures children expand vertically */
-        height: 100vh; /* Full viewport height */
+        justify-content: left;
+        align-items: stretch;
+        height: 100vh;
     }
 </style>
