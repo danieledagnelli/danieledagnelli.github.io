@@ -6,7 +6,7 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import DynamicContent from "../components/DynamicContent.astro";
 import LastChanged from "../components/LastChanged.astro";
-import MatrixComponent from "../components/Matrix.astro";
+import Matrix from "../components/MatrixBeta.astro";
 
 type Props = {
     title: string;
@@ -28,7 +28,7 @@ const { title, last_modified } = Astro.props;
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
     </head>
     <body>
-        <MatrixComponent delay={timeout} />
+        <Matrix delay={timeout} />
 
         <main class="content">
             <!-- <slot /> -->
