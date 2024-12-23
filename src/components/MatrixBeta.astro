@@ -33,14 +33,12 @@ const { delay } = Astro.props;
 </style>
 
 <div id="matrixEffect" class="matrix-effect" fade-out={delay}></div>
-
 <script>
     const matrixEffectElement = document.getElementById("matrixEffect");
     const timeout = matrixEffectElement
         ? parseInt(matrixEffectElement.getAttribute("fade-out") || "0", 10)
         : 0;
 
-    // A subset of half-width Katakana, Western letters, numerals, and symbols
     const matrixChars = [
         "ｦ",
         "ｧ",
@@ -187,176 +185,94 @@ const { delay } = Astro.props;
             return;
         }
         if (matrixEffect) {
-            if (matrixEffect) {
-                if (matrixEffect) {
-                    if (matrixEffect) {
-                        matrixEffect.appendChild(canvas);
-                    } else {
-                        console.error("Failed to find matrixEffect element");
-                    }
-                } else {
-                    console.error("Failed to find matrixEffect element");
-                }
-            } else {
-                console.error("Failed to find matrixEffect element");
-            }
-        } else {
-            console.error("Failed to find matrixEffect element");
+            matrixEffect.appendChild(canvas);
         }
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
         const fontSize = 16;
         const columns = Math.floor(canvas.width / fontSize);
-
-        // Initialize each column to start randomly within bounds
         const drops = Array(columns)
             .fill(0)
             .map(() => Math.floor((Math.random() * -canvas.height) / fontSize));
 
-        const distortions: { y: number; thickness: number; opacity: number }[] =
-            []; // Array to track active horizontal distortion lines
-
         function drawMatrix() {
             if (!ctx) {
+                console.error("2D context is null");
                 return;
             }
-            // Slightly dark background to fade old characters
-            if (ctx) {
-                if (ctx) {
-                    if (ctx) {
-                        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-                    }
-                }
-            }
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Iterate through each column
             for (let i = 0; i < drops.length; i++) {
                 const char =
                     matrixChars[Math.floor(Math.random() * matrixChars.length)];
-
-                // Check if the character is the bottom-most in its drop
                 const isBottomMost =
-                    drops[i] * fontSize > canvas.height ||
-                    (Math.random() > 0.95 &&
-                        drops[i] * fontSize < canvas.height);
-
-                if (isBottomMost) {
-                    // Apply bold and white styling for bottom-most character
-                    ctx.font = `bold ${fontSize}px monospace`;
-                    ctx.fillStyle = "#FFF"; // White color
-                } else {
-                    // Regular styling for other characters
-                    ctx.font = `${fontSize}px monospace`;
-                    ctx.fillStyle = "#0f0"; // Regular green color
-                }
-
+                    drops[i] * fontSize > canvas.height || Math.random() > 0.95;
+                ctx.font = isBottomMost
+                    ? `bold ${fontSize}px monospace`
+                    : `${fontSize}px monospace`;
+                ctx.fillStyle = isBottomMost ? "#FFF" : "#0f0";
                 ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-
-                // Reset the drop or continue moving it down
-                if (drops[i] * fontSize > canvas.height || isBottomMost) {
-                    drops[i] = 0; // Reset the drop to start from the top
-                } else {
-                    drops[i]++;
-                }
+                drops[i] =
+                    drops[i] * fontSize > canvas.height || isBottomMost
+                        ? 0
+                        : drops[i] + 1;
             }
-        }
-
-        // Function to add flashing effect
-        function flashBottomCharacter(isBottomMost: any) {
-            const flashInterval = setInterval(() => {
-                if (isBottomMost && ctx) {
-                    // Toggle opacity to create a flashing effect
-                    ctx.globalAlpha = ctx.globalAlpha === 1 ? 0 : 1;
-                }
-            }, 200); // Flashing interval
-
-            // Optionally, clear the interval based on certain conditions or after a set duration
-            setTimeout(() => {
-                clearInterval(flashInterval);
-            }, 10000); // Stop flashing after 10 seconds, adjust as needed
-        }
-
-        setInterval(drawMatrix, 40);
-
-        function addDistortionLine() {
-            const y = Math.random() * canvas.height; // Random vertical position
-            const thickness = Math.random() * 10 + 5; // Random thickness (5px-15px)
-            distortions.push({ y, thickness, opacity: 1 });
         }
 
         function addErraticBlinkEffect() {
             setInterval(
                 () => {
                     const shouldBlinkWhite = Math.random() > 0.5;
-
-                    if (shouldBlinkWhite) {
-                        canvas.style.backgroundColor = "white";
-                        canvas.style.opacity = "1"; // Fully visible white
-                    } else {
-                        canvas.style.backgroundColor = "black";
-                        const randomOpacity = Math.random(); // Random dim effect
-                        // const randomOpacity = 0; // Random dim effect
-
-                        canvas.style.opacity = randomOpacity.toString();
-                    }
-
-                    // Reset to normal state
+                    canvas.style.backgroundColor = shouldBlinkWhite
+                        ? "white"
+                        : "black";
+                    canvas.style.opacity = shouldBlinkWhite
+                        ? "1"
+                        : Math.random().toString();
                     setTimeout(
                         () => {
                             canvas.style.backgroundColor = "black";
                             canvas.style.opacity = "1";
                         },
                         Math.random() * 100 + 50,
-                    ); // Duration between 50ms to 150ms
+                    );
                 },
                 Math.random() * 500 + 100,
-            ); // Frequency between 100ms to 600ms
+            );
         }
 
         setInterval(drawMatrix, 40);
-        setInterval(addDistortionLine, Math.random() * 1000 + 500); // New distortion line every 500ms-1500ms
         addErraticBlinkEffect();
 
         function rapidBlinkBeforeEnd() {
             const rapidBlinkInterval = setInterval(() => {
                 if (matrixEffectElement) {
-                    // Toggle the opacity
                     matrixEffectElement.style.opacity =
                         matrixEffectElement.style.opacity === "1" ? "0" : "1";
-
-                    // Set the background color based on the opacity
                     matrixEffectElement.style.backgroundColor =
                         matrixEffectElement.style.opacity === "0"
                             ? "black"
                             : "transparent";
                 }
-            }, 30); // Very fast blinking at 30 milliseconds
+            }, 30);
 
-            // Stop the rapid blinking and clear the matrix effect after a brief period
             setTimeout(() => {
                 clearInterval(rapidBlinkInterval);
                 if (matrixEffectElement) {
-                    matrixEffectElement.style.opacity = "1"; // Ensure it's visible before hiding
-                    matrixEffectElement.style.backgroundColor = "transparent"; // Reset background to initial state
+                    matrixEffectElement.style.opacity = "1";
+                }
+                if (matrixEffectElement) {
+                    matrixEffectElement.style.backgroundColor = "transparent";
                 }
                 if (matrixEffectElement) {
                     matrixEffectElement.style.display = "none";
                 }
-            }, timeout / 10); // Adjust time as needed (here, 1 second of rapid blinking)
+            }, timeout / 10);
         }
 
-        // Start the rapid blinking shortly before the main timeout
-        setTimeout(
-            () => {
-                rapidBlinkBeforeEnd();
-            },
-            timeout - timeout / 10,
-        ); // Start 1 second before the main timeout
-
-        // Set the main timeout to hide the matrix effect
-        setTimeout(function () {
+        setTimeout(() => rapidBlinkBeforeEnd(), timeout - timeout / 10);
+        setTimeout(() => {
             if (matrixEffectElement) {
                 matrixEffectElement.style.display = "none";
             }
