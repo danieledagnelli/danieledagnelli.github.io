@@ -28,14 +28,14 @@ const { delay } = Astro.props;
 
 <div id="matrixEffect" class="matrix-effect" fade-out={delay}></div>
 <script>
-    (function () {
+    (() => {
         "use strict";
 
         /**
          * Safely read the 'fade-out' attribute from the #matrixEffect element
          * @returns {number} Parsed timeout value (0 if invalid or missing)
          */
-        function getTimeoutValue(element: HTMLElement) {
+        const getTimeoutValue = (element: HTMLElement): number => {
             if (!element) {
                 console.warn(
                     "Matrix effect element not found to read 'fade-out' attribute.",
@@ -58,15 +58,14 @@ const { delay } = Astro.props;
                 );
                 return 0;
             }
-
             return parsed;
-        }
+        };
 
         /**
          * Creates a canvas element inside the given parent and returns the context.
          * @returns {{ canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D | null} | null}
          */
-        function createCanvasAndContext(parent: HTMLElement) {
+        const createCanvasAndContext = (parent: HTMLElement) => {
             if (!parent) {
                 console.warn(
                     "Parent element is null or undefined. Cannot create canvas.",
@@ -83,15 +82,94 @@ const { delay } = Astro.props;
                     "Unable to get 2D context from the created canvas.",
                 );
             }
-
             return { canvas, ctx };
-        }
+        };
+
+        /**
+         * Draws the falling characters.
+         */
+        const drawMatrix = (
+            ctx: CanvasRenderingContext2D,
+            canvas: HTMLCanvasElement,
+            columns: number,
+            drops: number[],
+            fontSize: number,
+            matrixChars: string[],
+        ) => {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0F0";
+            ctx.font = `${fontSize}px monospace`;
+            for (let i = 0; i < columns; i++) {
+                const text =
+                    matrixChars[
+                        Math.floor(Math.random() * matrixChars.length)
+                    ];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (
+                    drops[i] * fontSize > canvas.height &&
+                    Math.random() > 0.975
+                ) {
+                    drops[i] = 0;
+                } else {
+                    drops[i]++;
+                }
+            }
+        };
+
+        /**
+         * Adds a random horizontal "distortion" line.
+         */
+        const addDistortionLine = (
+            ctx: CanvasRenderingContext2D,
+            canvas: HTMLCanvasElement,
+        ) => {
+            ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+            const yPosition = Math.floor(Math.random() * canvas.height);
+            const lineThickness = Math.random() * 10 + 1;
+            ctx.fillRect(0, yPosition, canvas.width, lineThickness);
+        };
+
+        /**
+         * Handles the "blink" and fade-out effect at the end.
+         */
+        const handleFadeOut = (
+            element: HTMLElement,
+            timeout: number | undefined,
+            addLinesFn: () => void,
+        ) => {
+            if (!element || (timeout !== undefined && timeout <= 0)) {
+                return;
+            }
+            setTimeout(() => {
+                const blinkInterval = setInterval(() => {
+                    element.style.opacity =
+                        element.style.opacity === "1" ? "0.1" : "1";
+                }, 30);
+
+                const extraLinesInterval = setInterval(() => {
+                    for (let i = 0; i < 5; i++) {
+                        addLinesFn();
+                    }
+                }, 40);
+
+                setTimeout(() => {
+                    clearInterval(blinkInterval);
+                    clearInterval(extraLinesInterval);
+                    element.style.opacity = "1";
+                    element.style.display = "none";
+                }, (timeout || 0) / 10);
+            }, (timeout || 0) - (timeout || 0) / 10);
+
+            setTimeout(() => {
+                element.style.display = "none";
+            }, timeout);
+        };
 
         /**
          * Initializes the Matrix effect (creates canvas, sets up intervals).
          */
-        function initMatrixEffect() {
-            // Get the container element
+        const initMatrixEffect = () => {
             const matrixEffectElement = document.getElementById("matrixEffect");
             if (!matrixEffectElement) {
                 console.warn(
@@ -103,17 +181,13 @@ const { delay } = Astro.props;
             const timeout = getTimeoutValue(matrixEffectElement);
             const result = createCanvasAndContext(matrixEffectElement);
             if (!result || !result.canvas || !result.ctx) {
-                // If canvas or context is invalid, exit early
                 return;
             }
 
             const { canvas, ctx } = result;
-
-            // Set initial canvas dimensions
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
-            // Matrix columns and drops
             const fontSize = 16;
             const columns = Math.floor(canvas.width / fontSize);
             const drops = new Array(columns)
@@ -122,125 +196,34 @@ const { delay } = Astro.props;
                     Math.floor((Math.random() * -canvas.height) / fontSize),
                 );
 
-            // Define the characters used in the Matrix animation
             const matrixChars =
                 "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()+-/<>:;".split(
                     "",
                 );
 
-            /**
-             * Draws the falling characters.
-             */
-            function drawMatrix() {
-                if (!ctx) return; // Extra safety check if ctx was lost somehow
-
-                // Paint a semi-transparent black rectangle over the entire canvas
-                ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                // Set the style for the falling characters
-                ctx.fillStyle = "#0F0";
-                ctx.font = `${fontSize}px monospace`;
-
-                // Draw each character in its respective column
-                for (let i = 0; i < columns; i++) {
-                    const text =
-                        matrixChars[
-                            Math.floor(Math.random() * matrixChars.length)
-                        ];
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                    // Reset drop to the top randomly after it exits the canvas
-                    if (
-                        drops[i] * fontSize > canvas.height &&
-                        Math.random() > 0.975
-                    ) {
-                        drops[i] = 0;
-                    } else {
-                        drops[i]++;
-                    }
-                }
-            }
-
-            /**
-             * Adds a random horizontal "distortion" line.
-             */
-            function addDistortionLine() {
-                if (!ctx) return; // Extra safety check
-
-                ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-                const yPosition = Math.floor(Math.random() * canvas.height);
-                const lineThickness = Math.random() * 10 + 1;
-                ctx.fillRect(0, yPosition, canvas.width, lineThickness);
-            }
-
-            // Start the main animation loops (check if setInterval is available)
             if (typeof setInterval === "function") {
-                setInterval(drawMatrix, 50); // Matrix effect
-                setInterval(addDistortionLine, 200); // Distortion lines
+                setInterval(
+                    () => drawMatrix(ctx, canvas, columns, drops, fontSize, matrixChars),
+                    50,
+                );
+                setInterval(
+                    () => addDistortionLine(ctx, canvas),
+                    200,
+                );
             } else {
                 console.warn(
                     "setInterval is not available. Animations cannot be started.",
                 );
             }
-
-            // Handle the "blink" and fade-out effect at the end
-            handleFadeOut(matrixEffectElement, timeout || 0, addDistortionLine);
-        }
-
-        /**
-         * Handles the "blink" and fade-out effect at the end.
-         * @param {HTMLElement} element
-         * @param {number} timeout
-         */
-        function handleFadeOut(
-            element: HTMLElement,
-            timeout: number | undefined,
-            addLinesFn: () => void,
-        ) {
-            if (!element || (timeout !== undefined && timeout <= 0)) {
-                return;
-            }
-
-            // Blink effect at 90% of the timeout
-            setTimeout(
-                () => {
-                    const blinkInterval = setInterval(() => {
-                        element.style.opacity =
-                            element.style.opacity === "1" ? "0.1" : "1";
-                    }, 30);
-
-                    const extraLinesInterval = setInterval(() => {
-                        // Draw multiple thin lines
-                        for (let i = 0; i < 5; i++) {
-                            addLinesFn(); // <-- call the passed-in function
-                        }
-                    }, 40);
-
-                    setTimeout(
-                        () => {
-                            clearInterval(blinkInterval);
-                            clearInterval(extraLinesInterval);
-                            element.style.opacity = "1";
-                            element.style.display = "none";
-                        },
-                        (timeout || 0) / 10,
-                    );
-                },
-                (timeout || 0) - (timeout || 0) / 10,
+            handleFadeOut(matrixEffectElement, timeout || 0, () =>
+                addDistortionLine(ctx, canvas),
             );
-
-            // Final hide
-            setTimeout(() => {
-                element.style.display = "none";
-            }, timeout);
-        }
+        };
 
         /**
          * Main entry point when DOM is loaded.
          */
-        function onDomContentLoaded() {
-            // Check for 'document' just in case
+        const onDomContentLoaded = () => {
             if (typeof document === "undefined") {
                 console.warn(
                     "document is not available, cannot initialize Matrix effect.",
@@ -248,9 +231,8 @@ const { delay } = Astro.props;
                 return;
             }
             initMatrixEffect();
-        }
+        };
 
-        // Initialize when DOM content is fully loaded
         if (typeof document !== "undefined") {
             document.addEventListener("DOMContentLoaded", onDomContentLoaded);
         } else {
