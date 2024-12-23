@@ -10,14 +10,8 @@ const { delay } = Astro.props;
     html {
         margin: 0;
         padding: 0;
-        height: 100%; /* You may adjust or remove this if it conflicts with other content */
+        height: 100%; /* Full height */
         background: var(--background);
-    }
-
-    .matrix-effect canvas {
-        transition:
-            background-color 0.5s,
-            opacity 0.5s;
     }
 
     .matrix-effect {
@@ -28,254 +22,241 @@ const { delay } = Astro.props;
         height: 100vh;
         z-index: 2;
         pointer-events: none;
-        overflow: hidden; /* Ensure that only the effect container is non-scrollable */
+        overflow: hidden; /* Prevents scrolling within the effect container */
     }
 </style>
 
 <div id="matrixEffect" class="matrix-effect" fade-out={delay}></div>
 <script>
-    const matrixEffectElement = document.getElementById("matrixEffect");
-    const timeout = matrixEffectElement
-        ? parseInt(matrixEffectElement.getAttribute("fade-out") || "0", 10)
-        : 0;
+    (function () {
+        "use strict";
 
-    const matrixChars = [
-        "ｦ",
-        "ｧ",
-        "ｨ",
-        "ｩ",
-        "ｪ",
-        "ｫ",
-        "ｬ",
-        "ｭ",
-        "ｮ",
-        "ｯ",
-        "ｰ",
-        "ｱ",
-        "ｲ",
-        "ｳ",
-        "ｴ",
-        "ｵ",
-        "ｶ",
-        "ｷ",
-        "ｸ",
-        "ｹ",
-        "ｺ",
-        "ｻ",
-        "ｼ",
-        "ｽ",
-        "ｾ",
-        "ｿ",
-        "ﾀ",
-        "ﾁ",
-        "ﾂ",
-        "ﾃ",
-        "ﾄ",
-        "ﾅ",
-        "ﾆ",
-        "ﾇ",
-        "ﾈ",
-        "ﾉ",
-        "ﾊ",
-        "ﾋ",
-        "ﾌ",
-        "ﾍ",
-        "ﾎ",
-        "ﾏ",
-        "ﾐ",
-        "ﾑ",
-        "ﾒ",
-        "ﾓ",
-        "ﾔ",
-        "ﾕ",
-        "ﾖ",
-        "ﾗ",
-        "ﾘ",
-        "ﾙ",
-        "ﾚ",
-        "ﾛ",
-        "ﾜ",
-        "ﾝ",
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "F",
-        "G",
-        "H",
-        "I",
-        "J",
-        "K",
-        "L",
-        "M",
-        "N",
-        "O",
-        "P",
-        "Q",
-        "R",
-        "S",
-        "T",
-        "U",
-        "V",
-        "W",
-        "X",
-        "Y",
-        "Z",
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r",
-        "s",
-        "t",
-        "u",
-        "v",
-        "w",
-        "x",
-        "y",
-        "z",
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "!",
-        "@",
-        "#",
-        "$",
-        "%",
-        "&",
-        "*",
-        "(",
-        ")",
-        "+",
-        "-",
-        "/",
-        ":",
-        ";",
-        "<",
-        ">",
-    ];
+        /**
+         * Safely read the 'fade-out' attribute from the #matrixEffect element
+         * @returns {number} Parsed timeout value (0 if invalid or missing)
+         */
+        function getTimeoutValue(element: HTMLElement) {
+            if (!element) {
+                console.warn(
+                    "Matrix effect element not found to read 'fade-out' attribute.",
+                );
+                return 0;
+            }
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const matrixEffect = document.getElementById("matrixEffect");
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-        if (!ctx) {
-            console.error("Failed to get 2D context");
-            return;
+            const fadeOutAttr = element.getAttribute("fade-out");
+            if (!fadeOutAttr) {
+                console.warn(
+                    "'fade-out' attribute not found on #matrixEffect element.",
+                );
+                return 0;
+            }
+
+            const parsed = parseInt(fadeOutAttr, 10);
+            if (isNaN(parsed)) {
+                console.warn(
+                    `Invalid 'fade-out' attribute value: ${fadeOutAttr}`,
+                );
+                return 0;
+            }
+
+            return parsed;
         }
-        if (matrixEffect) {
-            matrixEffect.appendChild(canvas);
-        }
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
 
-        const fontSize = 16;
-        const columns = Math.floor(canvas.width / fontSize);
-        const drops = Array(columns)
-            .fill(0)
-            .map(() => Math.floor((Math.random() * -canvas.height) / fontSize));
+        /**
+         * Creates a canvas element inside the given parent and returns the context.
+         * @returns {{ canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D | null} | null}
+         */
+        function createCanvasAndContext(parent: HTMLElement) {
+            if (!parent) {
+                console.warn(
+                    "Parent element is null or undefined. Cannot create canvas.",
+                );
+                return null;
+            }
 
-        function drawMatrix() {
+            const canvas = document.createElement("canvas");
+            parent.appendChild(canvas);
+            const ctx = canvas.getContext("2d");
+
             if (!ctx) {
-                console.error("2D context is null");
+                console.warn(
+                    "Unable to get 2D context from the created canvas.",
+                );
+            }
+
+            return { canvas, ctx };
+        }
+
+        /**
+         * Initializes the Matrix effect (creates canvas, sets up intervals).
+         */
+        function initMatrixEffect() {
+            // Get the container element
+            const matrixEffectElement = document.getElementById("matrixEffect");
+            if (!matrixEffectElement) {
+                console.warn(
+                    "#matrixEffect element not found in the DOM. Skipping Matrix effect initialization.",
+                );
                 return;
             }
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < drops.length; i++) {
-                const char =
-                    matrixChars[Math.floor(Math.random() * matrixChars.length)];
-                const isBottomMost =
-                    drops[i] * fontSize > canvas.height || Math.random() > 0.95;
-                ctx.font = isBottomMost
-                    ? `bold ${fontSize}px monospace`
-                    : `${fontSize}px monospace`;
-                ctx.fillStyle = isBottomMost ? "#FFF" : "#0f0";
-                ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-                drops[i] =
-                    drops[i] * fontSize > canvas.height || isBottomMost
-                        ? 0
-                        : drops[i] + 1;
+
+            const timeout = getTimeoutValue(matrixEffectElement);
+            const result = createCanvasAndContext(matrixEffectElement);
+            if (!result || !result.canvas || !result.ctx) {
+                // If canvas or context is invalid, exit early
+                return;
             }
+
+            const { canvas, ctx } = result;
+
+            // Set initial canvas dimensions
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            // Matrix columns and drops
+            const fontSize = 16;
+            const columns = Math.floor(canvas.width / fontSize);
+            const drops = new Array(columns)
+                .fill(0)
+                .map(() =>
+                    Math.floor((Math.random() * -canvas.height) / fontSize),
+                );
+
+            // Define the characters used in the Matrix animation
+            const matrixChars =
+                "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()+-/<>:;".split(
+                    "",
+                );
+
+            /**
+             * Draws the falling characters.
+             */
+            function drawMatrix() {
+                if (!ctx) return; // Extra safety check if ctx was lost somehow
+
+                // Paint a semi-transparent black rectangle over the entire canvas
+                ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Set the style for the falling characters
+                ctx.fillStyle = "#0F0";
+                ctx.font = `${fontSize}px monospace`;
+
+                // Draw each character in its respective column
+                for (let i = 0; i < columns; i++) {
+                    const text =
+                        matrixChars[
+                            Math.floor(Math.random() * matrixChars.length)
+                        ];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    // Reset drop to the top randomly after it exits the canvas
+                    if (
+                        drops[i] * fontSize > canvas.height &&
+                        Math.random() > 0.975
+                    ) {
+                        drops[i] = 0;
+                    } else {
+                        drops[i]++;
+                    }
+                }
+            }
+
+            /**
+             * Adds a random horizontal "distortion" line.
+             */
+            function addDistortionLine() {
+                if (!ctx) return; // Extra safety check
+
+                ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+                const yPosition = Math.floor(Math.random() * canvas.height);
+                const lineThickness = Math.random() * 10 + 1;
+                ctx.fillRect(0, yPosition, canvas.width, lineThickness);
+            }
+
+            // Start the main animation loops (check if setInterval is available)
+            if (typeof setInterval === "function") {
+                setInterval(drawMatrix, 50); // Matrix effect
+                setInterval(addDistortionLine, 200); // Distortion lines
+            } else {
+                console.warn(
+                    "setInterval is not available. Animations cannot be started.",
+                );
+            }
+
+            // Handle the "blink" and fade-out effect at the end
+            handleFadeOut(matrixEffectElement, timeout || 0, addDistortionLine);
         }
 
-        function addErraticBlinkEffect() {
-            setInterval(
+        /**
+         * Handles the "blink" and fade-out effect at the end.
+         * @param {HTMLElement} element
+         * @param {number} timeout
+         */
+        function handleFadeOut(
+            element: HTMLElement,
+            timeout: number | undefined,
+            addLinesFn: () => void,
+        ) {
+            if (!element || (timeout !== undefined && timeout <= 0)) {
+                return;
+            }
+
+            // Blink effect at 90% of the timeout
+            setTimeout(
                 () => {
-                    const shouldBlinkWhite = Math.random() > 0.5;
-                    canvas.style.backgroundColor = shouldBlinkWhite
-                        ? "white"
-                        : "black";
-                    canvas.style.opacity = shouldBlinkWhite
-                        ? "1"
-                        : Math.random().toString();
+                    const blinkInterval = setInterval(() => {
+                        element.style.opacity =
+                            element.style.opacity === "1" ? "0.1" : "1";
+                    }, 30);
+
+                    const extraLinesInterval = setInterval(() => {
+                        // Draw multiple thin lines
+                        for (let i = 0; i < 5; i++) {
+                            addLinesFn(); // <-- call the passed-in function
+                        }
+                    }, 40);
+
                     setTimeout(
                         () => {
-                            canvas.style.backgroundColor = "black";
-                            canvas.style.opacity = "1";
+                            clearInterval(blinkInterval);
+                            clearInterval(extraLinesInterval);
+                            element.style.opacity = "1";
+                            element.style.display = "none";
                         },
-                        Math.random() * 100 + 50,
+                        (timeout || 0) / 10,
                     );
                 },
-                Math.random() * 500 + 100,
+                (timeout || 0) - (timeout || 0) / 10,
+            );
+
+            // Final hide
+            setTimeout(() => {
+                element.style.display = "none";
+            }, timeout);
+        }
+
+        /**
+         * Main entry point when DOM is loaded.
+         */
+        function onDomContentLoaded() {
+            // Check for 'document' just in case
+            if (typeof document === "undefined") {
+                console.warn(
+                    "document is not available, cannot initialize Matrix effect.",
+                );
+                return;
+            }
+            initMatrixEffect();
+        }
+
+        // Initialize when DOM content is fully loaded
+        if (typeof document !== "undefined") {
+            document.addEventListener("DOMContentLoaded", onDomContentLoaded);
+        } else {
+            console.warn(
+                "document is not defined. Skipping DOMContentLoaded listener.",
             );
         }
-
-        setInterval(drawMatrix, 40);
-        addErraticBlinkEffect();
-
-        function rapidBlinkBeforeEnd() {
-            const rapidBlinkInterval = setInterval(() => {
-                if (matrixEffectElement) {
-                    matrixEffectElement.style.opacity =
-                        matrixEffectElement.style.opacity === "1" ? "0" : "1";
-                    matrixEffectElement.style.backgroundColor =
-                        matrixEffectElement.style.opacity === "0"
-                            ? "black"
-                            : "transparent";
-                }
-            }, 30);
-
-            setTimeout(() => {
-                clearInterval(rapidBlinkInterval);
-                if (matrixEffectElement) {
-                    matrixEffectElement.style.opacity = "1";
-                }
-                if (matrixEffectElement) {
-                    matrixEffectElement.style.backgroundColor = "transparent";
-                }
-                if (matrixEffectElement) {
-                    matrixEffectElement.style.display = "none";
-                }
-            }, timeout / 10);
-        }
-
-        setTimeout(() => rapidBlinkBeforeEnd(), timeout - timeout / 10);
-        setTimeout(() => {
-            if (matrixEffectElement) {
-                matrixEffectElement.style.display = "none";
-            }
-        }, timeout);
-    });
+    })();
 </script>
