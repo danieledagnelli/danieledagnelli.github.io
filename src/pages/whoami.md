@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/Whoami.astro
+layout: ../components/Whoami.astro
 title: "about"
 subtitle: "chi sono"
 created: "1733667634"
