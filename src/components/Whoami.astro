@@ -1,26 +1,124 @@
 ---
-// MainContent.astro
-
 // Import the layout and any other needed components
 ---
 
 <div class="whoami">
-    <p>daniele@dagnelli.net:~$ whoami</p>
-    <p>i grew up and studied in the south of italy. </p>
-    <p>daniele@dagnelli.net:~$ whoami</p>
+    <div class="command-content-pair" data-command="whoami" data-delay="500">
+        <p>
+            daniele@dagnelli.net:~$ <span class="typewriter"></span><span
+                class="cursor">|</span>
+        </p>
+        <p class="content" style="display: none;">
+            I grew up and studied in the south of Italy. Since then, many other
+            things have happened. I will write about them when I get the chance.
+        </p>
+    </div>
 
+    <div
+        class="command-content-pair"
+        data-command=""
+        data-delay="1"
+        style="display: none;"
+    >
+        <p>
+            daniele@dagnelli.net:~$ <span class="typewriter"></span><span
+                class="cursor">|</span>
+        </p>
+    </div>
 </div>
 
 <style>
     .whoami {
-        flex: 1; /* Takes up the rest of the space */
-        padding: 1em; /* Add padding around the content */
+        flex: 1;
+        padding: 1em;
         margin-top: 1em;
-        margin-left: 20px; /* Space between sidebar and main content */
-        background-color: var(
-            --background-secondary
-        ); /* Optional background color */
-        border: 1px solid var(--text-color); /* Border style from the sidebar */
-        box-shadow: var(--text-color); /* Box shadow like the sidebar */
+        margin-left: 20px;
+        background-color: var(--background-secondary);
+        border: 1px solid var(--text-color);
+        box-shadow: var(--text-color);
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 10px;
+        background-color: var(--text-color);
+        animation: blink 1s steps(2, start) infinite;
+    }
+
+    .content {
+        margin-top: 0.5em;
+    }
+
+    @keyframes blink {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
     }
 </style>
+
+<script>
+    const speed = 100; // Typing speed in milliseconds
+    let pairIndex = 0;
+
+    function typeWriter(
+        element: Element | null,
+        text: string | null,
+        callback: { (): void; (): void },
+    ) {
+        let index = 0;
+        const cursor = element ? element.nextElementSibling : null;
+
+        function type() {
+            if (text && index < text.length) {
+                if (element) {
+                    element.innerHTML += text.charAt(index);
+                }
+                index++;
+                setTimeout(type, speed);
+            } else {
+                if (cursor && cursor.classList.contains("cursor")) {
+                    cursor.remove();
+                }
+                callback(); // Call the callback after typing finishes
+            }
+        }
+
+        type();
+    }
+
+    function processNextPair() {
+        const pairs = document.querySelectorAll(".command-content-pair");
+        if (pairIndex < pairs.length) {
+            const pair = pairs[pairIndex];
+            const command = pair.getAttribute("data-command");
+            const delay = parseInt(pair.getAttribute("data-delay") ?? "0") || 0; // Get delay, default to 0 if not specified
+            const typewriterElement = pair.querySelector(".typewriter");
+            const contentElement = pair.querySelector(".content");
+
+            // Apply delay before starting the typing effect
+            setTimeout(() => {
+                typeWriter(typewriterElement, command, () => {
+                    if (contentElement) {
+                        (contentElement as HTMLElement).style.display = "block"; // Show content after typing finishes
+                    }
+                    pairIndex++; // Move to the next pair
+
+                    // Reveal the next command-content pair
+                    if (pairIndex < pairs.length) {
+                        (pairs[pairIndex] as HTMLElement).style.display =
+                            "block";
+                    }
+
+                    processNextPair(); // Process the next pair
+                });
+            }, delay);
+        }
+    }
+
+    // Start the sequential typing process when the page loads
+    window.addEventListener("load", processNextPair);
+</script>
