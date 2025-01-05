@@ -1,5 +1,6 @@
+// src/siteMetadata.ts
 export const siteMetadata = {
-  title: 'daniele d\'agnelli',
+  title: "daniele d'agnelli",
   description: 'old school',
   name: "Daniele D'Agnelli",
   github_handle: "danieledagnelli",
@@ -11,5 +12,10 @@ export const siteMetadata = {
   location: "London, UK",
   email: "daniele@dagnelli.net",
   website: "https://example.com",
-  orgs: []  // e.g., array of org logo URLs
+  orgs: [],
+  config: {
+    matrixEffect: {
+      timeout: 1
+    }
+  }
 };

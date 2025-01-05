@@ -7,12 +7,15 @@ import Header from "../components/Header.astro";
 import DynamicContent from "../components/DynamicContent.astro";
 import LastChanged from "../components/LastChanged.astro";
 import Matrix from "../components/MatrixBeta.astro";
+import { siteMetadata } from "../siteMetadata";
 
 type Props = {
     title: string;
     last_modified: string;
 };
-const timeout : number = 5000;
+// const timeout : number = 5000;
+const timeout = siteMetadata.config.matrixEffect.timeout;
+
 const { title, last_modified } = Astro.props;
 ---
 
