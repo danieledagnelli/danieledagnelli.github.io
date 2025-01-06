@@ -8,6 +8,7 @@ import DynamicContent from "../components/DynamicContent.astro";
 import LastChanged from "../components/LastChanged.astro";
 import Matrix from "../components/MatrixBeta.astro";
 import { siteMetadata } from "../siteMetadata";
+import GlitchEffect from "../components/GlitchEffect.astro";
 
 type Props = {
     title: string;
@@ -15,6 +16,7 @@ type Props = {
 };
 // const timeout : number = 5000;
 const timeout = siteMetadata.config.matrixEffect.timeout;
+const { randomMaxDelayMs, durationMs } = siteMetadata.config.fatalErrorWip;
 
 const { title, last_modified } = Astro.props;
 ---
@@ -32,6 +34,7 @@ const { title, last_modified } = Astro.props;
     </head>
     <body>
         <Matrix delay={timeout} />
+        <GlitchEffect randomMaxDelayMs={randomMaxDelayMs} durationMs={durationMs} />
 
         <main class="content">
             <!-- <slot /> -->
@@ -42,6 +45,7 @@ const { title, last_modified } = Astro.props;
             </DynamicContent>
             <LastChanged last_modified={`${last_modified}`} />
         </main>
+
         <Footer />
     </body>
 </html>

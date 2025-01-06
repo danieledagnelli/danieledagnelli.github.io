@@ -1,0 +1,135 @@
+---
+type Props = {
+    randomMaxDelayMs: number;
+    durationMs: number;
+};
+
+const { randomMaxDelayMs, durationMs } = Astro.props;
+---
+
+<div id="glitchEffect" class="glitch-effect" data-max-delay={randomMaxDelayMs} data-duration={durationMs}>
+    <div class="error-box">
+        UNAUTHORIZED ACCESS
+        <div class="scanline"></div>
+    </div>
+</div>
+
+<style>
+    .glitch-effect {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        background-color: rgba(0, 0, 0, 0.8);
+        animation: glitch 0.3s infinite;
+    }
+
+    .error-box {
+        border: 0.1em solid #ff1414;
+        background-color: black;
+        color: #ff1414;
+        padding: 1em;
+        position: relative;
+        text-align: center;
+        font-family: "Courier New", monospace;
+        text-transform: uppercase;
+        animation: flicker 0.15s infinite;
+        letter-spacing: 2px;
+    }
+
+    .scanline {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #ff1414;
+        opacity: 0.75;
+        animation: scanline 6s linear infinite;
+    }
+
+    @keyframes glitch {
+        0% { transform: translate(0) }
+        20% { transform: translate(-2px, 2px) }
+        40% { transform: translate(-2px, -2px) }
+        60% { transform: translate(2px, 2px) }
+        80% { transform: translate(2px, -2px) }
+        100% { transform: translate(0) }
+    }
+
+    @keyframes flicker {
+        0% { opacity: 0.8 }
+        50% { opacity: 1 }
+        100% { opacity: 0.8 }
+    }
+
+    @keyframes scanline {
+        0% { top: 0 }
+        100% { top: 100% }
+    }
+</style>
+
+<script>
+    class GlitchEffect {
+        private element: HTMLElement;
+        private maxDelay: number;
+        private duration: number;
+        private timeoutId: number | null = null;
+
+        constructor(element: HTMLElement) {
+            this.element = element;
+            this.maxDelay = parseInt(element.dataset.maxDelay || '0', 10);
+            this.duration = parseInt(element.dataset.duration || '0', 10);
+            this.init();
+        }
+
+        private init(): void {
+            this.scheduleNextGlitch();
+        }
+
+        private scheduleNextGlitch(): void {
+            const delay = Math.random() * this.maxDelay;
+            
+            this.timeoutId = window.setTimeout(() => {
+                this.show();
+                window.setTimeout(() => {
+                    this.hide();
+                    this.scheduleNextGlitch(); // Schedule next glitch after hiding
+                }, this.duration);
+            }, delay);
+        }
+
+        private show(): void {
+            this.element.style.display = 'flex';
+        }
+
+        private hide(): void {
+            this.element.style.display = 'none';
+        }
+
+        public cleanup(): void {
+            if (this.timeoutId) {
+                window.clearTimeout(this.timeoutId);
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const element = document.getElementById('glitchEffect');
+        if (element) {
+            new GlitchEffect(element);
+        }
+    });
+
+    document.addEventListener('astro:page-load', () => {
+        const element = document.getElementById('glitchEffect');
+        if (element) {
+            new GlitchEffect(element);
+        }
+    });
+</script>
