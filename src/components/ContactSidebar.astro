@@ -63,7 +63,8 @@ const {
             d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"
           ></path>
         </svg>
-        <a href={`mailto:${email}`}>{email}</a>
+        <!-- Notice: added id="emailLink" -->
+        <a id="emailLink" href={`mailto:${email}`}>{email}</a>
       </li>
       <!-- <li>
         <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -328,3 +329,62 @@ const {
     float: center;
   }
 </style>
+
+<script>
+  // Reuse a typewriter-like function (similar to your Whoami.astro)
+  function typeWriter(element: Element | null | undefined, text: string, callback: { (): void; (): void; }) {
+    const speed = 60; // ms per character
+    let index = 0;
+    const cursor = element?.nextElementSibling;
+
+    function type() {
+      if (index < text.length && element) {
+        element.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, speed);
+      } else {
+        // remove the blinking cursor once completed
+        if (cursor && cursor.classList.contains("cursor")) {
+          cursor.remove();
+        }
+        callback();
+      }
+    }
+
+    type();
+  }
+
+  const emailLink = document.getElementById("emailLink");
+  const typedCommandContainer = document.getElementById("typedCommand");
+  const typedOutput = typedCommandContainer?.querySelector(".typed-output");
+
+  if (emailLink) {
+    emailLink.addEventListener("click", (event) => {
+      event.preventDefault(); // Stop the normal mailto: navigation
+
+      // Make the typedCommand container visible
+      if (typedCommandContainer) {
+        typedCommandContainer.style.display = "block";
+      }
+
+      // Clear old content if any
+      if (typedOutput) {
+        typedOutput.textContent = "";
+      }
+
+      // Prepare our fake command
+      const command = `mail -s "Hello" ${emailLink.textContent}`;
+
+      // Start typing
+      typeWriter(typedOutput, command, () => {
+        // After typing finishes, do whatever you want:
+        //  - Open the mail client automatically:
+        if (emailLink instanceof HTMLAnchorElement) {
+          window.location.href = emailLink.href;
+        }
+        
+        //  - or just do nothing, so the user can read it
+      });
+    });
+  }
+</script>
