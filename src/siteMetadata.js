@@ -15,7 +15,7 @@ export const siteMetadata = {
   orgs: [],
   config: {
     matrixEffect: {
-      timeout: 1
+      timeout: 5000
     }
   }
 };
