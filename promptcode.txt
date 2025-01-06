@@ -529,6 +529,32 @@ import { siteMetadata } from "../siteMetadata";
 <Main title={`${siteMetadata.title} → Blog`} last_modified="1734771487"></Main>
 ```
 
+`/workspaces/danieledagnelli.github.io/src/siteMetadata.js`:
+
+```js
+// src/siteMetadata.ts
+export const siteMetadata = {
+  title: "daniele d'agnelli",
+  description: 'old school',
+  name: "Daniele D'Agnelli",
+  github_handle: "danieledagnelli",
+  bsky_handle: "dagnelli.net",
+  linkedin_handle: "dagnelli",
+  statusEmoji: "🍕",
+  statusMessage: "probably eating pizza",
+  bio: "old school",
+  location: "London, UK",
+  email: "daniele@dagnelli.net",
+  website: "https://example.com",
+  orgs: [],
+  config: {
+    matrixEffect: {
+      timeout: 1
+    }
+  }
+};
+```
+
 `/workspaces/danieledagnelli.github.io/src/layouts/Main.astro`:
 
 ```astro
@@ -1829,5 +1855,70 @@ const { delay } = Astro.props;
         font-size: 0.5em; /* Even smaller font size for the counter */
     }
 </style>
+
+```
+
+`/workspaces/danieledagnelli.github.io/src/styles/global.css`:
+
+```css
+html {
+    --background: #101010;
+    --text-color: #39ff14;
+    --text-transformation: lowercase;
+    --font: 0.9rem "Courier New", Courier, monospace;
+    --link-color: white;
+
+}
+
+/* html.business {
+    --background: white;
+    --text-color: #101010;
+    --text-transformation: lowercase;
+    --font: font: "Roboto", sans-serif;
+    --link-color: blue;
+} */
+
+body {
+    background-color: var(--background);
+    text-transform: var(--text-transformation);
+    color: var(--text-color);
+    /* font-family: "Courier New", Courier, monospace; */
+    font: var(--font);
+
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Ensure full height of the viewport */
+}
+
+main {
+    text-align: center;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+h1 {
+    font-size: inherit;
+    font-weight: inherit;
+    /* Remove bold from all elements */
+
+}
+
+h2 {
+    font-size: inherit;
+    font-weight: inherit;
+    /* Remove bold from all elements */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.5rem 1rem;
+}
+
 
 ```
