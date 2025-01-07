@@ -2,19 +2,33 @@
 type Props = {
     randomMaxDelayMs: number;
     durationMs: number;
+    scanlineSpeedSeconds?: number; // Maximum speed, will be randomized down to 0.1
 };
 
-const { randomMaxDelayMs, durationMs } = Astro.props;
+const { 
+    randomMaxDelayMs, 
+    durationMs,
+    scanlineSpeedSeconds = 6 // Default to 6 seconds if not provided
+} = Astro.props;
+
+// Generate a random speed between 0.1 and scanlineSpeedSeconds
+const randomizedSpeed = Math.max(0.1, Math.random() * scanlineSpeedSeconds);
 ---
 
-<div id="glitchEffect" class="glitch-effect" data-max-delay={randomMaxDelayMs} data-duration={durationMs}>
+<div 
+    id="glitchEffect" 
+    class="glitch-effect" 
+    data-max-delay={randomMaxDelayMs} 
+    data-duration={durationMs}
+    data-scanline-speed={randomizedSpeed}
+>
     <div class="error-box">
         UNAUTHORIZED ACCESS
         <div class="scanline"></div>
     </div>
 </div>
 
-<style>
+<style define:vars={{ randomizedSpeed }}>
     .glitch-effect {
         position: fixed;
         top: 0;
@@ -50,7 +64,7 @@ const { randomMaxDelayMs, durationMs } = Astro.props;
         height: 2px;
         background: #ff1414;
         opacity: 0.75;
-        animation: scanline 6s linear infinite;
+        animation: scanline calc(var(--randomizedSpeed) * 1s) linear infinite;
     }
 
     @keyframes glitch {
@@ -75,13 +89,21 @@ const { randomMaxDelayMs, durationMs } = Astro.props;
 </style>
 
 <script>
+    interface GlitchEffectElement extends HTMLElement {
+        dataset: {
+            maxDelay: string;
+            duration: string;
+            scanlineSpeed: string;
+        };
+    }
+
     class GlitchEffect {
-        private element: HTMLElement;
+        private element: GlitchEffectElement;
         private maxDelay: number;
         private duration: number;
         private timeoutId: number | null = null;
 
-        constructor(element: HTMLElement) {
+        constructor(element: GlitchEffectElement) {
             this.element = element;
             this.maxDelay = parseInt(element.dataset.maxDelay || '0', 10);
             this.duration = parseInt(element.dataset.duration || '0', 10);
@@ -119,17 +141,14 @@ const { randomMaxDelayMs, durationMs } = Astro.props;
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const element = document.getElementById('glitchEffect');
+    // Initialize on both regular page load and Astro page transitions
+    const initGlitchEffect = () => {
+        const element = document.getElementById('glitchEffect') as GlitchEffectElement | null;
         if (element) {
             new GlitchEffect(element);
         }
-    });
+    };
 
-    document.addEventListener('astro:page-load', () => {
-        const element = document.getElementById('glitchEffect');
-        if (element) {
-            new GlitchEffect(element);
-        }
-    });
+    document.addEventListener('DOMContentLoaded', initGlitchEffect);
+    document.addEventListener('astro:page-load', initGlitchEffect);
 </script>
