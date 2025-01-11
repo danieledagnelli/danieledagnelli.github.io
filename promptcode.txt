@@ -429,11 +429,11 @@ import { siteMetadata } from "../siteMetadata";
 
 ```astro
 ---
-import MatrixBeta from '../components/MatrixBeta.astro';
+import MatrixEffect from '../components/Matrix.astro';
 const delay : number = 5000;
 ---
 
-<MatrixBeta delay={delay} />
+<MatrixEffect delay={delay} />
 ```
 
 `/workspaces/danieledagnelli.github.io/src/pages/index.astro`:
@@ -571,7 +571,7 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import DynamicContent from "../components/DynamicContent.astro";
 import LastChanged from "../components/LastChanged.astro";
-import Matrix from "../components/Matrix.astro";
+import MatrixEffect from "../components/Matrix.astro";
 import { siteMetadata } from "../siteMetadata";
 import GlitchEffect from "../components/GlitchEffect.astro";
 
@@ -598,7 +598,7 @@ const { title, last_modified } = Astro.props;
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
     </head>
     <body>
-        <Matrix delay={timeout} />
+        <MatrixEffect delay={timeout} />
         <GlitchEffect randomMaxDelayMs={randomMaxDelayMs} durationMs={durationMs} />
 
         <main class="content">
@@ -872,19 +872,6 @@ const formatDateWithTimezone = (dateString: string): string => {
 ---
 import { siteMetadata } from "../siteMetadata";
 
-/**
- * 3. Data loading (placeholder)
- *    - If you want to fetch data at build time or do something server-side,
- *      you could do that here, e.g.:
- */
-// const response = await fetch('https://some-api.com/profile');
-// const data = await response.json();
-
-/**
- * 4. Grab Astro.props if you need them
- *    - Astro automatically provides your props in `Astro.props`.
- *      If using TypeScript, it’ll match the interface you defined.
- */
 const {
   name,
   github_handle,
@@ -903,20 +890,6 @@ const {
       <img src="/assets/dani.jpeg" alt={name + " avatar"} />
     </div>
 
-    <!-- <div class="username">
-      <h1>{name}</h1>
-      <div class="nickname">@{nickname}</div>
-    </div> -->
-
-    <!-- <div class="status">
-      <div class="status-emoji">{statusEmoji}</div>
-      <div>{statusMessage}</div>
-    </div> -->
-
-    <!-- <div class="bio">
-      {bio}
-    </div> -->
-
     <ul class="details-list">
       <li class="location">
         <!-- Location icon -->
@@ -934,17 +907,8 @@ const {
             d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"
           ></path>
         </svg>
-        <!-- Notice: added id="emailLink" -->
         <a id="emailLink" href={`mailto:${email}`}>{email}</a>
       </li>
-      <!-- <li>
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path
-            d="M7.775 3.275 9.025 2.025a3.5 3.5 0 0 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .75.75 0 0 1 1.06-1.06 2 2 0 0 0 2.83 0l2.5-2.5a2 2 0 0 0-2.83-2.83l-1.25 1.25a.75.75 0 1 1-1.06-1.06zm-4.69 9.64a2 2 0 0 0 2.83 0l1.25-1.25a.75.75 0 0 1 1.06 1.06l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .75.75 0 0 1-1.06 1.06 2 2 0 0 0-2.83 0l-2.5 2.5a2 2 0 0 0 0 2.83z"
-          />
-        </svg>
-        <a href={website} target="_blank" rel="noopener noreferrer">{website}</a>
-      </li> -->
     </ul>
     <!-- Social links list -->
     <ul class="details-list">
@@ -1063,15 +1027,6 @@ const {
         </a>
       </li>
     </ul>
-
-    <!-- <div class="orgs">
-      <h2>Organizations</h2>
-      <div class="org-list">
-        {orgs.map((orgUrl) => (
-          <img src={orgUrl} alt="Organization logo" />
-        ))}
-      </div>
-    </div> -->
   </aside>
 </div>
 
@@ -1079,16 +1034,18 @@ const {
   .container {
     display: flex;
     justify-content: left;
-    align-items: stretch; /* Ensures the sidebar expands vertically */
-    height: 100vh; /* Full viewport height */
+    align-items: stretch; /* Ensures both components stretch to the same height */
+    gap: 1em;
+    height: auto;
+    padding: 1em;
   }
 
   .sidebar {
-    padding: 1em 1em 1em 1em;
-    width: 250px; /* Adjust to your desired width */
-    box-shadow: var(--text-color); /* Container background color */
+    padding: 1em;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--text-color);
-    margin-top: 1em;
+    margin-bottom: -1em;
   }
 
   .avatar-wrapper {
@@ -1142,11 +1099,10 @@ const {
   }
 
   .details-list li svg {
-    flex-shrink: 0; /* Prevent the icon from resizing */
-    width: 16px; /* Standardize the width of all icons */
-    height: 16px; /* Standardize the height */
-    margin-right: 0.5rem; /* Space between the icon and text */
-    display: inline-block; /* Ensure it's treated as a block element for alignment */
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5rem;
   }
 
   .details-list li {
@@ -1170,8 +1126,8 @@ const {
   .details-list li a {
     text-decoration: none;
     color: inherit;
-    flex: 1;
-    padding: 0; /* overrides global padding */
+    padding: 0;
+    transition: color 0.3s ease;
   }
 
   .orgs {
@@ -1195,68 +1151,154 @@ const {
     border-radius: 50%;
   }
   .location {
-    display: block; /* Make the span behave like a block */
-    text-align: center; /* Center its contents horizontally */
-    float: center;
+    display: block;
+    text-align: center;
   }
 </style>
 
 <script>
-  // Reuse a typewriter-like function (similar to your Whoami.astro)
-  function typeWriter(element: Element | null | undefined, text: string, callback: { (): void; (): void; }) {
-    const speed = 60; // ms per character
+  const linkOutputMap = {
+    "mailto:daniele@dagnelli.net": "Opening mail client...",
+    "https://github.com/danieledagnelli": "Fetching GitHub profile...",
+    "https://bsky.app/profile/dagnelli.net": "Opening Bluesky profile...",
+    "https://www.linkedin.com/in/dagnelli": "Opening LinkedIn profile...",
+    "https://twitter.com/danieledagnelli": "Opening Twitter profile...",
+  };
+
+  document.querySelectorAll(".details-list a").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const url = (link as HTMLAnchorElement)
+        .href as keyof typeof linkOutputMap;
+      const command = `curl ${url}`;
+
+      const output = linkOutputMap[url] || `Fetching ${url}...`;
+
+      // Simulate the command without showing an alert
+      simulateCommand(command, output, () => {
+        // After simulation is complete, perform the actual action
+        if (url.startsWith("mailto:")) {
+          window.location.href = url; // Use default mail client
+        } else {
+          // Open URLs in a new window/tab
+          window.open(url, "_blank", "noopener,noreferrer");
+        }
+      });
+    });
+  });
+
+  function simulateCommand(
+    command: string,
+    output: string | null,
+    callback: () => void,
+  ) {
+    const terminal = document.querySelector(".whoami");
+    if (!terminal) return;
+
+    // Find the last prompt that doesn't have content
+    let lastPrompt = Array.from(
+      terminal.querySelectorAll(".command-content-pair"),
+    )
+      .reverse()
+      .find((prompt) => !prompt.querySelector(".content")?.textContent?.trim());
+
+    if (!lastPrompt) {
+      // If no empty prompt exists, create one
+      lastPrompt = document.createElement("div");
+      lastPrompt.className = "command-content-pair";
+      lastPrompt.innerHTML = `
+        <p>daniele@dagnelli.net:~$ <span class="typewriter"></span><span class="cursor">|</span></p>
+        <p class="content" style="display: none;"></p>
+    `;
+      terminal.appendChild(lastPrompt);
+    }
+
+    const typewriter = lastPrompt.querySelector(".typewriter");
+    const content = lastPrompt.querySelector(".content");
+    const cursor = lastPrompt.querySelector(".cursor");
+
+    // Reset the typewriter and content
+    if (typewriter) typewriter.textContent = "";
+    if (content) {
+      if (content instanceof HTMLElement) content.style.display = "none";
+      content.textContent = output;
+    }
+
+    // Start the cursor blinking
+    if (cursor) cursor.classList.add("blink");
+
+    processCommand(lastPrompt, command, callback);
+  }
+
+  function processCommand(
+    pair: Element,
+    command: string | any[],
+    callback: () => void,
+  ) {
+    const typewriter = pair.querySelector(".typewriter");
+    const content = pair.querySelector(".content");
+    const cursor = pair.querySelector(".cursor");
     let index = 0;
-    const cursor = element?.nextElementSibling;
+
+    // Remove blinking from previous cursors
+    document.querySelectorAll(".cursor.blink").forEach((el) => {
+      el.classList.remove("blink");
+    });
+
+    // Ensure the current cursor has the blink class
+    if (cursor) cursor.classList.add("blink");
 
     function type() {
-      if (index < text.length && element) {
-        element.textContent += text.charAt(index);
+      if (index < command.length && typewriter) {
+        typewriter.textContent += command[index];
         index++;
-        setTimeout(type, speed);
+        setTimeout(type, 100);
       } else {
-        // remove the blinking cursor once completed
-        if (cursor && cursor.classList.contains("cursor")) {
-          cursor.remove();
-        }
-        callback();
+        // Show output after a small delay
+        setTimeout(() => {
+          if (content instanceof HTMLElement) {
+            content.style.display = "block";
+          }
+
+          // Execute the callback after showing the output
+          setTimeout(() => {
+            callback();
+
+            // Create new prompt after action is complete
+            const existingEmptyPrompt = Array.from(
+              document.querySelectorAll(".command-content-pair"),
+            )
+              .reverse()
+              .find((prompt) => {
+                const content = prompt.querySelector(".content");
+                return !content?.textContent?.trim();
+              });
+
+            if (!existingEmptyPrompt) {
+              createNewPrompt();
+            }
+          }, 500); // Delay before creating new prompt
+        }, 300); // Delay before showing output
       }
     }
 
     type();
   }
 
-  const emailLink = document.getElementById("emailLink");
-  const typedCommandContainer = document.getElementById("typedCommand");
-  const typedOutput = typedCommandContainer?.querySelector(".typed-output");
+  function createNewPrompt() {
+    const terminal = document.querySelector(".whoami");
+    if (!terminal) return;
 
-  if (emailLink) {
-    emailLink.addEventListener("click", (event) => {
-      event.preventDefault(); // Stop the normal mailto: navigation
+    const newPrompt = document.createElement("div");
+    newPrompt.className = "command-content-pair";
+    newPrompt.innerHTML = `
+    <p>daniele@dagnelli.net:~$ <span class="typewriter"></span><span class="cursor"></span></p>
+    <p class="content" style="display: none;"></p>
+`;
+    terminal.appendChild(newPrompt);
 
-      // Make the typedCommand container visible
-      if (typedCommandContainer) {
-        typedCommandContainer.style.display = "block";
-      }
-
-      // Clear old content if any
-      if (typedOutput) {
-        typedOutput.textContent = "";
-      }
-
-      // Prepare our fake command
-      const command = `mail -s "Hello" ${emailLink.textContent}`;
-
-      // Start typing
-      typeWriter(typedOutput, command, () => {
-        // After typing finishes, do whatever you want:
-        //  - Open the mail client automatically:
-        if (emailLink instanceof HTMLAnchorElement) {
-          window.location.href = emailLink.href;
-        }
-        
-        //  - or just do nothing, so the user can read it
-      });
-    });
+    // Ensure the new prompt is visible
+    newPrompt.scrollIntoView({ behavior: "smooth" });
   }
 </script>
 
@@ -1266,19 +1308,12 @@ const {
 
 ```astro
 ---
-import { siteMetadata } from '../siteMetadata';
+import { siteMetadata } from "../siteMetadata";
 ---
 
 <footer class="foot">&copy; 2025 {siteMetadata.title}</footer>
 
 <style>
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh; /* Ensure the body takes the full height of the viewport */
-        margin: 0;
-    }
-
     .foot {
         text-align: center;
         margin: 1em;
@@ -1580,7 +1615,11 @@ const { delay } = Astro.props;
 <div id="matrixEffect" class="matrix-effect" fade-out={delay}></div>
 <script>
     (() => {
-        "use strict"; 
+        "use strict";
+        let blinkInterval: number | undefined,
+            matrixInterval: number | undefined,
+            lineInterval: number | undefined;
+        let isResizing = false;
 
         /**
          * Safely read the 'fade-out' attribute from the #matrixEffect element
@@ -1624,6 +1663,12 @@ const { delay } = Astro.props;
                 return null;
             }
 
+            // Remove existing canvas if present
+            const existingCanvas = parent.querySelector("canvas");
+            if (existingCanvas) {
+                parent.removeChild(existingCanvas);
+            }
+
             const canvas = document.createElement("canvas");
             parent.appendChild(canvas);
             const ctx = canvas.getContext("2d");
@@ -1653,9 +1698,7 @@ const { delay } = Astro.props;
             ctx.font = `${fontSize}px monospace`;
             for (let i = 0; i < columns; i++) {
                 const text =
-                    matrixChars[
-                        Math.floor(Math.random() * matrixChars.length)
-                    ];
+                    matrixChars[Math.floor(Math.random() * matrixChars.length)];
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
                 if (
                     drops[i] * fontSize > canvas.height &&
@@ -1692,25 +1735,31 @@ const { delay } = Astro.props;
             if (!element || (timeout !== undefined && timeout <= 0)) {
                 return;
             }
-            setTimeout(() => {
-                const blinkInterval = setInterval(() => {
-                    element.style.opacity =
-                        element.style.opacity === "1" ? "0.1" : "1";
-                }, 30);
+            setTimeout(
+                () => {
+                    const blinkInterval = setInterval(() => {
+                        element.style.opacity =
+                            element.style.opacity === "1" ? "0.1" : "1";
+                    }, 30);
 
-                const extraLinesInterval = setInterval(() => {
-                    for (let i = 0; i < 5; i++) {
-                        addLinesFn();
-                    }
-                }, 40);
+                    const extraLinesInterval = setInterval(() => {
+                        for (let i = 0; i < 5; i++) {
+                            addLinesFn();
+                        }
+                    }, 40);
 
-                setTimeout(() => {
-                    clearInterval(blinkInterval);
-                    clearInterval(extraLinesInterval);
-                    element.style.opacity = "1";
-                    element.style.display = "none";
-                }, (timeout || 0) / 10);
-            }, (timeout || 0) - (timeout || 0) / 10);
+                    setTimeout(
+                        () => {
+                            clearInterval(blinkInterval);
+                            clearInterval(extraLinesInterval);
+                            element.style.opacity = "1";
+                            element.style.display = "none";
+                        },
+                        100, // Stops blinking after 100ms
+                    );
+                },
+                (timeout || 0) - (timeout || 0) / 10,
+            );
 
             setTimeout(() => {
                 element.style.display = "none";
@@ -1728,6 +1777,10 @@ const { delay } = Astro.props;
                 );
                 return;
             }
+
+            // Clear previous intervals if any
+            clearInterval(matrixInterval);
+            clearInterval(lineInterval);
 
             const timeout = getTimeoutValue(matrixEffectElement);
             const result = createCanvasAndContext(matrixEffectElement);
@@ -1751,16 +1804,67 @@ const { delay } = Astro.props;
                 "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()+-/<>:;".split(
                     "",
                 );
+            // Start the matrix and distortion line intervals
+            matrixInterval = setInterval(
+                () =>
+                    drawMatrix(
+                        ctx,
+                        canvas,
+                        columns,
+                        drops,
+                        fontSize,
+                        matrixChars,
+                    ),
+                50,
+            );
+            lineInterval = setInterval(
+                () => addDistortionLine(ctx, canvas),
+                200,
+            );
+
+            const handleResize = (
+                matrixEffectElement: HTMLElement,
+                _fontSize: number,
+                _matrixChars: string[],
+            ) => {
+                if (isResizing) return; // Prevent multiple simultaneous resize handlers
+                isResizing = true;
+
+                // Start fast blinking effect during resize
+                blinkInterval = setInterval(() => {
+                    matrixEffectElement.style.opacity =
+                        matrixEffectElement.style.opacity === "1" ? "0.1" : "1";
+                }, 1);
+
+                // Delay the reinitialization to allow resize to settle
+                setTimeout(() => {
+                    clearInterval(blinkInterval); // Stop blinking effect
+                    matrixEffectElement.style.opacity = "1"; // Reset opacity
+
+                    initMatrixEffect(); // Reinitialize the matrix effect
+                    isResizing = false; // Reset resizing flag
+                }, 300); // Adjust this delay based on user preference
+            };
+
+            // Add resize event listener
+            window.addEventListener("resize", () =>
+                handleResize(matrixEffectElement, fontSize, matrixChars),
+            );
 
             if (typeof setInterval === "function") {
                 setInterval(
-                    () => drawMatrix(ctx, canvas, columns, drops, fontSize, matrixChars),
+                    () =>
+                        drawMatrix(
+                            ctx,
+                            canvas,
+                            columns,
+                            drops,
+                            fontSize,
+                            matrixChars,
+                        ),
                     50,
                 );
-                setInterval(
-                    () => addDistortionLine(ctx, canvas),
-                    200,
-                );
+                setInterval(() => addDistortionLine(ctx, canvas), 200);
             } else {
                 console.warn(
                     "setInterval is not available. Animations cannot be started.",
@@ -1793,6 +1897,7 @@ const { delay } = Astro.props;
         }
     })();
 </script>
+
 ```
 
 `/workspaces/danieledagnelli.github.io/src/components/Whoami.astro`:
@@ -1813,7 +1918,8 @@ const timeout = siteMetadata.config.matrixEffect.timeout;
     >
         <p>
             daniele@dagnelli.net:~$ <span class="typewriter"></span><span
-                class="cursor">|</span>
+                class="cursor">|</span
+            >
         </p>
         <p class="content" style="display: none;">
             I grew up and studied in the south of Italy. Since then, many other
@@ -1829,26 +1935,29 @@ const timeout = siteMetadata.config.matrixEffect.timeout;
     >
         <p>
             daniele@dagnelli.net:~$ <span class="typewriter"></span><span
-                class="cursor">|</span>
+                class="cursor">|</span
+            >
         </p>
         <p class="content" style="display: none;"></p>
     </div>
 
     <div id="typedCommand" style="display: none;">
+        newPrompt.innerHTML = `
         <p>
-            daniele@dagnelli.net:~$ <span class="typed-output"></span><span
-                class="cursor">|</span
+            daniele@dagnelli.net:~$ <span class="typewriter"></span><span
+                class="cursor blink">|</span
             >
         </p>
+        <p class="content" style="display: none;"></p>
+        `;
     </div>
 </div>
 
 <style>
     .whoami {
-        flex: 1;
+        flex: 1; /* Ensures it stretches to match the sidebar */
         padding: 1em;
         margin-top: 1em;
-        margin-left: 20px;
         background-color: var(--background-secondary);
         border: 1px solid var(--text-color);
         box-shadow: var(--text-color);
@@ -1856,13 +1965,13 @@ const timeout = siteMetadata.config.matrixEffect.timeout;
 
     .cursor {
         display: inline-block;
-        width: 10px;
+        width: 10px; /* or however wide you want */
+        height: 15px; /* or match your font-size */
         background-color: var(--text-color);
+        margin-left: 2px; /* spacing from typed text */
         animation: blink 1s steps(2, start) infinite;
-    }
-
-    .content {
-        margin-top: 0.5em;
+        width: auto; /* (or something else that overrides your block style) */
+        height: auto;
     }
 
     @keyframes blink {
@@ -1873,6 +1982,11 @@ const timeout = siteMetadata.config.matrixEffect.timeout;
         50% {
             opacity: 0;
         }
+    }
+
+    .content {
+        margin-top: 0.5em;
+        
     }
 </style>
 
@@ -1937,6 +2051,8 @@ const timeout = siteMetadata.config.matrixEffect.timeout;
 
     // Start the sequential typing process when the page loads
     window.addEventListener("load", processNextPair);
+
+    
 </script>
 
 ```

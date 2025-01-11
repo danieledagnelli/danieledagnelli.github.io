@@ -13,7 +13,8 @@ const timeout = siteMetadata.config.matrixEffect.timeout;
     >
         <p>
             daniele@dagnelli.net:~$ <span class="typewriter"></span><span
-                class="cursor">|</span>
+                class="cursor">|</span
+            >
         </p>
         <p class="content" style="display: none;">
             I grew up and studied in the south of Italy. Since then, many other
@@ -29,26 +30,29 @@ const timeout = siteMetadata.config.matrixEffect.timeout;
     >
         <p>
             daniele@dagnelli.net:~$ <span class="typewriter"></span><span
-                class="cursor">|</span>
+                class="cursor">|</span
+            >
         </p>
         <p class="content" style="display: none;"></p>
     </div>
 
     <div id="typedCommand" style="display: none;">
+        newPrompt.innerHTML = `
         <p>
-            daniele@dagnelli.net:~$ <span class="typed-output"></span><span
-                class="cursor">|</span
+            daniele@dagnelli.net:~$ <span class="typewriter"></span><span
+                class="cursor blink">|</span
             >
         </p>
+        <p class="content" style="display: none;"></p>
+        `;
     </div>
 </div>
 
 <style>
     .whoami {
-        flex: 1;
+        flex: 1; /* Ensures it stretches to match the sidebar */
         padding: 1em;
         margin-top: 1em;
-        margin-left: 20px;
         background-color: var(--background-secondary);
         border: 1px solid var(--text-color);
         box-shadow: var(--text-color);
@@ -56,13 +60,13 @@ const timeout = siteMetadata.config.matrixEffect.timeout;
 
     .cursor {
         display: inline-block;
-        width: 10px;
+        width: 10px; /* or however wide you want */
+        height: 15px; /* or match your font-size */
         background-color: var(--text-color);
+        margin-left: 2px; /* spacing from typed text */
         animation: blink 1s steps(2, start) infinite;
-    }
-
-    .content {
-        margin-top: 0.5em;
+        width: auto; /* (or something else that overrides your block style) */
+        height: auto;
     }
 
     @keyframes blink {
@@ -73,6 +77,11 @@ const timeout = siteMetadata.config.matrixEffect.timeout;
         50% {
             opacity: 0;
         }
+    }
+
+    .content {
+        margin-top: 0.5em;
+        
     }
 </style>
 
@@ -137,4 +146,6 @@ const timeout = siteMetadata.config.matrixEffect.timeout;
 
     // Start the sequential typing process when the page loads
     window.addEventListener("load", processNextPair);
+
+    
 </script>

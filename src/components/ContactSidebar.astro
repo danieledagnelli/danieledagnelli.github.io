@@ -163,16 +163,18 @@ const {
   .container {
     display: flex;
     justify-content: left;
-    align-items: stretch; /* Ensures the sidebar expands vertically */
-    height: 100vh; /* Full viewport height */
+    align-items: stretch; /* Ensures both components stretch to the same height */
+    gap: 1em;
+    height: auto;
+    padding: 1em;
   }
 
   .sidebar {
     padding: 1em;
-    width: 250px; /* Adjust to your desired width */
+    width: 250px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--text-color);
-    margin-top: 1em;
+    margin-bottom: -1em;
   }
 
   .avatar-wrapper {
@@ -284,64 +286,147 @@ const {
 </style>
 
 <script>
-  // Reuse a typewriter-like function (similar to your Whoami.astro)
-  function typeWriter(
-    element: Element | null | undefined,
-    text: string,
-    callback: { (): void; (): void },
+  const linkOutputMap = {
+    "mailto:daniele@dagnelli.net": "Opening mail client...",
+    "https://github.com/danieledagnelli": "Fetching GitHub profile...",
+    "https://bsky.app/profile/dagnelli.net": "Opening Bluesky profile...",
+    "https://www.linkedin.com/in/dagnelli": "Opening LinkedIn profile...",
+    "https://twitter.com/danieledagnelli": "Opening Twitter profile...",
+  };
+
+  document.querySelectorAll(".details-list a").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const url = (link as HTMLAnchorElement)
+        .href as keyof typeof linkOutputMap;
+      const command = `curl ${url}`;
+
+      const output = linkOutputMap[url] || `Fetching ${url}...`;
+
+      // Simulate the command without showing an alert
+      simulateCommand(command, output, () => {
+        // After simulation is complete, perform the actual action
+        if (url.startsWith("mailto:")) {
+          window.location.href = url; // Use default mail client
+        } else {
+          // Open URLs in a new window/tab
+          window.open(url, "_blank", "noopener,noreferrer");
+        }
+      });
+    });
+  });
+
+  function simulateCommand(
+    command: string,
+    output: string | null,
+    callback: () => void,
   ) {
-    const speed = 60; // ms per character
+    const terminal = document.querySelector(".whoami");
+    if (!terminal) return;
+
+    // Find the last prompt that doesn't have content
+    let lastPrompt = Array.from(
+      terminal.querySelectorAll(".command-content-pair"),
+    )
+      .reverse()
+      .find((prompt) => !prompt.querySelector(".content")?.textContent?.trim());
+
+    if (!lastPrompt) {
+      // If no empty prompt exists, create one
+      lastPrompt = document.createElement("div");
+      lastPrompt.className = "command-content-pair";
+      lastPrompt.innerHTML = `
+        <p>daniele@dagnelli.net:~$ <span class="typewriter"></span><span class="cursor">|</span></p>
+        <p class="content" style="display: none;"></p>
+    `;
+      terminal.appendChild(lastPrompt);
+    }
+
+    const typewriter = lastPrompt.querySelector(".typewriter");
+    const content = lastPrompt.querySelector(".content");
+    const cursor = lastPrompt.querySelector(".cursor");
+
+    // Reset the typewriter and content
+    if (typewriter) typewriter.textContent = "";
+    if (content) {
+      if (content instanceof HTMLElement) content.style.display = "none";
+      content.textContent = output;
+    }
+
+    // Start the cursor blinking
+    if (cursor) cursor.classList.add("blink");
+
+    processCommand(lastPrompt, command, callback);
+  }
+
+  function processCommand(
+    pair: Element,
+    command: string | any[],
+    callback: () => void,
+  ) {
+    const typewriter = pair.querySelector(".typewriter");
+    const content = pair.querySelector(".content");
+    const cursor = pair.querySelector(".cursor");
     let index = 0;
-    const cursor = element?.nextElementSibling;
+
+    // Remove blinking from previous cursors
+    document.querySelectorAll(".cursor.blink").forEach((el) => {
+      el.classList.remove("blink");
+    });
+
+    // Ensure the current cursor has the blink class
+    if (cursor) cursor.classList.add("blink");
 
     function type() {
-      if (index < text.length && element) {
-        element.textContent += text.charAt(index);
+      if (index < command.length && typewriter) {
+        typewriter.textContent += command[index];
         index++;
-        setTimeout(type, speed);
+        setTimeout(type, 100);
       } else {
-        // remove the blinking cursor once completed
-        if (cursor && cursor.classList.contains("cursor")) {
-          cursor.remove();
-        }
-        callback();
+        // Show output after a small delay
+        setTimeout(() => {
+          if (content instanceof HTMLElement) {
+            content.style.display = "block";
+          }
+
+          // Execute the callback after showing the output
+          setTimeout(() => {
+            callback();
+
+            // Create new prompt after action is complete
+            const existingEmptyPrompt = Array.from(
+              document.querySelectorAll(".command-content-pair"),
+            )
+              .reverse()
+              .find((prompt) => {
+                const content = prompt.querySelector(".content");
+                return !content?.textContent?.trim();
+              });
+
+            if (!existingEmptyPrompt) {
+              createNewPrompt();
+            }
+          }, 500); // Delay before creating new prompt
+        }, 300); // Delay before showing output
       }
     }
 
     type();
   }
 
-  const emailLink = document.getElementById("emailLink");
-  const typedCommandContainer = document.getElementById("typedCommand");
-  const typedOutput = typedCommandContainer?.querySelector(".typed-output");
+  function createNewPrompt() {
+    const terminal = document.querySelector(".whoami");
+    if (!terminal) return;
 
-  if (emailLink) {
-    emailLink.addEventListener("click", (event) => {
-      event.preventDefault(); // Stop the normal mailto: navigation
+    const newPrompt = document.createElement("div");
+    newPrompt.className = "command-content-pair";
+    newPrompt.innerHTML = `
+    <p>daniele@dagnelli.net:~$ <span class="typewriter"></span><span class="cursor"></span></p>
+    <p class="content" style="display: none;"></p>
+`;
+    terminal.appendChild(newPrompt);
 
-      // Make the typedCommand container visible
-      if (typedCommandContainer) {
-        typedCommandContainer.style.display = "block";
-      }
-
-      // Clear old content if any
-      if (typedOutput) {
-        typedOutput.textContent = "";
-      }
-
-      // Prepare our fake command
-      const command = `mail -s "Hello" ${emailLink.textContent}`;
-
-      // Start typing
-      typeWriter(typedOutput, command, () => {
-        // After typing finishes, do whatever you want:
-        //  - Open the mail client automatically:
-        if (emailLink instanceof HTMLAnchorElement) {
-          window.location.href = emailLink.href;
-        }
-
-        //  - or just do nothing, so the user can read it
-      });
-    });
+    // Ensure the new prompt is visible
+    newPrompt.scrollIntoView({ behavior: "smooth" });
   }
 </script>
