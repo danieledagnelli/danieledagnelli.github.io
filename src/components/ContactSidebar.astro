@@ -1,19 +1,6 @@
 ---
 import { siteMetadata } from "../siteMetadata";
 
-/**
- * 3. Data loading (placeholder)
- *    - If you want to fetch data at build time or do something server-side,
- *      you could do that here, e.g.:
- */
-// const response = await fetch('https://some-api.com/profile');
-// const data = await response.json();
-
-/**
- * 4. Grab Astro.props if you need them
- *    - Astro automatically provides your props in `Astro.props`.
- *      If using TypeScript, it’ll match the interface you defined.
- */
 const {
   name,
   github_handle,
@@ -32,20 +19,6 @@ const {
       <img src="/assets/dani.jpeg" alt={name + " avatar"} />
     </div>
 
-    <!-- <div class="username">
-      <h1>{name}</h1>
-      <div class="nickname">@{nickname}</div>
-    </div> -->
-
-    <!-- <div class="status">
-      <div class="status-emoji">{statusEmoji}</div>
-      <div>{statusMessage}</div>
-    </div> -->
-
-    <!-- <div class="bio">
-      {bio}
-    </div> -->
-
     <ul class="details-list">
       <li class="location">
         <!-- Location icon -->
@@ -63,17 +36,8 @@ const {
             d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"
           ></path>
         </svg>
-        <!-- Notice: added id="emailLink" -->
         <a id="emailLink" href={`mailto:${email}`}>{email}</a>
       </li>
-      <!-- <li>
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path
-            d="M7.775 3.275 9.025 2.025a3.5 3.5 0 0 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .75.75 0 0 1 1.06-1.06 2 2 0 0 0 2.83 0l2.5-2.5a2 2 0 0 0-2.83-2.83l-1.25 1.25a.75.75 0 1 1-1.06-1.06zm-4.69 9.64a2 2 0 0 0 2.83 0l1.25-1.25a.75.75 0 0 1 1.06 1.06l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .75.75 0 0 1-1.06 1.06 2 2 0 0 0-2.83 0l-2.5 2.5a2 2 0 0 0 0 2.83z"
-          />
-        </svg>
-        <a href={website} target="_blank" rel="noopener noreferrer">{website}</a>
-      </li> -->
     </ul>
     <!-- Social links list -->
     <ul class="details-list">
@@ -192,15 +156,6 @@ const {
         </a>
       </li>
     </ul>
-
-    <!-- <div class="orgs">
-      <h2>Organizations</h2>
-      <div class="org-list">
-        {orgs.map((orgUrl) => (
-          <img src={orgUrl} alt="Organization logo" />
-        ))}
-      </div>
-    </div> -->
   </aside>
 </div>
 
@@ -213,9 +168,9 @@ const {
   }
 
   .sidebar {
-    padding: 1em 1em 1em 1em;
+    padding: 1em;
     width: 250px; /* Adjust to your desired width */
-    box-shadow: var(--text-color); /* Container background color */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--text-color);
     margin-top: 1em;
   }
@@ -271,11 +226,10 @@ const {
   }
 
   .details-list li svg {
-    flex-shrink: 0; /* Prevent the icon from resizing */
-    width: 16px; /* Standardize the width of all icons */
-    height: 16px; /* Standardize the height */
-    margin-right: 0.5rem; /* Space between the icon and text */
-    display: inline-block; /* Ensure it's treated as a block element for alignment */
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5rem;
   }
 
   .details-list li {
@@ -299,8 +253,8 @@ const {
   .details-list li a {
     text-decoration: none;
     color: inherit;
-    flex: 1;
-    padding: 0; /* overrides global padding */
+    padding: 0;
+    transition: color 0.3s ease;
   }
 
   .orgs {
@@ -324,15 +278,18 @@ const {
     border-radius: 50%;
   }
   .location {
-    display: block; /* Make the span behave like a block */
-    text-align: center; /* Center its contents horizontally */
-    float: center;
+    display: block;
+    text-align: center;
   }
 </style>
 
 <script>
   // Reuse a typewriter-like function (similar to your Whoami.astro)
-  function typeWriter(element: Element | null | undefined, text: string, callback: { (): void; (): void; }) {
+  function typeWriter(
+    element: Element | null | undefined,
+    text: string,
+    callback: { (): void; (): void },
+  ) {
     const speed = 60; // ms per character
     let index = 0;
     const cursor = element?.nextElementSibling;
@@ -382,7 +339,7 @@ const {
         if (emailLink instanceof HTMLAnchorElement) {
           window.location.href = emailLink.href;
         }
-        
+
         //  - or just do nothing, so the user can read it
       });
     });

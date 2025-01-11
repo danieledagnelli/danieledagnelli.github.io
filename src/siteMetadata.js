@@ -14,7 +14,7 @@ export const siteMetadata = {
   orgs: [],
   config: {
     matrixEffect: {
-      timeout:3000,
+      timeout:30000,
     },
     glitchEffect: {
       maxDelay: 5000 // Maximum delay in milliseconds before showing glitch

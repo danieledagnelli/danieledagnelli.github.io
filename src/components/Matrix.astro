@@ -29,7 +29,11 @@ const { delay } = Astro.props;
 <div id="matrixEffect" class="matrix-effect" fade-out={delay}></div>
 <script>
     (() => {
-        "use strict"; 
+        "use strict";
+        let blinkInterval: number | undefined,
+            matrixInterval: number | undefined,
+            lineInterval: number | undefined;
+        let isResizing = false;
 
         /**
          * Safely read the 'fade-out' attribute from the #matrixEffect element
@@ -73,6 +77,12 @@ const { delay } = Astro.props;
                 return null;
             }
 
+            // Remove existing canvas if present
+            const existingCanvas = parent.querySelector("canvas");
+            if (existingCanvas) {
+                parent.removeChild(existingCanvas);
+            }
+
             const canvas = document.createElement("canvas");
             parent.appendChild(canvas);
             const ctx = canvas.getContext("2d");
@@ -102,9 +112,7 @@ const { delay } = Astro.props;
             ctx.font = `${fontSize}px monospace`;
             for (let i = 0; i < columns; i++) {
                 const text =
-                    matrixChars[
-                        Math.floor(Math.random() * matrixChars.length)
-                    ];
+                    matrixChars[Math.floor(Math.random() * matrixChars.length)];
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
                 if (
                     drops[i] * fontSize > canvas.height &&
@@ -141,25 +149,31 @@ const { delay } = Astro.props;
             if (!element || (timeout !== undefined && timeout <= 0)) {
                 return;
             }
-            setTimeout(() => {
-                const blinkInterval = setInterval(() => {
-                    element.style.opacity =
-                        element.style.opacity === "1" ? "0.1" : "1";
-                }, 30);
+            setTimeout(
+                () => {
+                    const blinkInterval = setInterval(() => {
+                        element.style.opacity =
+                            element.style.opacity === "1" ? "0.1" : "1";
+                    }, 30);
 
-                const extraLinesInterval = setInterval(() => {
-                    for (let i = 0; i < 5; i++) {
-                        addLinesFn();
-                    }
-                }, 40);
+                    const extraLinesInterval = setInterval(() => {
+                        for (let i = 0; i < 5; i++) {
+                            addLinesFn();
+                        }
+                    }, 40);
 
-                setTimeout(() => {
-                    clearInterval(blinkInterval);
-                    clearInterval(extraLinesInterval);
-                    element.style.opacity = "1";
-                    element.style.display = "none";
-                }, (timeout || 0) / 10);
-            }, (timeout || 0) - (timeout || 0) / 10);
+                    setTimeout(
+                        () => {
+                            clearInterval(blinkInterval);
+                            clearInterval(extraLinesInterval);
+                            element.style.opacity = "1";
+                            element.style.display = "none";
+                        },
+                        100, // Stops blinking after 100ms
+                    );
+                },
+                (timeout || 0) - (timeout || 0) / 10,
+            );
 
             setTimeout(() => {
                 element.style.display = "none";
@@ -177,6 +191,10 @@ const { delay } = Astro.props;
                 );
                 return;
             }
+
+            // Clear previous intervals if any
+            clearInterval(matrixInterval);
+            clearInterval(lineInterval);
 
             const timeout = getTimeoutValue(matrixEffectElement);
             const result = createCanvasAndContext(matrixEffectElement);
@@ -200,16 +218,67 @@ const { delay } = Astro.props;
                 "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()+-/<>:;".split(
                     "",
                 );
+            // Start the matrix and distortion line intervals
+            matrixInterval = setInterval(
+                () =>
+                    drawMatrix(
+                        ctx,
+                        canvas,
+                        columns,
+                        drops,
+                        fontSize,
+                        matrixChars,
+                    ),
+                50,
+            );
+            lineInterval = setInterval(
+                () => addDistortionLine(ctx, canvas),
+                200,
+            );
+
+            const handleResize = (
+                matrixEffectElement: HTMLElement,
+                _fontSize: number,
+                _matrixChars: string[],
+            ) => {
+                if (isResizing) return; // Prevent multiple simultaneous resize handlers
+                isResizing = true;
+
+                // Start fast blinking effect during resize
+                blinkInterval = setInterval(() => {
+                    matrixEffectElement.style.opacity =
+                        matrixEffectElement.style.opacity === "1" ? "0.1" : "1";
+                }, 1);
+
+                // Delay the reinitialization to allow resize to settle
+                setTimeout(() => {
+                    clearInterval(blinkInterval); // Stop blinking effect
+                    matrixEffectElement.style.opacity = "1"; // Reset opacity
+
+                    initMatrixEffect(); // Reinitialize the matrix effect
+                    isResizing = false; // Reset resizing flag
+                }, 300); // Adjust this delay based on user preference
+            };
+
+            // Add resize event listener
+            window.addEventListener("resize", () =>
+                handleResize(matrixEffectElement, fontSize, matrixChars),
+            );
 
             if (typeof setInterval === "function") {
                 setInterval(
-                    () => drawMatrix(ctx, canvas, columns, drops, fontSize, matrixChars),
+                    () =>
+                        drawMatrix(
+                            ctx,
+                            canvas,
+                            columns,
+                            drops,
+                            fontSize,
+                            matrixChars,
+                        ),
                     50,
                 );
-                setInterval(
-                    () => addDistortionLine(ctx, canvas),
-                    200,
-                );
+                setInterval(() => addDistortionLine(ctx, canvas), 200);
             } else {
                 console.warn(
                     "setInterval is not available. Animations cannot be started.",

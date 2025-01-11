@@ -6,7 +6,7 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import DynamicContent from "../components/DynamicContent.astro";
 import LastChanged from "../components/LastChanged.astro";
-import Matrix from "../components/MatrixBeta.astro";
+import MatrixEffect from "../components/Matrix.astro";
 import { siteMetadata } from "../siteMetadata";
 import GlitchEffect from "../components/GlitchEffect.astro";
 
@@ -33,7 +33,7 @@ const { title, last_modified } = Astro.props;
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
     </head>
     <body>
-        <Matrix delay={timeout} />
+        <MatrixEffect delay={timeout} />
         <GlitchEffect randomMaxDelayMs={randomMaxDelayMs} durationMs={durationMs} />
 
         <main class="content">

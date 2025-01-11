@@ -17,22 +17,20 @@ src
 ├── siteMetadata.js
 ├── layouts
 │   ├── Main.astro
-│   ├── About.astro
-│   └── Blog.astro
+│   └── About.astro
 ├── components
 │   ├── Navigation.astro
 │   ├── LastChanged.astro
-│   ├── MatrixBeta.astro
 │   ├── ContactSidebar.astro
 │   ├── Footer.astro
 │   ├── Header.astro
 │   ├── DynamicContent.astro
-│   ├── ThemeToggler.astro
+│   ├── GlitchEffect.astro
+│   ├── Matrix.astro
 │   ├── Whoami.astro
 │   └── Loading.astro
 └── styles
-    ├── global.css
-    └── business.css.delete
+    └── global.css
 
 ```
 
@@ -533,7 +531,6 @@ import { siteMetadata } from "../siteMetadata";
 `/workspaces/danieledagnelli.github.io/src/siteMetadata.js`:
 
 ```js
-// src/siteMetadata.ts
 export const siteMetadata = {
   title: "daniele d'agnelli",
   description: 'old school',
@@ -550,9 +547,16 @@ export const siteMetadata = {
   orgs: [],
   config: {
     matrixEffect: {
-      timeout: 1
-    }
-  }
+      timeout:3000,
+    },
+    glitchEffect: {
+      maxDelay: 5000 // Maximum delay in milliseconds before showing glitch
+    },
+    fatalErrorWip: {
+      randomMaxDelayMs: 10000, // Max random delay before showing overlay
+      durationMs: 1000,        // Overlay visibility duration
+    },
+  },
 };
 ```
 
@@ -567,8 +571,9 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import DynamicContent from "../components/DynamicContent.astro";
 import LastChanged from "../components/LastChanged.astro";
-import Matrix from "../components/MatrixBeta.astro";
+import Matrix from "../components/Matrix.astro";
 import { siteMetadata } from "../siteMetadata";
+import GlitchEffect from "../components/GlitchEffect.astro";
 
 type Props = {
     title: string;
@@ -576,6 +581,7 @@ type Props = {
 };
 // const timeout : number = 5000;
 const timeout = siteMetadata.config.matrixEffect.timeout;
+const { randomMaxDelayMs, durationMs } = siteMetadata.config.fatalErrorWip;
 
 const { title, last_modified } = Astro.props;
 ---
@@ -593,6 +599,7 @@ const { title, last_modified } = Astro.props;
     </head>
     <body>
         <Matrix delay={timeout} />
+        <GlitchEffect randomMaxDelayMs={randomMaxDelayMs} durationMs={durationMs} />
 
         <main class="content">
             <!-- <slot /> -->
@@ -603,6 +610,7 @@ const { title, last_modified } = Astro.props;
             </DynamicContent>
             <LastChanged last_modified={`${last_modified}`} />
         </main>
+
         <Footer />
     </body>
 </html>
@@ -663,20 +671,6 @@ const { title, subtitle, created, last_modified, author } =
         }
     </style>
 </Main>
-
-```
-
-`/workspaces/danieledagnelli.github.io/src/layouts/Blog.astro`:
-
-```astro
-<!-- ---
-import Main from "./Main.astro";
-import { siteMetadata } from "../siteMetadata";
-
----
-<Main title={`${siteMetadata.title} → blog`} last_modified="aaa">
-    <slot />
-</Main> -->
 
 ```
 
@@ -870,255 +864,6 @@ const formatDateWithTimezone = (dateString: string): string => {
     }
 </style>
 
-```
-
-`/workspaces/danieledagnelli.github.io/src/components/MatrixBeta.astro`:
-
-```astro
----
-type Props = {
-    delay: number;
-};
-const { delay } = Astro.props;
----
-
-<style>
-    body,
-    html {
-        margin: 0;
-        padding: 0;
-        height: 100%; /* Full height */
-        background: var(--background);
-    }
-
-    .matrix-effect {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 2;
-        pointer-events: none;
-        overflow: hidden; /* Prevents scrolling within the effect container */
-    }
-</style>
-
-<div id="matrixEffect" class="matrix-effect" fade-out={delay}></div>
-<script>
-    (() => {
-        "use strict"; 
-
-        /**
-         * Safely read the 'fade-out' attribute from the #matrixEffect element
-         * @returns {number} Parsed timeout value (0 if invalid or missing)
-         */
-        const getTimeoutValue = (element: HTMLElement): number => {
-            if (!element) {
-                console.warn(
-                    "Matrix effect element not found to read 'fade-out' attribute.",
-                );
-                return 0;
-            }
-
-            const fadeOutAttr = element.getAttribute("fade-out");
-            if (!fadeOutAttr) {
-                console.warn(
-                    "'fade-out' attribute not found on #matrixEffect element.",
-                );
-                return 0;
-            }
-
-            const parsed = parseInt(fadeOutAttr, 10);
-            if (isNaN(parsed)) {
-                console.warn(
-                    `Invalid 'fade-out' attribute value: ${fadeOutAttr}`,
-                );
-                return 0;
-            }
-            return parsed;
-        };
-
-        /**
-         * Creates a canvas element inside the given parent and returns the context.
-         * @returns {{ canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D | null} | null}
-         */
-        const createCanvasAndContext = (parent: HTMLElement) => {
-            if (!parent) {
-                console.warn(
-                    "Parent element is null or undefined. Cannot create canvas.",
-                );
-                return null;
-            }
-
-            const canvas = document.createElement("canvas");
-            parent.appendChild(canvas);
-            const ctx = canvas.getContext("2d");
-
-            if (!ctx) {
-                console.warn(
-                    "Unable to get 2D context from the created canvas.",
-                );
-            }
-            return { canvas, ctx };
-        };
-
-        /**
-         * Draws the falling characters.
-         */
-        const drawMatrix = (
-            ctx: CanvasRenderingContext2D,
-            canvas: HTMLCanvasElement,
-            columns: number,
-            drops: number[],
-            fontSize: number,
-            matrixChars: string[],
-        ) => {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#0F0";
-            ctx.font = `${fontSize}px monospace`;
-            for (let i = 0; i < columns; i++) {
-                const text =
-                    matrixChars[
-                        Math.floor(Math.random() * matrixChars.length)
-                    ];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (
-                    drops[i] * fontSize > canvas.height &&
-                    Math.random() > 0.975
-                ) {
-                    drops[i] = 0;
-                } else {
-                    drops[i]++;
-                }
-            }
-        };
-
-        /**
-         * Adds a random horizontal "distortion" line.
-         */
-        const addDistortionLine = (
-            ctx: CanvasRenderingContext2D,
-            canvas: HTMLCanvasElement,
-        ) => {
-            ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-            const yPosition = Math.floor(Math.random() * canvas.height);
-            const lineThickness = Math.random() * 10 + 1;
-            ctx.fillRect(0, yPosition, canvas.width, lineThickness);
-        };
-
-        /**
-         * Handles the "blink" and fade-out effect at the end.
-         */
-        const handleFadeOut = (
-            element: HTMLElement,
-            timeout: number | undefined,
-            addLinesFn: () => void,
-        ) => {
-            if (!element || (timeout !== undefined && timeout <= 0)) {
-                return;
-            }
-            setTimeout(() => {
-                const blinkInterval = setInterval(() => {
-                    element.style.opacity =
-                        element.style.opacity === "1" ? "0.1" : "1";
-                }, 30);
-
-                const extraLinesInterval = setInterval(() => {
-                    for (let i = 0; i < 5; i++) {
-                        addLinesFn();
-                    }
-                }, 40);
-
-                setTimeout(() => {
-                    clearInterval(blinkInterval);
-                    clearInterval(extraLinesInterval);
-                    element.style.opacity = "1";
-                    element.style.display = "none";
-                }, (timeout || 0) / 10);
-            }, (timeout || 0) - (timeout || 0) / 10);
-
-            setTimeout(() => {
-                element.style.display = "none";
-            }, timeout);
-        };
-
-        /**
-         * Initializes the Matrix effect (creates canvas, sets up intervals).
-         */
-        const initMatrixEffect = () => {
-            const matrixEffectElement = document.getElementById("matrixEffect");
-            if (!matrixEffectElement) {
-                console.warn(
-                    "#matrixEffect element not found in the DOM. Skipping Matrix effect initialization.",
-                );
-                return;
-            }
-
-            const timeout = getTimeoutValue(matrixEffectElement);
-            const result = createCanvasAndContext(matrixEffectElement);
-            if (!result || !result.canvas || !result.ctx) {
-                return;
-            }
-
-            const { canvas, ctx } = result;
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            const fontSize = 16;
-            const columns = Math.floor(canvas.width / fontSize);
-            const drops = new Array(columns)
-                .fill(0)
-                .map(() =>
-                    Math.floor((Math.random() * -canvas.height) / fontSize),
-                );
-
-            const matrixChars =
-                "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()+-/<>:;".split(
-                    "",
-                );
-
-            if (typeof setInterval === "function") {
-                setInterval(
-                    () => drawMatrix(ctx, canvas, columns, drops, fontSize, matrixChars),
-                    50,
-                );
-                setInterval(
-                    () => addDistortionLine(ctx, canvas),
-                    200,
-                );
-            } else {
-                console.warn(
-                    "setInterval is not available. Animations cannot be started.",
-                );
-            }
-            handleFadeOut(matrixEffectElement, timeout || 0, () =>
-                addDistortionLine(ctx, canvas),
-            );
-        };
-
-        /**
-         * Main entry point when DOM is loaded.
-         */
-        const onDomContentLoaded = () => {
-            if (typeof document === "undefined") {
-                console.warn(
-                    "document is not available, cannot initialize Matrix effect.",
-                );
-                return;
-            }
-            initMatrixEffect();
-        };
-
-        if (typeof document !== "undefined") {
-            document.addEventListener("DOMContentLoaded", onDomContentLoaded);
-        } else {
-            console.warn(
-                "document is not defined. Skipping DOMContentLoaded listener.",
-            );
-        }
-    })();
-</script>
 ```
 
 `/workspaces/danieledagnelli.github.io/src/components/ContactSidebar.astro`:
@@ -1642,58 +1387,412 @@ const { delay } = Astro.props;
 
 ```
 
-`/workspaces/danieledagnelli.github.io/src/components/ThemeToggler.astro`:
+`/workspaces/danieledagnelli.github.io/src/components/GlitchEffect.astro`:
 
 ```astro
-<button aria-label="Switch Mode" class="switch-mode-button">
-    <div class="image-container">
-        <img src="/assets/businessgreen.png" alt="Business Mode" class="switch-mode-image" />
-        <img src="/assets/pirateblack.png" alt="Hacker Mode" class="switch-mode-image" />
+---
+type Props = {
+    randomMaxDelayMs: number;
+    durationMs: number;
+    scanlineSpeedSeconds?: number; // Maximum speed, will be randomized down to 0.1
+};
+
+const { 
+    randomMaxDelayMs, 
+    durationMs,
+    scanlineSpeedSeconds = 6 // Default to 6 seconds if not provided
+} = Astro.props;
+
+// Generate a random speed between 0.1 and scanlineSpeedSeconds
+const randomizedSpeed = Math.max(0.1, Math.random() * scanlineSpeedSeconds);
+---
+
+<div 
+    id="glitchEffect" 
+    class="glitch-effect" 
+    data-max-delay={randomMaxDelayMs} 
+    data-duration={durationMs}
+    data-scanline-speed={randomizedSpeed}
+>
+    <div class="error-box">
+        UNAUTHORIZED ACCESS
+        <div class="scanline"></div>
     </div>
-</button>
+</div>
 
-<style>
-.switch-mode-button {
-    position: relative; /* Establishes a containing block for absolute positioning */
-    width: 20px; /* Set button width */
-    height: 20px; /* Set button height */
-    padding: 0; /* Remove default padding */
-    border: 0.01em solid #39ff14; /* Add border with specified color */
-    background: linear-gradient(to bottom, #39ff14, #2ecc71); /* Gradient for 3D look */
-    cursor: pointer; /* Add pointer cursor */
-    overflow: hidden; /* Ensure content doesn't overflow the button */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15); /* Shadow for depth */
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; Smooth hover effect
-}
+<style define:vars={{ randomizedSpeed }}>
+    .glitch-effect {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        background-color: rgba(0, 0, 0, 0.8);
+        animation: glitch 0.3s infinite;
+    }
 
-.switch-mode-button:active {
-    /* transform: translate(1px, 1px);  */
-    transform: scale(0);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Reduce shadow for pressed effect */
-}
+    .error-box {
+        border: 0.1em solid #ff1414;
+        background-color: black;
+        color: #ff1414;
+        padding: 1em;
+        position: relative;
+        text-align: center;
+        font-family: "Courier New", monospace;
+        text-transform: uppercase;
+        animation: flicker 0.15s infinite;
+        letter-spacing: 2px;
+    }
 
-.image-container {
-    position: relative; /* Container for stacking images */
-    width: 100%; /* Match the button's width */
-    height: 100%; /* Match the button's height */
-    pointer: cursor; /* Add pointer cursor */
-}
+    .scanline {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #ff1414;
+        opacity: 0.75;
+        animation: scanline calc(var(--randomizedSpeed) * 1s) linear infinite;
+    }
 
-.switch-mode-image {
-    position: absolute; /* Stack images on top of each other */
-    top: 0;
-    left: 0;
-    width: 100%; /* Fit within the container's width */
-    height: 100%; /* Fit within the container's height */
-    object-fit: contain; /* Ensure proportional scaling */
-}
+    @keyframes glitch {
+        0% { transform: translate(0) }
+        20% { transform: translate(-2px, 2px) }
+        40% { transform: translate(-2px, -2px) }
+        60% { transform: translate(2px, 2px) }
+        80% { transform: translate(2px, -2px) }
+        100% { transform: translate(0) }
+    }
 
-.switch-mode-image:nth-child(2) {
-    opacity: 0;
-}
+    @keyframes flicker {
+        0% { opacity: 0.8 }
+        50% { opacity: 1 }
+        100% { opacity: 0.8 }
+    }
 
+    @keyframes scanline {
+        0% { top: 0 }
+        100% { top: 100% }
+    }
 </style>
 
+<script>
+    interface GlitchEffectElement extends HTMLElement {
+        dataset: {
+            maxDelay: string;
+            duration: string;
+            scanlineSpeed: string;
+        };
+    }
+
+    class GlitchEffect {
+        private element: GlitchEffectElement;
+        private maxDelay: number;
+        private duration: number;
+        private timeoutId: number | null = null;
+
+        constructor(element: GlitchEffectElement) {
+            this.element = element;
+            this.maxDelay = parseInt(element.dataset.maxDelay || '0', 10);
+            this.duration = parseInt(element.dataset.duration || '0', 10);
+            this.init();
+        }
+
+        private init(): void {
+            this.scheduleNextGlitch();
+        }
+
+        private scheduleNextGlitch(): void {
+            const delay = Math.random() * this.maxDelay;
+            
+            this.timeoutId = window.setTimeout(() => {
+                this.show();
+                window.setTimeout(() => {
+                    this.hide();
+                    this.scheduleNextGlitch(); // Schedule next glitch after hiding
+                }, this.duration);
+            }, delay);
+        }
+
+        private show(): void {
+            this.element.style.display = 'flex';
+        }
+
+        private hide(): void {
+            this.element.style.display = 'none';
+        }
+
+        public cleanup(): void {
+            if (this.timeoutId) {
+                window.clearTimeout(this.timeoutId);
+            }
+        }
+    }
+
+    // Initialize on both regular page load and Astro page transitions
+    const initGlitchEffect = () => {
+        const element = document.getElementById('glitchEffect') as GlitchEffectElement | null;
+        if (element) {
+            new GlitchEffect(element);
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', initGlitchEffect);
+    document.addEventListener('astro:page-load', initGlitchEffect);
+</script>
+```
+
+`/workspaces/danieledagnelli.github.io/src/components/Matrix.astro`:
+
+```astro
+---
+type Props = {
+    delay: number;
+};
+const { delay } = Astro.props;
+---
+
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%; /* Full height */
+        background: var(--background);
+    }
+
+    .matrix-effect {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 2;
+        pointer-events: none;
+        overflow: hidden; /* Prevents scrolling within the effect container */
+    }
+</style>
+
+<div id="matrixEffect" class="matrix-effect" fade-out={delay}></div>
+<script>
+    (() => {
+        "use strict"; 
+
+        /**
+         * Safely read the 'fade-out' attribute from the #matrixEffect element
+         * @returns {number} Parsed timeout value (0 if invalid or missing)
+         */
+        const getTimeoutValue = (element: HTMLElement): number => {
+            if (!element) {
+                console.warn(
+                    "Matrix effect element not found to read 'fade-out' attribute.",
+                );
+                return 0;
+            }
+
+            const fadeOutAttr = element.getAttribute("fade-out");
+            if (!fadeOutAttr) {
+                console.warn(
+                    "'fade-out' attribute not found on #matrixEffect element.",
+                );
+                return 0;
+            }
+
+            const parsed = parseInt(fadeOutAttr, 10);
+            if (isNaN(parsed)) {
+                console.warn(
+                    `Invalid 'fade-out' attribute value: ${fadeOutAttr}`,
+                );
+                return 0;
+            }
+            return parsed;
+        };
+
+        /**
+         * Creates a canvas element inside the given parent and returns the context.
+         * @returns {{ canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D | null} | null}
+         */
+        const createCanvasAndContext = (parent: HTMLElement) => {
+            if (!parent) {
+                console.warn(
+                    "Parent element is null or undefined. Cannot create canvas.",
+                );
+                return null;
+            }
+
+            const canvas = document.createElement("canvas");
+            parent.appendChild(canvas);
+            const ctx = canvas.getContext("2d");
+
+            if (!ctx) {
+                console.warn(
+                    "Unable to get 2D context from the created canvas.",
+                );
+            }
+            return { canvas, ctx };
+        };
+
+        /**
+         * Draws the falling characters.
+         */
+        const drawMatrix = (
+            ctx: CanvasRenderingContext2D,
+            canvas: HTMLCanvasElement,
+            columns: number,
+            drops: number[],
+            fontSize: number,
+            matrixChars: string[],
+        ) => {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0F0";
+            ctx.font = `${fontSize}px monospace`;
+            for (let i = 0; i < columns; i++) {
+                const text =
+                    matrixChars[
+                        Math.floor(Math.random() * matrixChars.length)
+                    ];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (
+                    drops[i] * fontSize > canvas.height &&
+                    Math.random() > 0.975
+                ) {
+                    drops[i] = 0;
+                } else {
+                    drops[i]++;
+                }
+            }
+        };
+
+        /**
+         * Adds a random horizontal "distortion" line.
+         */
+        const addDistortionLine = (
+            ctx: CanvasRenderingContext2D,
+            canvas: HTMLCanvasElement,
+        ) => {
+            ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+            const yPosition = Math.floor(Math.random() * canvas.height);
+            const lineThickness = Math.random() * 10 + 1;
+            ctx.fillRect(0, yPosition, canvas.width, lineThickness);
+        };
+
+        /**
+         * Handles the "blink" and fade-out effect at the end.
+         */
+        const handleFadeOut = (
+            element: HTMLElement,
+            timeout: number | undefined,
+            addLinesFn: () => void,
+        ) => {
+            if (!element || (timeout !== undefined && timeout <= 0)) {
+                return;
+            }
+            setTimeout(() => {
+                const blinkInterval = setInterval(() => {
+                    element.style.opacity =
+                        element.style.opacity === "1" ? "0.1" : "1";
+                }, 30);
+
+                const extraLinesInterval = setInterval(() => {
+                    for (let i = 0; i < 5; i++) {
+                        addLinesFn();
+                    }
+                }, 40);
+
+                setTimeout(() => {
+                    clearInterval(blinkInterval);
+                    clearInterval(extraLinesInterval);
+                    element.style.opacity = "1";
+                    element.style.display = "none";
+                }, (timeout || 0) / 10);
+            }, (timeout || 0) - (timeout || 0) / 10);
+
+            setTimeout(() => {
+                element.style.display = "none";
+            }, timeout);
+        };
+
+        /**
+         * Initializes the Matrix effect (creates canvas, sets up intervals).
+         */
+        const initMatrixEffect = () => {
+            const matrixEffectElement = document.getElementById("matrixEffect");
+            if (!matrixEffectElement) {
+                console.warn(
+                    "#matrixEffect element not found in the DOM. Skipping Matrix effect initialization.",
+                );
+                return;
+            }
+
+            const timeout = getTimeoutValue(matrixEffectElement);
+            const result = createCanvasAndContext(matrixEffectElement);
+            if (!result || !result.canvas || !result.ctx) {
+                return;
+            }
+
+            const { canvas, ctx } = result;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const fontSize = 16;
+            const columns = Math.floor(canvas.width / fontSize);
+            const drops = new Array(columns)
+                .fill(0)
+                .map(() =>
+                    Math.floor((Math.random() * -canvas.height) / fontSize),
+                );
+
+            const matrixChars =
+                "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()+-/<>:;".split(
+                    "",
+                );
+
+            if (typeof setInterval === "function") {
+                setInterval(
+                    () => drawMatrix(ctx, canvas, columns, drops, fontSize, matrixChars),
+                    50,
+                );
+                setInterval(
+                    () => addDistortionLine(ctx, canvas),
+                    200,
+                );
+            } else {
+                console.warn(
+                    "setInterval is not available. Animations cannot be started.",
+                );
+            }
+            handleFadeOut(matrixEffectElement, timeout || 0, () =>
+                addDistortionLine(ctx, canvas),
+            );
+        };
+
+        /**
+         * Main entry point when DOM is loaded.
+         */
+        const onDomContentLoaded = () => {
+            if (typeof document === "undefined") {
+                console.warn(
+                    "document is not available, cannot initialize Matrix effect.",
+                );
+                return;
+            }
+            initMatrixEffect();
+        };
+
+        if (typeof document !== "undefined") {
+            document.addEventListener("DOMContentLoaded", onDomContentLoaded);
+        } else {
+            console.warn(
+                "document is not defined. Skipping DOMContentLoaded listener.",
+            );
+        }
+    })();
+</script>
 ```
 
 `/workspaces/danieledagnelli.github.io/src/components/Whoami.astro`:
