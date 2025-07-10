@@ -50,12 +50,13 @@ const timeout = siteMetadata.config.matrixEffect.timeout;
 
 <style>
     .whoami {
-        flex: 1; /* Ensures it stretches to match the sidebar */
+        flex: 1; /* Takes remaining horizontal space */
         padding: 1em;
-        margin-top: 1em;
         background-color: var(--background-secondary);
         border: 1px solid var(--text-color);
-        box-shadow: var(--text-color);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        box-sizing: border-box;
     }
 
     .cursor {

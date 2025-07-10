@@ -12,8 +12,7 @@ const {
 } = siteMetadata;
 ---
 
-<div class="container">
-  <aside class="sidebar">
+<aside class="sidebar">
     <div class="avatar-wrapper">
       <!-- Example static placeholder avatar -->
       <img src="/assets/dani.jpeg" alt={name + " avatar"} />
@@ -157,24 +156,15 @@ const {
       </li>
     </ul>
   </aside>
-</div>
 
 <style>
-  .container {
-    display: flex;
-    justify-content: left;
-    align-items: stretch; /* Ensures both components stretch to the same height */
-    gap: 1em;
-    height: auto;
-    padding: 1em;
-  }
-
   .sidebar {
     padding: 1em;
     width: 250px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--text-color);
-    margin-bottom: -1em;
+    height: 100%;
+    box-sizing: border-box;
   }
 
   .avatar-wrapper {

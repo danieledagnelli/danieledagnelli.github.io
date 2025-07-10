@@ -17,21 +17,13 @@ import { siteMetadata } from "../siteMetadata";
         .container {
             display: flex;
             justify-content: left;
-            align-items: flex-start;
+            align-items: stretch;
             gap: 1em;
             height: auto;
             padding: 1em;
             flex-wrap: wrap;
         }
 
-        .sidebar,
-        .whoami {
-            width: 100%;
-            padding: 1em;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--text-color);
-            margin-bottom: 1em;
-        }
 
         /* Responsive adjustments for mobile screens */
         @media (max-width: 768px) {
@@ -40,12 +32,6 @@ import { siteMetadata } from "../siteMetadata";
                 padding: 0.5em;
             }
 
-            .sidebar,
-            .whoami {
-                width: 100vw; /* Full width of the viewport */
-                margin: 0; /* Remove margins for a clean edge-to-edge layout */
-                padding: 1em; /* Adjust padding for spacing */
-            }
         }
     </style>
 </Main>
