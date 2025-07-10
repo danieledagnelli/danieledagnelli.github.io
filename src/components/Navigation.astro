@@ -4,13 +4,10 @@
 
 <nav>
     <ul class="navigation__links">
-        <li><a href="/home">Home</a></li>
+        <li><a href="/">Home</a></li>
         <!-- <li><a href="/bio">Bio</a></li>
         <li><a href="/blog">Blog</a></li> -->
-        <li><a href="/#">Books</a></li>
-
-        <li><a href="/contact">Contact</a></li>
-
+        <!-- <li><a href="/#">Books</a></li> -->
         <!-- <li><a href="/resume">resume</a></li> -->
     </ul>
 </nav>
@@ -78,12 +75,13 @@
     }
 </style>
 <script>
-    const normalizePath = (path: string): string => path.replace(/\/$/, ""); // Define 'path' as a string
+    const normalizePath = (path: string): string => path.replace(/\/$/, "") || "/"; // Define 'path' as a string
 
     const { pathname } = window.location;
+    const normalizedPathname = pathname === "/" ? "/" : normalizePath(pathname);
 
     const activeNavigationElement = document.querySelector<HTMLAnchorElement>(
-        `nav a[href="${normalizePath(pathname)}"]`,
+        `nav a[href="${normalizedPathname}"]`,
     );
 
     if (activeNavigationElement) {
