@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sequential Animated Arcs with Arrows</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <!-- Leaflet Core -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- PolylineDecorator for arrowheads -->
+  <script src="https://cdn.jsdelivr.net/gh/bbecquet/Leaflet.PolylineDecorator@0.6.2/dist/leaflet.polylineDecorator.min.js"></script>
+
+  <script>
+    // Quadratic Bézier interpolation:
+    // B(t) = (1−t)² * P0 + 2(1−t)t * P1 + t² * P2
+    function interpolateQuadratic(p0, p1, p2, t) {
+      // Each p is an {lat, lng} object
+      const lat =
+        (1 - t) * (1 - t) * p0.lat +
+        2 * (1 - t) * t * p1.lat +
+        t * t * p2.lat;
+      const lng =
+        (1 - t) * (1 - t) * p0.lng +
+        2 * (1 - t) * t * p1.lng +
+        t * t * p2.lng;
+      return L.latLng(lat, lng);
+    }
+
+    // Animate one arc (from, to, control), returning a Promise so we can chain
+    // them sequentially. Once done, we draw the arrow at the end.
+    function animateArcSegment(map, from, control, to, options = {}) {
+      // Steps control how many points for the animation
+      const steps = options.steps || 150;
+      const color = options.color || 'red';
+      const weight = options.weight || 4;
+
+      // Generate the entire array of points along the curve
+      const latLngs = [];
+      for (let i = 0; i <= steps; i++) {
+        let t = i / steps; // goes from 0 to 1
+        latLngs.push(interpolateQuadratic(from, control, to, t));
+      }
+
+      // Create an empty polyline we'll populate incrementally
+      const polyline = L.polyline([], { color, weight }).addTo(map);
+
+      return new Promise((resolve) => {
+        let currentIndex = 0;
+
+        function drawNextPoint() {
+          if (currentIndex <= steps) {
+            // Reveal one more point
+            const partial = latLngs.slice(0, currentIndex);
+            polyline.setLatLngs(partial);
+            currentIndex++;
+            requestAnimationFrame(drawNextPoint);
+          } else {
+            // Animation is done, draw arrow at the end of the arc
+            L.polylineDecorator(polyline, {
+              patterns: [
+                {
+                  offset: '100%',   // place arrow at end
+                  repeat: 0,
+                  symbol: L.Symbol.arrowHead({
+                    pixelSize: 12,
+                    pathOptions: { color, stroke: true }
+                  })
+                }
+              ]
+            }).addTo(map);
+
+            resolve(); // let caller know we're finished
+          }
+        }
+        drawNextPoint();
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1) Initialize the map (centered roughly on Europe)
+      const map = L.map('map').setView([46.2, 8.0], 5);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19
+      }).addTo(map);
+
+      // 2) Define all arcs we want to animate (from, to, and control points).
+      //    Adjust control points to get nice arcs (just guessed some coords).
+      //    Format: { from: [lat, lng], control: [lat, lng], to: [lat, lng] }
+      const arcs = [
+        {
+          from: [41.226389, 16.064444],   // Canosa di Puglia
+          control: [43.5, 13.5],
+          to: [44.494887, 11.3426162]     // Bologna
+        },
+        {
+          from: [44.494887, 11.3426162],  // Bologna
+          control: [42.5, 14.0],
+          to: [41.125594, 16.866667]      // Bari (approx coords)
+        },
+        {
+          from: [41.125594, 16.866667],   // Bari
+          control: [44, 10],
+          to: [45.464664, 9.18854]        // Milan
+        },
+        {
+          from: [45.464664, 9.18854],     // Milan
+          control: [50, 0],              // somewhere between Milan and Dublin
+          to: [53.349805, -6.26031]       // Dublin
+        },
+        {
+          from: [53.349805, -6.26031],    // Dublin
+          control: [52, -3],
+          to: [51.507351, -0.127758]      // London
+        }
+      ];
+
+      // 3) Animate each arc in sequence
+      //    We’ll use a Promise chain so that each new arc starts
+      //    only after the previous one completes.
+      let chain = Promise.resolve();
+      arcs.forEach((segment) => {
+        const from = L.latLng(segment.from);
+        const control = L.latLng(segment.control);
+        const to = L.latLng(segment.to);
+
+        chain = chain.then(() => {
+          return animateArcSegment(map, from, control, to, {
+            steps: 200,
+            color: 'blue',
+            weight: 4
+          });
+        });
+      });
+
+      // 4) Optionally do something when all arcs are done
+      chain.then(() => {
+        console.log('All arcs have finished animating!');
+      });
+    });
+  </script>
+</body>
+</html>

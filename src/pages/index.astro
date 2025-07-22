@@ -4,9 +4,12 @@ import ContactSidebar from "../components/ContactSidebar.astro";
 import Whoami from "../components/Whoami.astro";
 
 import { siteMetadata } from "../siteMetadata";
+import { getCachedLastCommitTimestamp } from "../utils/github.js";
+
+const lastModified = await getCachedLastCommitTimestamp();
 ---
 
-<Main title={`${siteMetadata.title}`} last_modified="1752179100">
+<Main title={`${siteMetadata.title}`} last_modified={lastModified}>
     <div class="container">
         <ContactSidebar />
         <Whoami />

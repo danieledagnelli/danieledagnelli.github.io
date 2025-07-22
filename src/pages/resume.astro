@@ -1,9 +1,12 @@
 ---
 import Main from "../layouts/Main.astro";
 import { siteMetadata } from "../siteMetadata";
+import { getCachedLastCommitTimestamp } from "../utils/github.js";
+
+const lastModified = await getCachedLastCommitTimestamp();
 ---
 
-<Main title={`${siteMetadata.title} → resume`} last_modified="1733673113">
+<Main title={`${siteMetadata.title} → resume`} last_modified={lastModified}>
     <div class="center">
         <p>
             <a href="https://www.linkedin.com/in/dagnelli/"

@@ -1,6 +1,9 @@
 ---
 import Main from "../layouts/Main.astro";
 import { siteMetadata } from "../siteMetadata";
+import { getCachedLastCommitTimestamp } from "../utils/github.js";
+
+const lastModified = await getCachedLastCommitTimestamp();
 ---
 
-<Main title={`${siteMetadata.title} → Blog`} last_modified="1734771487"></Main>
+<Main title={`${siteMetadata.title} → Blog`} last_modified={lastModified}></Main>
