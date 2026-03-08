@@ -3,23 +3,14 @@ type Props = {
     title: string;
     status?: string;
     fullWidth?: boolean;
-    color?: 'orange' | 'green' | 'blue' | 'red';
 };
 
-const { title, status, fullWidth = false, color = 'orange' } = Astro.props;
-
-const colorMap: Record<string, string> = {
-    orange: 'var(--accent-primary)',
-    green: 'var(--accent-secondary)',
-    blue: 'var(--accent-tertiary)',
-    red: 'var(--accent-danger)',
-};
-const borderColor = colorMap[color];
+const { title, status, fullWidth = false } = Astro.props;
 ---
 
-<div class:list={["panel", { "panel--full-width": fullWidth }]} style={`border-top-color: ${borderColor}`}>
+<div class:list={["panel", { "panel--full-width": fullWidth }]}>
     <div class="panel__title-bar">
-        <span class="panel__title" style={`color: ${borderColor}`}>{title}</span>
+        <span class="panel__title">{title}</span>
         {status && (
             <span class="panel__status">
                 <span class="panel__status-dot"></span>
@@ -36,25 +27,7 @@ const borderColor = colorMap[color];
     .panel {
         background: var(--bg-tertiary);
         border: 1px solid var(--border-color);
-        border-top: 2px solid var(--accent-primary);
         border-radius: var(--panel-radius);
-        transition: box-shadow 0.3s ease;
-        animation: panelFadeIn 0.4s ease-out both;
-    }
-
-    .panel:hover {
-        box-shadow: 0 0 8px rgba(255, 160, 40, 0.15);
-    }
-
-    @keyframes panelFadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(8px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 
     .panel--full-width {
@@ -71,7 +44,7 @@ const borderColor = colorMap[color];
 
     .panel__title {
         text-transform: uppercase;
-        color: var(--accent-primary);
+        color: var(--bb-yellow);
         font-size: var(--font-size-sm);
         font-family: var(--font-mono);
         letter-spacing: 1px;
@@ -102,6 +75,6 @@ const borderColor = colorMap[color];
     }
 
     .panel__content {
-        padding: 0.5em;
+        padding: 0.3em;
     }
 </style>

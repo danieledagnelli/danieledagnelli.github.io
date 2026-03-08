@@ -12,13 +12,19 @@ html {
     --text-primary: #FFFFFF;
     --text-secondary: #999999;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
-    --font-size-xs: 0.7rem;
-    --font-size-sm: 0.8rem;
-    --font-size-base: 0.9rem;
+    --font-size-xs: 0.78rem;
+    --font-size-sm: 0.85rem;
+    --font-size-base: 0.95rem;
     --font-size-lg: 1.1rem;
     --font-size-xl: 1.4rem;
     --panel-radius: 2px;
-    --font-size-xxs: 0.6rem;
+    --font-size-xxs: 0.72rem;
+    --font-size-xxxs: 0.65rem;
+    --bb-yellow: #FFCC00;
+    --bb-bg-positive: rgba(0, 200, 5, 0.08);
+    --bb-bg-negative: rgba(255, 51, 51, 0.08);
+    --bb-row-even: #0a0a0a;
+    --bb-row-odd: #111111;
 
     /* legacy compat */
     --background: var(--bg-primary);
@@ -75,8 +81,8 @@ img {
     display: block;
 }
 
-/* Bloomberg terminal: no scroll on desktop */
-@media (min-width: 769px) {
+/* Bloomberg terminal: no scroll on large desktop only */
+@media (min-width: 1280px) {
     html, body {
         height: 100vh;
         overflow: hidden;

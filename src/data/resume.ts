@@ -24,7 +24,15 @@ export interface Metric {
   label: string;
 }
 
-export const summary = `Senior Engagement Manager with 14+ years in Professional Services, leading high-impact digital transformations that drive revenue growth and cost efficiency. Experienced in delivering AI solutions for complex challenges across Manufacturing, Healthcare, Oil & Gas, Telecom, and Financial Services sectors for global enterprises. Skilled in aligning cross-functional teams and collaborating with senior leadership on programs exceeding $15M, consistently exceeding metrics in adoption, customer satisfaction (NPS), and operational efficiency. Known for building trust-based client relationships and adept at navigating ambiguity. Technically proficient with expertise in software engineering, solution architecture, cloud engineering, and advanced machine learning, including LLMs and Generative AI.`;
+export interface Engagement {
+  client: string;
+  sector: string;
+  scope: string;
+  impact: string;
+  trend: 'positive' | 'neutral';
+}
+
+export const summary = `Senior Engagement Manager with 15 years in Professional Services, leading high-impact digital transformations that drive revenue growth and cost efficiency. Experienced in delivering AI solutions for complex challenges across Manufacturing, Healthcare, Oil & Gas, Telecom, and Financial Services sectors for global enterprises. Skilled in aligning cross-functional teams and collaborating with senior leadership on programs exceeding $15M, consistently exceeding metrics in adoption, customer satisfaction (NPS), and operational efficiency. Known for building trust-based client relationships and adept at navigating ambiguity. Technically proficient with expertise in software engineering, solution architecture, cloud engineering, and advanced machine learning, including LLMs and Generative AI.`;
 
 export const experience: Experience[] = [
   {
@@ -32,24 +40,16 @@ export const experience: Experience[] = [
     location: "London, United Kingdom",
     roles: [
       {
-        title: "Senior Engagement Manager",
-        period: "June 2024 – Present",
-        description: "Responsible for the rollout and adoption of an AI-enabled Predictive Maintenance application for a Swiss building materials manufacturer, spanning over 100 plants, 2,000+ end users, and a total contract value exceeding $10M.",
+        title: "Senior Engagement Manager (Forward Deployed Engineering)",
+        period: "August 2021 – Present",
+        description: "Director-level programme lead across all Business Units and Partners, managing $15M budget with 70+ resources, reporting to VP of Customer Services.",
         bullets: [
-          "Partnered with cross-functional teams, including Product and Sales, to craft value-driven use cases, translating them into technical and functional requirements, detailed specifications, and actionable project plans.",
-          "Expanded relationships by identifying new use cases and incremental staffing needs.",
-          "Defined scope, requirements, timelines, and success metrics for projects, emphasizing customer self-sufficiency on the platform.",
-          "Led project governance activities, including project planning, weekly reviews, cross-functional meetings, and executive status reports, ensuring alignment and transparency throughout project lifecycles.",
-          "Directed all implementation activities, supervising teams across Application Development, Data Integration, Data Science, QA, and DevOps to ensure timely and successful delivery.",
-          "Established trusted advisor relationships with clients, tracking and mitigating risks to maintain high customer satisfaction (CSAT) consistently achieving NPS Score >70.",
-          "Played a key role in recruiting and attracting top talent to build a strong, client-focused services team.",
+          "CEO-sponsored PdM rollout: 100+ plants, 2,000+ end users, $18M EBIT impact",
+          "GenAI RAG rollout across enterprise knowledge base",
+          "Led 20+ cross-functional team across App Dev, Data Science, QA, DevOps",
+          "Sustained NPS >70 across all engagements",
+          "Partner enablement and practice-building across consulting firms",
         ],
-      },
-      {
-        title: "Engagement Manager",
-        period: "August 2021 – May 2024",
-        description: "Led strategic initiatives across all Business Units and Partners, managing program with a $15M budget and reporting directly to the VP of Customer Services.",
-        bullets: [],
       },
     ],
   },
@@ -60,8 +60,12 @@ export const experience: Experience[] = [
       {
         title: "Manager",
         period: "October 2018 – July 2021",
-        description: "Grew Deloitte UK's Anaplan practice from inception to 25+ practitioners, leading the first enterprise-wide deployment for a large British telco.",
-        bullets: [],
+        description: "Grew Deloitte UK's Anaplan practice from inception to 25+ practitioners, leading enterprise deployments across telco, banking, and investment management.",
+        bullets: [
+          "First enterprise-wide deployment for a large British telco (7 BUs)",
+          "Data architecture transformation for 75K-employee American bank",
+          "Financial planning for £170.3B AUM UK investment firm",
+        ],
       },
     ],
   },
@@ -72,6 +76,7 @@ export const experience: Experience[] = [
       {
         title: "Management Consultant",
         period: "April 2017 – September 2018",
+        description: "Design Lead for Aerospace & Defence demand forecasting solution.",
         bullets: [],
       },
     ],
@@ -81,7 +86,7 @@ export const experience: Experience[] = [
     location: "Dublin, Ireland",
     roles: [
       {
-        title: "Consultant",
+        title: "Senior Consultant",
         period: "January 2015 – March 2017",
         bullets: [],
       },
@@ -117,12 +122,20 @@ export const education: Education[] = [
 ];
 
 export const metrics: Metric[] = [
-  { value: "14+", label: "years in tech" },
-  { value: "$15M", label: "programme led" },
+  { value: "$15M", label: "programme directed" },
+  { value: "$18M", label: "EBIT impact" },
+  { value: "NPS >70", label: "client satisfaction" },
   { value: "100+", label: "plants deployed" },
-  { value: "NPS >70", label: "satisfaction" },
   { value: "2,000+", label: "end users" },
-  { value: "5", label: "countries" },
+  { value: "15", label: "years experience" },
+];
+
+export const engagements: Engagement[] = [
+  { client: "swiss manufacturer", sector: "manufacturing", scope: "100+ plants, 2K users", impact: "$18M EBIT", trend: "positive" },
+  { client: "british telco", sector: "telecom", scope: "7 business units", impact: "25+ practice", trend: "positive" },
+  { client: "american bank", sector: "fin. services", scope: "75K employees", impact: "data architecture", trend: "neutral" },
+  { client: "uk investment firm", sector: "fin. services", scope: "AUM £170.3B", impact: "fin. planning", trend: "neutral" },
+  { client: "aerospace co", sector: "defence", scope: "forecasting", impact: "design lead", trend: "neutral" },
 ];
 
 export const industries = [

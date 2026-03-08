@@ -1,0 +1,99 @@
+---
+type CellColor = 'green' | 'red' | 'yellow' | 'white' | 'orange' | 'blue' | 'grey';
+
+type Props = {
+    headers: string[];
+    rows: Array<{
+        cells: Array<{
+            value: string;
+            color?: CellColor;
+            align?: 'left' | 'right';
+        }>;
+    }>;
+};
+
+const { headers, rows } = Astro.props;
+
+const colorVarMap: Record<CellColor, string> = {
+    green: 'var(--accent-secondary)',
+    red: 'var(--accent-danger)',
+    yellow: 'var(--bb-yellow)',
+    white: 'var(--text-primary)',
+    orange: 'var(--accent-primary)',
+    blue: 'var(--accent-tertiary)',
+    grey: 'var(--text-secondary)',
+};
+---
+
+<table class="bb-table">
+    <thead>
+        <tr>
+            {headers.map(h => <th>{h}</th>)}
+        </tr>
+    </thead>
+    <tbody>
+        {rows.map((row, i) => (
+            <tr class={i % 2 === 0 ? 'row-even' : 'row-odd'}>
+                {row.cells.map(cell => (
+                    <td
+                        style={`color: ${colorVarMap[cell.color || 'white']}; text-align: ${cell.align || 'left'};`}
+                    >
+                        {cell.value}
+                    </td>
+                ))}
+            </tr>
+        ))}
+    </tbody>
+</table>
+
+<style>
+    .bb-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: var(--font-mono);
+        table-layout: fixed;
+    }
+
+    .bb-table th {
+        color: var(--bb-yellow);
+        text-transform: uppercase;
+        font-size: var(--font-size-xxxs);
+        font-weight: normal;
+        text-align: left;
+        padding: 0.2em 0.5em;
+        border-bottom: 1px solid var(--border-color);
+        white-space: nowrap;
+        letter-spacing: 0.5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .bb-table td {
+        font-size: var(--font-size-xxs);
+        padding: 0.2em 0.5em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .bb-table .row-even {
+        background: var(--bb-row-even);
+    }
+
+    .bb-table .row-odd {
+        background: var(--bb-row-odd);
+    }
+
+    @media (max-width: 1279px) {
+        .bb-table {
+            table-layout: fixed;
+            max-width: 100%;
+        }
+        .bb-table td,
+        .bb-table th {
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+</style>
