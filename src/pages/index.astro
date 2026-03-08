@@ -3,34 +3,165 @@ import Main from "../layouts/Main.astro";
 import ProfilePanel from "../components/ProfilePanel.astro";
 import Panel from "../components/Panel.astro";
 import DataCard from "../components/DataCard.astro";
-import Timeline from "../components/Timeline.astro";
-import SkillsPanel from "../components/SkillsPanel.astro";
+import BloombergTable from "../components/BloombergTable.astro";
 import { siteMetadata } from "../siteMetadata";
 import { getCachedLastCommitTimestamp } from "../utils/github.js";
-import { metrics, industries, certifications, skills, education, managementSkills, continuousLearning, languages } from "../data/resume";
+import { certifications, skills, education, continuousLearning, experience, engagements } from "../data/resume";
 
 const lastModified = await getCachedLastCommitTimestamp();
+
+// Build career table rows from experience data
+const careerEntries = experience.flatMap(exp =>
+    exp.roles.map(role => {
+        const parts = role.period.split(' – ');
+        const start = parts[0] || '';
+        const end = parts[1] || '';
+        const startDate = new Date(start);
+        const endDate = end === 'Present' ? new Date() : new Date(end);
+        const years = Math.round((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365) * 10) / 10;
+        const tenure = years >= 1 ? `${Math.round(years)}y` : `${Math.round(years * 12)}m`;
+        const loc = exp.location.split(',')[0] || exp.location;
+        return { start, company: exp.company, title: role.title, loc, tenure, years };
+    })
+);
+
+const maxYears = Math.max(...careerEntries.map(e => e.years));
+const careerRows = careerEntries.map(e => {
+    const barLength = Math.max(1, Math.round((e.years / maxYears) * 8));
+    const bar = '█'.repeat(barLength);
+    return {
+        cells: [
+            { value: e.start.toLowerCase(), color: 'grey' as const },
+            { value: e.company.toLowerCase(), color: 'orange' as const },
+            { value: e.title.toLowerCase(), color: 'white' as const },
+            { value: e.loc.toLowerCase(), color: 'grey' as const },
+            { value: e.tenure, color: 'green' as const },
+            { value: bar, color: 'green' as const },
+        ]
+    };
+});
+
+// Build skills table grouped by category
+const skillCategories: Array<{ category: string; items: string[] }> = [
+    { category: "languages", items: ["python", "java", "go", "rust", "sql", "bash"] },
+    { category: "cloud & infra", items: ["aws/azure/gcp", "linux", "gitops", "mlops"] },
+    { category: "ai / ml", items: ["llms & genai", "rag systems", "deep learning", "rl", "ml pipelines"] },
+    { category: "data", items: ["data engineering", "data integration"] },
+    { category: "architecture", items: ["solution arch", "enterprise arch"] },
+    { category: "security", items: ["pentesting", "rev. engineering", "security tooling"] },
+];
+
+const skillRows = skillCategories.map(cat => ({
+    cells: [
+        { value: cat.category, color: 'yellow' as const },
+        { value: cat.items.join(', '), color: 'white' as const },
+    ]
+}));
+
+// Engagements table
+const engagementRows = engagements.map(eng => ({
+    cells: [
+        { value: eng.client, color: 'orange' as const },
+        { value: eng.sector, color: 'grey' as const },
+        { value: eng.scope, color: 'white' as const },
+        { value: eng.impact, color: eng.trend === 'positive' ? 'green' as const : 'white' as const },
+    ]
+}));
+
+// Merged credentials table (certs + continuous learning)
+const credentialRows = [
+    ...certifications.map(c => ({
+        cells: [
+            { value: 'cert', color: 'grey' as const },
+            { value: c.toLowerCase(), color: 'yellow' as const },
+        ]
+    })),
+    ...continuousLearning.map(l => ({
+        cells: [
+            { value: 'course', color: 'grey' as const },
+            { value: l.toLowerCase(), color: 'white' as const },
+        ]
+    })),
+];
 ---
 
 <Main title={`${siteMetadata.title}`} last_modified={lastModified}>
+    <div class="bb-mobile-notice">
+        <div class="mobile-card">
+            <div class="mobile-card__header">
+                <span class="mobile-card__logo">DAGNELLI</span>
+                <span class="mobile-card__tag">&lt;TERMINAL&gt;</span>
+            </div>
+            <div class="mobile-card__profile">
+                <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" class="mobile-card__avatar" />
+                <div class="mobile-card__info">
+                    <span class="mobile-card__name">daniele d'agnelli</span>
+                    <span class="mobile-card__role">sr. engagement manager</span>
+                    <span class="mobile-card__loc">london, uk</span>
+                </div>
+            </div>
+            <div class="mobile-card__metrics">
+                <div class="mobile-card__metric">
+                    <span class="mobile-card__metric-val">$15M</span>
+                    <span class="mobile-card__metric-lbl">programme</span>
+                </div>
+                <div class="mobile-card__metric">
+                    <span class="mobile-card__metric-val">$18M</span>
+                    <span class="mobile-card__metric-lbl">EBIT impact</span>
+                </div>
+                <div class="mobile-card__metric">
+                    <span class="mobile-card__metric-val">NPS >70</span>
+                    <span class="mobile-card__metric-lbl">satisfaction</span>
+                </div>
+                <div class="mobile-card__metric">
+                    <span class="mobile-card__metric-val">15 yrs</span>
+                    <span class="mobile-card__metric-lbl">experience</span>
+                </div>
+            </div>
+            <div class="mobile-card__links">
+                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank">github</a>
+                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank">linkedin</a>
+                <a href={`mailto:${siteMetadata.email}`}>email</a>
+            </div>
+            <div class="mobile-card__notice">
+                best viewed on desktop (1280px+) — bloomberg terminals don't fit in your pocket
+            </div>
+        </div>
+    </div>
     <div class="bb-grid">
         <div class="bb-profile">
             <ProfilePanel />
         </div>
         <div class="bb-metrics">
-            <Panel title="KEY METRICS" status="live" color="orange">
+            <Panel title="EXECUTIVE SCORECARD" status="live">
                 <div class="bb-metrics-row">
-                    {metrics.map(m => <DataCard value={m.value} label={m.label} />)}
+                    <DataCard value="$15M" label="programme directed" color="var(--accent-secondary)" />
+                    <DataCard value="$18M" label="EBIT impact" color="var(--accent-secondary)" />
+                    <DataCard value="NPS >70" label="client satisfaction" color="var(--accent-primary)" />
+                    <DataCard value="100+" label="plants deployed" color="var(--text-primary)" />
+                    <DataCard value="2,000+" label="end users" color="var(--text-primary)" />
+                    <DataCard value="15" label="years experience" color="var(--text-primary)" />
                 </div>
             </Panel>
         </div>
         <div class="bb-career">
-            <Panel title="CAREER" color="green">
-                <Timeline compact={true} />
+            <Panel title="CAREER">
+                <BloombergTable
+                    headers={["period", "company", "role", "loc", "yrs", ""]}
+                    rows={careerRows}
+                />
+            </Panel>
+        </div>
+        <div class="bb-skills">
+            <Panel title="TECH STACK">
+                <BloombergTable
+                    headers={["category", "skills"]}
+                    rows={skillRows}
+                />
             </Panel>
         </div>
         <div class="bb-education">
-            <Panel title="EDUCATION" color="green">
+            <Panel title="EDUCATION">
                 {education.map(edu => (
                     <div class="bb-edu-entry">
                         <span class="bb-edu-degree">{edu.degree}</span>
@@ -40,121 +171,75 @@ const lastModified = await getCachedLastCommitTimestamp();
                 ))}
             </Panel>
         </div>
-        <div class="bb-skills">
-            <Panel title="TECH STACK" color="blue">
-                <SkillsPanel items={skills} />
+        <div class="bb-engagements">
+            <Panel title="ENGAGEMENTS" status="live">
+                <BloombergTable
+                    headers={["client", "sector", "scope", "impact"]}
+                    rows={engagementRows}
+                />
             </Panel>
         </div>
-        <div class="bb-certs">
-            <Panel title="CERTIFICATIONS" color="blue">
-                <SkillsPanel items={certifications} />
-            </Panel>
-        </div>
-        <div class="bb-industries">
-            <Panel title="INDUSTRIES" color="red">
-                <SkillsPanel items={industries} />
-            </Panel>
-        </div>
-        <div class="bb-mgmt">
-            <Panel title="MANAGEMENT" color="red">
-                <SkillsPanel items={managementSkills} />
-            </Panel>
-        </div>
-        <div class="bb-learning">
-            <Panel title="CONTINUOUS LEARNING" color="blue">
-                <SkillsPanel items={continuousLearning} />
-            </Panel>
-        </div>
-        <div class="bb-terminal">
-            <Panel title="TENURE" color="orange">
-                <div class="bb-tenure">
-                    <div class="bb-tenure-row">
-                        <span class="bb-tenure-label">c3 ai</span>
-                        <div class="bb-tenure-bar" style="width: 80%">
-                            <span class="bb-tenure-val">4+ yrs</span>
-                        </div>
-                    </div>
-                    <div class="bb-tenure-row">
-                        <span class="bb-tenure-label">deloitte</span>
-                        <div class="bb-tenure-bar bb-tenure-bar--blue" style="width: 50%">
-                            <span class="bb-tenure-val">3 yrs</span>
-                        </div>
-                    </div>
-                    <div class="bb-tenure-row">
-                        <span class="bb-tenure-label">accenture uk</span>
-                        <div class="bb-tenure-bar bb-tenure-bar--green" style="width: 25%">
-                            <span class="bb-tenure-val">1.5 yrs</span>
-                        </div>
-                    </div>
-                    <div class="bb-tenure-row">
-                        <span class="bb-tenure-label">codec</span>
-                        <div class="bb-tenure-bar bb-tenure-bar--blue" style="width: 35%">
-                            <span class="bb-tenure-val">2 yrs</span>
-                        </div>
-                    </div>
-                    <div class="bb-tenure-row">
-                        <span class="bb-tenure-label">accenture it</span>
-                        <div class="bb-tenure-bar bb-tenure-bar--green" style="width: 45%">
-                            <span class="bb-tenure-val">2.5 yrs</span>
-                        </div>
-                    </div>
-                </div>
+        <div class="bb-credentials">
+            <Panel title="CREDENTIALS">
+                <BloombergTable
+                    headers={["type", "credential"]}
+                    rows={credentialRows}
+                />
             </Panel>
         </div>
     </div>
 </Main>
 
 <style>
+    .bb-mobile-notice {
+        display: none;
+    }
+
     .bb-grid {
         display: grid;
-        grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr;
-        grid-template-rows: auto 1fr 1fr 1fr;
+        grid-template-columns: 0.7fr 1.4fr 0.9fr 1.4fr;
+        grid-template-rows: auto 1fr 1fr;
         gap: 0.4em;
         flex: 1;
         min-height: 0;
+        padding: 0 0.3em;
+        width: 100%;
+        overflow: hidden;
     }
 
     /* Profile: col 1, spans all rows */
     .bb-profile { grid-column: 1; grid-row: 1 / -1; }
 
-    /* Metrics: top row, spans cols 2-5 */
+    /* Metrics: top row, spans cols 2-4 */
     .bb-metrics { grid-column: 2 / -1; grid-row: 1; }
 
-    /* Career: col 2, rows 2-4 */
+    /* Career: col 2, rows 2-3 */
     .bb-career { grid-column: 2; grid-row: 2 / -1; }
 
-    /* Tech stack: col 3, rows 2-3 */
-    .bb-skills { grid-column: 3; grid-row: 2 / 4; }
+    /* Tech stack: col 3, row 2 */
+    .bb-skills { grid-column: 3; grid-row: 2; }
 
-    /* Education: col 3, row 4 */
-    .bb-education { grid-column: 3; grid-row: 4; }
+    /* Education: col 3, row 3 */
+    .bb-education { grid-column: 3; grid-row: 3; }
 
-    /* Certs: col 4, row 2 */
-    .bb-certs { grid-column: 4; grid-row: 2; }
+    /* Engagements: col 4, row 2 */
+    .bb-engagements { grid-column: 4; grid-row: 2; }
 
-    /* Industries: col 4, row 3 */
-    .bb-industries { grid-column: 4; grid-row: 3; }
-
-    /* Management: col 4, row 4 */
-    .bb-mgmt { grid-column: 4; grid-row: 4; }
-
-    /* Tenure chart: col 5, row 2 */
-    .bb-terminal { grid-column: 5; grid-row: 2; }
-
-    /* Continuous learning: col 5, row 3 */
-    .bb-learning { grid-column: 5; grid-row: 3 / -1; }
+    /* Credentials: col 4, row 3 */
+    .bb-credentials { grid-column: 4; grid-row: 3; }
 
     .bb-metrics-row {
         display: flex;
-        gap: 0.5em;
+        gap: 0.3em;
         justify-content: space-around;
+        min-width: 0;
     }
 
     .bb-edu-entry {
         display: flex;
         flex-direction: column;
-        gap: 0.15em;
-        margin-bottom: 0.5em;
+        gap: 0.1em;
+        margin-bottom: 0.4em;
     }
 
     .bb-edu-entry:last-child {
@@ -163,23 +248,24 @@ const lastModified = await getCachedLastCommitTimestamp();
 
     .bb-edu-degree {
         color: var(--text-primary);
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-xxs);
     }
 
     .bb-edu-meta {
         color: var(--text-secondary);
-        font-size: var(--font-size-xs);
+        font-size: var(--font-size-xxxs);
     }
 
     .bb-edu-distinction {
         color: var(--accent-primary);
-        font-size: var(--font-size-xs);
+        font-size: var(--font-size-xxxs);
         text-transform: uppercase;
     }
 
-    /* Make all panels and whoami fill their grid cells */
+    /* Make all panels fill their grid cells */
     .bb-grid > div {
         min-height: 0;
+        min-width: 0;
         overflow: hidden;
     }
 
@@ -187,79 +273,158 @@ const lastModified = await getCachedLastCommitTimestamp();
         height: 100%;
         display: flex;
         flex-direction: column;
+        position: relative;
+    }
+    .bb-grid > div > :global(.panel)::after {
+        content: "▼";
+        position: absolute;
+        bottom: 0.2em;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.55em;
+        color: var(--bb-yellow);
+        opacity: 0.5;
+        pointer-events: none;
     }
 
     .bb-grid > div > :global(.panel) :global(.panel__content) {
         flex: 1;
         overflow-y: auto;
         overflow-x: hidden;
+        scrollbar-width: none;           /* Firefox */
+        mask-image: linear-gradient(to bottom, black calc(100% - 1.5em), transparent);
+        -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 1.5em), transparent);
+    }
+    .bb-grid > div > :global(.panel) :global(.panel__content)::-webkit-scrollbar {
+        display: none;                   /* Chrome/Safari/Edge */
     }
 
-    .bb-tenure {
+    /* Below full desktop: hide grid, show mobile card */
+    @media (max-width: 1279px) {
+        .bb-grid { display: none; }
+        .bb-mobile-notice {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            padding: 1em;
+        }
+    }
+
+    /* Mobile card styles */
+    .mobile-card {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--panel-radius);
+        padding: 1.5em;
+        max-width: 400px;
+        width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 0.5em;
+        gap: 1em;
+        font-family: var(--font-mono);
     }
 
-    .bb-tenure-row {
+    .mobile-card__header {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 0.5em;
     }
 
-    .bb-tenure-label {
-        width: 100px;
-        text-align: right;
+    .mobile-card__logo {
+        color: var(--accent-primary);
+        font-size: var(--font-size-lg);
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .mobile-card__tag {
         color: var(--text-secondary);
-        font-size: var(--font-size-xxs);
-        text-transform: uppercase;
-        flex-shrink: 0;
+        font-size: var(--font-size-xs);
     }
 
-    .bb-tenure-bar {
-        height: 18px;
-        background: var(--accent-primary);
-        border-radius: 1px;
+    .mobile-card__profile {
         display: flex;
+        gap: 1em;
         align-items: center;
-        justify-content: flex-end;
-        padding-right: 0.4em;
-        min-width: 40px;
     }
 
-    .bb-tenure-bar--blue {
-        background: var(--accent-tertiary);
+    .mobile-card__avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: var(--panel-radius);
+        object-fit: cover;
     }
 
-    .bb-tenure-bar--green {
-        background: var(--accent-secondary);
+    .mobile-card__info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2em;
     }
 
-    .bb-tenure-val {
-        color: #000;
-        font-size: var(--font-size-xxs);
+    .mobile-card__name {
+        color: var(--text-primary);
+        font-size: var(--font-size-sm);
         font-weight: bold;
     }
 
-    /* Mobile: single column, allow scroll */
-    @media (max-width: 768px) {
-        .bb-grid {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto;
-            height: auto;
-        }
-        .bb-profile,
-        .bb-metrics,
-        .bb-career,
-        .bb-education,
-        .bb-skills,
-        .bb-certs,
-        .bb-industries,
-        .bb-mgmt,
-        .bb-learning,
-        .bb-terminal {
-            grid-column: 1;
-            grid-row: auto;
-        }
+    .mobile-card__role {
+        color: var(--accent-tertiary);
+        font-size: var(--font-size-xs);
+    }
+
+    .mobile-card__loc {
+        color: var(--text-secondary);
+        font-size: var(--font-size-xs);
+    }
+
+    .mobile-card__metrics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5em;
+    }
+
+    .mobile-card__metric {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5em;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--panel-radius);
+    }
+
+    .mobile-card__metric-val {
+        color: var(--accent-secondary);
+        font-size: var(--font-size-base);
+        font-weight: bold;
+    }
+
+    .mobile-card__metric-lbl {
+        color: var(--text-secondary);
+        font-size: var(--font-size-xxxs);
+        text-transform: uppercase;
+    }
+
+    .mobile-card__links {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+        border-top: 1px solid var(--border-color);
+        padding-top: 0.8em;
+    }
+
+    .mobile-card__links a {
+        color: var(--accent-tertiary);
+        font-size: var(--font-size-sm);
+        text-transform: uppercase;
+    }
+
+    .mobile-card__notice {
+        color: var(--text-secondary);
+        font-size: var(--font-size-xxxs);
+        text-align: center;
+        border-top: 1px solid var(--border-color);
+        padding-top: 0.8em;
     }
 </style>

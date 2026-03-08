@@ -4,10 +4,10 @@
 <div class="status-bar">
     <div class="status-bar__track">
         <span class="status-bar__text">
-            DAGNELLI TERMINAL v2.0 // SR. ENGAGEMENT MANAGER @ C3 AI // LONDON, UK // <span id="tickerClock">00:00:00</span> UTC
+            DAGNELLI <span class="sb-yellow">&lt;Equity&gt;</span> // started writing code in southern italy // shipped software at accenture milan // moved through <span class="sb-white">dublin</span> and <span class="sb-white">london</span> — building systems, breaking them, leading the teams that do both // ML since <span class="sb-white">2015</span>: stanford ml, deeplearning.ai, imperial college, reinforcement learning // deploying ai at scale: <span class="sb-green">100+</span> plants // <span class="sb-green">2,000+</span> users // <span class="sb-green">$15M</span> programme directed // <span class="sb-green">$18M</span> EBIT impact // NPS <span class="sb-green">70+</span> <span class="sb-green">&#9650;</span> // LLMs since <span class="sb-white">2021</span> via openai playground — never stopped // MSc ethical hacking — <span class="sb-yellow">GCHQ-certified</span> — you can't secure what you don't understand // LONDON <span id="tickerClock">00:00:00</span> UTC
         </span>
         <span class="status-bar__text" aria-hidden="true">
-            DAGNELLI TERMINAL v2.0 // SR. ENGAGEMENT MANAGER @ C3 AI // LONDON, UK // <span class="ticker-clock-dup">00:00:00</span> UTC
+            DAGNELLI <span class="sb-yellow">&lt;Equity&gt;</span> // started writing code in southern italy // shipped software at accenture milan // moved through <span class="sb-white">dublin</span> and <span class="sb-white">london</span> — building systems, breaking them, leading the teams that do both // ML since <span class="sb-white">2015</span>: stanford ml, deeplearning.ai, imperial college, reinforcement learning // deploying ai at scale: <span class="sb-green">100+</span> plants // <span class="sb-green">2,000+</span> users // <span class="sb-green">$15M</span> programme directed // <span class="sb-green">$18M</span> EBIT impact // NPS <span class="sb-green">70+</span> <span class="sb-green">&#9650;</span> // LLMs since <span class="sb-white">2021</span> via openai playground — never stopped // MSc ethical hacking — <span class="sb-yellow">GCHQ-certified</span> — you can't secure what you don't understand // LONDON <span class="ticker-clock-dup">00:00:00</span> UTC
         </span>
     </div>
 </div>
@@ -25,7 +25,7 @@
     .status-bar__track {
         display: flex;
         white-space: nowrap;
-        animation: marquee 30s linear infinite;
+        animation: marquee 90s linear infinite;
     }
 
     .status-bar__text {
@@ -37,12 +37,24 @@
         padding-right: 4em;
     }
 
+    .sb-green {
+        color: var(--accent-secondary);
+    }
+
+    .sb-yellow {
+        color: var(--bb-yellow);
+    }
+
+    .sb-white {
+        color: var(--text-primary);
+    }
+
     @keyframes marquee {
         0% {
-            transform: translateX(100%);
+            transform: translateX(0);
         }
         100% {
-            transform: translateX(-100%);
+            transform: translateX(-50%);
         }
     }
 </style>
