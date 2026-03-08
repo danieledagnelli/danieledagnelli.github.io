@@ -1,0 +1,46 @@
+# Daniele D'Agnelli — Personal Website
+
+> Senior Engagement Manager specializing in AI deployments and cybersecurity, based in London, UK.
+
+This is the personal professional website of Daniele D'Agnelli, hosted at https://dagnelli.net.
+
+## About
+
+Daniele D'Agnelli is a Senior Engagement Manager at C3 AI with 15 years of experience in Professional Services. He leads high-impact digital transformations driving revenue growth and cost efficiency across Manufacturing, Healthcare, Oil & Gas, Telecom, and Financial Services sectors for global enterprises.
+
+## Key Facts
+
+- Current Role: Senior Engagement Manager (Forward Deployed Engineering) at C3 AI
+- Location: London, United Kingdom
+- Experience: 15 years in Professional Services and technology
+- Education: MSc Ethical Hacking & Cybersecurity (Distinction) — Abertay University; BSc Computer Science — University of Bari Aldo Moro
+- Programme Scale: $15M budget, 70+ resources, 100+ plants, 2,000+ end users
+- EBIT Impact: $18M
+- Client Satisfaction: NPS >70
+
+## Technical Expertise
+
+- Languages: Python, Java, Go, Rust, SQL, Bash
+- AI/ML: LLMs & GenAI, RAG Systems, Deep Learning, Reinforcement Learning, ML Pipelines
+- Cloud & Infrastructure: AWS, Azure, GCP, Linux, GitOps, MLOps
+- Security: Penetration Testing, Reverse Engineering, Security Tooling
+- Architecture: Solution Architecture, Enterprise Architecture
+
+## Career History
+
+- C3 AI — Senior Engagement Manager (2021–Present)
+- Deloitte — Manager (2018–2021)
+- Accenture — Management Consultant (2017–2018)
+- Codec — Senior Consultant (2015–2017)
+- Accenture — Software Engineer (2012–2014)
+
+## Contact
+
+- Email: daniele@dagnelli.net
+- GitHub: https://github.com/danieledagnelli
+- LinkedIn: https://www.linkedin.com/in/dagnelli
+- Bluesky: https://bsky.app/profile/dagnelli.net
+
+## Source
+
+This content is from https://dagnelli.net

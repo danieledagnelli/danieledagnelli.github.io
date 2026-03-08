@@ -128,6 +128,7 @@ const credentialRows = [
             </div>
         </div>
     </div>
+    <h1 class="sr-only">Daniele D'Agnelli — Senior Engagement Manager, AI & Cybersecurity</h1>
     <div class="bb-grid">
         <div class="bb-profile">
             <ProfilePanel />
@@ -275,7 +276,8 @@ const credentialRows = [
         flex-direction: column;
         position: relative;
     }
-    .bb-grid > div > :global(.panel)::after {
+    .bb-profile > :global(.panel)::after,
+    .bb-credentials > :global(.panel)::after {
         content: "▼";
         position: absolute;
         bottom: 0.2em;
@@ -292,6 +294,9 @@ const credentialRows = [
         overflow-y: auto;
         overflow-x: hidden;
         scrollbar-width: none;           /* Firefox */
+    }
+    .bb-profile > :global(.panel) :global(.panel__content),
+    .bb-credentials > :global(.panel) :global(.panel__content) {
         mask-image: linear-gradient(to bottom, black calc(100% - 1.5em), transparent);
         -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 1.5em), transparent);
     }

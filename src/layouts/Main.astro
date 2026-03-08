@@ -25,11 +25,45 @@ const { title, last_modified } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="Daniele D'Agnelli — Senior Engagement Manager, AI & Cybersecurity. 14+ years in tech." />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content="Senior Engagement Manager specializing in AI deployments and cybersecurity." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site).href} />
+    <meta property="og:image" content={new URL("/assets/og-image.png", Astro.site).href} />
+    <meta property="og:image:alt" content="Daniele D'Agnelli — Senior Engagement Manager" />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content="Senior Engagement Manager specializing in AI deployments and cybersecurity." />
+    <meta name="twitter:image" content={new URL("/assets/og-image.png", Astro.site).href} />
+    <meta name="twitter:creator" content="@danieledagnelli" />
     <title>{title}</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Daniele D'Agnelli",
+        "url": "https://dagnelli.net",
+        "image": "https://dagnelli.net/assets/dani.jpeg",
+        "jobTitle": "Senior Engagement Manager",
+        "worksFor": { "@type": "Organization", "name": "C3 AI" },
+        "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+        "email": "daniele@dagnelli.net",
+        "sameAs": [
+            "https://github.com/danieledagnelli",
+            "https://www.linkedin.com/in/dagnelli",
+            "https://bsky.app/profile/dagnelli.net",
+            "https://twitter.com/danieledagnelli"
+        ],
+        "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "Abertay University" },
+            { "@type": "CollegeOrUniversity", "name": "University of Bari Aldo Moro" }
+        ],
+        "knowsAbout": ["AI", "Cybersecurity", "Machine Learning", "Solution Architecture", "Program Management"],
+        "description": "Senior Engagement Manager with 15 years in Professional Services, leading high-impact digital transformations. Specializing in AI deployments and cybersecurity."
+    })} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />

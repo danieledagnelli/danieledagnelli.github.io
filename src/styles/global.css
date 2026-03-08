@@ -81,6 +81,19 @@ img {
     display: block;
 }
 
+/* Screen-reader only (visually hidden, accessible to assistive tech & SEO) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* Bloomberg terminal: no scroll on large desktop only */
 @media (min-width: 1280px) {
     html, body {
