@@ -7,7 +7,7 @@ import Timeline from "../components/Timeline.astro";
 import SkillsPanel from "../components/SkillsPanel.astro";
 import { siteMetadata } from "../siteMetadata";
 import { getCachedLastCommitTimestamp } from "../utils/github.js";
-import { metrics, industries, certifications, skills, education } from "../data/resume";
+import { metrics, industries, certifications, skills, education, managementSkills, continuousLearning, languages } from "../data/resume";
 
 const lastModified = await getCachedLastCommitTimestamp();
 ---
@@ -55,6 +55,16 @@ const lastModified = await getCachedLastCommitTimestamp();
                 <SkillsPanel items={industries} />
             </Panel>
         </div>
+        <div class="bb-mgmt">
+            <Panel title="MANAGEMENT" color="red">
+                <SkillsPanel items={managementSkills} />
+            </Panel>
+        </div>
+        <div class="bb-learning">
+            <Panel title="CONTINUOUS LEARNING" color="blue">
+                <SkillsPanel items={continuousLearning} />
+            </Panel>
+        </div>
         <div class="bb-terminal">
             <Panel title="TENURE" color="orange">
                 <div class="bb-tenure">
@@ -97,36 +107,42 @@ const lastModified = await getCachedLastCommitTimestamp();
 <style>
     .bb-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1.2fr;
+        grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr;
         grid-template-rows: auto 1fr 1fr 1fr;
-        gap: 0.5em;
+        gap: 0.4em;
         flex: 1;
         min-height: 0;
     }
 
-    /* Profile: left column, spans all rows */
+    /* Profile: col 1, spans all rows */
     .bb-profile { grid-column: 1; grid-row: 1 / -1; }
 
-    /* Metrics: top row, spans cols 2-4 */
+    /* Metrics: top row, spans cols 2-5 */
     .bb-metrics { grid-column: 2 / -1; grid-row: 1; }
 
-    /* Career: col 2, rows 2-3 */
-    .bb-career { grid-column: 2; grid-row: 2 / 4; }
+    /* Career: col 2, rows 2-4 */
+    .bb-career { grid-column: 2; grid-row: 2 / -1; }
 
-    /* Education: col 2, row 4 */
-    .bb-education { grid-column: 2; grid-row: 4; }
+    /* Tech stack: col 3, rows 2-3 */
+    .bb-skills { grid-column: 3; grid-row: 2 / 4; }
 
-    /* Tech stack: col 3, row 2 */
-    .bb-skills { grid-column: 3; grid-row: 2; }
+    /* Education: col 3, row 4 */
+    .bb-education { grid-column: 3; grid-row: 4; }
 
-    /* Certs: col 3, row 3 */
-    .bb-certs { grid-column: 3; grid-row: 3; }
+    /* Certs: col 4, row 2 */
+    .bb-certs { grid-column: 4; grid-row: 2; }
 
-    /* Industries: col 3, row 4 */
-    .bb-industries { grid-column: 3; grid-row: 4; }
+    /* Industries: col 4, row 3 */
+    .bb-industries { grid-column: 4; grid-row: 3; }
 
-    /* Terminal: col 4, rows 2-4 */
-    .bb-terminal { grid-column: 4; grid-row: 2 / -1; }
+    /* Management: col 4, row 4 */
+    .bb-mgmt { grid-column: 4; grid-row: 4; }
+
+    /* Tenure chart: col 5, row 2 */
+    .bb-terminal { grid-column: 5; grid-row: 2; }
+
+    /* Continuous learning: col 5, row 3 */
+    .bb-learning { grid-column: 5; grid-row: 3 / -1; }
 
     .bb-metrics-row {
         display: flex;
@@ -239,6 +255,8 @@ const lastModified = await getCachedLastCommitTimestamp();
         .bb-skills,
         .bb-certs,
         .bb-industries,
+        .bb-mgmt,
+        .bb-learning,
         .bb-terminal {
             grid-column: 1;
             grid-row: auto;
