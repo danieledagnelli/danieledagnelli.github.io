@@ -1,6 +1,6 @@
 export const siteMetadata = {
   title: "daniele d'agnelli",
-  description: 'old school',
+  description: 'senior engagement manager // ai & cybersecurity',
   name: "Daniele D'Agnelli",
   github_handle: "danieledagnelli",
   bsky_handle: "dagnelli.net",
@@ -10,18 +10,18 @@ export const siteMetadata = {
   bio: "old school",
   location: "London, UK",
   email: "daniele@dagnelli.net",
-  website: "https://example.com",
+  website: "https://dagnelli.net",
   orgs: [],
   config: {
     matrixEffect: {
-      timeout:3000,
+      timeout: 1500,
     },
     glitchEffect: {
-      maxDelay: 5000 // Maximum delay in milliseconds before showing glitch
+      maxDelay: 8000
     },
     fatalErrorWip: {
-      randomMaxDelayMs: 10000, // Max random delay before showing overlay
-      durationMs: 1000,        // Overlay visibility duration
+      randomMaxDelayMs: 12000,
+      durationMs: 800,
     },
   },
 };

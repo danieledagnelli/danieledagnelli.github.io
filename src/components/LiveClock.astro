@@ -1,0 +1,33 @@
+---
+type Props = {
+    id?: string;
+};
+
+const { id = "liveClock" } = Astro.props;
+---
+
+<span class="live-clock" id={id}>00:00:00</span>
+
+<style>
+    .live-clock {
+        font-family: var(--font-mono), monospace;
+        color: var(--accent-secondary);
+    }
+</style>
+
+<script>
+    function updateLiveClocks() {
+        const now = new Date();
+        const hh = String(now.getUTCHours()).padStart(2, "0");
+        const mm = String(now.getUTCMinutes()).padStart(2, "0");
+        const ss = String(now.getUTCSeconds()).padStart(2, "0");
+        const time = `${hh}:${mm}:${ss}`;
+
+        document.querySelectorAll<HTMLSpanElement>(".live-clock").forEach((el) => {
+            el.textContent = time;
+        });
+    }
+
+    updateLiveClocks();
+    setInterval(updateLiveClocks, 1000);
+</script>

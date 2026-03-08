@@ -100,7 +100,8 @@ const lastModified = await getCachedLastCommitTimestamp();
         grid-template-columns: 1fr 1fr 1fr 1.2fr;
         grid-template-rows: auto 1fr 1fr 1fr;
         gap: 0.5em;
-        height: 100%;
+        flex: 1;
+        min-height: 0;
     }
 
     /* Profile: left column, spans all rows */

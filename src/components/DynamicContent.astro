@@ -23,12 +23,11 @@ const { delay } = Astro.props;
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
         position: relative;
         text-align: left;
         overflow: hidden;
         background: transparent;
-        height: 100%;
+        min-height: 0;
     }
 
     /* Center the loading component */
@@ -51,7 +50,7 @@ const { delay } = Astro.props;
         display: flex;
         flex-direction: column;
         flex: 1;
-        height: 100%;
+        min-height: 0;
     }
 </style>
 
