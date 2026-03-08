@@ -19,16 +19,18 @@ const { delay } = Astro.props;
 
 <style>
     .dynamic__content {
-        border: 0.01em solid #37ff142a;
-        margin: 1em;
+        border: 1px solid var(--border-color, #2a3a4a);
+        margin: 0;
         padding: 0.5em;
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: top;
-        position: relative; /* For absolute positioning of children */
+        justify-content: flex-start;
+        position: relative;
         text-align: left;
-        overflow: hidden; /* Prevent children from overflowing borders */
+        overflow: hidden;
+        background: transparent;
+        height: 100%;
     }
 
     /* Center the loading component */
@@ -36,13 +38,13 @@ const { delay } = Astro.props;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute; /* Keep centered without stretching over borders */
+        position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        padding: inherit; /* Ensure inner padding matches outer container */
-        pointer-events: none; /* Allow clicks to pass through to other components */
+        pointer-events: none;
+        z-index: 1;
     }
 
     #slotComponent {

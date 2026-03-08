@@ -1,59 +1,123 @@
 ---
 import "../styles/global.css";
-import "../components/Footer.astro";
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import StatusBar from "../components/StatusBar.astro";
 import DynamicContent from "../components/DynamicContent.astro";
-import LastChanged from "../components/LastChanged.astro";
 import MatrixEffect from "../components/Matrix.astro";
 import { siteMetadata } from "../siteMetadata";
 import GlitchEffect from "../components/GlitchEffect.astro";
+import LiveClock from "../components/LiveClock.astro";
 
 type Props = {
     title: string;
     last_modified: string;
 };
-// const timeout : number = 5000;
+
 const timeout = siteMetadata.config.matrixEffect.timeout;
 const { randomMaxDelayMs, durationMs } = siteMetadata.config.fatalErrorWip;
-
 const { title, last_modified } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="Content-Language" content="en" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="generator" content={Astro.generator} />
-        <meta name="description" content="al and stuff" />
-        <title>{title}</title>
-        <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    </head>
-    <body>
-        <MatrixEffect delay={timeout} />
-        <GlitchEffect randomMaxDelayMs={randomMaxDelayMs} durationMs={durationMs} />
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Daniele D'Agnelli — Senior Engagement Manager, AI & Cybersecurity. 14+ years in tech." />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content="Senior Engagement Manager specializing in AI deployments and cybersecurity." />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <MatrixEffect delay={timeout} />
+    <GlitchEffect randomMaxDelayMs={randomMaxDelayMs} durationMs={durationMs} />
 
-        <main class="content">
-            <!-- <slot /> -->
-            <Header />
-            <Navigation />
+    <div class="bloomberg">
+        <div class="bloomberg__ticker"><StatusBar /></div>
+        <main class="bloomberg__main">
             <DynamicContent delay={timeout}>
                 <slot />
             </DynamicContent>
-            <LastChanged last_modified={`${last_modified}`} />
         </main>
-
-        <Footer />
-    </body>
+        <div class="bloomberg__status">
+            <span>&copy; 2025 {siteMetadata.title}</span>
+            <span>last modified: {last_modified}</span>
+            <span class="bloomberg__status-online">
+                <span class="bloomberg__status-dot"></span>
+                system online
+            </span>
+            <LiveClock id="statusClock" />
+        </div>
+    </div>
+</body>
 </html>
 
 <style>
-    .content {
-        flex: 1; /* Allow main content to grow */
-        display: flex; /* Use flexbox for child alignment */
-        flex-direction: column; /* Stack children vertically */
+    .bloomberg {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .bloomberg__ticker {
+        grid-row: 1;
+    }
+
+    .bloomberg__main {
+        grid-row: 2;
+        overflow: hidden;
+        padding: 0.5em;
+    }
+
+    .bloomberg__status {
+        grid-row: 3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--bg-secondary);
+        border-top: 1px solid var(--border-color);
+        padding: 0.3em 1em;
+        font-family: var(--font-mono);
+        font-size: var(--font-size-xs);
+        color: var(--text-secondary);
+        text-transform: uppercase;
+    }
+
+    .bloomberg__status-online {
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+        color: var(--accent-secondary);
+    }
+
+    .bloomberg__status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-secondary);
+        display: inline-block;
+        animation: statusPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    @media (max-width: 768px) {
+        .bloomberg {
+            height: auto;
+            min-height: 100vh;
+        }
+        .bloomberg__main {
+            overflow: auto;
+        }
     }
 </style>
