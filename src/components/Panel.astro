@@ -3,14 +3,23 @@ type Props = {
     title: string;
     status?: string;
     fullWidth?: boolean;
+    color?: 'orange' | 'green' | 'blue' | 'red';
 };
 
-const { title, status, fullWidth = false } = Astro.props;
+const { title, status, fullWidth = false, color = 'orange' } = Astro.props;
+
+const colorMap: Record<string, string> = {
+    orange: 'var(--accent-primary)',
+    green: 'var(--accent-secondary)',
+    blue: 'var(--accent-tertiary)',
+    red: 'var(--accent-danger)',
+};
+const borderColor = colorMap[color];
 ---
 
-<div class:list={["panel", { "panel--full-width": fullWidth }]}>
+<div class:list={["panel", { "panel--full-width": fullWidth }]} style={`border-top-color: ${borderColor}`}>
     <div class="panel__title-bar">
-        <span class="panel__title">{title}</span>
+        <span class="panel__title" style={`color: ${borderColor}`}>{title}</span>
         {status && (
             <span class="panel__status">
                 <span class="panel__status-dot"></span>

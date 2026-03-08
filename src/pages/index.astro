@@ -19,19 +19,19 @@ const lastModified = await getCachedLastCommitTimestamp();
             <ProfilePanel />
         </div>
         <div class="bb-metrics">
-            <Panel title="KEY METRICS" status="live">
+            <Panel title="KEY METRICS" status="live" color="orange">
                 <div class="bb-metrics-row">
                     {metrics.map(m => <DataCard value={m.value} label={m.label} />)}
                 </div>
             </Panel>
         </div>
         <div class="bb-career">
-            <Panel title="CAREER">
+            <Panel title="CAREER" color="green">
                 <Timeline compact={true} />
             </Panel>
         </div>
         <div class="bb-education">
-            <Panel title="EDUCATION">
+            <Panel title="EDUCATION" color="green">
                 {education.map(edu => (
                     <div class="bb-edu-entry">
                         <span class="bb-edu-degree">{edu.degree}</span>
@@ -42,17 +42,17 @@ const lastModified = await getCachedLastCommitTimestamp();
             </Panel>
         </div>
         <div class="bb-skills">
-            <Panel title="TECH STACK">
+            <Panel title="TECH STACK" color="blue">
                 <SkillsPanel items={skills} />
             </Panel>
         </div>
         <div class="bb-certs">
-            <Panel title="CERTIFICATIONS">
+            <Panel title="CERTIFICATIONS" color="blue">
                 <SkillsPanel items={certifications} />
             </Panel>
         </div>
         <div class="bb-industries">
-            <Panel title="INDUSTRIES">
+            <Panel title="INDUSTRIES" color="red">
                 <SkillsPanel items={industries} />
             </Panel>
         </div>
