@@ -1,7 +1,6 @@
 ---
 import Main from "../layouts/Main.astro";
 import ProfilePanel from "../components/ProfilePanel.astro";
-import Whoami from "../components/Whoami.astro";
 import Panel from "../components/Panel.astro";
 import DataCard from "../components/DataCard.astro";
 import Timeline from "../components/Timeline.astro";
@@ -57,7 +56,40 @@ const lastModified = await getCachedLastCommitTimestamp();
             </Panel>
         </div>
         <div class="bb-terminal">
-            <Whoami />
+            <Panel title="TENURE" color="orange">
+                <div class="bb-tenure">
+                    <div class="bb-tenure-row">
+                        <span class="bb-tenure-label">c3 ai</span>
+                        <div class="bb-tenure-bar" style="width: 80%">
+                            <span class="bb-tenure-val">4+ yrs</span>
+                        </div>
+                    </div>
+                    <div class="bb-tenure-row">
+                        <span class="bb-tenure-label">deloitte</span>
+                        <div class="bb-tenure-bar bb-tenure-bar--blue" style="width: 50%">
+                            <span class="bb-tenure-val">3 yrs</span>
+                        </div>
+                    </div>
+                    <div class="bb-tenure-row">
+                        <span class="bb-tenure-label">accenture uk</span>
+                        <div class="bb-tenure-bar bb-tenure-bar--green" style="width: 25%">
+                            <span class="bb-tenure-val">1.5 yrs</span>
+                        </div>
+                    </div>
+                    <div class="bb-tenure-row">
+                        <span class="bb-tenure-label">codec</span>
+                        <div class="bb-tenure-bar bb-tenure-bar--blue" style="width: 35%">
+                            <span class="bb-tenure-val">2 yrs</span>
+                        </div>
+                    </div>
+                    <div class="bb-tenure-row">
+                        <span class="bb-tenure-label">accenture it</span>
+                        <div class="bb-tenure-bar bb-tenure-bar--green" style="width: 45%">
+                            <span class="bb-tenure-val">2.5 yrs</span>
+                        </div>
+                    </div>
+                </div>
+            </Panel>
         </div>
     </div>
 </Main>
@@ -134,8 +166,7 @@ const lastModified = await getCachedLastCommitTimestamp();
         overflow: hidden;
     }
 
-    .bb-grid > div > :global(.panel),
-    .bb-grid > div > :global(.whoami) {
+    .bb-grid > div > :global(.panel) {
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -145,6 +176,52 @@ const lastModified = await getCachedLastCommitTimestamp();
         flex: 1;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+
+    .bb-tenure {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .bb-tenure-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+
+    .bb-tenure-label {
+        width: 100px;
+        text-align: right;
+        color: var(--text-secondary);
+        font-size: var(--font-size-xxs);
+        text-transform: uppercase;
+        flex-shrink: 0;
+    }
+
+    .bb-tenure-bar {
+        height: 18px;
+        background: var(--accent-primary);
+        border-radius: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 0.4em;
+        min-width: 40px;
+    }
+
+    .bb-tenure-bar--blue {
+        background: var(--accent-tertiary);
+    }
+
+    .bb-tenure-bar--green {
+        background: var(--accent-secondary);
+    }
+
+    .bb-tenure-val {
+        color: #000;
+        font-size: var(--font-size-xxs);
+        font-weight: bold;
     }
 
     /* Mobile: single column, allow scroll */

@@ -1,16 +1,16 @@
 /* === DESIGN TOKENS === */
 html {
-    --bg-primary: #0a0e17;
-    --bg-secondary: #111827;
-    --bg-tertiary: #1a2332;
-    --border-color: #2a3a4a;
-    --border-active: #FFA028;
-    --accent-primary: #FFA028;
-    --accent-secondary: #39ff14;
-    --accent-tertiary: #00BFFF;
-    --accent-danger: #ff1414;
-    --text-primary: #e0e6ed;
-    --text-secondary: #8899aa;
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --bg-tertiary: #111111;
+    --border-color: #333333;
+    --border-active: #FF8C00;
+    --accent-primary: #FF8C00;
+    --accent-secondary: #00C805;
+    --accent-tertiary: #5B9BD5;
+    --accent-danger: #FF3333;
+    --text-primary: #FFFFFF;
+    --text-secondary: #999999;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
     --font-size-xs: 0.7rem;
     --font-size-sm: 0.8rem;
@@ -22,7 +22,7 @@ html {
 
     /* legacy compat */
     --background: var(--bg-primary);
-    --text-color: var(--accent-secondary);
+    --text-color: var(--text-primary);
     --link-color: var(--accent-tertiary);
 }
 

@@ -82,6 +82,24 @@ const {
         <div class="profile__languages">
             {languages.map(lang => <span class="profile__lang">{lang}</span>)}
         </div>
+        <div class="profile__data-table">
+            <div class="profile__data-row">
+                <span class="profile__data-key">role</span>
+                <span class="profile__data-val">sr. engagement mgr</span>
+            </div>
+            <div class="profile__data-row">
+                <span class="profile__data-key">company</span>
+                <span class="profile__data-val">c3 ai</span>
+            </div>
+            <div class="profile__data-row">
+                <span class="profile__data-key">focus</span>
+                <span class="profile__data-val">ai / cybersecurity</span>
+            </div>
+            <div class="profile__data-row">
+                <span class="profile__data-key">status</span>
+                <span class="profile__data-val profile__data-val--active">active</span>
+            </div>
+        </div>
     </div>
 </Panel>
 
@@ -172,6 +190,32 @@ const {
         color: var(--text-secondary);
         font-size: var(--font-size-xxs);
         text-transform: uppercase;
+    }
+
+    .profile__data-table {
+        width: 100%;
+        border-top: 1px solid var(--border-color);
+        padding-top: 0.5em;
+    }
+
+    .profile__data-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.2em 0;
+        font-size: var(--font-size-xxs);
+        text-transform: uppercase;
+    }
+
+    .profile__data-key {
+        color: var(--text-secondary);
+    }
+
+    .profile__data-val {
+        color: var(--text-primary);
+    }
+
+    .profile__data-val--active {
+        color: var(--accent-secondary);
     }
 </style>
 
