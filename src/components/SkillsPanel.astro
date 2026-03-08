@@ -1,0 +1,56 @@
+---
+type Props = {
+    items: string[];
+    title?: string;
+};
+
+const { items, title } = Astro.props;
+---
+
+<div class="skills-panel">
+    {title && <span class="skills-panel__title">{title}</span>}
+    <div class="skills-panel__badges">
+        {items.map((item) => (
+            <span class="skills-panel__badge">{item}</span>
+        ))}
+    </div>
+</div>
+
+<style>
+    .skills-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3em;
+    }
+
+    .skills-panel__title {
+        text-transform: uppercase;
+        color: var(--accent-primary);
+        font-size: var(--font-size-xs);
+        font-family: var(--font-mono);
+        letter-spacing: 1px;
+    }
+
+    .skills-panel__badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3em;
+    }
+
+    .skills-panel__badge {
+        border: 1px solid var(--border-color);
+        padding: 0.2em 0.4em;
+        font-size: var(--font-size-xxs);
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        font-family: var(--font-mono);
+        border-radius: var(--panel-radius);
+        transition: border-color 0.2s ease, color 0.2s ease;
+        cursor: default;
+    }
+
+    .skills-panel__badge:hover {
+        border-color: var(--accent-primary);
+        color: var(--accent-primary);
+    }
+</style>

@@ -1,0 +1,102 @@
+---
+import { experience } from "../data/resume";
+
+type Props = {
+    compact?: boolean;
+};
+
+const { compact = false } = Astro.props;
+---
+
+<div class="timeline">
+    {experience.map((exp) => (
+        <div class="timeline__entry">
+            {exp.roles.map((role, roleIndex) => (
+                (compact && roleIndex > 0) ? null : (
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__period">{role.period}</div>
+                        <div class="timeline__details">
+                            <span class="timeline__company">{exp.company}</span>
+                            <span class="timeline__role">{role.title}</span>
+                            {!compact && <span class="timeline__location">{exp.location}</span>}
+                        </div>
+                    </div>
+                )
+            ))}
+        </div>
+    ))}
+</div>
+
+<style>
+    .timeline {
+        position: relative;
+        padding-left: 2em;
+    }
+
+    .timeline::before {
+        content: "";
+        position: absolute;
+        left: 3px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--border-color);
+    }
+
+    .timeline__entry {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4em;
+    }
+
+    .timeline__entry + .timeline__entry {
+        margin-top: 0.4em;
+    }
+
+    .timeline__item {
+        position: relative;
+    }
+
+    .timeline__dot {
+        position: absolute;
+        left: -2em;
+        top: 0.35em;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-primary);
+        transform: translateX(-3px);
+    }
+
+    .timeline__period {
+        color: var(--text-secondary);
+        font-size: var(--font-size-xxs);
+        font-family: var(--font-mono);
+        margin-bottom: 0.2em;
+    }
+
+    .timeline__details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15em;
+    }
+
+    .timeline__company {
+        color: var(--accent-primary);
+        font-family: var(--font-mono);
+        font-size: var(--font-size-xs);
+    }
+
+    .timeline__role {
+        color: var(--text-primary);
+        font-family: var(--font-mono);
+        font-size: var(--font-size-xs);
+    }
+
+    .timeline__location {
+        color: var(--text-secondary);
+        font-size: var(--font-size-xs);
+        font-family: var(--font-mono);
+    }
+</style>

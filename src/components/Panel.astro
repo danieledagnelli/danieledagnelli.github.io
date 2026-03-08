@@ -1,0 +1,98 @@
+---
+type Props = {
+    title: string;
+    status?: string;
+    fullWidth?: boolean;
+};
+
+const { title, status, fullWidth = false } = Astro.props;
+---
+
+<div class:list={["panel", { "panel--full-width": fullWidth }]}>
+    <div class="panel__title-bar">
+        <span class="panel__title">{title}</span>
+        {status && (
+            <span class="panel__status">
+                <span class="panel__status-dot"></span>
+                {status}
+            </span>
+        )}
+    </div>
+    <div class="panel__content">
+        <slot />
+    </div>
+</div>
+
+<style>
+    .panel {
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        border-top: 2px solid var(--accent-primary);
+        border-radius: var(--panel-radius);
+        transition: box-shadow 0.3s ease;
+        animation: panelFadeIn 0.4s ease-out both;
+    }
+
+    .panel:hover {
+        box-shadow: 0 0 8px rgba(255, 160, 40, 0.15);
+    }
+
+    @keyframes panelFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .panel--full-width {
+        grid-column: 1 / -1;
+    }
+
+    .panel__title-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.3em 0.6em;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .panel__title {
+        text-transform: uppercase;
+        color: var(--accent-primary);
+        font-size: var(--font-size-sm);
+        font-family: var(--font-mono);
+        letter-spacing: 1px;
+    }
+
+    .panel__status {
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+        font-size: var(--font-size-xs);
+        color: var(--accent-secondary);
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+    }
+
+    .panel__status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-secondary);
+        display: inline-block;
+        animation: statusPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .panel__content {
+        padding: 0.5em;
+    }
+</style>

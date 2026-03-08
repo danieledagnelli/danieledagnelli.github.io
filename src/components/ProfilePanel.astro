@@ -1,0 +1,308 @@
+---
+import { siteMetadata } from "../siteMetadata";
+import { languages } from "../data/resume";
+import Panel from "./Panel.astro";
+
+const {
+    name,
+    github_handle,
+    bsky_handle,
+    linkedin_handle,
+    location,
+    email,
+} = siteMetadata;
+---
+
+<Panel title="PROFILE">
+    <div class="profile">
+        <div class="profile__avatar-wrapper">
+            <img src="/assets/dani.jpeg" alt={name + " avatar"} class="profile__avatar" />
+        </div>
+
+        <span class="profile__name">{name}</span>
+
+        <ul class="profile__info">
+            <li>
+                <!-- Location icon -->
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0a6 6 0 0 0-6 6c0 3.313 6 10 6 10s6-6.687 6-10a6 6 0 0 0-6-6zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"></path>
+                </svg>
+                <span>{location}</span>
+            </li>
+            <li>
+                <!-- Email icon -->
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"></path>
+                </svg>
+                <a id="emailLink" href={`mailto:${email}`}>{email}</a>
+            </li>
+        </ul>
+
+        <ul class="profile__socials">
+            <!-- GitHub -->
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" role="img" viewBox="0 0 16 16">
+                    <title>GitHub</title>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-1.79.33-2.23-.44-2.37-.85-.09-.23-.48-.85-.82-1.02-.28-.15-.68-.52 0-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.58.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.57.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.14.45.55.38A8.014 8.014 0 0016 8c0-4.42-3.58-8-8-8z" fill="currentColor"></path>
+                </svg>
+                <a rel="nofollow me" href={`https://github.com/${github_handle}`} target="_blank">{github_handle}</a>
+            </li>
+            <!-- Bluesky -->
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" role="img" width="16" height="16">
+                    <title>Bluesky</title>
+                    <path fill="currentColor" d="M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.725-1.498 2.697-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692-.572 2.04-2.653 2.561-4.504 2.246 3.236.551 4.06 2.375 2.281 4.2-3.376 3.464-4.852-.87-5.23-1.98-.07-.204-.103-.3-.103-.218 0-.081-.033.014-.102.218-.379 1.11-1.855 5.444-5.231 1.98-1.778-1.825-.955-3.65 2.28-4.2-1.85.315-3.932-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632 0 .186 2.145.955 3.468 1.948Z"></path>
+                </svg>
+                <a rel="nofollow me" href={`https://bsky.app/profile/${bsky_handle}`} target="_blank">@{bsky_handle}</a>
+            </li>
+            <!-- LinkedIn -->
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" role="img" viewBox="0 0 16 16">
+                    <title>LinkedIn</title>
+                    <g clip-path="url(#clip0_profile)">
+                        <path fill="currentColor" d="M14.5455 0H1.45455C.650909 0 0 .650909 0 1.45455V14.5455C0 15.3491.650909 16 1.45455 16H14.5455C15.3491 16 16 15.3491 16 14.5455V1.45455C16 .650909 15.3491 0 14.5455 0zM5.05746 13.0909H2.912V6.18764h2.14546v6.90326zM3.96291 5.20073c-.69164 0-1.25091-.56073-1.25091-1.25091 0-.69018.56073-1.25091 1.25091-1.25091.69091 0 1.25164.56073 1.25164 1.25091 0 .69018-.56073 1.25091-1.25164 1.25091zM13.0938 13.0909h-2.144v-3.3571c0-.80073-.0145-1.83055-1.1149-1.83055-1.11536 0-1.28699.872-1.28699 1.77236v3.41529h-2.144v-6.90326h2.05809v.94327h.02909c.28563-.54255.98327-1.11545 2.02409-1.11545 2.164 0 2.5622 1.42545 2.5622 3.27891v3.79608z"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_profile">
+                            <path fill="currentColor" d="M0 0h16v16H0z"></path>
+                        </clipPath>
+                    </defs>
+                </svg>
+                <a rel="nofollow me" href={`https://www.linkedin.com/in/${linkedin_handle}`} target="_blank">in/{linkedin_handle}</a>
+            </li>
+            <!-- Twitter/X -->
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" width="16" height="16" role="img">
+                    <title>X (Twitter)</title>
+                    <path fill="currentColor" d="M9.332 6.925 14.544 1h-1.235L8.783 6.145 5.17 1H1l5.466 7.78L1 14.993h1.235l4.78-5.433 3.816 5.433H15L9.332 6.925zM7.64 8.848l-.554-.775L2.68 1.91h1.897l3.556 4.975.554.775 4.622 6.466H13.35L7.64 8.848z"></path>
+                </svg>
+                <a rel="nofollow me" href="https://twitter.com/danieledagnelli" target="_blank">@danieledagnelli</a>
+            </li>
+        </ul>
+        <div class="profile__languages">
+            {languages.map(lang => <span class="profile__lang">{lang}</span>)}
+        </div>
+    </div>
+</Panel>
+
+<style>
+    .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75em;
+    }
+
+    .profile__avatar-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .profile__avatar {
+        border-radius: var(--panel-radius);
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+    }
+
+    .profile__name {
+        color: var(--accent-primary);
+        font-family: var(--font-mono);
+        font-size: var(--font-size-base);
+        font-weight: bold;
+    }
+
+    .profile__info,
+    .profile__socials {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .profile__info li,
+    .profile__socials li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.6em;
+    }
+
+    .profile__info li svg,
+    .profile__socials li svg {
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        margin-right: 0.5rem;
+        color: var(--text-secondary);
+    }
+
+    .profile__info span {
+        color: var(--text-secondary);
+        font-size: var(--font-size-sm);
+        font-family: var(--font-mono);
+    }
+
+    .profile__info a,
+    .profile__socials a {
+        color: var(--accent-tertiary);
+        text-decoration: none;
+        font-size: var(--font-size-sm);
+        font-family: var(--font-mono);
+        transition: color 0.2s ease;
+    }
+
+    .profile__info a:hover,
+    .profile__socials a:hover {
+        color: var(--accent-primary);
+    }
+
+    .profile__socials {
+        border-top: 1px solid var(--border-color);
+        padding-top: 0.75em;
+    }
+
+    .profile__languages {
+        display: flex;
+        gap: 0.5em;
+        border-top: 1px solid var(--border-color);
+        padding-top: 0.5em;
+        flex-wrap: wrap;
+    }
+    .profile__lang {
+        color: var(--text-secondary);
+        font-size: var(--font-size-xxs);
+        text-transform: uppercase;
+    }
+</style>
+
+<script>
+    const linkOutputMap: Record<string, string> = {
+        "mailto:daniele@dagnelli.net": "Opening mail client...",
+        "https://github.com/danieledagnelli": "Fetching GitHub profile...",
+        "https://bsky.app/profile/dagnelli.net": "Opening Bluesky profile...",
+        "https://www.linkedin.com/in/dagnelli": "Opening LinkedIn profile...",
+        "https://twitter.com/danieledagnelli": "Opening Twitter profile...",
+    };
+
+    document.querySelectorAll(".profile__info a, .profile__socials a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const url = (link as HTMLAnchorElement).href;
+            const command = `curl ${url}`;
+
+            const output = linkOutputMap[url] || `Fetching ${url}...`;
+
+            simulateCommand(command, output, () => {
+                if (url.startsWith("mailto:")) {
+                    window.location.href = url;
+                } else {
+                    window.open(url, "_blank", "noopener,noreferrer");
+                }
+            });
+        });
+    });
+
+    function simulateCommand(
+        command: string,
+        output: string | null,
+        callback: () => void,
+    ) {
+        const terminal = document.querySelector("#commandTerminal");
+        if (!terminal) return;
+
+        let lastPrompt = Array.from(
+            terminal.querySelectorAll(".command-content-pair"),
+        )
+            .reverse()
+            .find((prompt) => !prompt.querySelector(".content")?.textContent?.trim());
+
+        if (!lastPrompt) {
+            lastPrompt = document.createElement("div");
+            lastPrompt.className = "command-content-pair";
+            lastPrompt.innerHTML = `
+                <p>daniele@dagnelli.net:~$ <span class="typewriter"></span><span class="cursor">|</span></p>
+                <p class="content" style="display: none;"></p>
+            `;
+            terminal.appendChild(lastPrompt);
+        }
+
+        const typewriter = lastPrompt.querySelector(".typewriter");
+        const content = lastPrompt.querySelector(".content");
+        const cursor = lastPrompt.querySelector(".cursor");
+
+        if (typewriter) typewriter.textContent = "";
+        if (content) {
+            if (content instanceof HTMLElement) content.style.display = "none";
+            content.textContent = output;
+        }
+
+        if (cursor) cursor.classList.add("blink");
+
+        processCommand(lastPrompt, command, callback);
+    }
+
+    function processCommand(
+        pair: Element,
+        command: string | any[],
+        callback: () => void,
+    ) {
+        const typewriter = pair.querySelector(".typewriter");
+        const content = pair.querySelector(".content");
+        const cursor = pair.querySelector(".cursor");
+        let index = 0;
+
+        document.querySelectorAll(".cursor.blink").forEach((el) => {
+            el.classList.remove("blink");
+        });
+
+        if (cursor) cursor.classList.add("blink");
+
+        function type() {
+            if (index < command.length && typewriter) {
+                typewriter.textContent += command[index];
+                index++;
+                setTimeout(type, 100);
+            } else {
+                setTimeout(() => {
+                    if (content instanceof HTMLElement) {
+                        content.style.display = "block";
+                    }
+
+                    setTimeout(() => {
+                        callback();
+
+                        const existingEmptyPrompt = Array.from(
+                            document.querySelectorAll(".command-content-pair"),
+                        )
+                            .reverse()
+                            .find((prompt) => {
+                                const content = prompt.querySelector(".content");
+                                return !content?.textContent?.trim();
+                            });
+
+                        if (!existingEmptyPrompt) {
+                            createNewPrompt();
+                        }
+                    }, 500);
+                }, 300);
+            }
+        }
+
+        type();
+    }
+
+    function createNewPrompt() {
+        const terminal = document.querySelector("#commandTerminal");
+        if (!terminal) return;
+
+        const newPrompt = document.createElement("div");
+        newPrompt.className = "command-content-pair";
+        newPrompt.innerHTML = `
+            <p>daniele@dagnelli.net:~$ <span class="typewriter"></span><span class="cursor"></span></p>
+            <p class="content" style="display: none;"></p>
+        `;
+        terminal.appendChild(newPrompt);
+
+        newPrompt.scrollIntoView({ behavior: "smooth" });
+    }
+</script>
