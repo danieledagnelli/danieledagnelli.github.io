@@ -1,59 +1,84 @@
+/* === DESIGN TOKENS === */
 html {
-    --background: #101010;
-    --text-color: #39ff14;
-    --text-transformation: lowercase;
-    --font: 0.9rem "Courier New", Courier, monospace;
-    --link-color: white;
+    --bg-primary: #0a0e17;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1a2332;
+    --border-color: #2a3a4a;
+    --border-active: #FFA028;
+    --accent-primary: #FFA028;
+    --accent-secondary: #39ff14;
+    --accent-tertiary: #00BFFF;
+    --accent-danger: #ff1414;
+    --text-primary: #e0e6ed;
+    --text-secondary: #8899aa;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --font-size-xs: 0.7rem;
+    --font-size-sm: 0.8rem;
+    --font-size-base: 0.9rem;
+    --font-size-lg: 1.1rem;
+    --font-size-xl: 1.4rem;
+    --panel-radius: 2px;
+    --font-size-xxs: 0.6rem;
 
+    /* legacy compat */
+    --background: var(--bg-primary);
+    --text-color: var(--accent-secondary);
+    --link-color: var(--accent-tertiary);
 }
 
-/* html.business {
-    --background: white;
-    --text-color: #101010;
-    --text-transformation: lowercase;
-    --font: font: "Roboto", sans-serif;
-    --link-color: blue;
-} */
+/* === BASE RESET === */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
 body {
-    background-color: var(--background);
-    text-transform: var(--text-transformation);
-    color: var(--text-color);
-    /* font-family: "Courier New", Courier, monospace; */
-    font: var(--font);
-
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    /* Ensure full height of the viewport */
-}
-
-main {
-    text-align: center;
-    font-weight: normal;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-base);
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     font-size: inherit;
     font-weight: inherit;
-    /* Remove bold from all elements */
-
-}
-
-h2 {
-    font-size: inherit;
-    font-weight: inherit;
-    /* Remove bold from all elements */
+    margin: 0;
 }
 
 a {
     text-decoration: none;
-    color: inherit;
-    padding: 0.5rem 1rem;
+    color: var(--accent-tertiary);
+    transition: color 0.2s ease;
 }
 
+a:hover {
+    color: var(--accent-primary);
+    text-decoration: underline;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+p {
+    margin: 0 0 0.5em 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Bloomberg terminal: no scroll on desktop */
+@media (min-width: 769px) {
+    html, body {
+        height: 100vh;
+        overflow: hidden;
+    }
+}
