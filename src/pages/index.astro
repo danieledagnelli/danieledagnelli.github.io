@@ -1,56 +1,169 @@
 ---
 import Main from "../layouts/Main.astro";
-import ContactSidebar from "../components/ContactSidebar.astro";
+import ProfilePanel from "../components/ProfilePanel.astro";
 import Whoami from "../components/Whoami.astro";
-
+import Panel from "../components/Panel.astro";
+import DataCard from "../components/DataCard.astro";
+import Timeline from "../components/Timeline.astro";
+import SkillsPanel from "../components/SkillsPanel.astro";
 import { siteMetadata } from "../siteMetadata";
 import { getCachedLastCommitTimestamp } from "../utils/github.js";
+import { metrics, industries, certifications, skills, education } from "../data/resume";
 
 const lastModified = await getCachedLastCommitTimestamp();
 ---
 
 <Main title={`${siteMetadata.title}`} last_modified={lastModified}>
-    <div class="container">
-        <ContactSidebar />
-        <Whoami />
-        <!-- This is where we'll render the typed command -->
+    <div class="bb-grid">
+        <div class="bb-profile">
+            <ProfilePanel />
+        </div>
+        <div class="bb-metrics">
+            <Panel title="KEY METRICS" status="live">
+                <div class="bb-metrics-row">
+                    {metrics.map(m => <DataCard value={m.value} label={m.label} />)}
+                </div>
+            </Panel>
+        </div>
+        <div class="bb-career">
+            <Panel title="CAREER">
+                <Timeline compact={true} />
+            </Panel>
+        </div>
+        <div class="bb-education">
+            <Panel title="EDUCATION">
+                {education.map(edu => (
+                    <div class="bb-edu-entry">
+                        <span class="bb-edu-degree">{edu.degree}</span>
+                        <span class="bb-edu-meta">{edu.institution} // {edu.period}</span>
+                        {edu.distinction && <span class="bb-edu-distinction">{edu.distinction}</span>}
+                    </div>
+                ))}
+            </Panel>
+        </div>
+        <div class="bb-skills">
+            <Panel title="TECH STACK">
+                <SkillsPanel items={skills} />
+            </Panel>
+        </div>
+        <div class="bb-certs">
+            <Panel title="CERTIFICATIONS">
+                <SkillsPanel items={certifications} />
+            </Panel>
+        </div>
+        <div class="bb-industries">
+            <Panel title="INDUSTRIES">
+                <SkillsPanel items={industries} />
+            </Panel>
+        </div>
+        <div class="bb-terminal">
+            <Whoami />
+        </div>
     </div>
-
-    <style>
-        .container {
-            display: flex;
-            justify-content: left;
-            align-items: flex-start;
-            gap: 1em;
-            height: auto;
-            padding: 1em;
-            flex-wrap: wrap;
-        }
-
-        .sidebar,
-        .whoami {
-            width: 100%;
-            padding: 1em;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--text-color);
-            margin-bottom: 1em;
-        }
-
-        /* Responsive adjustments for mobile screens */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column; /* Stack elements vertically */
-                padding: 0.5em;
-            }
-
-            .sidebar,
-            .whoami {
-                width: 100vw; /* Full width of the viewport */
-                margin: 0; /* Remove margins for a clean edge-to-edge layout */
-                padding: 1em; /* Adjust padding for spacing */
-            }
-        }
-    </style>
 </Main>
 
+<style>
+    .bb-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1.2fr;
+        grid-template-rows: auto 1fr 1fr 1fr;
+        gap: 0.5em;
+        height: 100%;
+    }
 
+    /* Profile: left column, spans all rows */
+    .bb-profile { grid-column: 1; grid-row: 1 / -1; }
+
+    /* Metrics: top row, spans cols 2-4 */
+    .bb-metrics { grid-column: 2 / -1; grid-row: 1; }
+
+    /* Career: col 2, rows 2-3 */
+    .bb-career { grid-column: 2; grid-row: 2 / 4; }
+
+    /* Education: col 2, row 4 */
+    .bb-education { grid-column: 2; grid-row: 4; }
+
+    /* Tech stack: col 3, row 2 */
+    .bb-skills { grid-column: 3; grid-row: 2; }
+
+    /* Certs: col 3, row 3 */
+    .bb-certs { grid-column: 3; grid-row: 3; }
+
+    /* Industries: col 3, row 4 */
+    .bb-industries { grid-column: 3; grid-row: 4; }
+
+    /* Terminal: col 4, rows 2-4 */
+    .bb-terminal { grid-column: 4; grid-row: 2 / -1; }
+
+    .bb-metrics-row {
+        display: flex;
+        gap: 0.5em;
+        justify-content: space-around;
+    }
+
+    .bb-edu-entry {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15em;
+        margin-bottom: 0.5em;
+    }
+
+    .bb-edu-entry:last-child {
+        margin-bottom: 0;
+    }
+
+    .bb-edu-degree {
+        color: var(--text-primary);
+        font-size: var(--font-size-sm);
+    }
+
+    .bb-edu-meta {
+        color: var(--text-secondary);
+        font-size: var(--font-size-xs);
+    }
+
+    .bb-edu-distinction {
+        color: var(--accent-primary);
+        font-size: var(--font-size-xs);
+        text-transform: uppercase;
+    }
+
+    /* Make all panels and whoami fill their grid cells */
+    .bb-grid > div {
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .bb-grid > div > :global(.panel),
+    .bb-grid > div > :global(.whoami) {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bb-grid > div > :global(.panel) :global(.panel__content) {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    /* Mobile: single column, allow scroll */
+    @media (max-width: 768px) {
+        .bb-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            height: auto;
+        }
+        .bb-profile,
+        .bb-metrics,
+        .bb-career,
+        .bb-education,
+        .bb-skills,
+        .bb-certs,
+        .bb-industries,
+        .bb-terminal {
+            grid-column: 1;
+            grid-row: auto;
+        }
+    }
+</style>
