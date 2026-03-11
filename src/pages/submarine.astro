@@ -1,0 +1,1466 @@
+---
+import { siteMetadata } from "../siteMetadata";
+import { experience, education, certifications, skills, engagements, continuousLearning, summary, metrics, industries, managementSkills, languages } from "../data/resume";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>{siteMetadata.name} — Deep Sea Operations Console</title>
+    <meta name="description" content="Daniele D'Agnelli — Senior Engagement Manager. Deep Sea Submarine Operations Console. 15+ years navigating complex digital transformations." />
+    <meta name="author" content="Daniele D'Agnelli" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://dagnelli.net/submarine" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Daniele D'Agnelli — Deep Sea Operations Console" />
+    <meta property="og:description" content="15+ years navigating complex digital transformations. AI deployments, cybersecurity, and programme management for global enterprises." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dagnelli.net/submarine" />
+    <meta property="og:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta property="og:image:alt" content="Daniele D'Agnelli — Deep Sea Operations Console" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Daniele D'Agnelli" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Daniele D'Agnelli — Deep Sea Operations Console" />
+    <meta name="twitter:description" content="15+ years navigating complex digital transformations. AI deployments, cybersecurity, and programme management." />
+    <meta name="twitter:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta name="twitter:creator" content="@danieledagnelli" />
+
+    <!-- Structured Data (Person) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Daniele D'Agnelli",
+        "url": "https://dagnelli.net",
+        "image": "https://dagnelli.net/assets/dani.jpeg",
+        "jobTitle": "Senior Engagement Manager",
+        "worksFor": { "@type": "Organization", "name": "C3 AI" },
+        "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+        "email": "daniele@dagnelli.net",
+        "sameAs": [
+            "https://github.com/danieledagnelli",
+            "https://www.linkedin.com/in/dagnelli",
+            "https://bsky.app/profile/dagnelli.net"
+        ],
+        "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "Abertay University" },
+            { "@type": "CollegeOrUniversity", "name": "University of Bari Aldo Moro" }
+        ],
+        "knowsAbout": ["AI", "Cybersecurity", "Machine Learning", "Solution Architecture", "Program Management", "Digital Transformation", "GenAI", "RAG Systems"],
+        "description": "Senior Engagement Manager with 15+ years in Professional Services, leading high-impact digital transformations."
+    })} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- WATER OVERLAY WITH BUBBLES -->
+    <div class="water-overlay" aria-hidden="true"></div>
+    <div class="bubble-layer" id="bubbleLayer" aria-hidden="true"></div>
+    <div class="caustics-overlay" aria-hidden="true"></div>
+
+    <!-- DEPTH GAUGE (side panel) -->
+    <div class="depth-gauge" aria-hidden="true">
+        <div class="gauge-label">depth</div>
+        <div class="gauge-track">
+            <div class="gauge-fill" id="depthGaugeFill"></div>
+        </div>
+        <div class="gauge-reading" id="depthReading">0m</div>
+    </div>
+
+    <!-- PRESSURE GAUGE (right side) -->
+    <div class="pressure-gauge" aria-hidden="true">
+        <div class="gauge-label">psi</div>
+        <div class="pressure-value" id="pressureValue">14.7</div>
+        <div class="pressure-unit">atm</div>
+    </div>
+
+    <!-- SONAR HUD -->
+    <div class="sonar-hud" aria-hidden="true">
+        <div class="sonar-ring" id="sonarRing"></div>
+        <div class="sonar-sweep" id="sonarSweep"></div>
+        <div class="sonar-dot"></div>
+    </div>
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="status-indicator"></span>
+            <span class="status-label">ops active</span>
+            <span class="status-sep">|</span>
+            <span class="status-coord" id="statusCoord">51.5074n 0.1278w</span>
+        </div>
+        <div class="status-right">
+            <span class="status-o2">O2: <span id="o2Level">98</span>%</span>
+            <span class="status-sep">|</span>
+            <span class="status-time" id="statusTime">00:00:00</span>
+        </div>
+    </div>
+
+    <!-- INTRO SEQUENCE -->
+    <div class="intro" id="intro">
+        <div class="intro-console" id="introConsole">
+            <div class="intro-depth-counter">
+                <span class="depth-label">current depth</span>
+                <span class="depth-number" id="introDepth">0</span>
+                <span class="depth-unit">meters</span>
+            </div>
+            <div class="intro-pressure-bar">
+                <span class="pressure-label">hull pressure</span>
+                <div class="pressure-track">
+                    <div class="pressure-fill" id="introPressureFill"></div>
+                </div>
+                <span class="pressure-pct" id="introPressurePct">0%</span>
+            </div>
+            <pre class="intro-terminal" id="introTerminal"></pre>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="console-main" id="consoleMain">
+
+        <!-- CONSOLE HEADER -->
+        <section class="section console-header">
+            <div class="console-title-bar">
+                <span class="console-badge">submarine ops console v3.7</span>
+                <span class="console-classification">classified // deep water ops</span>
+            </div>
+            <div class="header-grid">
+                <div class="header-info">
+                    <h1 class="captain-name">{siteMetadata.name.toLowerCase()}</h1>
+                    <div class="captain-rank">captain // {siteMetadata.description}</div>
+                    <div class="header-metrics">
+                        <span class="metric-chip">loc: {siteMetadata.location.toLowerCase()}</span>
+                        <span class="metric-chip active">status: submerged</span>
+                        <span class="metric-chip depth">depth: 4,200m</span>
+                    </div>
+                    <div class="nav-links">
+                        <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">[sonar.link//github]</a>
+                        <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">[sonar.link//linkedin]</a>
+                        <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener">[sonar.link//bluesky]</a>
+                        <a href={`mailto:${siteMetadata.email}`}>[comms.radio]</a>
+                    </div>
+                </div>
+                <div class="periscope-viewport">
+                    <div class="periscope-frame">
+                        <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="140" height="140" />
+                        <div class="periscope-overlay"></div>
+                        <div class="periscope-crosshair"></div>
+                    </div>
+                    <span class="periscope-label">periscope // subj_001</span>
+                </div>
+            </div>
+
+            <!-- Key metrics -->
+            <div class="metrics-bar">
+                {metrics.map(m => (
+                    <div class="metric-block">
+                        <span class="metric-value">{m.value.toLowerCase()}</span>
+                        <span class="metric-label">{m.label.toLowerCase()}</span>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <hr class="depth-line" />
+
+        <!-- CAPTAIN'S PROFILE (Summary) -->
+        <section class="section reveal">
+            <div class="sec-head">
+                <span class="tag sonar">[sonar.scan]</span>
+                <span class="sec-title">captain's log</span>
+                <span class="sec-depth">~~ 200m</span>
+            </div>
+            <p class="body-text">{summary.toLowerCase()}</p>
+            <div class="industry-tags">
+                <span class="industry-label">// operational waters</span>
+                <div class="industry-list">
+                    {industries.map(ind => (
+                        <span class="industry-chip">{ind.toLowerCase()}</span>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <hr class="depth-line" />
+
+        <!-- DEPTH CHART (Experience) -->
+        <section class="section reveal">
+            <div class="sec-head">
+                <span class="tag depth-tag">[depth.chart]</span>
+                <span class="sec-title">dive record</span>
+                <span class="sec-depth">~~ 800m</span>
+            </div>
+            {experience.map((exp, i) => (
+                <div class="depth-block reveal">
+                    <div class="depth-marker">
+                        <span class="depth-level">{(i + 1) * 800}m</span>
+                        <div class="depth-indicator"></div>
+                    </div>
+                    <div class="depth-content">
+                        <div class="depth-top">
+                            <span class="depth-company">{exp.company.toLowerCase()}</span>
+                            <span class="depth-location">{exp.location.split(',')[0].toLowerCase()}</span>
+                        </div>
+                        {exp.roles.map(role => (
+                            <div class="depth-role">
+                                <div class="role-head">
+                                    <span class="role-name">{role.title.toLowerCase()}</span>
+                                    <span class="role-period">{role.period.toLowerCase()}</span>
+                                </div>
+                                {role.description && <p class="role-desc">{role.description.toLowerCase()}</p>}
+                                {role.bullets && role.bullets.length > 0 && (
+                                    <ul class="role-list">
+                                        {role.bullets.map(b => <li>{b.toLowerCase()}</li>)}
+                                    </ul>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </section>
+
+        <hr class="depth-line" />
+
+        <!-- ONBOARD SYSTEMS (Skills) -->
+        <section class="section reveal">
+            <div class="sec-head">
+                <span class="tag systems">[sys.check]</span>
+                <span class="sec-title">onboard systems</span>
+                <span class="sec-depth">~~ 2000m</span>
+            </div>
+            <div class="systems-container">
+                <div class="system-group">
+                    <span class="system-label">// technical_systems</span>
+                    <div class="system-grid">
+                        {skills.map((s, i) => (
+                            <span class="system-module" style={`--i:${i}`}>{s.toLowerCase()}</span>
+                        ))}
+                    </div>
+                </div>
+                <div class="system-group">
+                    <span class="system-label">// command_systems</span>
+                    <div class="system-grid">
+                        {managementSkills.map((s, i) => (
+                            <span class="system-module command" style={`--i:${i}`}>{s.toLowerCase()}</span>
+                        ))}
+                    </div>
+                </div>
+                <div class="system-group">
+                    <span class="system-label">// comms_array</span>
+                    <div class="system-grid">
+                        {languages.map((l, i) => (
+                            <span class="system-module comms" style={`--i:${i}`}>{l.toLowerCase()}</span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="depth-line" />
+
+        <!-- MISSION LOGS (Engagements) -->
+        <section class="section reveal">
+            <div class="sec-head">
+                <span class="tag mission">[ops.log]</span>
+                <span class="sec-title">mission logs</span>
+                <span class="sec-depth">~~ 3000m</span>
+            </div>
+            <div class="mission-grid">
+                {engagements.map(eng => (
+                    <div class="mission-card reveal">
+                        <div class="mission-header">
+                            <span class="mission-client">{eng.client}</span>
+                            <span class="mission-sector">{eng.sector}</span>
+                        </div>
+                        <div class="mission-body">
+                            <span class="mission-scope">scope: {eng.scope}</span>
+                            <span class={`mission-impact ${eng.trend}`}>impact: {eng.impact}</span>
+                        </div>
+                        <div class="mission-status">
+                            <span class={`status-dot ${eng.trend}`}></span>
+                            <span class="status-text">{eng.trend === 'positive' ? 'mission success' : 'mission complete'}</span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <hr class="depth-line" />
+
+        <!-- CREW CERTIFICATIONS (Education + Certs) -->
+        <section class="section reveal">
+            <div class="sec-head">
+                <span class="tag cert">[crew.cert]</span>
+                <span class="sec-title">crew certifications</span>
+                <span class="sec-depth">~~ 3800m</span>
+            </div>
+            <div class="cert-groups">
+                <div class="cert-group">
+                    <span class="cert-label">// naval_academy</span>
+                    {education.map(edu => (
+                        <div class="cert-item">
+                            <span class="cert-name">{edu.degree.toLowerCase()}</span>
+                            <span class="cert-meta">{edu.institution.toLowerCase()} — {edu.period} — {edu.location.toLowerCase()}</span>
+                            {edu.distinction && <span class="cert-badge">{edu.distinction.toLowerCase()}</span>}
+                        </div>
+                    ))}
+                </div>
+                <div class="cert-group">
+                    <span class="cert-label">// officer_qualifications</span>
+                    {certifications.map(c => (
+                        <div class="cert-item">
+                            <span class="cert-name">{c.toLowerCase()}</span>
+                        </div>
+                    ))}
+                </div>
+                <div class="cert-group">
+                    <span class="cert-label">// advanced_training_log</span>
+                    {continuousLearning.map(l => (
+                        <div class="cert-item">
+                            <span class="cert-name">{l.toLowerCase()}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <hr class="depth-line" />
+
+        <!-- SURFACE FOOTER -->
+        <section class="section surface-footer">
+            <div class="surface-ascii">~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
+            <span>// initiating surface protocol</span>
+            <span>// all systems nominal</span>
+            <span>// submarine ops console — session end</span>
+            <span class="cursor-blink">_</span>
+        </section>
+
+    </main>
+</body>
+</html>
+
+<style>
+    /* =========================================
+       BASE + CUSTOM PROPERTIES
+       ========================================= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+        --abyss: #0a0f14;
+        --sonar: #00cc66;
+        --depth-blue: #0066cc;
+        --warning: #ff3333;
+        --hull: #1a2030;
+        --amber: #ffaa00;
+        --dim: #2a3545;
+        --text-dim: #506070;
+        --mono: 'Share Tech Mono', monospace;
+        --heading: 'Exo 2', sans-serif;
+        scrollbar-width: thin;
+        scrollbar-color: var(--sonar) var(--abyss);
+    }
+
+    body {
+        background: var(--abyss);
+        color: #8899aa;
+        font-family: var(--mono);
+        font-size: 14px;
+        line-height: 1.6;
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+
+    a { color: var(--sonar); text-decoration: none; }
+    a:hover { color: var(--depth-blue); text-decoration: underline; }
+
+    ::selection { background: var(--sonar); color: var(--abyss); }
+
+    /* =========================================
+       WATER OVERLAY + CAUSTICS
+       ========================================= */
+    .water-overlay {
+        position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 20, 40, 0.3) 0%,
+            rgba(0, 10, 30, 0.5) 50%,
+            rgba(0, 5, 15, 0.7) 100%
+        );
+        box-shadow: inset 0 0 200px rgba(0,0,0,0.6);
+    }
+
+    .caustics-overlay {
+        position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+        opacity: 0.03;
+        background:
+            radial-gradient(ellipse at 20% 30%, rgba(0,102,204,0.3) 0%, transparent 50%),
+            radial-gradient(ellipse at 70% 60%, rgba(0,204,102,0.2) 0%, transparent 40%),
+            radial-gradient(ellipse at 50% 80%, rgba(0,102,204,0.2) 0%, transparent 45%);
+        animation: causticsDrift 12s ease-in-out infinite alternate;
+    }
+
+    .bubble-layer {
+        position: fixed; inset: 0; z-index: 9997; pointer-events: none;
+        overflow: hidden;
+    }
+
+    /* =========================================
+       DEPTH GAUGE (left side)
+       ========================================= */
+    .depth-gauge {
+        position: fixed; left: 12px; top: 50%; transform: translateY(-50%);
+        z-index: 10000; display: flex; flex-direction: column; align-items: center;
+        gap: 6px; pointer-events: none;
+    }
+    .depth-gauge .gauge-label {
+        font-family: var(--mono); font-size: 9px; text-transform: uppercase;
+        letter-spacing: 2px; color: var(--sonar); opacity: 0.7;
+    }
+    .gauge-track {
+        width: 4px; height: 120px; background: var(--hull);
+        border-radius: 2px; position: relative; overflow: hidden;
+        border: 1px solid rgba(0,204,102,0.15);
+    }
+    .gauge-fill {
+        position: absolute; bottom: 0; width: 100%; height: 0%;
+        background: linear-gradient(0deg, var(--sonar), var(--depth-blue));
+        border-radius: 2px; transition: height 0.3s ease;
+    }
+    .gauge-reading {
+        font-family: var(--mono); font-size: 10px; color: var(--sonar);
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* =========================================
+       PRESSURE GAUGE (right side)
+       ========================================= */
+    .pressure-gauge {
+        position: fixed; right: 12px; top: 50%; transform: translateY(-50%);
+        z-index: 10000; display: flex; flex-direction: column; align-items: center;
+        gap: 4px; pointer-events: none;
+    }
+    .pressure-gauge .gauge-label {
+        font-family: var(--mono); font-size: 9px; text-transform: uppercase;
+        letter-spacing: 2px; color: var(--amber); opacity: 0.7;
+    }
+    .pressure-value {
+        font-family: var(--mono); font-size: 14px; color: var(--amber);
+        font-weight: 700; font-variant-numeric: tabular-nums;
+    }
+    .pressure-unit {
+        font-family: var(--mono); font-size: 8px; color: var(--text-dim);
+        text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    /* =========================================
+       SONAR HUD (top right corner)
+       ========================================= */
+    .sonar-hud {
+        position: fixed; top: 50px; right: 50px; z-index: 10000;
+        width: 60px; height: 60px; pointer-events: none;
+    }
+    .sonar-ring {
+        position: absolute; inset: 0;
+        border: 1px solid rgba(0,204,102,0.2);
+        border-radius: 50%;
+    }
+    .sonar-ring::before, .sonar-ring::after {
+        content: ''; position: absolute; border-radius: 50%;
+        border: 1px solid rgba(0,204,102,0.1);
+    }
+    .sonar-ring::before {
+        inset: 8px;
+    }
+    .sonar-ring::after {
+        inset: 18px;
+    }
+    .sonar-sweep {
+        position: absolute; top: 50%; left: 50%;
+        width: 50%; height: 1px;
+        background: linear-gradient(90deg, var(--sonar), transparent);
+        transform-origin: left center;
+        animation: sonarSweep 3s linear infinite;
+        opacity: 0.6;
+    }
+    .sonar-dot {
+        position: absolute; top: 50%; left: 50%;
+        width: 4px; height: 4px;
+        background: var(--sonar);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 6px var(--sonar);
+    }
+
+    /* =========================================
+       STATUS BAR
+       ========================================= */
+    .status-bar {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 10000;
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 10px 16px;
+        font-size: 11px; text-transform: lowercase; letter-spacing: 1px;
+        color: var(--text-dim);
+        pointer-events: none;
+        font-family: var(--mono);
+        background: linear-gradient(180deg, rgba(10,15,20,0.9) 0%, transparent 100%);
+    }
+    .status-left, .status-right { display: flex; align-items: center; gap: 8px; }
+    .status-sep { color: var(--dim); }
+    .status-indicator {
+        width: 6px; height: 6px; border-radius: 50%;
+        background: var(--sonar);
+        animation: pulse 2s ease-in-out infinite;
+        box-shadow: 0 0 6px var(--sonar);
+    }
+    .status-label { color: var(--sonar); font-weight: 700; }
+    .status-o2 { color: var(--sonar); }
+    .status-time { color: var(--text-dim); font-variant-numeric: tabular-nums; }
+
+    /* =========================================
+       INTRO SEQUENCE
+       ========================================= */
+    .intro {
+        position: fixed; inset: 0; z-index: 10001;
+        background: var(--abyss);
+        display: flex; align-items: center; justify-content: center;
+        padding: 2rem;
+        transition: opacity 0.5s ease;
+    }
+    .intro.done {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .intro-console {
+        max-width: 500px; width: 100%;
+        display: flex; flex-direction: column; gap: 20px; align-items: center;
+    }
+    .intro-depth-counter {
+        display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .depth-label {
+        font-family: var(--mono); font-size: 10px; text-transform: uppercase;
+        letter-spacing: 3px; color: var(--text-dim);
+    }
+    .depth-number {
+        font-family: var(--heading); font-size: 64px; font-weight: 900;
+        color: var(--sonar); line-height: 1;
+        font-variant-numeric: tabular-nums;
+        text-shadow: 0 0 20px rgba(0,204,102,0.4);
+    }
+    .depth-unit {
+        font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+        letter-spacing: 4px; color: var(--depth-blue);
+    }
+    .intro-pressure-bar {
+        width: 100%; display: flex; align-items: center; gap: 12px;
+    }
+    .pressure-label {
+        font-family: var(--mono); font-size: 9px; text-transform: uppercase;
+        letter-spacing: 1px; color: var(--text-dim); white-space: nowrap;
+    }
+    .pressure-track {
+        flex: 1; height: 6px; background: var(--hull);
+        border-radius: 3px; overflow: hidden;
+        border: 1px solid rgba(0,204,102,0.1);
+    }
+    .pressure-fill {
+        height: 100%; width: 0%; border-radius: 3px;
+        background: linear-gradient(90deg, var(--depth-blue), var(--sonar));
+        transition: width 0.1s linear;
+    }
+    .pressure-pct {
+        font-family: var(--mono); font-size: 10px; color: var(--sonar);
+        min-width: 30px; text-align: right;
+    }
+    .intro-terminal {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--sonar);
+        line-height: 1.8;
+        width: 100%;
+        white-space: pre-wrap;
+        word-break: break-all;
+        opacity: 0.9;
+    }
+
+    /* =========================================
+       MAIN CONTENT
+       ========================================= */
+    .console-main {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 60px 24px 120px;
+        opacity: 0;
+        transition: opacity 0.6s ease 0.2s;
+    }
+    .console-main.visible { opacity: 1; }
+
+    /* =========================================
+       SECTIONS
+       ========================================= */
+    .section { margin-bottom: 0; }
+
+    .sec-head {
+        display: flex; align-items: center; gap: 10px;
+        margin-bottom: 14px;
+        font-size: 11px; text-transform: lowercase; letter-spacing: 1.5px;
+    }
+    .sec-title { color: #667788; font-family: var(--heading); font-weight: 600; }
+    .sec-depth { margin-left: auto; color: var(--depth-blue); font-size: 10px; }
+
+    .tag {
+        padding: 2px 8px;
+        font-size: 9px; font-weight: 700; letter-spacing: 1px;
+        border: 1px solid;
+    }
+    .tag.sonar { color: var(--sonar); border-color: var(--sonar); }
+    .tag.depth-tag { color: var(--depth-blue); border-color: var(--depth-blue); }
+    .tag.systems { color: var(--amber); border-color: var(--amber); }
+    .tag.mission { color: var(--warning); border-color: var(--warning); }
+    .tag.cert { color: #8899aa; border-color: #445566; }
+
+    /* REVEAL ANIMATION */
+    .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* DEPTH DIVIDER */
+    .depth-line {
+        border: none;
+        height: 1px;
+        margin: 2.5rem 0;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            var(--dim) 15%,
+            var(--depth-blue) 40%,
+            var(--sonar) 50%,
+            var(--depth-blue) 60%,
+            var(--dim) 85%,
+            transparent 100%
+        );
+        opacity: 0.25;
+        position: relative;
+    }
+    .depth-line::after {
+        content: '\25C6';
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--dim);
+        font-size: 8px;
+        background: var(--abyss);
+        padding: 0 8px;
+    }
+
+    /* =========================================
+       CONSOLE HEADER
+       ========================================= */
+    .console-title-bar {
+        display: flex; justify-content: space-between; align-items: center;
+        margin-bottom: 18px; flex-wrap: wrap; gap: 8px;
+    }
+    .console-badge {
+        font-family: var(--mono); font-size: 10px; letter-spacing: 2px;
+        color: var(--sonar); border: 1px solid var(--sonar);
+        padding: 3px 12px; text-transform: lowercase;
+        animation: consolePulse 4s ease-in-out infinite;
+    }
+    .console-classification {
+        font-size: 9px; letter-spacing: 2px; color: var(--warning);
+        border: 1px solid var(--warning); padding: 2px 10px;
+        opacity: 0.7; text-transform: lowercase;
+    }
+
+    .header-grid {
+        display: flex; justify-content: space-between;
+        align-items: flex-start; gap: 24px;
+    }
+
+    .captain-name {
+        font-family: var(--heading);
+        font-size: clamp(28px, 5vw, 48px);
+        font-weight: 900;
+        color: #c0d0e0;
+        line-height: 1.1;
+        margin-bottom: 6px;
+        text-shadow: 0 0 30px rgba(0,102,204,0.2);
+    }
+
+    .captain-rank {
+        font-size: 13px;
+        color: var(--sonar);
+        margin-bottom: 14px;
+        letter-spacing: 0.5px;
+    }
+
+    .header-metrics {
+        display: flex; flex-wrap: wrap; gap: 8px;
+        margin-bottom: 14px;
+    }
+    .metric-chip {
+        font-size: 10px; letter-spacing: 1px; text-transform: lowercase;
+        padding: 2px 8px;
+        border: 1px solid var(--dim);
+        color: var(--text-dim);
+    }
+    .metric-chip.active { color: var(--sonar); border-color: var(--sonar); }
+    .metric-chip.depth { color: var(--depth-blue); border-color: var(--depth-blue); }
+
+    .nav-links {
+        display: flex; gap: 14px; font-size: 11px; flex-wrap: wrap;
+    }
+
+    /* PERISCOPE VIEWPORT */
+    .periscope-viewport {
+        flex-shrink: 0; width: 140px;
+        display: flex; flex-direction: column; align-items: center;
+    }
+    .periscope-frame {
+        position: relative; width: 140px; height: 140px;
+        border-radius: 50%; overflow: hidden;
+        border: 2px solid var(--sonar);
+        box-shadow: 0 0 20px rgba(0,204,102,0.15), inset 0 0 30px rgba(0,0,0,0.5);
+    }
+    .periscope-frame img {
+        width: 100%; height: 100%; object-fit: cover;
+        filter: contrast(1.1) brightness(0.8) saturate(0.7) hue-rotate(10deg);
+    }
+    .periscope-overlay {
+        position: absolute; inset: 0;
+        background: radial-gradient(circle, transparent 50%, rgba(10,15,20,0.8) 100%);
+        pointer-events: none;
+    }
+    .periscope-crosshair {
+        position: absolute; inset: 0; pointer-events: none;
+    }
+    .periscope-crosshair::before {
+        content: '';
+        position: absolute; top: 50%; left: 10%; right: 10%;
+        height: 1px; background: rgba(0,204,102,0.3);
+        transform: translateY(-50%);
+    }
+    .periscope-crosshair::after {
+        content: '';
+        position: absolute; left: 50%; top: 10%; bottom: 10%;
+        width: 1px; background: rgba(0,204,102,0.3);
+        transform: translateX(-50%);
+    }
+    .periscope-label {
+        font-size: 9px; color: var(--text-dim); letter-spacing: 2px;
+        margin-top: 6px; text-transform: lowercase;
+    }
+
+    /* METRICS BAR */
+    .metrics-bar {
+        display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px;
+        padding: 14px;
+        border: 1px solid var(--dim);
+        background: rgba(26,32,48,0.4);
+    }
+    .metric-block {
+        display: flex; flex-direction: column; gap: 2px;
+        flex: 1; min-width: 80px; text-align: center;
+    }
+    .metric-value {
+        font-family: var(--heading); font-size: 18px; font-weight: 700;
+        color: var(--sonar);
+    }
+    .metric-label {
+        font-size: 9px; color: var(--text-dim);
+        letter-spacing: 1px; text-transform: lowercase;
+    }
+
+    /* =========================================
+       BODY TEXT + INDUSTRIES
+       ========================================= */
+    .body-text {
+        color: #7a8a9a;
+        font-size: 12.5px;
+        line-height: 1.7;
+    }
+    .industry-tags { margin-top: 14px; }
+    .industry-label {
+        display: block; font-size: 10px; color: var(--text-dim);
+        letter-spacing: 1px; margin-bottom: 8px; font-style: italic;
+    }
+    .industry-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .industry-chip {
+        font-size: 10px; padding: 2px 8px;
+        border: 1px solid var(--dim);
+        color: var(--depth-blue);
+        transition: border-color 0.2s, color 0.2s;
+    }
+    .industry-chip:hover {
+        border-color: var(--depth-blue);
+        color: var(--sonar);
+    }
+
+    /* =========================================
+       DEPTH CHART (EXPERIENCE)
+       ========================================= */
+    .depth-block {
+        display: flex; gap: 16px;
+        margin-bottom: 22px;
+        position: relative;
+    }
+    .depth-marker {
+        display: flex; flex-direction: column; align-items: center;
+        gap: 4px; min-width: 50px; flex-shrink: 0;
+    }
+    .depth-level {
+        font-size: 10px; color: var(--depth-blue);
+        font-variant-numeric: tabular-nums; letter-spacing: 1px;
+    }
+    .depth-indicator {
+        width: 2px; flex: 1; min-height: 20px;
+        background: linear-gradient(180deg, var(--depth-blue), transparent);
+        opacity: 0.4;
+    }
+    .depth-content {
+        flex: 1;
+        border-left: 2px solid var(--dim);
+        padding-left: 16px;
+    }
+    .depth-top {
+        display: flex; justify-content: space-between; align-items: baseline;
+        margin-bottom: 4px;
+    }
+    .depth-company {
+        font-family: var(--heading); font-weight: 700;
+        color: var(--amber); font-size: 14px; letter-spacing: 0.5px;
+    }
+    .depth-location { color: var(--text-dim); font-size: 11px; }
+
+    .depth-role { margin-bottom: 8px; }
+    .role-head {
+        display: flex; justify-content: space-between; align-items: baseline;
+        flex-wrap: wrap; gap: 8px;
+    }
+    .role-name { color: #b0c0d0; font-size: 12px; }
+    .role-period { color: var(--text-dim); font-size: 10px; letter-spacing: 0.5px; }
+    .role-desc { color: #6a7a8a; font-size: 11.5px; margin-top: 4px; }
+    .role-list { list-style: none; margin-top: 4px; }
+    .role-list li {
+        color: #607080; font-size: 11px; line-height: 1.7;
+        padding-left: 14px; position: relative;
+    }
+    .role-list li::before {
+        content: '\25B8'; position: absolute; left: 0;
+        color: var(--sonar); font-size: 10px;
+    }
+
+    /* =========================================
+       ONBOARD SYSTEMS (SKILLS)
+       ========================================= */
+    .systems-container {
+        display: flex; flex-direction: column; gap: 16px;
+    }
+    .system-group { }
+    .system-label {
+        display: block; font-size: 10px; color: var(--text-dim);
+        letter-spacing: 1px; margin-bottom: 8px; font-style: italic;
+    }
+    .system-grid {
+        display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .system-module {
+        font-size: 11px;
+        padding: 3px 10px;
+        border: 1px solid rgba(0,204,102,0.2);
+        color: var(--sonar);
+        position: relative;
+        overflow: hidden;
+        transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .system-module:hover {
+        border-color: var(--sonar);
+        box-shadow: 0 0 10px rgba(0,204,102,0.15);
+        color: #c0e0d0;
+    }
+    .system-module::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0,204,102,0.08), transparent);
+        animation: systemScan 5s ease-in-out infinite;
+        animation-delay: calc(var(--i) * 0.12s);
+    }
+    .system-module.command {
+        border-color: rgba(0,102,204,0.2);
+        color: var(--depth-blue);
+    }
+    .system-module.command:hover {
+        border-color: var(--depth-blue);
+        box-shadow: 0 0 10px rgba(0,102,204,0.15);
+    }
+    .system-module.command::after {
+        background: linear-gradient(90deg, transparent, rgba(0,102,204,0.08), transparent);
+    }
+    .system-module.comms {
+        border-color: rgba(255,170,0,0.2);
+        color: var(--amber);
+    }
+    .system-module.comms:hover {
+        border-color: var(--amber);
+        box-shadow: 0 0 10px rgba(255,170,0,0.15);
+    }
+    .system-module.comms::after {
+        background: linear-gradient(90deg, transparent, rgba(255,170,0,0.08), transparent);
+    }
+
+    /* =========================================
+       MISSION LOGS
+       ========================================= */
+    .mission-grid {
+        display: flex; flex-direction: column; gap: 8px;
+    }
+    .mission-card {
+        border: 1px solid var(--dim);
+        padding: 12px 16px;
+        background: rgba(26,32,48,0.3);
+        transition: border-color 0.2s, background 0.2s;
+    }
+    .mission-card:hover {
+        border-color: var(--text-dim);
+        background: rgba(26,32,48,0.5);
+    }
+    .mission-header {
+        display: flex; justify-content: space-between; align-items: baseline;
+        margin-bottom: 6px;
+    }
+    .mission-client {
+        font-family: var(--heading); color: var(--amber);
+        font-size: 12px; font-weight: 700;
+    }
+    .mission-sector {
+        color: var(--text-dim); font-size: 9px;
+        text-transform: uppercase; letter-spacing: 1px;
+    }
+    .mission-body {
+        display: flex; justify-content: space-between; align-items: baseline;
+        margin-bottom: 6px;
+    }
+    .mission-scope { color: #6a7a8a; font-size: 11px; }
+    .mission-impact { font-size: 11px; font-weight: 700; }
+    .mission-impact.positive { color: var(--sonar); }
+    .mission-impact.neutral { color: #6a7a8a; }
+    .mission-status {
+        display: flex; align-items: center; gap: 6px;
+    }
+    .status-dot {
+        width: 6px; height: 6px; border-radius: 50%;
+    }
+    .status-dot.positive {
+        background: var(--sonar);
+        box-shadow: 0 0 4px var(--sonar);
+    }
+    .status-dot.neutral {
+        background: var(--text-dim);
+    }
+    .status-text {
+        font-size: 9px; color: var(--text-dim);
+        letter-spacing: 1px; text-transform: lowercase;
+    }
+
+    /* =========================================
+       CREW CERTIFICATIONS
+       ========================================= */
+    .cert-groups {
+        display: flex; flex-direction: column; gap: 18px;
+    }
+    .cert-label {
+        display: block; color: var(--text-dim); font-size: 10px;
+        letter-spacing: 1px; margin-bottom: 6px; font-style: italic;
+    }
+    .cert-item {
+        display: flex; flex-direction: column;
+        margin-bottom: 4px;
+    }
+    .cert-name { color: #a0b0c0; font-size: 12px; }
+    .cert-meta { color: var(--text-dim); font-size: 10px; }
+    .cert-badge {
+        color: var(--sonar); font-size: 10px; text-transform: lowercase;
+        letter-spacing: 1px;
+    }
+
+    /* =========================================
+       SURFACE FOOTER
+       ========================================= */
+    .surface-footer {
+        display: flex; flex-direction: column; align-items: center;
+        gap: 4px;
+        color: var(--text-dim);
+        font-size: 12px;
+        padding: 3rem 0;
+        letter-spacing: 1px;
+    }
+    .surface-ascii {
+        color: var(--depth-blue); opacity: 0.4;
+        font-size: 14px; letter-spacing: 2px;
+        animation: waveMotion 3s ease-in-out infinite;
+    }
+    .cursor-blink {
+        color: var(--sonar);
+        animation: blink 1s step-end infinite;
+    }
+
+    /* =========================================
+       KEYFRAMES
+       ========================================= */
+    @keyframes pulse {
+        0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--sonar); }
+        50% { opacity: 0.4; box-shadow: 0 0 2px var(--sonar); }
+    }
+
+    @keyframes blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+    }
+
+    @keyframes sonarSweep {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes consolePulse {
+        0%, 90%, 100% { opacity: 1; }
+        92% { opacity: 0.3; }
+        94% { opacity: 0.9; }
+        96% { opacity: 0.4; }
+    }
+
+    @keyframes systemScan {
+        0%, 100% { left: -100%; }
+        50% { left: 100%; }
+    }
+
+    @keyframes causticsDrift {
+        0% { background-position: 0% 0%; opacity: 0.03; }
+        50% { opacity: 0.05; }
+        100% { background-position: 100% 100%; opacity: 0.03; }
+    }
+
+    @keyframes waveMotion {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(3px); }
+        75% { transform: translateX(-3px); }
+    }
+
+    @keyframes sonarPing {
+        0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0.6;
+            border-color: var(--sonar);
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0;
+            border-color: transparent;
+        }
+    }
+
+    @keyframes bubbleRise {
+        0% {
+            transform: translateY(100vh) translateX(0) scale(1);
+            opacity: 0.4;
+        }
+        25% { transform: translateY(75vh) translateX(10px) scale(1.05); }
+        50% { transform: translateY(50vh) translateX(-8px) scale(0.95); }
+        75% { transform: translateY(25vh) translateX(12px) scale(1.02); }
+        100% {
+            transform: translateY(-20px) translateX(5px) scale(0.9);
+            opacity: 0;
+        }
+    }
+
+    /* =========================================
+       RESPONSIVE -- TABLET (601-1024px)
+       ========================================= */
+    @media (max-width: 1024px) {
+        body { font-size: 13px; }
+        .console-main { max-width: 680px; padding: 54px 20px 100px; }
+        .captain-name { font-size: clamp(24px, 4.5vw, 38px); }
+        .periscope-viewport { width: 120px; }
+        .periscope-frame { width: 120px; height: 120px; }
+        .system-module { font-size: 10.5px; padding: 3px 8px; }
+        .mission-card { padding: 10px 12px; }
+        .depth-line { margin: 2rem 0; }
+        .sonar-hud { width: 50px; height: 50px; top: 45px; right: 40px; }
+        .metrics-bar { gap: 8px; padding: 10px; }
+        .metric-value { font-size: 15px; }
+    }
+
+    /* =========================================
+       RESPONSIVE -- SMALL TABLET / LARGE PHONE (481-600px)
+       ========================================= */
+    @media (max-width: 600px) {
+        body { font-size: 12.5px; }
+        .console-main { padding: 48px 14px 80px; }
+
+        .header-grid {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .periscope-viewport { width: 90px; }
+        .periscope-frame { width: 90px; height: 90px; }
+        .periscope-label { font-size: 8px; }
+        .captain-name { font-size: 24px; }
+        .captain-rank { font-size: 11px; }
+
+        .console-title-bar { gap: 6px; }
+        .console-badge { font-size: 8px; letter-spacing: 1px; padding: 2px 8px; }
+        .console-classification { font-size: 7px; padding: 2px 6px; }
+
+        .header-metrics { gap: 4px; }
+        .metric-chip { font-size: 9px; padding: 1px 6px; }
+        .nav-links { gap: 10px; font-size: 10px; flex-wrap: wrap; }
+
+        .metrics-bar { padding: 8px; gap: 6px; }
+        .metric-value { font-size: 14px; }
+        .metric-label { font-size: 8px; }
+        .metric-block { min-width: 60px; }
+
+        .sec-head { gap: 6px; font-size: 10px; flex-wrap: wrap; }
+        .sec-depth { font-size: 9px; }
+        .tag { font-size: 8px; padding: 1px 5px; }
+
+        .depth-block { gap: 10px; }
+        .depth-marker { min-width: 40px; }
+        .depth-level { font-size: 9px; }
+        .depth-top { flex-direction: column; gap: 0; }
+        .depth-company { font-size: 13px; }
+        .depth-location { font-size: 10px; }
+        .role-head { flex-direction: column; gap: 2px; }
+        .role-name { font-size: 11.5px; }
+        .role-period { font-size: 9.5px; }
+        .role-desc { font-size: 11px; }
+        .role-list li { font-size: 10.5px; }
+        .depth-content { padding-left: 12px; }
+
+        .system-grid { gap: 4px; }
+        .system-module { font-size: 10px; padding: 2px 7px; }
+
+        .mission-card { padding: 8px 10px; }
+        .mission-client { font-size: 11px; }
+        .mission-sector { font-size: 8px; }
+        .mission-scope { font-size: 10px; }
+        .mission-impact { font-size: 10px; }
+        .mission-body { flex-wrap: wrap; gap: 4px; }
+        .mission-header { flex-wrap: wrap; gap: 4px; }
+
+        .cert-name { font-size: 11px; }
+        .cert-meta { font-size: 9.5px; }
+        .cert-label { font-size: 9px; }
+
+        .body-text { font-size: 11.5px; }
+        .industry-chip { font-size: 9px; }
+
+        .depth-line { margin: 1.5rem 0; }
+
+        .status-bar { font-size: 9px; padding: 6px 10px; }
+
+        .surface-footer { font-size: 11px; padding: 2rem 0; }
+
+        .depth-gauge { display: none; }
+        .pressure-gauge { display: none; }
+        .sonar-hud { width: 40px; height: 40px; top: 38px; right: 14px; }
+    }
+
+    /* =========================================
+       RESPONSIVE -- SMALL PHONE (<=380px)
+       ========================================= */
+    @media (max-width: 380px) {
+        body { font-size: 12px; }
+        .console-main { padding: 44px 10px 60px; }
+        .captain-name { font-size: 20px; }
+        .periscope-viewport { width: 70px; }
+        .periscope-frame { width: 70px; height: 70px; }
+        .nav-links { gap: 8px; font-size: 9px; }
+        .metric-chip { font-size: 8px; }
+        .system-module { font-size: 9px; padding: 2px 5px; }
+        .status-bar { font-size: 8px; padding: 4px 8px; }
+        .status-coord { display: none; }
+        .sonar-hud { display: none; }
+        .intro-terminal { font-size: 10px; }
+        .depth-number { font-size: 48px; }
+        .metrics-bar { padding: 6px; }
+        .metric-value { font-size: 12px; }
+    }
+
+    /* =========================================
+       TOUCH: larger tap targets on mobile
+       ========================================= */
+    @media (hover: none) and (pointer: coarse) {
+        .nav-links a {
+            padding: 6px 4px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .system-module {
+            padding: 6px 10px;
+            min-height: 36px;
+            display: inline-flex;
+            align-items: center;
+        }
+    }
+</style>
+
+<script>
+    /* =============================================
+       STATUS BAR CLOCK
+       ============================================= */
+    const timeEl = document.getElementById('statusTime')!;
+    function updateTime() {
+        const now = new Date();
+        timeEl.textContent =
+            String(now.getHours()).padStart(2,'0') + ':' +
+            String(now.getMinutes()).padStart(2,'0') + ':' +
+            String(now.getSeconds()).padStart(2,'0');
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+
+    /* =============================================
+       DEPTH GAUGE (tracks scroll)
+       ============================================= */
+    const depthFill = document.getElementById('depthGaugeFill');
+    const depthReading = document.getElementById('depthReading');
+    const pressureVal = document.getElementById('pressureValue');
+
+    function updateGauges() {
+        const scrollPct = Math.min(1, window.scrollY / (document.body.scrollHeight - window.innerHeight || 1));
+        const depth = Math.round(scrollPct * 4200);
+        const pressure = (14.7 + scrollPct * 400).toFixed(1);
+
+        if (depthFill) depthFill.style.height = (scrollPct * 100) + '%';
+        if (depthReading) depthReading.textContent = depth + 'm';
+        if (pressureVal) pressureVal.textContent = pressure;
+    }
+    window.addEventListener('scroll', updateGauges, { passive: true });
+    updateGauges();
+
+    /* =============================================
+       O2 LEVEL (slowly decreases)
+       ============================================= */
+    const o2El = document.getElementById('o2Level');
+    let o2 = 98;
+    setInterval(() => {
+        if (o2 > 85) {
+            o2 -= Math.random() * 0.3;
+            if (o2El) o2El.textContent = Math.round(o2).toString();
+        }
+    }, 5000);
+
+    /* =============================================
+       BUBBLE PARTICLES
+       ============================================= */
+    const bubbleLayer = document.getElementById('bubbleLayer');
+
+    function createBubble() {
+        if (!bubbleLayer) return;
+        const bubble = document.createElement('div');
+        const size = 2 + Math.random() * 6;
+        const left = Math.random() * 100;
+        const duration = 8 + Math.random() * 12;
+        const delay = Math.random() * 2;
+
+        bubble.style.cssText = `
+            position: absolute;
+            bottom: -10px;
+            left: ${left}%;
+            width: ${size}px;
+            height: ${size}px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(0,204,102,0.3), rgba(0,102,204,0.1));
+            border: 1px solid rgba(0,204,102,0.15);
+            animation: bubbleRise ${duration}s ease-in ${delay}s forwards;
+            pointer-events: none;
+        `;
+        bubbleLayer.appendChild(bubble);
+
+        setTimeout(() => {
+            bubble.remove();
+        }, (duration + delay) * 1000 + 500);
+    }
+
+    // Spawn bubbles periodically
+    function scheduleBubble() {
+        createBubble();
+        setTimeout(scheduleBubble, 800 + Math.random() * 2000);
+    }
+    scheduleBubble();
+
+    /* =============================================
+       SONAR PING ANIMATION
+       ============================================= */
+    const sonarHud = document.querySelector('.sonar-hud');
+
+    function sonarPing() {
+        if (!sonarHud) return;
+        const ping = document.createElement('div');
+        ping.style.cssText = `
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100%; height: 100%;
+            border: 1px solid var(--sonar);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: sonarPing 1.5s ease-out forwards;
+            pointer-events: none;
+        `;
+        sonarHud.appendChild(ping);
+        setTimeout(() => ping.remove(), 1600);
+    }
+
+    function schedulePing() {
+        sonarPing();
+        setTimeout(schedulePing, 3000 + Math.random() * 4000);
+    }
+    setTimeout(schedulePing, 2000);
+
+    /* =============================================
+       INTRO SEQUENCE
+       ============================================= */
+    const introEl = document.getElementById('intro')!;
+    const termEl = document.getElementById('introTerminal')!;
+    const mainEl = document.getElementById('consoleMain')!;
+    const introDepthEl = document.getElementById('introDepth')!;
+    const introPressureFill = document.getElementById('introPressureFill')!;
+    const introPressurePct = document.getElementById('introPressurePct')!;
+
+    const introLines = [
+        { text: '> submarine ops console v3.7 initializing...', delay: 50 },
+        { text: '> flood ballast tanks... engaged', delay: 40 },
+        { text: '> hull integrity check... nominal', delay: 55 },
+        { text: '> sonar array... activated', delay: 45 },
+        { text: '> life support... online', delay: 35 },
+        { text: '> depth sensors... calibrated', delay: 50 },
+        { text: '> comm buoy... deployed', delay: 40 },
+        { text: '> navigation... locked to coordinates 51.50n 0.12w', delay: 45 },
+        { text: '> captain: daniele d\'agnelli', delay: 35 },
+        { text: '> mission status: active', delay: 40 },
+        { text: '', delay: 0 },
+        { text: '  [ALL SYSTEMS NOMINAL — DIVE DIVE DIVE]', delay: 30, cls: 'dive-cmd' },
+    ];
+
+    function sleep(ms: number) {
+        return new Promise(r => setTimeout(r, ms));
+    }
+
+    // Depth counter animation
+    let depthAnimRunning = false;
+    async function animateDepth() {
+        depthAnimRunning = true;
+        const target = 4200;
+        const steps = 60;
+        for (let i = 0; i <= steps; i++) {
+            if (!depthAnimRunning) break;
+            const current = Math.round((i / steps) * target);
+            const pct = Math.round((i / steps) * 100);
+            introDepthEl.textContent = current.toString();
+            introPressureFill.style.width = pct + '%';
+            introPressurePct.textContent = pct + '%';
+            await sleep(50);
+        }
+    }
+
+    async function typeLine(text: string, charDelay: number, cls?: string) {
+        const lineEl = document.createElement('div');
+        if (cls) lineEl.className = cls;
+        termEl.appendChild(lineEl);
+
+        for (const ch of text) {
+            lineEl.textContent += ch;
+            await sleep(charDelay);
+        }
+        await sleep(150 + Math.random() * 200);
+    }
+
+    async function runIntro() {
+        if (sessionStorage.getItem('submarine-intro-seen')) {
+            skipIntro();
+            return;
+        }
+
+        // Start depth animation in parallel
+        animateDepth();
+
+        for (const line of introLines) {
+            if (line.text === '') {
+                await sleep(300);
+                continue;
+            }
+            await typeLine(line.text, line.delay, line.cls);
+        }
+
+        await sleep(500);
+        depthAnimRunning = false;
+        sessionStorage.setItem('submarine-intro-seen', '1');
+        skipIntro();
+    }
+
+    function skipIntro() {
+        depthAnimRunning = false;
+        introEl.classList.add('done');
+        setTimeout(() => {
+            introEl.style.display = 'none';
+            mainEl.classList.add('visible');
+        }, 500);
+    }
+
+    // Click/key to skip
+    introEl.addEventListener('click', () => {
+        sessionStorage.setItem('submarine-intro-seen', '1');
+        skipIntro();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (!introEl.classList.contains('done') && (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter')) {
+            sessionStorage.setItem('submarine-intro-seen', '1');
+            skipIntro();
+        }
+    });
+
+    runIntro();
+
+    /* =============================================
+       SCROLL REVEAL (Intersection Observer)
+       ============================================= */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    /* =============================================
+       INTRO STYLE INJECTION
+       ============================================= */
+    const style = document.createElement('style');
+    style.textContent = `.dive-cmd { color: #00cc66; font-weight: 700; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0,204,102,0.5); }`;
+    document.head.appendChild(style);
+</script>

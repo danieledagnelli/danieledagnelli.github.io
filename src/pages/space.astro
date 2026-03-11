@@ -1,0 +1,1317 @@
+---
+import { siteMetadata } from "../siteMetadata";
+import { experience, education, certifications, skills, engagements, continuousLearning, summary, managementSkills, languages, industries, metrics } from "../data/resume";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>Daniele D'Agnelli — Deep Space Mission Dossier</title>
+    <meta name="description" content="Deep Space Mission Dossier — Daniele D'Agnelli's career presented as an interstellar spacecraft command terminal. 15+ years navigating digital frontiers." />
+    <meta name="author" content="Daniele D'Agnelli" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://dagnelli.net/space" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Daniele D'Agnelli — Deep Space Mission Dossier" />
+    <meta property="og:description" content="Interstellar mission dossier: 15+ years navigating complex digital transformations across AI, cybersecurity, and enterprise systems." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dagnelli.net/space" />
+    <meta property="og:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta property="og:image:alt" content="Daniele D'Agnelli — Deep Space Mission Dossier" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Daniele D'Agnelli" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Daniele D'Agnelli — Deep Space Mission Dossier" />
+    <meta name="twitter:description" content="Interstellar mission dossier: 15+ years navigating complex digital transformations." />
+    <meta name="twitter:image" content="https://dagnelli.net/assets/og-image.png" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Exo+2:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- STARFIELD CANVAS -->
+    <canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
+
+    <!-- RADAR SWEEP -->
+    <div class="radar" aria-hidden="true">
+        <div class="radar-ring"></div>
+        <div class="radar-ring radar-ring-2"></div>
+        <div class="radar-sweep"></div>
+        <div class="radar-dot"></div>
+    </div>
+
+    <!-- HUD READOUTS -->
+    <div class="hud hud-top-left" aria-hidden="true">
+        <span class="hud-label">MISSION CLOCK</span>
+        <span class="hud-value" id="hudClock">00:00:00</span>
+    </div>
+    <div class="hud hud-top-right" aria-hidden="true">
+        <span class="hud-label">ALTITUDE</span>
+        <span class="hud-value" id="hudAltitude">ALT: 0 KM</span>
+    </div>
+    <div class="hud hud-bottom-left" aria-hidden="true">
+        <span class="hud-label">SIGNAL STRENGTH</span>
+        <div class="signal-bars" id="signalBars">
+            <span class="sig-bar active"></span>
+            <span class="sig-bar active"></span>
+            <span class="sig-bar active"></span>
+            <span class="sig-bar active"></span>
+            <span class="sig-bar"></span>
+        </div>
+    </div>
+
+    <!-- INTRO SEQUENCE -->
+    <div class="intro" id="intro">
+        <div class="intro-countdown" id="introCountdown"></div>
+        <div class="intro-flash" id="introFlash"></div>
+        <pre class="intro-boot" id="introBoot"></pre>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="mission-content" id="missionContent">
+
+        <!-- MISSION HEADER -->
+        <section class="panel dossier-panel">
+            <div class="panel-header">
+                <span class="panel-tab">CREW MANIFEST</span>
+                <span class="panel-status online">VERIFIED</span>
+            </div>
+            <div class="panel-body">
+                <div class="dossier-grid">
+                    <div class="dossier-photo">
+                        <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli — Mission Commander" width="160" height="160" />
+                        <div class="photo-holo"></div>
+                        <span class="photo-id">CMD-001</span>
+                    </div>
+                    <div class="dossier-info">
+                        <h1 class="commander-name">{siteMetadata.name}</h1>
+                        <div class="commander-rank">Mission Commander // Senior Engagement Manager</div>
+                        <div class="commander-meta">
+                            <span class="meta-tag"><i class="icon-loc"></i> {siteMetadata.location}</span>
+                            <span class="meta-tag status-active"><i class="icon-status"></i> ACTIVE DUTY</span>
+                            <span class="meta-tag"><i class="icon-xp"></i> 15+ YEARS IN SERVICE</span>
+                        </div>
+                        <div class="commander-links">
+                            <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener" class="cmd-link">[GITHUB]</a>
+                            <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener" class="cmd-link">[LINKEDIN]</a>
+                            <a href={`mailto:${siteMetadata.email}`} class="cmd-link">[COMMS]</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MISSION BRIEFING -->
+        <section class="panel reveal">
+            <div class="panel-header">
+                <span class="panel-tab">MISSION BRIEFING</span>
+                <span class="panel-status online">DECLASSIFIED</span>
+            </div>
+            <div class="panel-body">
+                <p class="briefing-text">{summary}</p>
+            </div>
+        </section>
+
+        <!-- MISSION TIMELINE -->
+        <section class="panel reveal">
+            <div class="panel-header">
+                <span class="panel-tab">MISSION TIMELINE</span>
+                <span class="panel-status online">LOGGED</span>
+            </div>
+            <div class="panel-body">
+                <div class="timeline">
+                    {experience.map((exp, i) => (
+                        <div class="timeline-entry reveal">
+                            <div class="timeline-connector">
+                                <div class="timeline-node"></div>
+                                {i < experience.length - 1 && <div class="timeline-orbit"></div>}
+                            </div>
+                            <div class="timeline-card">
+                                <div class="timeline-card-header">
+                                    <span class="timeline-company">{exp.company}</span>
+                                    <span class="timeline-location">{exp.location}</span>
+                                </div>
+                                {exp.roles.map(role => (
+                                    <div class="timeline-role">
+                                        <div class="role-header">
+                                            <span class="role-title">{role.title}</span>
+                                            <span class="role-period">{role.period}</span>
+                                        </div>
+                                        {role.description && <p class="role-desc">{role.description}</p>}
+                                        {role.bullets && role.bullets.length > 0 && (
+                                            <ul class="role-bullets">
+                                                {role.bullets.map(b => <li>{b}</li>)}
+                                            </ul>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- SHIP SYSTEMS (SKILLS) -->
+        <section class="panel reveal">
+            <div class="panel-header">
+                <span class="panel-tab">SHIP SYSTEMS</span>
+                <span class="panel-status online">ALL NOMINAL</span>
+            </div>
+            <div class="panel-body">
+                <h3 class="subsystem-title">Technical Systems</h3>
+                <div class="systems-grid">
+                    {skills.map(s => (
+                        <div class="system-item">
+                            <span class="system-dot online"></span>
+                            <span class="system-name">{s}</span>
+                            <span class="system-status">ONLINE</span>
+                        </div>
+                    ))}
+                </div>
+                <h3 class="subsystem-title">Command & Navigation</h3>
+                <div class="systems-grid">
+                    {managementSkills.map(s => (
+                        <div class="system-item">
+                            <span class="system-dot online"></span>
+                            <span class="system-name">{s}</span>
+                            <span class="system-status">ONLINE</span>
+                        </div>
+                    ))}
+                </div>
+                <h3 class="subsystem-title">Communication Protocols</h3>
+                <div class="systems-grid compact">
+                    {languages.map(l => (
+                        <div class="system-item">
+                            <span class="system-dot online"></span>
+                            <span class="system-name">{l}</span>
+                            <span class="system-status">FLUENT</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- PLANETARY EXPEDITIONS (ENGAGEMENTS) -->
+        <section class="panel reveal">
+            <div class="panel-header">
+                <span class="panel-tab">PLANETARY EXPEDITIONS</span>
+                <span class="panel-status online">CHARTED</span>
+            </div>
+            <div class="panel-body">
+                <div class="expeditions-grid">
+                    {engagements.map(eng => (
+                        <div class="expedition-card reveal">
+                            <div class="expedition-sector">{eng.sector.toUpperCase()}</div>
+                            <div class="expedition-client">{eng.client}</div>
+                            <div class="expedition-details">
+                                <div class="expedition-row">
+                                    <span class="expedition-label">SCOPE</span>
+                                    <span class="expedition-value">{eng.scope}</span>
+                                </div>
+                                <div class="expedition-row">
+                                    <span class="expedition-label">IMPACT</span>
+                                    <span class="expedition-value highlight">{eng.impact}</span>
+                                </div>
+                            </div>
+                            <div class={`expedition-trend ${eng.trend}`}>
+                                {eng.trend === 'positive' ? '// MISSION SUCCESS' : '// MISSION COMPLETE'}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTOR COVERAGE (INDUSTRIES) -->
+        <section class="panel reveal">
+            <div class="panel-header">
+                <span class="panel-tab">SECTOR COVERAGE</span>
+                <span class="panel-status online">MAPPED</span>
+            </div>
+            <div class="panel-body">
+                <div class="sectors-grid">
+                    {industries.map(ind => (
+                        <div class="sector-tag">{ind}</div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- TRAINING ACADEMY (EDUCATION) -->
+        <section class="panel reveal">
+            <div class="panel-header">
+                <span class="panel-tab">TRAINING ACADEMY</span>
+                <span class="panel-status online">RECORDS</span>
+            </div>
+            <div class="panel-body">
+                {education.map(edu => (
+                    <div class="academy-record reveal">
+                        <div class="academy-header">
+                            <span class="academy-institution">{edu.institution}</span>
+                            <span class="academy-period">{edu.period}</span>
+                        </div>
+                        <div class="academy-degree">{edu.degree}</div>
+                        <div class="academy-meta">
+                            <span>{edu.location}</span>
+                            {edu.distinction && <span class="academy-distinction">// {edu.distinction}</span>}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- FLIGHT QUALIFICATIONS (CERTIFICATIONS) -->
+        <section class="panel reveal">
+            <div class="panel-header">
+                <span class="panel-tab">FLIGHT QUALIFICATIONS</span>
+                <span class="panel-status online">CERTIFIED</span>
+            </div>
+            <div class="panel-body">
+                <div class="quals-grid">
+                    {certifications.map(cert => (
+                        <div class="qual-badge reveal">
+                            <span class="qual-icon">&lt;/&gt;</span>
+                            <span class="qual-name">{cert}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- ONGOING RESEARCH (CONTINUOUS LEARNING) -->
+        <section class="panel reveal">
+            <div class="panel-header">
+                <span class="panel-tab">ONGOING RESEARCH</span>
+                <span class="panel-status online">IN PROGRESS</span>
+            </div>
+            <div class="panel-body">
+                <div class="research-list">
+                    {continuousLearning.map(item => (
+                        <div class="research-item reveal">
+                            <span class="research-marker">&gt;</span>
+                            <span class="research-name">{item}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- MISSION METRICS -->
+        <section class="panel reveal">
+            <div class="panel-header">
+                <span class="panel-tab">MISSION METRICS</span>
+                <span class="panel-status online">TELEMETRY</span>
+            </div>
+            <div class="panel-body">
+                <div class="metrics-grid">
+                    {metrics.map(m => (
+                        <div class="metric-card reveal">
+                            <div class="metric-value">{m.value}</div>
+                            <div class="metric-label">{m.label}</div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="mission-footer">
+            <div class="footer-transmission">// END TRANSMISSION — MISSION COMPLETE</div>
+            <div class="footer-lost">Signal lost...<span class="blink-cursor">_</span></div>
+            <div class="footer-links">
+                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">[GITHUB]</a>
+                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">[LINKEDIN]</a>
+                <a href={`mailto:${siteMetadata.email}`}>[EMAIL]</a>
+            </div>
+        </footer>
+
+    </main>
+
+<style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --void: #0a0e27;
+        --electric: #00a8ff;
+        --dim-blue: #0055aa;
+        --white: #e8e8e8;
+        --amber: #ff9500;
+        --panel-bg: #0d1535;
+        --panel-border: #00a8ff33;
+        --grid-color: #00a8ff0a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        background: var(--void);
+        color: var(--white);
+        font-family: 'Space Mono', monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        overflow-x: hidden;
+        min-height: 100vh;
+        background-image:
+            linear-gradient(var(--grid-color) 1px, transparent 1px),
+            linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+
+    a { color: var(--electric); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--amber); }
+
+    /* ===== STARFIELD CANVAS ===== */
+    .starfield {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    /* ===== RADAR ===== */
+    .radar {
+        position: fixed;
+        bottom: 30px; right: 30px;
+        width: 120px; height: 120px;
+        border-radius: 50%;
+        border: 1px solid var(--dim-blue);
+        overflow: hidden;
+        z-index: 50;
+        opacity: 0.6;
+        background: radial-gradient(circle, #0a0e2700 0%, #0a0e2744 100%);
+    }
+    .radar-ring {
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 60%; height: 60%;
+        border: 1px solid var(--dim-blue);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .radar-ring-2 {
+        width: 30%; height: 30%;
+    }
+    .radar-sweep {
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 50%; height: 2px;
+        background: linear-gradient(90deg, var(--electric), transparent);
+        transform-origin: left center;
+        animation: radarSweep 4s linear infinite;
+    }
+    .radar-dot {
+        position: absolute;
+        top: 30%; left: 60%;
+        width: 4px; height: 4px;
+        background: var(--electric);
+        border-radius: 50%;
+        animation: radarBlink 2s ease-in-out infinite;
+    }
+    @keyframes radarSweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes radarBlink { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+
+    /* ===== HUD ===== */
+    .hud {
+        position: fixed;
+        z-index: 100;
+        font-family: 'Space Mono', monospace;
+        font-size: 11px;
+        letter-spacing: 1px;
+        pointer-events: none;
+    }
+    .hud-label {
+        display: block;
+        color: var(--dim-blue);
+        font-size: 9px;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+    }
+    .hud-value {
+        display: block;
+        color: var(--electric);
+        font-weight: 700;
+        font-size: 13px;
+    }
+    .hud-top-left { top: 20px; left: 20px; }
+    .hud-top-right { top: 20px; right: 20px; text-align: right; }
+    .hud-bottom-left { bottom: 30px; left: 20px; }
+
+    .signal-bars { display: flex; gap: 3px; margin-top: 4px; }
+    .sig-bar {
+        width: 6px; height: 14px;
+        background: var(--dim-blue);
+        border-radius: 1px;
+        transition: background 0.3s;
+    }
+    .sig-bar:nth-child(2) { height: 18px; }
+    .sig-bar:nth-child(3) { height: 22px; }
+    .sig-bar:nth-child(4) { height: 26px; }
+    .sig-bar:nth-child(5) { height: 30px; }
+    .sig-bar.active { background: var(--electric); animation: sigPulse 3s ease-in-out infinite; }
+    .sig-bar:nth-child(2).active { animation-delay: 0.2s; }
+    .sig-bar:nth-child(3).active { animation-delay: 0.4s; }
+    .sig-bar:nth-child(4).active { animation-delay: 0.6s; }
+    @keyframes sigPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+    /* ===== INTRO ===== */
+    .intro {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: #000;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .intro.hidden { display: none; }
+    .intro-countdown {
+        font-family: 'Exo 2', sans-serif;
+        font-size: clamp(48px, 12vw, 120px);
+        font-weight: 800;
+        color: var(--electric);
+        text-align: center;
+        text-shadow: 0 0 40px var(--electric), 0 0 80px #00a8ff44;
+    }
+    .intro-flash {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: #fff;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.1s;
+    }
+    .intro-flash.active { opacity: 0.8; }
+    .intro-boot {
+        font-family: 'Space Mono', monospace;
+        font-size: 13px;
+        color: var(--electric);
+        line-height: 1.8;
+        max-width: 600px;
+        padding: 20px;
+        white-space: pre-wrap;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .mission-content {
+        position: relative;
+        z-index: 10;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 100px 24px 60px;
+        opacity: 0;
+        transition: opacity 0.8s ease;
+    }
+    .mission-content.visible { opacity: 1; }
+
+    /* ===== PANELS ===== */
+    .panel {
+        background: var(--panel-bg);
+        border: 1px solid var(--panel-border);
+        border-radius: 4px;
+        margin-bottom: 32px;
+        overflow: hidden;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .panel:hover {
+        border-color: var(--electric);
+        box-shadow: 0 0 20px #00a8ff11, inset 0 0 20px #00a8ff05;
+    }
+    .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        background: linear-gradient(90deg, #0d153588, #0a0e2788);
+        border-bottom: 1px solid var(--panel-border);
+    }
+    .panel-tab {
+        font-family: 'Exo 2', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 2px;
+        color: var(--electric);
+        text-transform: uppercase;
+    }
+    .panel-status {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        padding: 3px 10px;
+        border-radius: 2px;
+        text-transform: uppercase;
+    }
+    .panel-status.online {
+        color: #00ff88;
+        border: 1px solid #00ff8844;
+        background: #00ff8808;
+    }
+    .panel-body { padding: 24px 20px; }
+
+    /* ===== DOSSIER ===== */
+    .dossier-panel { border-color: var(--electric); }
+    .dossier-grid {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 28px;
+        align-items: start;
+    }
+    .dossier-photo {
+        position: relative;
+        width: 160px; height: 160px;
+    }
+    .dossier-photo img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+        filter: hue-rotate(200deg) saturate(1.3) brightness(0.9);
+    }
+    .photo-holo {
+        position: absolute;
+        top: -4px; left: -4px;
+        width: calc(100% + 8px); height: calc(100% + 8px);
+        border: 2px solid var(--electric);
+        border-radius: 6px;
+        animation: holoPulse 3s ease-in-out infinite;
+        pointer-events: none;
+    }
+    @keyframes holoPulse {
+        0%, 100% { box-shadow: 0 0 8px var(--electric), inset 0 0 8px #00a8ff22; opacity: 0.7; }
+        50% { box-shadow: 0 0 20px var(--electric), inset 0 0 20px #00a8ff44; opacity: 1; }
+    }
+    .photo-id {
+        position: absolute;
+        bottom: -8px; left: 50%;
+        transform: translateX(-50%);
+        font-size: 9px;
+        letter-spacing: 2px;
+        color: var(--dim-blue);
+        background: var(--panel-bg);
+        padding: 2px 8px;
+        border: 1px solid var(--panel-border);
+        border-radius: 2px;
+    }
+    .commander-name {
+        font-family: 'Exo 2', sans-serif;
+        font-size: clamp(24px, 4vw, 36px);
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 6px;
+        letter-spacing: 1px;
+    }
+    .commander-rank {
+        font-size: 12px;
+        color: var(--electric);
+        letter-spacing: 1.5px;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+    }
+    .commander-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+    .meta-tag {
+        font-size: 10px;
+        letter-spacing: 1px;
+        padding: 4px 10px;
+        border: 1px solid var(--panel-border);
+        border-radius: 2px;
+        color: var(--dim-blue);
+        text-transform: uppercase;
+    }
+    .meta-tag.status-active { color: #00ff88; border-color: #00ff8844; }
+    .commander-links { display: flex; gap: 12px; }
+    .cmd-link {
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: var(--electric);
+        padding: 4px 0;
+    }
+    .cmd-link:hover { color: var(--amber); }
+
+    /* ===== BRIEFING ===== */
+    .briefing-text {
+        color: #c0c8e0;
+        font-size: 13px;
+        line-height: 1.9;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline { position: relative; }
+    .timeline-entry {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 16px;
+        margin-bottom: 8px;
+    }
+    .timeline-connector {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 6px;
+    }
+    .timeline-node {
+        width: 12px; height: 12px;
+        border-radius: 50%;
+        border: 2px solid var(--electric);
+        background: var(--void);
+        flex-shrink: 0;
+        position: relative;
+        z-index: 2;
+    }
+    .timeline-orbit {
+        width: 2px;
+        flex: 1;
+        background: repeating-linear-gradient(
+            to bottom,
+            var(--dim-blue) 0px,
+            var(--dim-blue) 4px,
+            transparent 4px,
+            transparent 8px
+        );
+        margin-top: 4px;
+        border-radius: 1px;
+        position: relative;
+    }
+    .timeline-orbit::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -4px;
+        width: 10px; height: 10px;
+        border: 1px dashed var(--dim-blue);
+        border-radius: 50%;
+        opacity: 0.4;
+    }
+    .timeline-card {
+        background: #0a0e2788;
+        border: 1px solid var(--panel-border);
+        border-radius: 4px;
+        padding: 18px;
+        transition: border-color 0.3s;
+    }
+    .timeline-card:hover { border-color: var(--electric); }
+    .timeline-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .timeline-company {
+        font-family: 'Exo 2', sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--electric);
+        letter-spacing: 1px;
+    }
+    .timeline-location {
+        font-size: 11px;
+        color: var(--dim-blue);
+        letter-spacing: 1px;
+    }
+    .timeline-role { margin-bottom: 12px; }
+    .timeline-role:last-child { margin-bottom: 0; }
+    .role-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 6px;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .role-title {
+        font-size: 13px;
+        color: var(--white);
+        font-weight: 700;
+    }
+    .role-period {
+        font-size: 11px;
+        color: var(--dim-blue);
+    }
+    .role-desc {
+        font-size: 12px;
+        color: #8899bb;
+        margin-bottom: 8px;
+        line-height: 1.7;
+    }
+    .role-bullets {
+        list-style: none;
+        padding: 0;
+    }
+    .role-bullets li {
+        font-size: 12px;
+        color: #99aabb;
+        padding: 3px 0 3px 16px;
+        position: relative;
+        line-height: 1.6;
+    }
+    .role-bullets li::before {
+        content: '>';
+        position: absolute;
+        left: 0;
+        color: var(--electric);
+        font-weight: 700;
+    }
+
+    /* ===== SYSTEMS GRID ===== */
+    .subsystem-title {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--dim-blue);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 20px 0 12px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #00a8ff11;
+    }
+    .subsystem-title:first-child { margin-top: 0; }
+    .systems-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 8px;
+    }
+    .systems-grid.compact { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+    .system-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        background: #0a0e2766;
+        border: 1px solid #00a8ff11;
+        border-radius: 3px;
+        transition: border-color 0.2s;
+    }
+    .system-item:hover { border-color: var(--electric); }
+    .system-dot {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+    .system-dot.online {
+        background: #00ff88;
+        box-shadow: 0 0 6px #00ff8888;
+    }
+    .system-name {
+        flex: 1;
+        font-size: 12px;
+        color: var(--white);
+    }
+    .system-status {
+        font-size: 9px;
+        color: #00ff88;
+        letter-spacing: 1px;
+    }
+
+    /* ===== EXPEDITIONS ===== */
+    .expeditions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+    }
+    .expedition-card {
+        background: #0a0e2788;
+        border: 1px solid var(--panel-border);
+        border-radius: 4px;
+        padding: 18px;
+        transition: border-color 0.3s, transform 0.2s;
+    }
+    .expedition-card:hover { border-color: var(--electric); transform: translateY(-2px); }
+    .expedition-sector {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--amber);
+        margin-bottom: 6px;
+    }
+    .expedition-client {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--white);
+        text-transform: capitalize;
+        margin-bottom: 14px;
+    }
+    .expedition-details { margin-bottom: 12px; }
+    .expedition-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px 0;
+        border-bottom: 1px solid #00a8ff0a;
+    }
+    .expedition-label {
+        font-size: 10px;
+        color: var(--dim-blue);
+        letter-spacing: 1px;
+    }
+    .expedition-value {
+        font-size: 12px;
+        color: var(--white);
+        text-transform: capitalize;
+    }
+    .expedition-value.highlight { color: var(--amber); font-weight: 700; }
+    .expedition-trend {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+    .expedition-trend.positive { color: #00ff88; }
+    .expedition-trend.neutral { color: var(--dim-blue); }
+
+    /* ===== SECTORS ===== */
+    .sectors-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .sector-tag {
+        font-size: 11px;
+        letter-spacing: 1px;
+        padding: 6px 14px;
+        border: 1px solid var(--panel-border);
+        border-radius: 20px;
+        color: var(--electric);
+        transition: all 0.2s;
+    }
+    .sector-tag:hover {
+        border-color: var(--electric);
+        background: #00a8ff11;
+    }
+
+    /* ===== ACADEMY ===== */
+    .academy-record {
+        padding: 16px;
+        border: 1px solid #00a8ff11;
+        border-radius: 4px;
+        margin-bottom: 12px;
+        background: #0a0e2744;
+        transition: border-color 0.3s;
+    }
+    .academy-record:last-child { margin-bottom: 0; }
+    .academy-record:hover { border-color: var(--electric); }
+    .academy-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 6px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .academy-institution {
+        font-family: 'Exo 2', sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        color: var(--electric);
+    }
+    .academy-period {
+        font-size: 11px;
+        color: var(--dim-blue);
+    }
+    .academy-degree {
+        font-size: 13px;
+        color: var(--white);
+        margin-bottom: 4px;
+    }
+    .academy-meta {
+        font-size: 11px;
+        color: var(--dim-blue);
+        display: flex;
+        gap: 12px;
+    }
+    .academy-distinction { color: var(--amber); font-weight: 700; }
+
+    /* ===== QUALIFICATIONS ===== */
+    .quals-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+    }
+    .qual-badge {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border: 1px solid var(--panel-border);
+        border-radius: 4px;
+        background: #0a0e2766;
+        transition: border-color 0.2s;
+    }
+    .qual-badge:hover { border-color: var(--amber); }
+    .qual-icon {
+        color: var(--amber);
+        font-weight: 700;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+    .qual-name {
+        font-size: 12px;
+        color: var(--white);
+    }
+
+    /* ===== RESEARCH ===== */
+    .research-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 0;
+        border-bottom: 1px solid #00a8ff08;
+    }
+    .research-item:last-child { border-bottom: none; }
+    .research-marker {
+        color: var(--electric);
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+    .research-name {
+        font-size: 13px;
+        color: #c0c8e0;
+    }
+
+    /* ===== METRICS ===== */
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 14px;
+    }
+    .metric-card {
+        text-align: center;
+        padding: 18px 12px;
+        border: 1px solid var(--panel-border);
+        border-radius: 4px;
+        background: #0a0e2766;
+        transition: border-color 0.3s, transform 0.2s;
+    }
+    .metric-card:hover { border-color: var(--amber); transform: translateY(-2px); }
+    .metric-value {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--amber);
+        margin-bottom: 4px;
+    }
+    .metric-label {
+        font-size: 10px;
+        color: var(--dim-blue);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    /* ===== FOOTER ===== */
+    .mission-footer {
+        text-align: center;
+        padding: 60px 20px 40px;
+    }
+    .footer-transmission {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--dim-blue);
+        letter-spacing: 3px;
+        margin-bottom: 12px;
+    }
+    .footer-lost {
+        font-size: 13px;
+        color: var(--electric);
+        margin-bottom: 24px;
+    }
+    .blink-cursor { animation: blink 1s step-end infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    .footer-links a {
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: var(--dim-blue);
+    }
+    .footer-links a:hover { color: var(--electric); }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE: 1200px ===== */
+    @media (max-width: 1200px) {
+        .mission-content { max-width: 800px; }
+        .radar { width: 100px; height: 100px; }
+    }
+
+    /* ===== RESPONSIVE: 768px ===== */
+    @media (max-width: 768px) {
+        body { font-size: 13px; }
+        .mission-content { padding: 80px 16px 40px; }
+        .dossier-grid {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+        }
+        .dossier-photo { order: -1; }
+        .commander-meta { justify-content: center; }
+        .commander-links { justify-content: center; }
+        .systems-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+        .expeditions-grid { grid-template-columns: 1fr; }
+        .quals-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+        .metrics-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+        .radar { width: 80px; height: 80px; bottom: 20px; right: 20px; }
+        .hud-top-right { display: none; }
+        .timeline-entry { grid-template-columns: 30px 1fr; gap: 10px; }
+    }
+
+    /* ===== RESPONSIVE: 480px ===== */
+    @media (max-width: 480px) {
+        .mission-content { padding: 70px 12px 30px; }
+        .panel-body { padding: 16px 14px; }
+        .panel-header { padding: 10px 14px; }
+        .panel-tab { font-size: 11px; letter-spacing: 1px; }
+        .commander-name { font-size: 22px; }
+        .dossier-photo { width: 120px; height: 120px; }
+        .systems-grid { grid-template-columns: 1fr; }
+        .quals-grid { grid-template-columns: 1fr; }
+        .timeline-entry { grid-template-columns: 1fr; }
+        .timeline-connector { display: none; }
+        .radar { display: none; }
+        .hud-bottom-left { display: none; }
+        .hud-top-left .hud-label { display: none; }
+        .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        .meta-tag { font-size: 9px; padding: 3px 8px; }
+        .cmd-link { min-height: 44px; display: flex; align-items: center; }
+        .expedition-card { padding: 14px; }
+        .sector-tag { min-height: 44px; display: flex; align-items: center; }
+    }
+
+    /* ===== RESPONSIVE: 380px ===== */
+    @media (max-width: 380px) {
+        .mission-content { padding: 60px 8px 20px; }
+        .panel-body { padding: 12px 10px; }
+        .commander-name { font-size: 20px; }
+        .dossier-photo { width: 100px; height: 100px; }
+        .hud-top-left { top: 10px; left: 10px; }
+        .metric-card { padding: 12px 8px; }
+        .metric-value { font-size: 18px; }
+        .briefing-text { font-size: 12px; }
+        .footer-links { flex-direction: column; gap: 12px; }
+        .footer-links a { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+    }
+</style>
+
+<script>
+    // ===== INTRO SEQUENCE =====
+    const intro = document.getElementById('intro');
+    const countdown = document.getElementById('introCountdown');
+    const flash = document.getElementById('introFlash');
+    const boot = document.getElementById('introBoot');
+    const content = document.getElementById('missionContent');
+
+    const STORAGE_KEY = 'space-intro';
+    let introSkipped = false;
+
+    function skipIntro() {
+        if (introSkipped) return;
+        introSkipped = true;
+        sessionStorage.setItem(STORAGE_KEY, 'done');
+        intro?.classList.add('hidden');
+        content?.classList.add('visible');
+    }
+
+    // Skip listeners
+    document.addEventListener('keydown', (e) => {
+        if (['Escape', ' ', 'Enter'].includes(e.key)) skipIntro();
+    });
+    intro?.addEventListener('click', skipIntro);
+
+    if (sessionStorage.getItem(STORAGE_KEY) === 'done') {
+        skipIntro();
+    } else {
+        runIntro();
+    }
+
+    async function runIntro() {
+        // Countdown T-10 to T-0
+        for (let i = 10; i >= 0; i--) {
+            if (introSkipped) return;
+            if (countdown) countdown.textContent = `T-${i}`;
+            await sleep(i === 0 ? 200 : 180);
+        }
+
+        if (introSkipped) return;
+
+        // Flash
+        flash?.classList.add('active');
+        await sleep(120);
+        flash?.classList.remove('active');
+        if (countdown) countdown.style.display = 'none';
+
+        if (introSkipped) return;
+
+        // Boot text
+        const bootLines = [
+            'Initializing navigation array...',
+            'Propulsion systems nominal...',
+            'Life support: ACTIVE...',
+            'Comms relay: ONLINE...',
+            'Loading crew manifest...',
+            'Calibrating sensors...',
+            'Mission dossier loaded.',
+            '',
+            '> READY'
+        ];
+
+        for (const line of bootLines) {
+            if (introSkipped) return;
+            for (let c = 0; c < line.length; c++) {
+                if (introSkipped) return;
+                if (boot) boot.textContent += line[c];
+                await sleep(30);
+            }
+            if (boot) boot.textContent += '\n';
+            await sleep(80);
+        }
+
+        await sleep(400);
+        skipIntro();
+    }
+
+    function sleep(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // ===== MISSION CLOCK =====
+    const clockEl = document.getElementById('hudClock');
+    function updateClock() {
+        const now = new Date();
+        const h = String(now.getHours()).padStart(2, '0');
+        const m = String(now.getMinutes()).padStart(2, '0');
+        const s = String(now.getSeconds()).padStart(2, '0');
+        if (clockEl) clockEl.textContent = `${h}:${m}:${s}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // ===== ALTITUDE (SCROLL %) =====
+    const altEl = document.getElementById('hudAltitude');
+    function updateAltitude() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? scrollTop / docHeight : 0;
+        const km = Math.floor(pct * 100000);
+        const formatted = km.toLocaleString('en-US');
+        if (altEl) altEl.textContent = `ALT: ${formatted} KM`;
+    }
+    window.addEventListener('scroll', updateAltitude, { passive: true });
+    updateAltitude();
+
+    // ===== SIGNAL BARS ANIMATION =====
+    const sigBars = document.querySelectorAll('.sig-bar');
+    function animateSignal() {
+        const active = 3 + Math.floor(Math.random() * 3); // 3-5 active
+        sigBars.forEach((bar, i) => {
+            bar.classList.toggle('active', i < active);
+        });
+    }
+    setInterval(animateSignal, 2000);
+
+    // ===== SCROLL REVEAL =====
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ===== STARFIELD CANVAS =====
+    const canvas = document.getElementById('starfield') as HTMLCanvasElement;
+    const ctx = canvas?.getContext('2d');
+
+    interface Star {
+        x: number;
+        y: number;
+        size: number;
+        baseOpacity: number;
+        twinkleSpeed: number;
+        twinkleOffset: number;
+        depth: number;
+    }
+
+    let stars: Star[] = [];
+    let scrollY = 0;
+    let animFrame: number;
+
+    function initStarfield() {
+        if (!canvas || !ctx) return;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const count = Math.min(300, Math.max(200, Math.floor(window.innerWidth * 0.2)));
+        stars = [];
+        for (let i = 0; i < count; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 1.8 + 0.4,
+                baseOpacity: Math.random() * 0.6 + 0.2,
+                twinkleSpeed: Math.random() * 0.003 + 0.001,
+                twinkleOffset: Math.random() * Math.PI * 2,
+                depth: Math.random() * 0.8 + 0.2,
+            });
+        }
+    }
+
+    function drawStars(time: number) {
+        if (!canvas || !ctx) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (const star of stars) {
+            const parallaxY = (scrollY * star.depth * 0.05) % canvas.height;
+            let y = (star.y - parallaxY + canvas.height) % canvas.height;
+            const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset);
+            const opacity = star.baseOpacity + twinkle * 0.25;
+
+            ctx.beginPath();
+            ctx.arc(star.x, y, star.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(220, 230, 255, ${Math.max(0.05, opacity)})`;
+            ctx.fill();
+        }
+
+        animFrame = requestAnimationFrame(drawStars);
+    }
+
+    window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
+    window.addEventListener('resize', () => {
+        if (canvas) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+    });
+
+    initStarfield();
+    animFrame = requestAnimationFrame(drawStars);
+</script>
+</body>
+</html>

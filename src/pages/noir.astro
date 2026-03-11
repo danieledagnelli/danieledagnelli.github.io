@@ -1,0 +1,1244 @@
+---
+import { siteMetadata } from "../siteMetadata";
+import { experience, education, certifications, skills, engagements, continuousLearning, summary, metrics, industries, managementSkills, languages } from "../data/resume";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>Case File: Daniele D'Agnelli — Film Noir Detective Dossier</title>
+    <meta name="description" content="Case File #4721 — A detective's dossier on Daniele D'Agnelli. Senior Engagement Manager with 15+ years in Professional Services, AI deployments, and cybersecurity." />
+    <meta name="author" content="Daniele D'Agnelli" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://dagnelli.net/noir" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Case File: Daniele D'Agnelli — Film Noir Detective Dossier" />
+    <meta property="og:description" content="Case File #4721. A detective's investigation into a Senior Engagement Manager with 15+ years leading high-impact digital transformations." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dagnelli.net/noir" />
+    <meta property="og:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta property="og:image:alt" content="Case File: Daniele D'Agnelli" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Daniele D'Agnelli" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Case File: Daniele D'Agnelli — Film Noir Detective Dossier" />
+    <meta name="twitter:description" content="Case File #4721. A detective's investigation into a Senior Engagement Manager." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+</head>
+
+<body>
+    <!-- Paper texture overlay -->
+    <div class="paper-texture" aria-hidden="true"></div>
+
+    <!-- Intro sequence -->
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="intro-content">
+            <div class="typewriter-container">
+                <p id="typewriter-text" class="typewriter-text"></p>
+                <span id="typewriter-cursor" class="typewriter-cursor">|</span>
+            </div>
+            <div id="folder-opening" class="folder-opening">
+                <div class="folder-tab">CLASSIFIED</div>
+                <div class="folder-body"></div>
+            </div>
+            <p class="skip-hint" id="skip-hint">Press Escape, Space, or Enter to skip</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+        <!-- Stamp decorations -->
+        <div class="stamp stamp-classified" aria-hidden="true">CLASSIFIED</div>
+        <div class="stamp stamp-confidential" aria-hidden="true">CONFIDENTIAL</div>
+
+        <!-- Case Header -->
+        <header class="case-header reveal">
+            <div class="case-header-inner">
+                <div class="case-info">
+                    <div class="case-number">Case File #4721</div>
+                    <h1 class="subject-name">{siteMetadata.name}</h1>
+                    <div class="case-meta">
+                        <span class="meta-item">Location: {siteMetadata.location}</span>
+                        <span class="meta-item">Status: Active</span>
+                        <span class="meta-item">Classification: Top Secret</span>
+                    </div>
+                    <div class="case-meta">
+                        <span class="meta-item">Contact: {siteMetadata.email}</span>
+                        <span class="meta-item">
+                            GitHub: <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener noreferrer">@{siteMetadata.github_handle}</a>
+                        </span>
+                        <span class="meta-item">
+                            LinkedIn: <a href={`https://linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener noreferrer">/{siteMetadata.linkedin_handle}</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="evidence-photo-container">
+                    <div class="paper-clip" aria-hidden="true"></div>
+                    <img src="/assets/dani.jpeg" alt={`Evidence photo of ${siteMetadata.name}`} class="evidence-photo" loading="eager" />
+                    <div class="photo-label" aria-hidden="true">EVIDENCE PHOTO — SUBJECT</div>
+                </div>
+            </div>
+            <div class="coffee-stain coffee-stain-1" aria-hidden="true"></div>
+        </header>
+
+        <!-- Subject Profile -->
+        <section class="dossier-section reveal">
+            <h2 class="section-heading">
+                <span class="section-icon">I.</span> Subject Profile
+            </h2>
+            <div class="section-content">
+                <p class="profile-summary">{summary}</p>
+                <div class="key-metrics">
+                    <h3 class="subsection-heading">Key Intelligence</h3>
+                    <div class="metrics-grid">
+                        {metrics.map((metric) => (
+                            <div class="metric-card">
+                                <div class="metric-value">{metric.value}</div>
+                                <div class="metric-label">{metric.label}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div class="industries-list">
+                    <h3 class="subsection-heading">Known Territories</h3>
+                    <div class="tag-list">
+                        {industries.map((industry) => (
+                            <span class="tag">{industry}</span>
+                        ))}
+                    </div>
+                </div>
+                <div class="languages-note">
+                    <h3 class="subsection-heading">Known Languages</h3>
+                    <p>{languages.join(" / ")}</p>
+                </div>
+            </div>
+            <div class="coffee-stain coffee-stain-2" aria-hidden="true"></div>
+        </section>
+
+        <!-- Case History (Experience) -->
+        <section class="dossier-section reveal">
+            <h2 class="section-heading">
+                <span class="section-icon">II.</span> Case History
+            </h2>
+            <div class="section-content">
+                {experience.map((exp, idx) => (
+                    <div class="case-file-entry">
+                        <div class="case-file-header">
+                            <div class="case-file-number" aria-hidden="true">FILE {String(idx + 1).padStart(3, '0')}</div>
+                            <h3 class="case-file-company">{exp.company}</h3>
+                            <span class="case-file-location">{exp.location}</span>
+                        </div>
+                        {exp.roles.map((role) => (
+                            <div class="case-file-role">
+                                <div class="role-header">
+                                    <span class="role-title">{role.title}</span>
+                                    <span class="role-period">{role.period}</span>
+                                </div>
+                                {role.description && (
+                                    <p class="role-description">{role.description}</p>
+                                )}
+                                {role.bullets && role.bullets.length > 0 && (
+                                    <ul class="role-bullets">
+                                        {role.bullets.map((bullet) => (
+                                            <li>{bullet}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- Known Methods (Skills) -->
+        <section class="dossier-section reveal">
+            <h2 class="section-heading">
+                <span class="section-icon">III.</span> Known Methods &amp; Associates
+            </h2>
+            <div class="section-content">
+                <div class="skills-group">
+                    <h3 class="subsection-heading">Technical Arsenal</h3>
+                    <div class="tag-list">
+                        {skills.map((skill) => (
+                            <span class="tag tag-skill">{skill}</span>
+                        ))}
+                    </div>
+                </div>
+                <div class="skills-group">
+                    <h3 class="subsection-heading">Operational Tradecraft</h3>
+                    <div class="tag-list">
+                        {managementSkills.map((skill) => (
+                            <span class="tag tag-mgmt">{skill}</span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div class="coffee-stain coffee-stain-3" aria-hidden="true"></div>
+        </section>
+
+        <!-- Surveillance Reports (Engagements) -->
+        <section class="dossier-section reveal">
+            <h2 class="section-heading">
+                <span class="section-icon">IV.</span> Surveillance Reports
+            </h2>
+            <div class="section-content">
+                <div class="surveillance-grid">
+                    {engagements.map((eng, idx) => (
+                        <div class="surveillance-card">
+                            <div class="surveillance-header">
+                                <span class="surveillance-number">RPT-{String(idx + 1).padStart(3, '0')}</span>
+                                <span class={`surveillance-trend ${eng.trend}`}>{eng.trend === 'positive' ? 'HIGH IMPACT' : 'NOTABLE'}</span>
+                            </div>
+                            <h3 class="surveillance-client">{eng.client}</h3>
+                            <div class="surveillance-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Sector:</span>
+                                    <span class="detail-value">{eng.sector}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Scope:</span>
+                                    <span class="detail-value">{eng.scope}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Impact:</span>
+                                    <span class="detail-value">{eng.impact}</span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- Background Check (Education & Certifications) -->
+        <section class="dossier-section reveal">
+            <h2 class="section-heading">
+                <span class="section-icon">V.</span> Background Check
+            </h2>
+            <div class="section-content">
+                <div class="background-group">
+                    <h3 class="subsection-heading">Formal Education</h3>
+                    {education.map((edu) => (
+                        <div class="background-entry">
+                            <div class="background-header">
+                                <h4 class="background-institution">{edu.institution}</h4>
+                                <span class="background-period">{edu.period}</span>
+                            </div>
+                            <p class="background-degree">{edu.degree}</p>
+                            <span class="background-location">{edu.location}</span>
+                            {edu.distinction && (
+                                <span class="background-distinction">{edu.distinction}</span>
+                            )}
+                        </div>
+                    ))}
+                </div>
+
+                <div class="background-group">
+                    <h3 class="subsection-heading">Known Credentials</h3>
+                    <div class="tag-list">
+                        {certifications.map((cert) => (
+                            <span class="tag tag-cert">{cert}</span>
+                        ))}
+                    </div>
+                </div>
+
+                <div class="background-group">
+                    <h3 class="subsection-heading">Continuing Investigations</h3>
+                    <ul class="learning-list">
+                        {continuousLearning.map((item) => (
+                            <li>{item}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+            <div class="coffee-stain coffee-stain-4" aria-hidden="true"></div>
+        </section>
+
+        <!-- Case Closed Footer -->
+        <footer class="case-footer reveal">
+            <div class="case-closed-stamp" aria-hidden="true">CASE CLOSED</div>
+            <div class="footer-content">
+                <p class="footer-note">End of dossier. All information contained herein is classified.</p>
+                <div class="footer-links">
+                    <a href={`mailto:${siteMetadata.email}`}>Contact Subject</a>
+                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href={`https://linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener noreferrer">Bluesky</a>
+                </div>
+                <p class="footer-copy">&copy; {new Date().getFullYear()} {siteMetadata.name}. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
+
+<style>
+    /* ===== CSS Custom Properties ===== */
+    :root {
+        --paper: #f5f0e8;
+        --ink: #1a1a1a;
+        --red-stamp: #8b1a1a;
+        --manila: #d4b896;
+        --coffee: rgba(139, 69, 19, 0.1);
+        --coffee-dark: rgba(139, 69, 19, 0.2);
+        --paper-shadow: rgba(0, 0, 0, 0.15);
+        --font-typewriter: 'Special Elite', cursive;
+        --font-body: 'Libre Baskerville', Georgia, serif;
+        --max-width: 900px;
+        --section-gap: 3rem;
+    }
+
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--font-body);
+        background-color: var(--manila);
+        color: var(--ink);
+        line-height: 1.7;
+        font-size: 16px;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    a {
+        color: var(--red-stamp);
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: #5a0e0e;
+    }
+
+    /* ===== Paper Texture Overlay ===== */
+    .paper-texture {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        background-image:
+            repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 28px,
+                rgba(0, 0, 0, 0.02) 28px,
+                rgba(0, 0, 0, 0.02) 29px
+            ),
+            repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 100%
+            );
+        opacity: 0.6;
+    }
+
+    /* ===== Intro Overlay ===== */
+    .intro-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--ink);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .intro-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .intro-content {
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .typewriter-container {
+        display: inline-flex;
+        align-items: center;
+        gap: 0;
+    }
+
+    .typewriter-text {
+        font-family: var(--font-typewriter);
+        color: var(--paper);
+        font-size: clamp(1rem, 3vw, 1.6rem);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .typewriter-cursor {
+        font-family: var(--font-typewriter);
+        color: var(--paper);
+        font-size: clamp(1rem, 3vw, 1.6rem);
+        animation: blink 0.7s step-end infinite;
+    }
+
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    /* Folder opening animation */
+    .folder-opening {
+        margin-top: 2rem;
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: opacity 0.5s ease, transform 0.6s ease;
+    }
+
+    .folder-opening.open {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
+    .folder-tab {
+        display: inline-block;
+        background: var(--manila);
+        color: var(--red-stamp);
+        font-family: var(--font-typewriter);
+        font-size: 0.9rem;
+        padding: 0.3rem 1.5rem;
+        border-radius: 6px 6px 0 0;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+    }
+
+    .folder-body {
+        width: 300px;
+        height: 60px;
+        background: var(--paper);
+        border: 2px solid var(--manila);
+        margin: 0 auto;
+        border-radius: 0 4px 4px 4px;
+    }
+
+    .skip-hint {
+        font-family: var(--font-body);
+        color: rgba(245, 240, 232, 0.3);
+        font-size: 0.8rem;
+        margin-top: 2rem;
+        font-style: italic;
+    }
+
+    /* ===== Main Content ===== */
+    .main-content {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+        position: relative;
+        z-index: 2;
+        background: var(--paper);
+        min-height: 100vh;
+        box-shadow: -4px 0 15px var(--paper-shadow), 4px 0 15px var(--paper-shadow);
+    }
+
+    .main-content.visible {
+        opacity: 1;
+    }
+
+    /* ===== Stamps ===== */
+    .stamp {
+        position: absolute;
+        font-family: var(--font-typewriter);
+        color: var(--red-stamp);
+        opacity: 0.12;
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        pointer-events: none;
+        z-index: 3;
+        border: 4px solid var(--red-stamp);
+        padding: 0.2em 0.5em;
+        border-radius: 8px;
+    }
+
+    .stamp-classified {
+        top: 4rem;
+        right: -1rem;
+        transform: rotate(12deg);
+    }
+
+    .stamp-confidential {
+        top: 50%;
+        left: -1.5rem;
+        transform: rotate(-8deg);
+        font-size: 3rem;
+    }
+
+    /* ===== Coffee Stains ===== */
+    .coffee-stain {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    .coffee-stain-1 {
+        width: 120px;
+        height: 120px;
+        top: -20px;
+        right: 40px;
+        background: radial-gradient(ellipse, transparent 55%, var(--coffee) 56%, var(--coffee-dark) 62%, transparent 63%);
+    }
+
+    .coffee-stain-2 {
+        width: 90px;
+        height: 90px;
+        bottom: 10px;
+        left: 30px;
+        background: radial-gradient(ellipse, transparent 50%, var(--coffee) 52%, var(--coffee-dark) 58%, transparent 60%);
+    }
+
+    .coffee-stain-3 {
+        width: 100px;
+        height: 100px;
+        top: 20px;
+        right: 80px;
+        background: radial-gradient(ellipse, var(--coffee) 0%, transparent 45%);
+    }
+
+    .coffee-stain-4 {
+        width: 80px;
+        height: 80px;
+        bottom: -10px;
+        right: 50px;
+        background: radial-gradient(ellipse, transparent 48%, var(--coffee) 50%, var(--coffee-dark) 56%, transparent 58%);
+    }
+
+    /* ===== Case Header ===== */
+    .case-header {
+        position: relative;
+        padding-bottom: var(--section-gap);
+        border-bottom: 2px solid var(--ink);
+        margin-bottom: var(--section-gap);
+    }
+
+    .case-header-inner {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .case-info {
+        flex: 1;
+    }
+
+    .case-number {
+        font-family: var(--font-typewriter);
+        font-size: 0.9rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--red-stamp);
+        margin-bottom: 0.5rem;
+    }
+
+    .subject-name {
+        font-family: var(--font-typewriter);
+        font-size: clamp(1.8rem, 5vw, 2.8rem);
+        font-weight: 400;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .case-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .meta-item {
+        font-size: 0.85rem;
+        font-style: italic;
+    }
+
+    /* Evidence Photo */
+    .evidence-photo-container {
+        position: relative;
+        flex-shrink: 0;
+        width: 160px;
+    }
+
+    .paper-clip {
+        position: absolute;
+        top: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 50px;
+        border: 3px solid #888;
+        border-radius: 0 0 15px 15px;
+        border-top: none;
+        z-index: 5;
+    }
+
+    .paper-clip::before {
+        content: '';
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 28px;
+        border: 3px solid #888;
+        border-radius: 10px 10px 0 0;
+        border-bottom: none;
+    }
+
+    .evidence-photo {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        border: 3px solid var(--ink);
+        box-shadow: 3px 3px 8px var(--paper-shadow);
+        filter: grayscale(60%) contrast(1.1) sepia(20%);
+    }
+
+    .photo-label {
+        font-family: var(--font-typewriter);
+        font-size: 0.65rem;
+        text-align: center;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-top: 0.4rem;
+        color: var(--red-stamp);
+    }
+
+    /* ===== Dossier Sections ===== */
+    .dossier-section {
+        position: relative;
+        margin-bottom: var(--section-gap);
+        padding-bottom: var(--section-gap);
+        border-bottom: 1px dashed rgba(26, 26, 26, 0.3);
+    }
+
+    .section-heading {
+        font-family: var(--font-typewriter);
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--ink);
+        display: inline-block;
+    }
+
+    .section-icon {
+        color: var(--red-stamp);
+        margin-right: 0.5rem;
+    }
+
+    .subsection-heading {
+        font-family: var(--font-typewriter);
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 0.8rem;
+        margin-top: 1.5rem;
+        color: var(--red-stamp);
+    }
+
+    .subsection-heading:first-child {
+        margin-top: 0;
+    }
+
+    .section-content {
+        padding-left: 0.5rem;
+    }
+
+    /* ===== Profile Summary ===== */
+    .profile-summary {
+        font-size: 0.95rem;
+        text-align: justify;
+        text-indent: 2em;
+        margin-bottom: 1.5rem;
+    }
+
+    /* ===== Metrics Grid ===== */
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1rem;
+    }
+
+    .metric-card {
+        background: rgba(212, 184, 150, 0.2);
+        border: 1px solid rgba(26, 26, 26, 0.15);
+        padding: 0.8rem;
+        text-align: center;
+    }
+
+    .metric-value {
+        font-family: var(--font-typewriter);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--red-stamp);
+    }
+
+    .metric-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: 0.2rem;
+    }
+
+    /* ===== Tags ===== */
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tag {
+        font-family: var(--font-typewriter);
+        font-size: 0.8rem;
+        padding: 0.3rem 0.7rem;
+        background: var(--paper);
+        border: 1px solid rgba(26, 26, 26, 0.25);
+        letter-spacing: 0.04em;
+    }
+
+    .tag-skill {
+        border-color: var(--red-stamp);
+        color: var(--red-stamp);
+    }
+
+    .tag-mgmt {
+        background: rgba(212, 184, 150, 0.3);
+    }
+
+    .tag-cert {
+        background: rgba(139, 26, 26, 0.08);
+        border-color: var(--red-stamp);
+    }
+
+    /* ===== Case File Entries ===== */
+    .case-file-entry {
+        margin-bottom: 2rem;
+        padding: 1.2rem;
+        background: rgba(245, 240, 232, 0.5);
+        border-left: 4px solid var(--ink);
+        position: relative;
+    }
+
+    .case-file-header {
+        margin-bottom: 0.8rem;
+    }
+
+    .case-file-number {
+        font-family: var(--font-typewriter);
+        font-size: 0.75rem;
+        color: var(--red-stamp);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 0.2rem;
+    }
+
+    .case-file-company {
+        font-family: var(--font-typewriter);
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    .case-file-location {
+        font-size: 0.85rem;
+        font-style: italic;
+        color: rgba(26, 26, 26, 0.6);
+    }
+
+    .case-file-role {
+        margin-top: 0.8rem;
+        padding-top: 0.8rem;
+        border-top: 1px dotted rgba(26, 26, 26, 0.2);
+    }
+
+    .role-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.5rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .role-title {
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .role-period {
+        font-family: var(--font-typewriter);
+        font-size: 0.8rem;
+        color: rgba(26, 26, 26, 0.5);
+        letter-spacing: 0.05em;
+    }
+
+    .role-description {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        font-style: italic;
+    }
+
+    .role-bullets {
+        list-style: none;
+        padding-left: 1rem;
+    }
+
+    .role-bullets li {
+        position: relative;
+        font-size: 0.88rem;
+        margin-bottom: 0.3rem;
+        padding-left: 1rem;
+    }
+
+    .role-bullets li::before {
+        content: '\25B8';
+        position: absolute;
+        left: 0;
+        color: var(--red-stamp);
+    }
+
+    /* ===== Surveillance Grid ===== */
+    .surveillance-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1rem;
+    }
+
+    .surveillance-card {
+        border: 1px solid rgba(26, 26, 26, 0.2);
+        padding: 1rem;
+        background: rgba(245, 240, 232, 0.5);
+        position: relative;
+    }
+
+    .surveillance-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .surveillance-number {
+        font-family: var(--font-typewriter);
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        color: rgba(26, 26, 26, 0.4);
+    }
+
+    .surveillance-trend {
+        font-family: var(--font-typewriter);
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        padding: 0.15rem 0.5rem;
+        border: 1px solid;
+    }
+
+    .surveillance-trend.positive {
+        color: #2d6a2e;
+        border-color: #2d6a2e;
+        background: rgba(45, 106, 46, 0.06);
+    }
+
+    .surveillance-trend.neutral {
+        color: var(--ink);
+        border-color: rgba(26, 26, 26, 0.3);
+    }
+
+    .surveillance-client {
+        font-family: var(--font-typewriter);
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.6rem;
+    }
+
+    .detail-row {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .detail-label {
+        font-weight: 700;
+        min-width: 50px;
+    }
+
+    /* ===== Background Check ===== */
+    .background-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .background-entry {
+        margin-bottom: 1rem;
+        padding: 0.8rem;
+        border-left: 3px solid var(--manila);
+        background: rgba(212, 184, 150, 0.1);
+    }
+
+    .background-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.5rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .background-institution {
+        font-family: var(--font-typewriter);
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .background-period {
+        font-family: var(--font-typewriter);
+        font-size: 0.8rem;
+        color: rgba(26, 26, 26, 0.5);
+    }
+
+    .background-degree {
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .background-location {
+        font-size: 0.8rem;
+        font-style: italic;
+        color: rgba(26, 26, 26, 0.6);
+    }
+
+    .background-distinction {
+        display: inline-block;
+        font-family: var(--font-typewriter);
+        font-size: 0.75rem;
+        color: var(--red-stamp);
+        border: 1px solid var(--red-stamp);
+        padding: 0.1rem 0.4rem;
+        margin-left: 0.5rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .learning-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .learning-list li {
+        position: relative;
+        font-size: 0.88rem;
+        margin-bottom: 0.4rem;
+        padding-left: 1.5rem;
+    }
+
+    .learning-list li::before {
+        content: '\2714';
+        position: absolute;
+        left: 0;
+        color: var(--red-stamp);
+        font-size: 0.8rem;
+    }
+
+    /* ===== Case Footer ===== */
+    .case-footer {
+        position: relative;
+        text-align: center;
+        padding-top: 3rem;
+        margin-top: 2rem;
+    }
+
+    .case-closed-stamp {
+        font-family: var(--font-typewriter);
+        font-size: 3rem;
+        color: var(--red-stamp);
+        opacity: 0.2;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        border: 5px solid var(--red-stamp);
+        padding: 0.2em 0.5em;
+        border-radius: 10px;
+        display: inline-block;
+        transform: rotate(-5deg);
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-note {
+        font-style: italic;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        color: rgba(26, 26, 26, 0.6);
+    }
+
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+        font-family: var(--font-typewriter);
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .footer-copy {
+        font-size: 0.75rem;
+        color: rgba(26, 26, 26, 0.4);
+    }
+
+    /* ===== Scroll Reveal ===== */
+    .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ===== Responsive Design ===== */
+    @media (max-width: 768px) {
+        .main-content {
+            padding: 1.5rem 1rem 3rem;
+        }
+
+        .case-header-inner {
+            flex-direction: column-reverse;
+            align-items: center;
+            text-align: center;
+        }
+
+        .evidence-photo-container {
+            width: 120px;
+        }
+
+        .case-meta {
+            justify-content: center;
+        }
+
+        .subject-name {
+            font-size: 1.6rem;
+        }
+
+        .section-heading {
+            font-size: 1.2rem;
+        }
+
+        .stamp {
+            display: none;
+        }
+
+        .surveillance-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .metrics-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .role-header {
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .background-header {
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .case-closed-stamp {
+            font-size: 2rem;
+        }
+
+        .folder-body {
+            width: 200px;
+        }
+
+        .typewriter-text {
+            white-space: normal;
+            text-align: center;
+        }
+
+        .typewriter-container {
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 480px) {
+        body {
+            font-size: 14px;
+        }
+
+        .main-content {
+            padding: 1rem 0.75rem 2rem;
+            box-shadow: none;
+        }
+
+        .case-file-entry {
+            padding: 0.8rem;
+        }
+
+        .surveillance-card {
+            padding: 0.8rem;
+        }
+
+        .metrics-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 1.1rem;
+        }
+
+        .evidence-photo-container {
+            width: 100px;
+        }
+
+        .coffee-stain {
+            display: none;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .main-content {
+            max-width: 800px;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const introOverlay = document.getElementById('intro-overlay') as HTMLElement;
+        const typewriterText = document.getElementById('typewriter-text') as HTMLElement;
+        const typewriterCursor = document.getElementById('typewriter-cursor') as HTMLElement;
+        const folderOpening = document.getElementById('folder-opening') as HTMLElement;
+        const mainContent = document.getElementById('main-content') as HTMLElement;
+        const skipHint = document.getElementById('skip-hint') as HTMLElement;
+
+        const STORAGE_KEY = 'noir-intro-seen';
+        const fullText = "CASE FILE #4721 — SUBJECT: DANIELE D'AGNELLI";
+
+        let introComplete = false;
+        let typewriterTimeout: ReturnType<typeof setTimeout> | null = null;
+        let currentCharIndex = 0;
+
+        function finishIntro() {
+            if (introComplete) return;
+            introComplete = true;
+
+            if (typewriterTimeout) {
+                clearTimeout(typewriterTimeout);
+            }
+
+            sessionStorage.setItem(STORAGE_KEY, 'true');
+            introOverlay.classList.add('hidden');
+
+            // Reveal main content sections
+            setTimeout(() => {
+                initScrollReveal();
+            }, 400);
+        }
+
+        function typeNextChar() {
+            if (currentCharIndex < fullText.length) {
+                typewriterText.textContent = fullText.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+                typewriterTimeout = setTimeout(typeNextChar, 55 + Math.random() * 40);
+            } else {
+                // Typing done, show folder
+                typewriterCursor.style.display = 'none';
+                setTimeout(() => {
+                    folderOpening.classList.add('open');
+                    setTimeout(finishIntro, 1000);
+                }, 400);
+            }
+        }
+
+        function skipIntro(e: Event) {
+            if (e instanceof KeyboardEvent) {
+                if (e.key !== 'Escape' && e.key !== ' ' && e.key !== 'Enter') return;
+            }
+            finishIntro();
+        }
+
+        // Check sessionStorage
+        if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
+            introOverlay.style.display = 'none';
+            introComplete = true;
+            initScrollReveal();
+        } else {
+            // Start typewriter
+            document.addEventListener('keydown', skipIntro);
+            introOverlay.addEventListener('click', skipIntro);
+            typeNextChar();
+        }
+
+        // Intersection Observer for scroll reveal
+        function initScrollReveal() {
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        }
+    });
+</script>

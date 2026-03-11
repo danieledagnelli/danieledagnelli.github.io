@@ -1,0 +1,1693 @@
+---
+import { siteMetadata } from "../siteMetadata";
+import { experience, education, certifications, skills, engagements, continuousLearning, summary, managementSkills, languages, industries, metrics } from "../data/resume";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>Daniele D'Agnelli — Captain's Logbook</title>
+    <meta name="description" content="The Logbook of Captain D'Agnelli — 15+ years of voyages across digital seas. AI deployments, cybersecurity, and programme management charted as nautical expeditions." />
+    <meta name="author" content="Daniele D'Agnelli" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://dagnelli.net/pirate" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Daniele D'Agnelli — Captain's Logbook" />
+    <meta property="og:description" content="The Logbook of Captain D'Agnelli — 15+ years charting digital seas. AI, cybersecurity, and enterprise transformations." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dagnelli.net/pirate" />
+    <meta property="og:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta property="og:image:alt" content="Daniele D'Agnelli — Captain's Logbook" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Daniele D'Agnelli" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Daniele D'Agnelli — Captain's Logbook" />
+    <meta name="twitter:description" content="The Logbook of Captain D'Agnelli — 15+ years charting digital seas." />
+    <meta name="twitter:image" content="https://dagnelli.net/assets/og-image.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Daniele D'Agnelli",
+        "url": "https://dagnelli.net",
+        "image": "https://dagnelli.net/assets/dani.jpeg",
+        "jobTitle": "Senior Engagement Manager",
+        "worksFor": { "@type": "Organization", "name": "C3 AI" },
+        "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+        "email": "daniele@dagnelli.net",
+        "sameAs": [
+            "https://github.com/danieledagnelli",
+            "https://www.linkedin.com/in/dagnelli",
+            "https://bsky.app/profile/dagnelli.net"
+        ]
+    })} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English:ital@0;1&family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- OCEAN WAVES BACKGROUND -->
+    <div class="ocean" aria-hidden="true">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+
+    <!-- COMPASS ROSE (ambient, corner) -->
+    <div class="compass-ambient" aria-hidden="true">
+        <svg viewBox="0 0 200 200" class="compass-svg">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#a0845c" stroke-width="1.5" opacity="0.3" />
+            <circle cx="100" cy="100" r="70" fill="none" stroke="#a0845c" stroke-width="1" opacity="0.2" />
+            <circle cx="100" cy="100" r="50" fill="none" stroke="#a0845c" stroke-width="0.5" opacity="0.15" />
+            <!-- Cardinal points -->
+            <polygon points="100,10 106,90 100,80 94,90" fill="#c9a84c" opacity="0.6" />
+            <polygon points="100,190 106,110 100,120 94,110" fill="#a0845c" opacity="0.4" />
+            <polygon points="10,100 90,94 80,100 90,106" fill="#a0845c" opacity="0.4" />
+            <polygon points="190,100 110,94 120,100 110,106" fill="#a0845c" opacity="0.4" />
+            <!-- Intermediate points -->
+            <polygon points="36,36 88,88 80,92 92,80" fill="#a0845c" opacity="0.25" />
+            <polygon points="164,36 112,88 120,92 108,80" fill="#a0845c" opacity="0.25" />
+            <polygon points="36,164 88,112 92,120 80,108" fill="#a0845c" opacity="0.25" />
+            <polygon points="164,164 112,112 108,120 120,108" fill="#a0845c" opacity="0.25" />
+            <!-- Labels -->
+            <text x="100" y="32" text-anchor="middle" fill="#c9a84c" font-size="14" font-family="'Pirata One', cursive" opacity="0.5">N</text>
+            <text x="100" y="178" text-anchor="middle" fill="#a0845c" font-size="14" font-family="'Pirata One', cursive" opacity="0.4">S</text>
+            <text x="28" y="105" text-anchor="middle" fill="#a0845c" font-size="14" font-family="'Pirata One', cursive" opacity="0.4">W</text>
+            <text x="172" y="105" text-anchor="middle" fill="#a0845c" font-size="14" font-family="'Pirata One', cursive" opacity="0.4">E</text>
+            <circle cx="100" cy="100" r="4" fill="#c9a84c" opacity="0.5" />
+        </svg>
+    </div>
+
+    <!-- SKULL WATERMARK -->
+    <div class="skull-watermark" aria-hidden="true">
+        <svg viewBox="0 0 120 140" class="skull-svg">
+            <ellipse cx="60" cy="50" rx="45" ry="48" fill="none" stroke="#2c1810" stroke-width="1" opacity="0.06" />
+            <circle cx="42" cy="42" r="12" fill="none" stroke="#2c1810" stroke-width="1" opacity="0.06" />
+            <circle cx="78" cy="42" r="12" fill="none" stroke="#2c1810" stroke-width="1" opacity="0.06" />
+            <path d="M52,68 Q60,78 68,68" fill="none" stroke="#2c1810" stroke-width="1" opacity="0.06" />
+            <line x1="40" y1="98" x2="40" y2="130" stroke="#2c1810" stroke-width="6" stroke-linecap="round" opacity="0.04" />
+            <line x1="60" y1="98" x2="60" y2="130" stroke="#2c1810" stroke-width="6" stroke-linecap="round" opacity="0.04" />
+            <line x1="80" y1="98" x2="80" y2="130" stroke="#2c1810" stroke-width="6" stroke-linecap="round" opacity="0.04" />
+            <line x1="30" y1="108" x2="90" y2="108" stroke="#2c1810" stroke-width="6" stroke-linecap="round" opacity="0.04" />
+            <line x1="30" y1="120" x2="90" y2="120" stroke="#2c1810" stroke-width="6" stroke-linecap="round" opacity="0.04" />
+        </svg>
+    </div>
+
+    <!-- INTRO SEQUENCE: Parchment unroll -->
+    <div class="intro" id="intro">
+        <div class="intro-scroll" id="introScroll">
+            <div class="intro-compass" id="introCompass" aria-hidden="true">
+                <svg viewBox="0 0 100 100" class="intro-compass-svg">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#c9a84c" stroke-width="2" />
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="#a0845c" stroke-width="1" />
+                    <polygon points="50,8 54,45 50,40 46,45" fill="#c9a84c" />
+                    <polygon points="50,92 54,55 50,60 46,55" fill="#8b3a3a" />
+                    <polygon points="8,50 45,46 40,50 45,54" fill="#a0845c" />
+                    <polygon points="92,50 55,46 60,50 55,54" fill="#a0845c" />
+                    <circle cx="50" cy="50" r="3" fill="#c9a84c" />
+                </svg>
+            </div>
+            <div class="intro-text" id="introText"></div>
+            <div class="intro-skip">Click, Esc, Space or Enter to skip</div>
+        </div>
+    </div>
+
+    <!-- PARCHMENT EDGE BURNS -->
+    <div class="parchment-burn parchment-burn-top" aria-hidden="true"></div>
+    <div class="parchment-burn parchment-burn-bottom" aria-hidden="true"></div>
+    <div class="parchment-burn parchment-burn-left" aria-hidden="true"></div>
+    <div class="parchment-burn parchment-burn-right" aria-hidden="true"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="logbook" id="logbook">
+
+        <!-- WANTED POSTER & CAPTAIN HEADER -->
+        <section class="section header-section">
+            <div class="wanted-poster">
+                <div class="wanted-label">WANTED</div>
+                <div class="wanted-frame">
+                    <img src="/assets/dani.jpeg" alt="Captain Daniele D'Agnelli" width="180" height="180" class="wanted-photo" />
+                </div>
+                <div class="wanted-name">{siteMetadata.name}</div>
+                <div class="wanted-alias">a.k.a. "The Digital Corsair"</div>
+                <div class="wanted-reward">Reward: 15 Years of Expertise</div>
+                <div class="wanted-ports">
+                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">Flag Signal</a>
+                    <span class="port-sep">&bull;</span>
+                    <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">Port Registry</a>
+                    <span class="port-sep">&bull;</span>
+                    <a href={`mailto:${siteMetadata.email}`}>Bottle Post</a>
+                </div>
+            </div>
+            <h1 class="logbook-title">
+                <span class="title-ornament" aria-hidden="true">&#x2693;</span>
+                The Logbook of Captain D'Agnelli
+                <span class="title-ornament" aria-hidden="true">&#x2693;</span>
+            </h1>
+            <p class="logbook-subtitle">Voyages & Conquests Across the Digital Seas</p>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-icon">&#x2620;</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- CAPTAIN'S DECLARATION (summary) -->
+        <section class="section reveal" aria-label="Captain's Declaration">
+            <h2 class="section-heading">Captain's Declaration</h2>
+            <div class="log-entry declaration">
+                <span class="drop-cap">{summary.charAt(0)}</span>
+                <p class="entry-text">{summary.slice(1)}</p>
+            </div>
+        </section>
+
+        <div class="divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-icon">&#x2693;</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- VOYAGES & CAMPAIGNS (experience) -->
+        <section class="section reveal" aria-label="Voyages and Campaigns">
+            <h2 class="section-heading">Voyages & Campaigns</h2>
+            <div class="voyage-timeline">
+                {experience.map((exp, i) => (
+                    <div class="voyage-entry reveal">
+                        <div class="voyage-marker" aria-hidden="true">
+                            <span class="marker-dot"></span>
+                            {i < experience.length - 1 && <span class="marker-line"></span>}
+                        </div>
+                        <div class="voyage-content">
+                            <div class="voyage-header">
+                                <span class="voyage-ship">{exp.company}</span>
+                                <span class="voyage-port">{exp.location}</span>
+                            </div>
+                            {exp.roles.map(role => (
+                                <div class="voyage-role">
+                                    <div class="role-row">
+                                        <span class="role-rank">{role.title}</span>
+                                        <span class="role-date">{role.period}</span>
+                                    </div>
+                                    {role.description && (
+                                        <p class="role-orders">{role.description}</p>
+                                    )}
+                                    {role.bullets && role.bullets.length > 0 && (
+                                        <ul class="role-conquests">
+                                            {role.bullets.map(b => <li>{b}</li>)}
+                                        </ul>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <div class="divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-icon">&#x2620;</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- ARSENAL & ABILITIES (skills) -->
+        <section class="section reveal" aria-label="Arsenal and Abilities">
+            <h2 class="section-heading">Arsenal & Abilities</h2>
+            <div class="cargo-manifest">
+                <div class="cargo-header" aria-hidden="true">
+                    <span>CARGO MANIFEST</span>
+                    <span>HMS D'Agnelli</span>
+                </div>
+                <div class="cargo-grid">
+                    {skills.map((s, i) => (
+                        <div class="cargo-item" style={`--delay: ${i * 0.05}s`}>
+                            <span class="cargo-icon" aria-hidden="true">&#x2694;</span>
+                            <span class="cargo-name">{s}</span>
+                        </div>
+                    ))}
+                </div>
+                <div class="cargo-section">
+                    <span class="cargo-subtitle">Command & Navigation</span>
+                    <div class="cargo-grid">
+                        {managementSkills.map((s, i) => (
+                            <div class="cargo-item" style={`--delay: ${(skills.length + i) * 0.05}s`}>
+                                <span class="cargo-icon" aria-hidden="true">&#x2699;</span>
+                                <span class="cargo-name">{s}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div class="cargo-section">
+                    <span class="cargo-subtitle">Tongues Spoken</span>
+                    <div class="cargo-grid">
+                        {languages.map((l, i) => (
+                            <div class="cargo-item" style={`--delay: ${i * 0.05}s`}>
+                                <span class="cargo-icon" aria-hidden="true">&#x1F5E3;</span>
+                                <span class="cargo-name">{l}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-icon">&#x2693;</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- PLUNDER & CONQUESTS (engagements) -->
+        <section class="section reveal" aria-label="Plunder and Conquests">
+            <h2 class="section-heading">Plunder & Conquests</h2>
+            <div class="conquest-grid">
+                {engagements.map(eng => (
+                    <div class="conquest-card reveal">
+                        <div class="conquest-header">
+                            <span class="conquest-territory">{eng.client}</span>
+                            <span class={`conquest-trend ${eng.trend}`}>{eng.trend === 'positive' ? 'Treasure Seized' : 'Territory Mapped'}</span>
+                        </div>
+                        <div class="conquest-details">
+                            <div class="conquest-row">
+                                <span class="conquest-label">Waters:</span>
+                                <span class="conquest-value">{eng.sector}</span>
+                            </div>
+                            <div class="conquest-row">
+                                <span class="conquest-label">Fleet Size:</span>
+                                <span class="conquest-value">{eng.scope}</span>
+                            </div>
+                            <div class="conquest-row">
+                                <span class="conquest-label">Bounty:</span>
+                                <span class="conquest-value bounty">{eng.impact}</span>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <div class="divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-icon">&#x2620;</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- NAVIGATION TRAINING (education) -->
+        <section class="section reveal" aria-label="Navigation Training">
+            <h2 class="section-heading">Navigation Training</h2>
+            {education.map(edu => (
+                <div class="training-entry reveal">
+                    <div class="training-crest" aria-hidden="true">&#x2388;</div>
+                    <div class="training-content">
+                        <div class="training-school">{edu.institution}</div>
+                        <div class="training-degree">{edu.degree}</div>
+                        <div class="training-meta">
+                            <span>{edu.period}</span>
+                            <span class="training-sep">&mdash;</span>
+                            <span>{edu.location}</span>
+                        </div>
+                        {edu.distinction && (
+                            <div class="training-distinction">
+                                <span class="distinction-seal" aria-hidden="true">&#x2605;</span>
+                                {edu.distinction}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            ))}
+        </section>
+
+        <div class="divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-icon">&#x2693;</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- LETTERS OF MARQUE (certifications) -->
+        <section class="section reveal" aria-label="Letters of Marque">
+            <h2 class="section-heading">Letters of Marque</h2>
+            <div class="marque-grid">
+                {certifications.map(c => (
+                    <div class="marque-card reveal">
+                        <div class="marque-seal" aria-hidden="true">&#x2756;</div>
+                        <div class="marque-text">{c}</div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <div class="divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-icon">&#x2620;</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- SAILOR'S STUDIES (continuousLearning) -->
+        <section class="section reveal" aria-label="Sailor's Studies">
+            <h2 class="section-heading">Sailor's Studies</h2>
+            <div class="studies-list">
+                {continuousLearning.map((item, i) => (
+                    <div class="study-entry reveal" style={`--delay: ${i * 0.08}s`}>
+                        <span class="study-bullet" aria-hidden="true">&#x2318;</span>
+                        <span class="study-text">{item}</span>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <div class="divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-icon">&#x2693;</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- SEAS CHARTED (industries) -->
+        <section class="section reveal" aria-label="Seas Charted">
+            <h2 class="section-heading">Seas Charted</h2>
+            <div class="seas-grid">
+                {industries.map(ind => (
+                    <span class="sea-tag">{ind}</span>
+                ))}
+            </div>
+        </section>
+
+        <!-- END OF LOG -->
+        <div class="divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-icon">&#x2620;</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <section class="section end-log">
+            <p class="end-text">Here Ends the Log of Captain D'Agnelli</p>
+            <p class="end-subtext">May Fair Winds Follow Ye</p>
+            <div class="end-links">
+                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
+                <span class="port-sep">&bull;</span>
+                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
+                <span class="port-sep">&bull;</span>
+                <a href={`mailto:${siteMetadata.email}`}>{siteMetadata.email}</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
+<style>
+    /* =========================================
+       BASE & VARIABLES
+       ========================================= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+        --parchment: #e8d5b0;
+        --parchment-light: #f2e6ce;
+        --parchment-dark: #d4c09a;
+        --ink: #2c1810;
+        --ink-light: #4a3228;
+        --red: #8b3a3a;
+        --sea: #1a4a6b;
+        --sea-dark: #0e2f47;
+        --gold: #c9a84c;
+        --gold-dark: #a08030;
+        --rope: #a0845c;
+        --rope-light: #c4a97a;
+        --heading: 'Pirata One', cursive;
+        --body: 'IM Fell English', serif;
+        --handwritten: 'Caveat', cursive;
+        scrollbar-width: thin;
+        scrollbar-color: var(--rope) var(--parchment-dark);
+    }
+
+    body {
+        background: var(--parchment);
+        background-image:
+            radial-gradient(ellipse at 20% 50%, rgba(212, 192, 154, 0.6) 0%, transparent 70%),
+            radial-gradient(ellipse at 80% 20%, rgba(242, 230, 206, 0.4) 0%, transparent 60%),
+            radial-gradient(ellipse at 50% 80%, rgba(160, 132, 92, 0.15) 0%, transparent 50%);
+        color: var(--ink);
+        font-family: var(--body);
+        font-size: 17px;
+        line-height: 1.7;
+        overflow-x: hidden;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    /* Parchment noise texture via pseudo-element */
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 256px 256px;
+    }
+
+    a { color: var(--sea); text-decoration: none; }
+    a:hover { color: var(--red); text-decoration: underline; }
+
+    ::selection { background: var(--gold); color: var(--ink); }
+
+    /* =========================================
+       OCEAN WAVES (bottom ambient)
+       ========================================= */
+    .ocean {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+        z-index: 1;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .wave {
+        position: absolute;
+        bottom: 0;
+        left: -5%;
+        width: 110%;
+        height: 100%;
+        background: transparent;
+    }
+
+    .wave-1 {
+        background:
+            linear-gradient(transparent 60%, rgba(26, 74, 107, 0.12) 70%, rgba(26, 74, 107, 0.2) 100%);
+        clip-path: polygon(
+            0% 80%, 5% 75%, 10% 72%, 15% 70%, 20% 72%, 25% 76%, 30% 74%,
+            35% 70%, 40% 68%, 45% 72%, 50% 76%, 55% 74%, 60% 70%, 65% 68%,
+            70% 72%, 75% 76%, 80% 74%, 85% 70%, 90% 72%, 95% 76%, 100% 74%,
+            100% 100%, 0% 100%
+        );
+        animation: waveFloat 8s ease-in-out infinite;
+    }
+
+    .wave-2 {
+        background:
+            linear-gradient(transparent 65%, rgba(26, 74, 107, 0.08) 75%, rgba(26, 74, 107, 0.15) 100%);
+        clip-path: polygon(
+            0% 82%, 5% 78%, 10% 75%, 15% 78%, 20% 82%, 25% 80%, 30% 76%,
+            35% 73%, 40% 76%, 45% 80%, 50% 78%, 55% 75%, 60% 78%, 65% 82%,
+            70% 80%, 75% 76%, 80% 78%, 85% 82%, 90% 80%, 95% 76%, 100% 78%,
+            100% 100%, 0% 100%
+        );
+        animation: waveFloat 6s ease-in-out infinite reverse;
+        animation-delay: -2s;
+    }
+
+    .wave-3 {
+        background:
+            linear-gradient(transparent 70%, rgba(26, 74, 107, 0.05) 80%, rgba(26, 74, 107, 0.1) 100%);
+        clip-path: polygon(
+            0% 85%, 5% 82%, 10% 80%, 15% 82%, 20% 85%, 25% 83%, 30% 80%,
+            35% 78%, 40% 80%, 45% 83%, 50% 85%, 55% 82%, 60% 80%, 65% 82%,
+            70% 85%, 75% 83%, 80% 80%, 85% 82%, 90% 85%, 95% 83%, 100% 80%,
+            100% 100%, 0% 100%
+        );
+        animation: waveFloat 10s ease-in-out infinite;
+        animation-delay: -4s;
+    }
+
+    @keyframes waveFloat {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(-20px); }
+    }
+
+    /* =========================================
+       COMPASS ROSE (ambient corner)
+       ========================================= */
+    .compass-ambient {
+        position: fixed;
+        bottom: 140px;
+        right: 30px;
+        width: 140px;
+        height: 140px;
+        z-index: 2;
+        pointer-events: none;
+        animation: compassSpin 120s linear infinite;
+    }
+
+    .compass-svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    @keyframes compassSpin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    /* =========================================
+       SKULL WATERMARK
+       ========================================= */
+    .skull-watermark {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 460px;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0;
+        animation: skullFade 2s ease-in forwards;
+        animation-delay: 0.5s;
+    }
+
+    .skull-svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    @keyframes skullFade {
+        to { opacity: 1; }
+    }
+
+    /* =========================================
+       PARCHMENT EDGE BURNS
+       ========================================= */
+    .parchment-burn {
+        position: fixed;
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    .parchment-burn-top {
+        top: 0; left: 0; right: 0;
+        height: 80px;
+        background: linear-gradient(
+            180deg,
+            rgba(44, 24, 16, 0.25) 0%,
+            rgba(44, 24, 16, 0.08) 40%,
+            transparent 100%
+        );
+    }
+
+    .parchment-burn-bottom {
+        bottom: 0; left: 0; right: 0;
+        height: 80px;
+        background: linear-gradient(
+            0deg,
+            rgba(44, 24, 16, 0.3) 0%,
+            rgba(44, 24, 16, 0.1) 40%,
+            transparent 100%
+        );
+    }
+
+    .parchment-burn-left {
+        top: 0; bottom: 0; left: 0;
+        width: 60px;
+        background: linear-gradient(
+            90deg,
+            rgba(44, 24, 16, 0.2) 0%,
+            rgba(44, 24, 16, 0.05) 50%,
+            transparent 100%
+        );
+    }
+
+    .parchment-burn-right {
+        top: 0; bottom: 0; right: 0;
+        width: 60px;
+        background: linear-gradient(
+            270deg,
+            rgba(44, 24, 16, 0.2) 0%,
+            rgba(44, 24, 16, 0.05) 50%,
+            transparent 100%
+        );
+    }
+
+    /* =========================================
+       INTRO SEQUENCE
+       ========================================= */
+    .intro {
+        position: fixed;
+        inset: 0;
+        z-index: 10001;
+        background: var(--sea-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        transition: opacity 0.6s ease;
+        overflow: hidden;
+    }
+
+    .intro::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(ellipse at 50% 100%, rgba(26, 74, 107, 0.4) 0%, transparent 60%),
+            radial-gradient(ellipse at 50% 0%, rgba(14, 47, 71, 0.8) 0%, transparent 70%);
+    }
+
+    .intro.done {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .intro-scroll {
+        position: relative;
+        background: var(--parchment);
+        background-image:
+            radial-gradient(ellipse at 50% 30%, rgba(242, 230, 206, 0.5) 0%, transparent 70%);
+        border: 3px solid var(--rope);
+        border-radius: 4px;
+        padding: 3rem 2.5rem;
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+        max-height: 0;
+        overflow: hidden;
+        animation: unrollScroll 1.2s ease-out forwards;
+        box-shadow:
+            0 4px 30px rgba(44, 24, 16, 0.4),
+            inset 0 0 40px rgba(44, 24, 16, 0.05);
+    }
+
+    @keyframes unrollScroll {
+        0% { max-height: 0; padding-top: 0; padding-bottom: 0; opacity: 0.5; }
+        100% { max-height: 500px; padding-top: 3rem; padding-bottom: 3rem; opacity: 1; }
+    }
+
+    .intro-compass {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        animation: compassIntroSpin 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    .intro-compass-svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    @keyframes compassIntroSpin {
+        0% { transform: rotate(0deg); opacity: 0; }
+        30% { opacity: 1; }
+        100% { transform: rotate(720deg); opacity: 1; }
+    }
+
+    .intro-text {
+        font-family: var(--heading);
+        font-size: clamp(18px, 4vw, 26px);
+        color: var(--ink);
+        line-height: 1.4;
+        min-height: 2.8em;
+    }
+
+    .intro-text .quill-cursor {
+        display: inline-block;
+        width: 2px;
+        height: 1.2em;
+        background: var(--ink);
+        vertical-align: text-bottom;
+        animation: quillBlink 0.6s step-end infinite;
+        margin-left: 2px;
+    }
+
+    @keyframes quillBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    .intro-skip {
+        margin-top: 1.5rem;
+        font-family: var(--handwritten);
+        font-size: 14px;
+        color: var(--rope);
+        opacity: 0;
+        animation: fadeInSlow 1s ease forwards;
+        animation-delay: 1.5s;
+    }
+
+    @keyframes fadeInSlow {
+        to { opacity: 0.6; }
+    }
+
+    /* =========================================
+       MAIN LOGBOOK CONTENT
+       ========================================= */
+    .logbook {
+        position: relative;
+        z-index: 4;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 60px 32px 160px;
+        opacity: 0;
+        transition: opacity 0.6s ease 0.3s;
+    }
+
+    .logbook.visible { opacity: 1; }
+
+    /* =========================================
+       SECTIONS BASE
+       ========================================= */
+    .section { margin-bottom: 0; }
+
+    .section-heading {
+        font-family: var(--heading);
+        font-size: clamp(28px, 5vw, 42px);
+        color: var(--ink);
+        margin-bottom: 1.2rem;
+        position: relative;
+        display: inline-block;
+    }
+
+    .section-heading::after {
+        content: '';
+        display: block;
+        width: 60%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--gold), transparent);
+        margin-top: 4px;
+    }
+
+    /* REVEAL ANIMATION */
+    .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* =========================================
+       DIVIDERS
+       ========================================= */
+    .divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 2.5rem 0;
+    }
+
+    .divider-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--rope), transparent);
+        opacity: 0.4;
+    }
+
+    .divider-icon {
+        font-size: 18px;
+        color: var(--rope);
+        opacity: 0.5;
+        line-height: 1;
+    }
+
+    /* =========================================
+       WANTED POSTER & HEADER
+       ========================================= */
+    .header-section {
+        text-align: center;
+        padding-top: 1rem;
+    }
+
+    .wanted-poster {
+        display: inline-block;
+        background: var(--parchment-light);
+        border: 3px solid var(--rope);
+        padding: 1.5rem 2rem 1.2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        box-shadow:
+            0 4px 20px rgba(44, 24, 16, 0.15),
+            inset 0 0 30px rgba(44, 24, 16, 0.04);
+        transform: rotate(-1deg);
+    }
+
+    .wanted-poster::before {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        border: 1px solid var(--rope-light);
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    .wanted-label {
+        font-family: var(--heading);
+        font-size: clamp(32px, 6vw, 48px);
+        color: var(--red);
+        letter-spacing: 6px;
+        line-height: 1;
+        margin-bottom: 0.8rem;
+        text-shadow: 1px 1px 0 rgba(139, 58, 58, 0.2);
+    }
+
+    .wanted-frame {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 0.8rem;
+        border: 3px solid var(--ink-light);
+        padding: 4px;
+        background: var(--parchment-dark);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .wanted-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: sepia(40%) contrast(1.1) brightness(0.95);
+    }
+
+    .wanted-name {
+        font-family: var(--heading);
+        font-size: clamp(20px, 4vw, 28px);
+        color: var(--ink);
+        margin-bottom: 2px;
+    }
+
+    .wanted-alias {
+        font-family: var(--handwritten);
+        font-size: 18px;
+        color: var(--rope);
+        margin-bottom: 6px;
+    }
+
+    .wanted-reward {
+        font-family: var(--body);
+        font-size: 14px;
+        font-style: italic;
+        color: var(--red);
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+
+    .wanted-ports {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        flex-wrap: wrap;
+    }
+
+    .wanted-ports a {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .port-sep {
+        color: var(--rope);
+        opacity: 0.4;
+    }
+
+    .logbook-title {
+        font-family: var(--heading);
+        font-size: clamp(28px, 5vw, 44px);
+        color: var(--ink);
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+    }
+
+    .title-ornament {
+        color: var(--gold);
+        font-size: 0.7em;
+        vertical-align: middle;
+        margin: 0 0.3em;
+    }
+
+    .logbook-subtitle {
+        font-family: var(--handwritten);
+        font-size: clamp(18px, 3vw, 24px);
+        color: var(--rope);
+    }
+
+    /* =========================================
+       CAPTAIN'S DECLARATION (summary)
+       ========================================= */
+    .declaration {
+        position: relative;
+        padding: 1.5rem;
+        border-left: 3px solid var(--gold);
+        background: linear-gradient(90deg, rgba(201, 168, 76, 0.06), transparent);
+    }
+
+    .drop-cap {
+        float: left;
+        font-family: var(--heading);
+        font-size: 4rem;
+        line-height: 0.8;
+        color: var(--red);
+        margin-right: 8px;
+        margin-top: 6px;
+    }
+
+    .entry-text {
+        font-size: 16px;
+        color: var(--ink-light);
+        text-align: justify;
+    }
+
+    /* =========================================
+       VOYAGES & CAMPAIGNS (experience)
+       ========================================= */
+    .voyage-timeline {
+        position: relative;
+        padding-left: 2rem;
+    }
+
+    .voyage-entry {
+        display: flex;
+        gap: 1.2rem;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .voyage-entry:last-child { margin-bottom: 0; }
+
+    .voyage-marker {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+        width: 20px;
+        position: relative;
+    }
+
+    .marker-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid var(--gold);
+        background: var(--parchment);
+        z-index: 1;
+        flex-shrink: 0;
+        margin-top: 6px;
+    }
+
+    .marker-line {
+        width: 2px;
+        flex: 1;
+        background: repeating-linear-gradient(
+            180deg,
+            var(--rope) 0px,
+            var(--rope) 4px,
+            transparent 4px,
+            transparent 8px
+        );
+        opacity: 0.4;
+        margin-top: 4px;
+    }
+
+    .voyage-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .voyage-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 0.5rem;
+    }
+
+    .voyage-ship {
+        font-family: var(--heading);
+        font-size: clamp(22px, 3.5vw, 28px);
+        color: var(--ink);
+    }
+
+    .voyage-port {
+        font-family: var(--handwritten);
+        font-size: 16px;
+        color: var(--rope);
+    }
+
+    .voyage-role { margin-bottom: 1rem; }
+    .voyage-role:last-child { margin-bottom: 0; }
+
+    .role-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+
+    .role-rank {
+        font-weight: 600;
+        color: var(--ink-light);
+        font-size: 15px;
+    }
+
+    .role-date {
+        font-family: var(--handwritten);
+        font-size: 15px;
+        color: var(--rope);
+        white-space: nowrap;
+    }
+
+    .role-orders {
+        font-size: 15px;
+        color: var(--ink-light);
+        margin-bottom: 6px;
+        font-style: italic;
+    }
+
+    .role-conquests {
+        list-style: none;
+        padding: 0;
+    }
+
+    .role-conquests li {
+        font-size: 14px;
+        color: var(--ink-light);
+        padding: 3px 0 3px 20px;
+        position: relative;
+    }
+
+    .role-conquests li::before {
+        content: '\2694';
+        position: absolute;
+        left: 0;
+        color: var(--gold);
+        font-size: 12px;
+    }
+
+    /* =========================================
+       ARSENAL & ABILITIES (skills)
+       ========================================= */
+    .cargo-manifest {
+        border: 2px solid var(--rope);
+        border-radius: 4px;
+        overflow: hidden;
+        background: linear-gradient(
+            180deg,
+            rgba(242, 230, 206, 0.5),
+            rgba(232, 213, 176, 0.3)
+        );
+    }
+
+    .cargo-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.8rem 1.2rem;
+        font-family: var(--heading);
+        font-size: 16px;
+        color: var(--ink);
+        border-bottom: 1px solid var(--rope-light);
+        background: rgba(160, 132, 92, 0.1);
+    }
+
+    .cargo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 0;
+        padding: 0.5rem;
+    }
+
+    .cargo-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.5rem 0.8rem;
+        font-size: 14px;
+        color: var(--ink-light);
+        border-bottom: 1px dotted rgba(160, 132, 92, 0.2);
+    }
+
+    .cargo-icon {
+        color: var(--gold);
+        font-size: 12px;
+        flex-shrink: 0;
+    }
+
+    .cargo-name { flex: 1; min-width: 0; }
+
+    .cargo-section {
+        border-top: 1px solid var(--rope-light);
+        padding-top: 0.3rem;
+    }
+
+    .cargo-subtitle {
+        display: block;
+        font-family: var(--handwritten);
+        font-size: 18px;
+        color: var(--rope);
+        padding: 0.5rem 1.2rem 0;
+    }
+
+    /* =========================================
+       PLUNDER & CONQUESTS (engagements)
+       ========================================= */
+    .conquest-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+    }
+
+    .conquest-card {
+        border: 2px solid var(--rope);
+        border-radius: 4px;
+        padding: 1.2rem;
+        background: linear-gradient(
+            135deg,
+            rgba(242, 230, 206, 0.6),
+            rgba(232, 213, 176, 0.3)
+        );
+        position: relative;
+        overflow: hidden;
+    }
+
+    .conquest-card::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(circle, rgba(201, 168, 76, 0.15), transparent);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .conquest-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.8rem;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .conquest-territory {
+        font-family: var(--heading);
+        font-size: 20px;
+        color: var(--ink);
+        text-transform: capitalize;
+    }
+
+    .conquest-trend {
+        font-family: var(--handwritten);
+        font-size: 13px;
+        padding: 2px 8px;
+        border-radius: 3px;
+        white-space: nowrap;
+    }
+
+    .conquest-trend.positive {
+        color: var(--gold-dark);
+        background: rgba(201, 168, 76, 0.15);
+        border: 1px solid rgba(201, 168, 76, 0.3);
+    }
+
+    .conquest-trend.neutral {
+        color: var(--sea);
+        background: rgba(26, 74, 107, 0.08);
+        border: 1px solid rgba(26, 74, 107, 0.2);
+    }
+
+    .conquest-details { font-size: 14px; }
+
+    .conquest-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 3px 0;
+        border-bottom: 1px dotted rgba(160, 132, 92, 0.2);
+    }
+
+    .conquest-row:last-child { border-bottom: none; }
+
+    .conquest-label { color: var(--rope); }
+    .conquest-value { color: var(--ink-light); font-weight: 600; }
+    .conquest-value.bounty { color: var(--gold-dark); }
+
+    /* =========================================
+       NAVIGATION TRAINING (education)
+       ========================================= */
+    .training-entry {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 1.2rem;
+        border: 1px solid rgba(160, 132, 92, 0.3);
+        border-radius: 4px;
+        background: rgba(242, 230, 206, 0.3);
+    }
+
+    .training-entry:last-child { margin-bottom: 0; }
+
+    .training-crest {
+        font-size: 28px;
+        color: var(--gold);
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .training-content { flex: 1; min-width: 0; }
+
+    .training-school {
+        font-family: var(--heading);
+        font-size: 22px;
+        color: var(--ink);
+        margin-bottom: 2px;
+    }
+
+    .training-degree {
+        font-weight: 600;
+        color: var(--ink-light);
+        margin-bottom: 4px;
+    }
+
+    .training-meta {
+        font-size: 14px;
+        color: var(--rope);
+    }
+
+    .training-sep { margin: 0 4px; }
+
+    .training-distinction {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: 6px;
+        font-family: var(--handwritten);
+        font-size: 16px;
+        color: var(--gold-dark);
+        font-weight: 700;
+    }
+
+    .distinction-seal {
+        color: var(--gold);
+        font-size: 14px;
+    }
+
+    /* =========================================
+       LETTERS OF MARQUE (certifications)
+       ========================================= */
+    .marque-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .marque-card {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--rope-light);
+        border-radius: 4px;
+        background: rgba(242, 230, 206, 0.4);
+    }
+
+    .marque-seal {
+        color: var(--red);
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+
+    .marque-text {
+        font-size: 14px;
+        color: var(--ink-light);
+    }
+
+    /* =========================================
+       SAILOR'S STUDIES (continuousLearning)
+       ========================================= */
+    .studies-list {
+        columns: 2;
+        column-gap: 2rem;
+    }
+
+    .study-entry {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        padding: 6px 0;
+        break-inside: avoid;
+        font-size: 15px;
+    }
+
+    .study-bullet {
+        color: var(--sea);
+        font-size: 12px;
+        flex-shrink: 0;
+    }
+
+    .study-text { color: var(--ink-light); }
+
+    /* =========================================
+       SEAS CHARTED (industries)
+       ========================================= */
+    .seas-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    .sea-tag {
+        font-family: var(--handwritten);
+        font-size: 16px;
+        padding: 4px 14px;
+        border: 1px solid var(--sea);
+        border-radius: 20px;
+        color: var(--sea);
+        background: rgba(26, 74, 107, 0.05);
+        white-space: nowrap;
+    }
+
+    /* =========================================
+       END OF LOG
+       ========================================= */
+    .end-log {
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .end-text {
+        font-family: var(--heading);
+        font-size: clamp(22px, 4vw, 32px);
+        color: var(--ink);
+        margin-bottom: 0.3rem;
+    }
+
+    .end-subtext {
+        font-family: var(--handwritten);
+        font-size: 20px;
+        color: var(--rope);
+        font-style: italic;
+        margin-bottom: 1rem;
+    }
+
+    .end-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        flex-wrap: wrap;
+    }
+
+    .end-links a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* =========================================
+       RESPONSIVE: 1200px
+       ========================================= */
+    @media (max-width: 1200px) {
+        .compass-ambient {
+            width: 110px;
+            height: 110px;
+            bottom: 130px;
+            right: 20px;
+        }
+
+        .skull-watermark {
+            width: 300px;
+            height: 345px;
+        }
+    }
+
+    /* =========================================
+       RESPONSIVE: 768px
+       ========================================= */
+    @media (max-width: 768px) {
+        body { font-size: 16px; }
+
+        .logbook { padding: 40px 20px 140px; }
+
+        .compass-ambient {
+            width: 80px;
+            height: 80px;
+            bottom: 130px;
+            right: 10px;
+            opacity: 0.5;
+        }
+
+        .skull-watermark { width: 220px; height: 253px; }
+
+        .parchment-burn-top,
+        .parchment-burn-bottom { height: 50px; }
+        .parchment-burn-left,
+        .parchment-burn-right { width: 30px; }
+
+        .wanted-poster {
+            padding: 1.2rem 1.5rem 1rem;
+            transform: rotate(0deg);
+        }
+
+        .wanted-frame {
+            width: 150px;
+            height: 150px;
+        }
+
+        .voyage-timeline { padding-left: 1rem; }
+
+        .cargo-grid {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+
+        .conquest-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .studies-list {
+            columns: 1;
+        }
+
+        .marque-grid {
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        }
+    }
+
+    /* =========================================
+       RESPONSIVE: 480px
+       ========================================= */
+    @media (max-width: 480px) {
+        body { font-size: 15px; }
+
+        .logbook { padding: 30px 16px 130px; }
+
+        .compass-ambient { display: none; }
+
+        .skull-watermark { width: 160px; height: 184px; }
+
+        .intro-scroll { padding: 2rem 1.5rem; }
+
+        .wanted-poster { padding: 1rem 1.2rem 0.8rem; }
+
+        .wanted-frame {
+            width: 120px;
+            height: 120px;
+        }
+
+        .wanted-label { letter-spacing: 3px; }
+
+        .drop-cap { font-size: 3rem; }
+
+        .voyage-entry { gap: 0.8rem; }
+        .voyage-timeline { padding-left: 0.5rem; }
+        .voyage-marker { width: 16px; }
+
+        .cargo-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .cargo-header {
+            flex-direction: column;
+            gap: 2px;
+            text-align: center;
+        }
+
+        .training-entry {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .training-crest { font-size: 22px; }
+
+        .marque-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .divider { margin: 1.8rem 0; }
+
+        .ocean { height: 80px; }
+    }
+
+    /* =========================================
+       RESPONSIVE: 380px
+       ========================================= */
+    @media (max-width: 380px) {
+        body { font-size: 14px; }
+
+        .logbook { padding: 24px 12px 120px; }
+
+        .wanted-frame {
+            width: 100px;
+            height: 100px;
+        }
+
+        .voyage-header { flex-direction: column; gap: 2px; }
+        .role-row { flex-direction: column; gap: 2px; }
+
+        .conquest-header { flex-direction: column; align-items: flex-start; }
+
+        .seas-grid { gap: 0.4rem; }
+        .sea-tag { font-size: 14px; padding: 3px 10px; }
+
+        .drop-cap { font-size: 2.5rem; }
+
+        .ocean { height: 60px; }
+    }
+
+    /* =========================================
+       ANIMATIONS
+       ========================================= */
+    @keyframes subtleRock {
+        0%, 100% { transform: rotate(-0.3deg); }
+        50% { transform: rotate(0.3deg); }
+    }
+</style>
+
+<script>
+    (function () {
+        const STORAGE_KEY = 'pirate-intro';
+        const intro = document.getElementById('intro');
+        const introText = document.getElementById('introText');
+        const introCompass = document.getElementById('introCompass');
+        const logbook = document.getElementById('logbook');
+        const introScroll = document.getElementById('introScroll');
+
+        const fullText = "The Logbook of Captain D'Agnelli \u2014 Voyages & Conquests";
+        let charIndex = 0;
+        let typeTimer = null;
+        let dismissed = false;
+
+        function showContent() {
+            if (dismissed) return;
+            dismissed = true;
+            if (typeTimer) clearTimeout(typeTimer);
+            if (intro) intro.classList.add('done');
+            if (logbook) logbook.classList.add('visible');
+            try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) { /* noop */ }
+            setTimeout(() => {
+                if (intro) intro.style.display = 'none';
+            }, 700);
+        }
+
+        // Skip if already seen
+        try {
+            if (sessionStorage.getItem(STORAGE_KEY)) {
+                if (intro) { intro.style.display = 'none'; intro.classList.add('done'); }
+                if (logbook) { logbook.style.opacity = '1'; logbook.classList.add('visible'); }
+                dismissed = true;
+                initReveal();
+                return;
+            }
+        } catch (e) { /* noop */ }
+
+        // Skip handlers
+        function skipHandler(e) {
+            if (e.type === 'keydown') {
+                if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
+                    e.preventDefault();
+                    showContent();
+                }
+            } else {
+                showContent();
+            }
+        }
+
+        document.addEventListener('keydown', skipHandler);
+        if (intro) intro.addEventListener('click', skipHandler);
+
+        // Typewriter effect
+        function typeChar() {
+            if (dismissed || !introText) return;
+            if (charIndex < fullText.length) {
+                introText.innerHTML = fullText.slice(0, charIndex + 1) + '<span class="quill-cursor" aria-hidden="true"></span>';
+                charIndex++;
+                typeTimer = setTimeout(typeChar, 50 + Math.random() * 40);
+            } else {
+                // Done typing, wait then show
+                introText.innerHTML = fullText;
+                setTimeout(showContent, 1200);
+            }
+        }
+
+        // Start after scroll unrolls
+        setTimeout(() => {
+            if (!dismissed) typeChar();
+        }, 1300);
+
+        // Auto-dismiss after timeout
+        setTimeout(() => {
+            if (!dismissed) showContent();
+        }, 8000);
+
+        // Cleanup
+        function cleanup() {
+            document.removeEventListener('keydown', skipHandler);
+            if (intro) intro.removeEventListener('click', skipHandler);
+        }
+
+        // After content shown, init reveals
+        const origShowContent = showContent;
+
+        function initReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            if (!reveals.length) return;
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in-view');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+            );
+
+            reveals.forEach((el) => observer.observe(el));
+        }
+
+        // Observe for content visibility
+        const contentObserver = new MutationObserver(() => {
+            if (logbook && logbook.classList.contains('visible')) {
+                initReveal();
+                contentObserver.disconnect();
+            }
+        });
+
+        if (logbook) {
+            contentObserver.observe(logbook, { attributes: true, attributeFilter: ['class'] });
+        }
+    })();
+</script>

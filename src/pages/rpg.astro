@@ -1,0 +1,1535 @@
+---
+import { siteMetadata } from "../siteMetadata";
+import { experience, education, certifications, skills, engagements, continuousLearning, summary, managementSkills, languages, industries, metrics } from "../data/resume";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>Daniele D'Agnelli — RPG Character Sheet</title>
+    <meta name="description" content="Daniele D'Agnelli's portfolio reimagined as a Fantasy RPG Character Sheet. 15+ years of quests in AI, cybersecurity, and digital transformation." />
+    <meta name="author" content="Daniele D'Agnelli" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://dagnelli.net/rpg" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Daniele D'Agnelli — RPG Character Sheet" />
+    <meta property="og:description" content="A legendary hero's quest log. 15+ years of digital transformation adventures." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dagnelli.net/rpg" />
+    <meta property="og:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta property="og:image:alt" content="Daniele D'Agnelli — RPG Character Sheet" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Daniele D'Agnelli" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Daniele D'Agnelli — RPG Character Sheet" />
+    <meta name="twitter:description" content="A legendary hero's quest log. 15+ years of digital transformation adventures." />
+    <meta name="twitter:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta name="twitter:creator" content="@danieledagnelli" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Daniele D'Agnelli",
+        "url": "https://dagnelli.net/rpg",
+        "image": "https://dagnelli.net/assets/dani.jpeg",
+        "jobTitle": "Senior Engagement Manager",
+        "worksFor": { "@type": "Organization", "name": "C3 AI" },
+        "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+        "email": "daniele@dagnelli.net",
+        "sameAs": [
+            "https://github.com/danieledagnelli",
+            "https://www.linkedin.com/in/dagnelli",
+            "https://bsky.app/profile/dagnelli.net"
+        ]
+    })} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- EMBER PARTICLES -->
+    <div class="embers" id="embers" aria-hidden="true"></div>
+
+    <!-- INTRO SEQUENCE -->
+    <div class="intro" id="intro">
+        <canvas class="rune-canvas" id="runeCanvas" aria-hidden="true"></canvas>
+        <div class="intro-text" id="introText">
+            <div class="intro-summoned" id="introSummoned">HERO SUMMONED</div>
+            <h1 class="intro-name" id="introName">Daniele D'Agnelli</h1>
+            <div class="intro-class" id="introClass">Level 15 Archmage of Engineering</div>
+            <div class="intro-race" id="introRace">Human &bull; Engagement Manager &bull; Lawful Neutral</div>
+        </div>
+        <div class="intro-sparkles" id="introSparkles" aria-hidden="true"></div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="sheet" id="sheet">
+
+        <!-- CHARACTER HEADER -->
+        <section class="section char-header">
+            <div class="portrait-frame">
+                <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli — Character Portrait" width="160" height="160" class="portrait-img" />
+                <div class="frame-corner tl" aria-hidden="true"></div>
+                <div class="frame-corner tr" aria-hidden="true"></div>
+                <div class="frame-corner bl" aria-hidden="true"></div>
+                <div class="frame-corner br" aria-hidden="true"></div>
+            </div>
+            <div class="char-info">
+                <h1 class="char-name">Daniele D'Agnelli</h1>
+                <div class="char-title">Level 15 Archmage of Engineering</div>
+                <div class="char-meta">
+                    <span class="meta-tag">Human</span>
+                    <span class="meta-tag">Engagement Manager</span>
+                    <span class="meta-tag">Lawful Neutral</span>
+                </div>
+                <div class="char-links">
+                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener" class="guild-link">Guild: GitHub</a>
+                    <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener" class="guild-link">Guild: LinkedIn</a>
+                    <a href={`mailto:${siteMetadata.email}`} class="guild-link">Send Raven</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAT BLOCK -->
+        <section class="section stat-block">
+            <h2 class="section-title">Ability Scores</h2>
+            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">18</div>
+                    <div class="stat-mod">+4</div>
+                    <div class="stat-name">STR</div>
+                    <div class="stat-source">$15M Directed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">15</div>
+                    <div class="stat-mod">+2</div>
+                    <div class="stat-name">DEX</div>
+                    <div class="stat-source">Agile & Waterfall</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">19</div>
+                    <div class="stat-mod">+4</div>
+                    <div class="stat-name">INT</div>
+                    <div class="stat-source">MSc + ML + GenAI</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">16</div>
+                    <div class="stat-mod">+3</div>
+                    <div class="stat-name">WIS</div>
+                    <div class="stat-source">15 Years XP</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">17</div>
+                    <div class="stat-mod">+3</div>
+                    <div class="stat-name">CHA</div>
+                    <div class="stat-source">NPS >70</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">14</div>
+                    <div class="stat-mod">+2</div>
+                    <div class="stat-name">CON</div>
+                    <div class="stat-source">100+ Plants</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VITAL BARS -->
+        <section class="section vitals">
+            <div class="bar-group">
+                <div class="bar-label"><span class="bar-icon hp" aria-hidden="true">&#10084;</span> HP (Years Active)</div>
+                <div class="bar-track hp-track">
+                    <div class="bar-fill hp-fill" data-value="15" data-max="20" style="--bar-pct: 75%;">15 / 20</div>
+                </div>
+            </div>
+            <div class="bar-group">
+                <div class="bar-label"><span class="bar-icon mp" aria-hidden="true">&#9733;</span> MP (Certifications)</div>
+                <div class="bar-track mp-track">
+                    <div class="bar-fill mp-fill" data-value="6" data-max="10" style="--bar-pct: 60%;">6 / 10</div>
+                </div>
+            </div>
+            <div class="bar-group">
+                <div class="bar-label"><span class="bar-icon xp" aria-hidden="true">&#9670;</span> XP (To Next Level)</div>
+                <div class="bar-track xp-track">
+                    <div class="bar-fill xp-fill" data-value="85" data-max="100" style="--bar-pct: 85%;">85%</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
+
+        <!-- HERO'S LEGEND -->
+        <section class="section legend reveal">
+            <h2 class="section-title">Hero's Legend</h2>
+            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
+            <div class="scroll-box">
+                <p class="legend-text">{summary}</p>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
+
+        <!-- QUEST CHRONICLE -->
+        <section class="section quests reveal">
+            <h2 class="section-title">Quest Chronicle</h2>
+            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
+            {experience.map((exp, i) => (
+                <div class="quest-entry">
+                    <div class="quest-header">
+                        <span class="quest-guild">{exp.company}</span>
+                        <span class="quest-realm">{exp.location}</span>
+                    </div>
+                    {exp.roles.map((role) => (
+                        <div class="quest-role">
+                            <div class="quest-role-head">
+                                <span class="quest-title">{role.title}</span>
+                                <span class="quest-period">{role.period}</span>
+                            </div>
+                            {role.description && (
+                                <p class="quest-desc">{role.description}</p>
+                            )}
+                            {role.bullets && role.bullets.length > 0 && (
+                                <ul class="quest-loot">
+                                    {role.bullets.map((b) => (
+                                        <li><span class="loot-icon" aria-hidden="true">&#9670;</span> {b}</li>
+                                    ))}
+                                </ul>
+                            )}
+                            <div class="quest-xp" aria-hidden="true">+{(5 - i) * 500} XP</div>
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
+
+        <!-- SKILL TREE -->
+        <section class="section skill-tree reveal">
+            <h2 class="section-title">Skill Tree</h2>
+            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
+
+            <h3 class="skill-branch-title">Technical Arts</h3>
+            <div class="skill-nodes">
+                {skills.map((s, i) => {
+                    const level = Math.max(1, Math.min(5, 5 - Math.floor(i / 5)));
+                    return (
+                        <div class="skill-node">
+                            <div class="skill-name">{s}</div>
+                            <div class="skill-dots" aria-label={`Level ${level} of 5`}>
+                                {[1,2,3,4,5].map(d => (
+                                    <span class={`dot ${d <= level ? 'filled' : ''}`} aria-hidden="true"></span>
+                                ))}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+
+            <h3 class="skill-branch-title">Leadership Spells</h3>
+            <div class="skill-nodes">
+                {managementSkills.map((s, i) => {
+                    const level = Math.max(2, Math.min(5, 5 - Math.floor(i / 3)));
+                    return (
+                        <div class="skill-node">
+                            <div class="skill-name">{s}</div>
+                            <div class="skill-dots" aria-label={`Level ${level} of 5`}>
+                                {[1,2,3,4,5].map(d => (
+                                    <span class={`dot ${d <= level ? 'filled' : ''}`} aria-hidden="true"></span>
+                                ))}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+
+            <h3 class="skill-branch-title">Tongues Known</h3>
+            <div class="skill-nodes">
+                {languages.map((l) => (
+                    <div class="skill-node">
+                        <div class="skill-name">{l}</div>
+                        <div class="skill-dots" aria-label="Level 5 of 5">
+                            {[1,2,3,4,5].map(() => (
+                                <span class="dot filled" aria-hidden="true"></span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
+
+        <!-- LEGENDARY QUESTS -->
+        <section class="section legendary reveal">
+            <h2 class="section-title">Legendary Quests</h2>
+            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
+            <div class="legendary-grid">
+                {engagements.map((eng, i) => {
+                    const skulls = Math.max(1, Math.min(5, 5 - i));
+                    return (
+                        <div class="legendary-card">
+                            <div class="legendary-top">
+                                <span class="legendary-client">{eng.client}</span>
+                                <span class="legendary-difficulty" aria-label={`Difficulty ${skulls} of 5`}>
+                                    {Array.from({length: skulls}).map(() => '&#9760;').join('')}
+                                </span>
+                            </div>
+                            <div class="legendary-sector">{eng.sector}</div>
+                            <div class="legendary-scope">{eng.scope}</div>
+                            <div class="legendary-reward">
+                                <span class="reward-label">Reward:</span> {eng.impact}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
+
+        <!-- TRAINING GROUNDS -->
+        <section class="section training reveal">
+            <h2 class="section-title">Training Grounds</h2>
+            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
+            {education.map((edu) => (
+                <div class="training-entry">
+                    <div class="training-header">
+                        <span class="training-school">{edu.institution}</span>
+                        <span class="training-period">{edu.period}</span>
+                    </div>
+                    <div class="training-degree">{edu.degree}</div>
+                    <div class="training-loc">{edu.location}</div>
+                    {edu.distinction && (
+                        <div class="training-distinction">&#9733; {edu.distinction}</div>
+                    )}
+                </div>
+            ))}
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
+
+        <!-- ACHIEVEMENTS UNLOCKED -->
+        <section class="section achievements reveal">
+            <h2 class="section-title">Achievements Unlocked</h2>
+            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
+            <div class="achievement-grid">
+                {certifications.map((cert) => (
+                    <div class="achievement-item">
+                        <div class="achievement-icon" aria-hidden="true">&#9733;</div>
+                        <div class="achievement-name">{cert}</div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
+
+        <!-- SIDE QUESTS -->
+        <section class="section sidequests reveal">
+            <h2 class="section-title">Side Quests</h2>
+            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
+            <div class="sidequest-list">
+                {continuousLearning.map((item) => (
+                    <div class="sidequest-item">
+                        <span class="sidequest-icon" aria-hidden="true">&#9670;</span>
+                        <span class="sidequest-name">{item}</span>
+                        <span class="sidequest-status">COMPLETE</span>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
+
+        <!-- REALMS EXPLORED -->
+        <section class="section realms reveal">
+            <h2 class="section-title">Realms Explored</h2>
+            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
+            <div class="realm-grid">
+                {industries.map((ind) => (
+                    <div class="realm-tag">{ind}</div>
+                ))}
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="rpg-footer">
+            <div class="footer-rune" aria-hidden="true">&#10038;</div>
+            <p>&copy; {new Date().getFullYear()} Daniele D'Agnelli. All quests documented.</p>
+            <div class="footer-links">
+                <a href="/">Main Realm</a>
+                <span aria-hidden="true">&bull;</span>
+                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
+                <span aria-hidden="true">&bull;</span>
+                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
+
+<style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --parchment: #1a1510;
+        --paper: #2a2318;
+        --gold: #d4a744;
+        --gold-dim: #8a6d2b;
+        --blood: #8b1a1a;
+        --mana: #2a5ca8;
+        --health: #2d8b2d;
+        --silver: #a8a8a8;
+        --text: #c9b896;
+        --text-dim: #7a6d58;
+        --border: #4a3d2a;
+        --ember: #e8722a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        background: var(--parchment);
+        color: var(--text);
+        font-family: 'Crimson Text', Georgia, serif;
+        font-size: 17px;
+        line-height: 1.65;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+    a:hover, a:focus { color: #f0c860; text-decoration: underline; }
+
+    /* ===== EMBER PARTICLES ===== */
+    .embers {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .ember {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: var(--ember);
+        border-radius: 50%;
+        opacity: 0;
+        animation: ember-rise linear infinite;
+        box-shadow: 0 0 4px var(--ember), 0 0 8px rgba(232, 114, 42, 0.3);
+    }
+
+    @keyframes ember-rise {
+        0% { opacity: 0; transform: translateY(0) translateX(0); }
+        10% { opacity: 0.8; }
+        90% { opacity: 0.3; }
+        100% { opacity: 0; transform: translateY(-100vh) translateX(30px); }
+    }
+
+    /* ===== INTRO SEQUENCE ===== */
+    .intro {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+        transition: opacity 0.6s ease;
+    }
+
+    .intro.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .rune-canvas {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        opacity: 0.6;
+    }
+
+    .intro-text {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        opacity: 0;
+    }
+
+    .intro-text.visible { opacity: 1; transition: opacity 0.5s ease; }
+
+    .intro-summoned {
+        font-family: 'MedievalSharp', cursive;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        color: var(--gold);
+        letter-spacing: 0.3em;
+        opacity: 0;
+        transform: scale(1.5);
+        text-shadow: 0 0 20px rgba(212, 167, 68, 0.6), 0 0 40px rgba(212, 167, 68, 0.3);
+    }
+
+    .intro-summoned.flash {
+        animation: summon-flash 1s ease forwards;
+    }
+
+    @keyframes summon-flash {
+        0% { opacity: 0; transform: scale(1.5); }
+        30% { opacity: 1; transform: scale(1.1); }
+        60% { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; transform: scale(1); }
+    }
+
+    .intro-name {
+        font-family: 'MedievalSharp', cursive;
+        font-size: clamp(2rem, 6vw, 3.5rem);
+        color: var(--gold);
+        margin-top: 1rem;
+        opacity: 0;
+        text-shadow: 0 0 10px rgba(212, 167, 68, 0.4);
+    }
+
+    .intro-name.reveal { animation: text-reveal 0.8s ease forwards; }
+
+    .intro-class {
+        font-family: 'Crimson Text', serif;
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        color: var(--silver);
+        margin-top: 0.5rem;
+        opacity: 0;
+    }
+
+    .intro-class.reveal { animation: text-reveal 0.8s ease 0.2s forwards; }
+
+    .intro-race {
+        font-family: 'Crimson Text', serif;
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        color: var(--text-dim);
+        margin-top: 0.3rem;
+        opacity: 0;
+    }
+
+    .intro-race.reveal { animation: text-reveal 0.8s ease 0.4s forwards; }
+
+    @keyframes text-reveal {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .intro-sparkles {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    .sparkle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--gold);
+        border-radius: 50%;
+        animation: sparkle-burst 0.8s ease-out forwards;
+        box-shadow: 0 0 6px var(--gold);
+    }
+
+    @keyframes sparkle-burst {
+        0% { opacity: 1; transform: translate(0, 0) scale(1); }
+        100% { opacity: 0; transform: translate(var(--sx), var(--sy)) scale(0); }
+    }
+
+    /* ===== MAIN SHEET ===== */
+    .sheet {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        opacity: 0;
+        transition: opacity 0.8s ease;
+        position: relative;
+        z-index: 2;
+    }
+
+    .sheet.visible { opacity: 1; }
+
+    /* ===== SECTIONS ===== */
+    .section {
+        margin-bottom: 2.5rem;
+        background: var(--paper);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1.5rem;
+        position: relative;
+        animation: torch-flicker 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes torch-flicker {
+        0% { box-shadow: 0 0 15px rgba(232, 114, 42, 0.08), inset 0 0 30px rgba(0,0,0,0.3); }
+        50% { box-shadow: 0 0 20px rgba(232, 114, 42, 0.12), inset 0 0 30px rgba(0,0,0,0.25); }
+        100% { box-shadow: 0 0 12px rgba(232, 114, 42, 0.06), inset 0 0 30px rgba(0,0,0,0.35); }
+    }
+
+    .section-title {
+        font-family: 'MedievalSharp', cursive;
+        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        color: var(--gold);
+        text-align: center;
+        margin-bottom: 0.3rem;
+        background: linear-gradient(90deg, var(--gold), #f0d080, var(--gold));
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    .divider {
+        text-align: center;
+        color: var(--gold-dim);
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        letter-spacing: 0.5em;
+    }
+
+    .section-divider {
+        text-align: center;
+        color: var(--gold-dim);
+        font-size: 0.9rem;
+        padding: 0.5rem 0;
+        letter-spacing: 0.3em;
+        opacity: 0.5;
+    }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ===== CHARACTER HEADER ===== */
+    .char-header {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .portrait-frame {
+        position: relative;
+        width: 160px;
+        height: 160px;
+        flex-shrink: 0;
+        border: 3px solid var(--gold);
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(212, 167, 68, 0.3), inset 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .portrait-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: sepia(0.15) contrast(1.05);
+    }
+
+    .frame-corner {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-color: var(--gold);
+        border-style: solid;
+    }
+
+    .frame-corner.tl { top: 3px; left: 3px; border-width: 2px 0 0 2px; }
+    .frame-corner.tr { top: 3px; right: 3px; border-width: 2px 2px 0 0; }
+    .frame-corner.bl { bottom: 3px; left: 3px; border-width: 0 0 2px 2px; }
+    .frame-corner.br { bottom: 3px; right: 3px; border-width: 0 2px 2px 0; }
+
+    .char-info { flex: 1; min-width: 200px; }
+
+    .char-name {
+        font-family: 'MedievalSharp', cursive;
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        color: var(--gold);
+        line-height: 1.2;
+        text-shadow: 0 0 10px rgba(212, 167, 68, 0.3);
+    }
+
+    .char-title {
+        font-family: 'Crimson Text', serif;
+        font-size: 1.1rem;
+        color: var(--silver);
+        margin-top: 0.3rem;
+    }
+
+    .char-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.6rem;
+    }
+
+    .meta-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        padding: 0.2rem 0.6rem;
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .char-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 0.8rem;
+    }
+
+    .guild-link {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.7rem;
+        border: 1px solid var(--gold-dim);
+        border-radius: 3px;
+        color: var(--gold);
+        transition: background 0.2s, border-color 0.2s;
+    }
+
+    .guild-link:hover, .guild-link:focus {
+        background: rgba(212, 167, 68, 0.1);
+        border-color: var(--gold);
+        text-decoration: none;
+    }
+
+    /* ===== STAT BLOCK ===== */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0.8rem;
+    }
+
+    .stat-card {
+        text-align: center;
+        padding: 0.8rem 0.3rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: rgba(0,0,0,0.2);
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .stat-card:hover {
+        border-color: var(--gold-dim);
+        box-shadow: 0 0 8px rgba(212, 167, 68, 0.15);
+    }
+
+    .stat-value {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        font-weight: 700;
+        color: var(--gold);
+        line-height: 1;
+    }
+
+    .stat-mod {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--silver);
+        margin-top: 0.15rem;
+    }
+
+    .stat-name {
+        font-family: 'MedievalSharp', cursive;
+        font-size: 0.85rem;
+        color: var(--text);
+        margin-top: 0.3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .stat-source {
+        font-family: 'Crimson Text', serif;
+        font-size: 0.65rem;
+        color: var(--text-dim);
+        margin-top: 0.2rem;
+    }
+
+    /* ===== VITAL BARS ===== */
+    .vitals { display: flex; flex-direction: column; gap: 0.8rem; }
+
+    .bar-group { display: flex; flex-direction: column; gap: 0.3rem; }
+
+    .bar-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--text-dim);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    .bar-icon.hp { color: var(--blood); }
+    .bar-icon.mp { color: var(--mana); }
+    .bar-icon.xp { color: var(--gold); }
+
+    .bar-track {
+        height: 24px;
+        background: rgba(0,0,0,0.4);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .bar-fill {
+        height: 100%;
+        width: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        color: #fff;
+        font-weight: 700;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        transition: width 1.5s ease;
+        border-radius: 2px;
+    }
+
+    .bar-fill.animated { width: var(--bar-pct); }
+
+    .hp-fill { background: linear-gradient(90deg, #6b1515, var(--blood), #a02020); }
+    .mp-fill { background: linear-gradient(90deg, #1a3c6e, var(--mana), #3a7cd8); }
+    .xp-fill { background: linear-gradient(90deg, var(--gold-dim), var(--gold), #e8c860); }
+
+    /* ===== HERO'S LEGEND ===== */
+    .scroll-box {
+        background: rgba(0,0,0,0.15);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        padding: 1.2rem;
+    }
+
+    .legend-text {
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--text);
+        font-style: italic;
+    }
+
+    /* ===== QUEST CHRONICLE ===== */
+    .quest-entry {
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        background: rgba(0,0,0,0.15);
+    }
+
+    .quest-entry:last-child { margin-bottom: 0; }
+
+    .quest-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 0.6rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .quest-guild {
+        font-family: 'MedievalSharp', cursive;
+        font-size: 1.2rem;
+        color: var(--gold);
+    }
+
+    .quest-realm {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        color: var(--text-dim);
+    }
+
+    .quest-role { margin-top: 0.6rem; }
+
+    .quest-role-head {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: baseline;
+    }
+
+    .quest-title {
+        font-family: 'Crimson Text', serif;
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--text);
+    }
+
+    .quest-period {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        color: var(--text-dim);
+    }
+
+    .quest-desc {
+        font-size: 0.95rem;
+        color: var(--text-dim);
+        margin-top: 0.3rem;
+        font-style: italic;
+    }
+
+    .quest-loot {
+        list-style: none;
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .quest-loot li {
+        font-size: 0.9rem;
+        color: var(--text);
+        padding-left: 0.2rem;
+    }
+
+    .loot-icon { color: var(--gold); margin-right: 0.3rem; }
+
+    .quest-xp {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        color: var(--health);
+        text-align: right;
+        margin-top: 0.4rem;
+    }
+
+    /* ===== SKILL TREE ===== */
+    .skill-branch-title {
+        font-family: 'MedievalSharp', cursive;
+        font-size: 1.1rem;
+        color: var(--silver);
+        margin: 1rem 0 0.6rem;
+        padding-left: 0.2rem;
+        border-left: 3px solid var(--gold-dim);
+        padding-left: 0.6rem;
+    }
+
+    .skill-nodes {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .skill-node {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.4rem 0.6rem;
+        border: 1px solid rgba(74, 61, 42, 0.5);
+        border-radius: 3px;
+        background: rgba(0,0,0,0.1);
+        transition: border-color 0.2s, background 0.2s;
+    }
+
+    .skill-node:hover {
+        border-color: var(--gold-dim);
+        background: rgba(212, 167, 68, 0.05);
+    }
+
+    .skill-name {
+        font-family: 'Crimson Text', serif;
+        font-size: 0.88rem;
+        color: var(--text);
+    }
+
+    .skill-dots {
+        display: flex;
+        gap: 3px;
+        flex-shrink: 0;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: 1px solid var(--gold-dim);
+        background: transparent;
+        transition: background 0.3s;
+    }
+
+    .dot.filled { background: var(--gold); border-color: var(--gold); }
+
+    /* ===== LEGENDARY QUESTS ===== */
+    .legendary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .legendary-card {
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1rem;
+        background: rgba(0,0,0,0.15);
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .legendary-card:hover {
+        border-color: var(--blood);
+        box-shadow: 0 0 10px rgba(139, 26, 26, 0.2);
+    }
+
+    .legendary-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.3rem;
+    }
+
+    .legendary-client {
+        font-family: 'MedievalSharp', cursive;
+        font-size: 1.05rem;
+        color: var(--gold);
+        text-transform: capitalize;
+    }
+
+    .legendary-difficulty {
+        font-size: 0.75rem;
+        color: var(--blood);
+        letter-spacing: 0.1em;
+    }
+
+    .legendary-sector {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.68rem;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .legendary-scope {
+        font-family: 'Crimson Text', serif;
+        font-size: 0.9rem;
+        color: var(--silver);
+        margin-top: 0.3rem;
+    }
+
+    .legendary-reward {
+        margin-top: 0.5rem;
+        padding-top: 0.4rem;
+        border-top: 1px solid var(--border);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        color: var(--health);
+    }
+
+    .reward-label { color: var(--text-dim); }
+
+    /* ===== TRAINING GROUNDS ===== */
+    .training-entry {
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+        background: rgba(0,0,0,0.15);
+    }
+
+    .training-entry:last-child { margin-bottom: 0; }
+
+    .training-header {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: baseline;
+    }
+
+    .training-school {
+        font-family: 'MedievalSharp', cursive;
+        font-size: 1.1rem;
+        color: var(--gold);
+    }
+
+    .training-period {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        color: var(--text-dim);
+    }
+
+    .training-degree {
+        font-family: 'Crimson Text', serif;
+        font-size: 0.95rem;
+        color: var(--text);
+        margin-top: 0.2rem;
+    }
+
+    .training-loc {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        color: var(--text-dim);
+    }
+
+    .training-distinction {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--gold);
+        margin-top: 0.3rem;
+    }
+
+    /* ===== ACHIEVEMENTS ===== */
+    .achievement-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 0.6rem;
+    }
+
+    .achievement-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        background: rgba(0,0,0,0.15);
+        transition: border-color 0.3s;
+    }
+
+    .achievement-item:hover { border-color: var(--gold-dim); }
+
+    .achievement-icon {
+        font-size: 1.2rem;
+        color: var(--gold);
+        flex-shrink: 0;
+    }
+
+    .achievement-name {
+        font-family: 'Crimson Text', serif;
+        font-size: 0.88rem;
+        color: var(--text);
+    }
+
+    /* ===== SIDE QUESTS ===== */
+    .sidequest-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .sidequest-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.6rem;
+        border: 1px solid rgba(74, 61, 42, 0.4);
+        border-radius: 3px;
+        background: rgba(0,0,0,0.1);
+    }
+
+    .sidequest-icon { color: var(--gold); font-size: 0.7rem; flex-shrink: 0; }
+
+    .sidequest-name {
+        font-family: 'Crimson Text', serif;
+        font-size: 0.9rem;
+        color: var(--text);
+        flex: 1;
+    }
+
+    .sidequest-status {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.62rem;
+        color: var(--health);
+        letter-spacing: 0.1em;
+        flex-shrink: 0;
+    }
+
+    /* ===== REALMS ===== */
+    .realm-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .realm-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        padding: 0.3rem 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        color: var(--silver);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: border-color 0.2s, color 0.2s;
+    }
+
+    .realm-tag:hover {
+        border-color: var(--gold-dim);
+        color: var(--gold);
+    }
+
+    /* ===== FOOTER ===== */
+    .rpg-footer {
+        text-align: center;
+        padding: 2rem 0;
+        border-top: 1px solid var(--border);
+        margin-top: 1rem;
+    }
+
+    .footer-rune {
+        font-size: 1.5rem;
+        color: var(--gold-dim);
+        margin-bottom: 0.5rem;
+    }
+
+    .rpg-footer p {
+        font-family: 'Crimson Text', serif;
+        font-size: 0.85rem;
+        color: var(--text-dim);
+    }
+
+    .footer-links {
+        margin-top: 0.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.6rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+    }
+
+    .footer-links span { color: var(--text-dim); }
+
+    /* ===== RESPONSIVE: 1200px ===== */
+    @media (max-width: 1200px) {
+        .sheet { max-width: 800px; }
+    }
+
+    /* ===== RESPONSIVE: 768px ===== */
+    @media (max-width: 768px) {
+        body { font-size: 16px; }
+        .sheet { padding: 1.5rem 1rem; }
+
+        .stats-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .char-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .portrait-frame {
+            width: 120px;
+            height: 120px;
+        }
+
+        .skill-nodes {
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        }
+
+        .legendary-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .achievement-grid {
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        }
+    }
+
+    /* ===== RESPONSIVE: 480px ===== */
+    @media (max-width: 480px) {
+        body { font-size: 15px; }
+        .sheet { padding: 1rem 0.75rem; }
+        .section { padding: 1rem; }
+
+        .stats-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+
+        .stat-card { padding: 0.5rem 0.2rem; }
+        .stat-value { font-size: 1.3rem; }
+
+        .skill-nodes {
+            grid-template-columns: 1fr;
+        }
+
+        .quest-role-head {
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .char-links { flex-direction: column; gap: 0.4rem; }
+
+        .guild-link {
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .achievement-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ===== RESPONSIVE: 380px ===== */
+    @media (max-width: 380px) {
+        .sheet { padding: 0.75rem 0.5rem; }
+        .section { padding: 0.75rem; }
+
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .portrait-frame {
+            width: 100px;
+            height: 100px;
+        }
+
+        .meta-tag, .guild-link, .realm-tag {
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+    }
+</style>
+
+<script>
+    // ===== EMBER PARTICLES =====
+    function createEmbers() {
+        const container = document.getElementById('embers');
+        if (!container) return;
+        const count = 25;
+        for (let i = 0; i < count; i++) {
+            const ember = document.createElement('div');
+            ember.className = 'ember';
+            ember.style.left = Math.random() * 100 + '%';
+            ember.style.bottom = -(Math.random() * 20) + '%';
+            ember.style.animationDuration = (6 + Math.random() * 8) + 's';
+            ember.style.animationDelay = (Math.random() * 10) + 's';
+            ember.style.width = (2 + Math.random() * 2) + 'px';
+            ember.style.height = ember.style.width;
+            container.appendChild(ember);
+        }
+    }
+
+    // ===== INTRO SEQUENCE =====
+    function runIntro() {
+        const intro = document.getElementById('intro');
+        const sheet = document.getElementById('sheet');
+        const canvas = document.getElementById('runeCanvas') as HTMLCanvasElement;
+        const introText = document.getElementById('introText')!;
+        const summoned = document.getElementById('introSummoned')!;
+        const heroName = document.getElementById('introName')!;
+        const heroClass = document.getElementById('introClass')!;
+        const heroRace = document.getElementById('introRace')!;
+        const sparklesEl = document.getElementById('introSparkles')!;
+
+        if (!intro || !sheet) return;
+
+        // Check sessionStorage
+        if (sessionStorage.getItem('rpg-intro')) {
+            intro.style.display = 'none';
+            sheet.classList.add('visible');
+            return;
+        }
+
+        let skipped = false;
+
+        function skip() {
+            if (skipped) return;
+            skipped = true;
+            sessionStorage.setItem('rpg-intro', '1');
+            intro.classList.add('hidden');
+            setTimeout(() => {
+                intro.style.display = 'none';
+                sheet.classList.add('visible');
+            }, 600);
+        }
+
+        intro.addEventListener('click', skip);
+        document.addEventListener('keydown', function handler(e: KeyboardEvent) {
+            if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
+                skip();
+                document.removeEventListener('keydown', handler);
+            }
+        });
+
+        // Draw rune circle on canvas
+        if (canvas) {
+            const ctx = canvas.getContext('2d')!;
+            const w = canvas.width = 300;
+            const h = canvas.height = 300;
+            const cx = w / 2;
+            const cy = h / 2;
+            const radius = 100;
+            let progress = 0;
+
+            function drawRune() {
+                if (skipped) return;
+                ctx.clearRect(0, 0, w, h);
+                ctx.strokeStyle = '#d4a744';
+                ctx.lineWidth = 1.5;
+                ctx.shadowColor = '#d4a744';
+                ctx.shadowBlur = 8;
+
+                // Outer circle
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius, 0, Math.PI * 2 * Math.min(progress, 1));
+                ctx.stroke();
+
+                // Inner circle
+                if (progress > 0.3) {
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, radius * 0.6, 0, Math.PI * 2 * Math.min((progress - 0.3) / 0.7, 1));
+                    ctx.stroke();
+                }
+
+                // Rune lines
+                if (progress > 0.5) {
+                    const lineProgress = Math.min((progress - 0.5) / 0.5, 1);
+                    for (let i = 0; i < 6; i++) {
+                        const angle = (Math.PI * 2 * i) / 6;
+                        const x1 = cx + Math.cos(angle) * radius * 0.6 * lineProgress;
+                        const y1 = cy + Math.sin(angle) * radius * 0.6 * lineProgress;
+                        const x2 = cx + Math.cos(angle) * radius * lineProgress;
+                        const y2 = cy + Math.sin(angle) * radius * lineProgress;
+                        ctx.beginPath();
+                        ctx.moveTo(cx, cy);
+                        ctx.lineTo(x1, y1);
+                        ctx.moveTo(x1, y1);
+                        ctx.lineTo(x2, y2);
+                        ctx.stroke();
+                    }
+                }
+
+                // Small rune marks
+                if (progress > 0.7) {
+                    const markProgress = (progress - 0.7) / 0.3;
+                    for (let i = 0; i < 12; i++) {
+                        const angle = (Math.PI * 2 * i) / 12;
+                        const r = radius * 0.8;
+                        const x = cx + Math.cos(angle) * r;
+                        const y = cy + Math.sin(angle) * r;
+                        ctx.globalAlpha = markProgress;
+                        ctx.fillStyle = '#d4a744';
+                        ctx.beginPath();
+                        ctx.arc(x, y, 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    ctx.globalAlpha = 1;
+                }
+
+                progress += 0.012;
+                if (progress < 1.2) {
+                    requestAnimationFrame(drawRune);
+                }
+            }
+
+            drawRune();
+        }
+
+        // Sequence timeline
+        setTimeout(() => {
+            if (skipped) return;
+            introText.classList.add('visible');
+            summoned.classList.add('flash');
+        }, 1200);
+
+        setTimeout(() => {
+            if (skipped) return;
+            heroName.classList.add('reveal');
+            heroClass.classList.add('reveal');
+            heroRace.classList.add('reveal');
+        }, 2200);
+
+        // Sparkle burst
+        setTimeout(() => {
+            if (skipped) return;
+            for (let i = 0; i < 30; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 60 + Math.random() * 120;
+                sparkle.style.left = '50%';
+                sparkle.style.top = '50%';
+                sparkle.style.setProperty('--sx', Math.cos(angle) * dist + 'px');
+                sparkle.style.setProperty('--sy', Math.sin(angle) * dist + 'px');
+                sparkle.style.animationDelay = (Math.random() * 0.3) + 's';
+                sparklesEl.appendChild(sparkle);
+            }
+        }, 3200);
+
+        // Finish
+        setTimeout(() => {
+            if (skipped) return;
+            skip();
+        }, 4200);
+    }
+
+    // ===== SCROLL REVEAL =====
+    function initReveal() {
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        reveals.forEach(el => observer.observe(el));
+    }
+
+    // ===== BAR ANIMATION ON SCROLL =====
+    function initBars() {
+        const bars = document.querySelectorAll('.bar-fill');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    (entry.target as HTMLElement).classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        bars.forEach(el => observer.observe(el));
+    }
+
+    // ===== INIT =====
+    createEmbers();
+    runIntro();
+    initReveal();
+    initBars();
+</script>

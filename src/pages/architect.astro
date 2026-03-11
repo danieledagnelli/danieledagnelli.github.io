@@ -1,0 +1,1805 @@
+---
+import { siteMetadata } from "../siteMetadata";
+import { experience, education, certifications, skills, engagements, continuousLearning, summary, managementSkills, languages, industries, metrics } from "../data/resume";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>Daniele D'Agnelli — Architectural Blueprint</title>
+    <meta name="description" content="Daniele D'Agnelli's career rendered as an architectural blueprint — 15+ years of engineering digital transformations, drawn in white on blue." />
+    <meta name="author" content="Daniele D'Agnelli" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://dagnelli.net/architect" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Daniele D'Agnelli — Architectural Blueprint" />
+    <meta property="og:description" content="Career as architectural blueprint: 15+ years of digital transformation, AI deployments, and cybersecurity — drawn in white on blue." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dagnelli.net/architect" />
+    <meta property="og:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta property="og:image:alt" content="Daniele D'Agnelli — Architectural Blueprint" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Daniele D'Agnelli" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Daniele D'Agnelli — Architectural Blueprint" />
+    <meta name="twitter:description" content="Career as architectural blueprint: 15+ years of digital transformation, AI, and cybersecurity." />
+    <meta name="twitter:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta name="twitter:creator" content="@danieledagnelli" />
+
+    <!-- Structured Data (Person) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Daniele D'Agnelli",
+        "url": "https://dagnelli.net",
+        "image": "https://dagnelli.net/assets/dani.jpeg",
+        "jobTitle": "Senior Engagement Manager",
+        "worksFor": { "@type": "Organization", "name": "C3 AI" },
+        "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+        "email": "daniele@dagnelli.net",
+        "sameAs": [
+            "https://github.com/danieledagnelli",
+            "https://www.linkedin.com/in/dagnelli",
+            "https://bsky.app/profile/dagnelli.net"
+        ]
+    })} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- BLUEPRINT GRID BACKGROUND -->
+    <div class="grid-bg" aria-hidden="true"></div>
+
+    <!-- INTRO SEQUENCE -->
+    <div class="intro" id="intro">
+        <div class="intro-inner" id="introInner">
+            <svg class="intro-title-svg" id="introSvg" viewBox="0 0 800 60" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <text x="400" y="28" text-anchor="middle" class="intro-title-text" id="introTitleText">
+                    ARCHITECTURAL SURVEY
+                </text>
+                <text x="400" y="50" text-anchor="middle" class="intro-subtitle-text" id="introSubtitleText">
+                    DANIELE D'AGNELLI
+                </text>
+            </svg>
+            <div class="intro-dimensions" id="introDimensions">
+                <span class="dim-h-top" aria-hidden="true"></span>
+                <span class="dim-h-bottom" aria-hidden="true"></span>
+                <span class="dim-v-left" aria-hidden="true"></span>
+                <span class="dim-v-right" aria-hidden="true"></span>
+            </div>
+            <p class="intro-meta" id="introMeta">SCALE 1:1 — SHEET 1 OF 1 — REV. 2024</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="blueprint" id="blueprint">
+
+        <!-- HEADER / DOSSIER -->
+        <section class="bp-section bp-header">
+            <div class="corner-tl" aria-hidden="true"></div>
+            <div class="corner-tr" aria-hidden="true"></div>
+            <div class="corner-bl" aria-hidden="true"></div>
+            <div class="corner-br" aria-hidden="true"></div>
+            <span class="section-notation" aria-hidden="true">SECTION A-A</span>
+
+            <div class="header-grid">
+                <div class="header-info">
+                    <h1 class="architect-name">{siteMetadata.name}</h1>
+                    <p class="architect-role">{siteMetadata.description}</p>
+                    <div class="header-meta">
+                        <span class="meta-tag">LOC: {siteMetadata.location}</span>
+                        <span class="meta-tag active">STATUS: ACTIVE</span>
+                    </div>
+                    <div class="header-links">
+                        <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">[GITHUB]</a>
+                        <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">[LINKEDIN]</a>
+                        <a href={`mailto:${siteMetadata.email}`}>[EMAIL]</a>
+                    </div>
+                </div>
+                <div class="header-photo">
+                    <div class="photo-frame">
+                        <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="140" height="140" />
+                        <div class="photo-overlay"></div>
+                    </div>
+                    <span class="photo-dim-h" aria-hidden="true">140mm</span>
+                    <span class="photo-dim-v" aria-hidden="true">140mm</span>
+                </div>
+            </div>
+
+            <span class="bp-annotation annotation-header" aria-hidden="true">NOTE: see appendix B for full specifications</span>
+        </section>
+
+        <!-- DESIGN INTENT (summary) -->
+        <section class="bp-section reveal">
+            <div class="corner-tl" aria-hidden="true"></div>
+            <div class="corner-tr" aria-hidden="true"></div>
+            <div class="corner-bl" aria-hidden="true"></div>
+            <div class="corner-br" aria-hidden="true"></div>
+            <span class="section-notation" aria-hidden="true">SECTION B-B</span>
+
+            <h2 class="bp-section-title">DESIGN INTENT</h2>
+            <p class="bp-body">{summary}</p>
+
+            <span class="bp-annotation annotation-intent" aria-hidden="true">REF: DI-001 / LOAD BEARING</span>
+        </section>
+
+        <!-- CONSTRUCTION PHASES (experience) — building floors -->
+        <section class="bp-section reveal">
+            <div class="corner-tl" aria-hidden="true"></div>
+            <div class="corner-tr" aria-hidden="true"></div>
+            <div class="corner-bl" aria-hidden="true"></div>
+            <div class="corner-br" aria-hidden="true"></div>
+            <span class="section-notation" aria-hidden="true">SECTION C-C</span>
+
+            <h2 class="bp-section-title">CONSTRUCTION PHASES</h2>
+            <span class="bp-annotation annotation-building" aria-hidden="true">ELEVATION VIEW / NOT TO SCALE</span>
+
+            <div class="building">
+                <div class="building-roof" aria-hidden="true">
+                    <span class="roof-line"></span>
+                    <span class="roof-peak"></span>
+                </div>
+                {[...experience].reverse().map((exp, i) => {
+                    const floorNum = experience.length - i;
+                    const isTop = i === 0;
+                    return (
+                        <div class={`floor reveal ${isTop ? 'floor-top' : ''}`}>
+                            <span class="floor-label" aria-hidden="true">FL-{String(floorNum).padStart(2, '0')}</span>
+                            <div class="floor-content">
+                                <div class="floor-header">
+                                    <span class="floor-company">{exp.company}</span>
+                                    <span class="floor-location">{exp.location}</span>
+                                </div>
+                                {exp.roles.map(role => (
+                                    <div class="floor-role">
+                                        <div class="role-head">
+                                            <span class="role-title">{role.title}</span>
+                                            <span class="role-period">{role.period}</span>
+                                        </div>
+                                        {role.description && <p class="role-desc">{role.description}</p>}
+                                        {role.bullets && role.bullets.length > 0 && (
+                                            <ul class="role-bullets">
+                                                {role.bullets.map(b => <li>{b}</li>)}
+                                            </ul>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                            <span class="dim-marker" aria-hidden="true"></span>
+                        </div>
+                    );
+                })}
+                <div class="building-foundation" aria-hidden="true">
+                    <span>FOUNDATION — EST. 2012</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- MATERIAL SPECIFICATIONS (skills) -->
+        <section class="bp-section reveal">
+            <div class="corner-tl" aria-hidden="true"></div>
+            <div class="corner-tr" aria-hidden="true"></div>
+            <div class="corner-bl" aria-hidden="true"></div>
+            <div class="corner-br" aria-hidden="true"></div>
+            <span class="section-notation" aria-hidden="true">SECTION D-D</span>
+
+            <h2 class="bp-section-title">MATERIAL SPECIFICATIONS</h2>
+            <span class="bp-annotation annotation-specs" aria-hidden="true">ALL MATERIALS TESTED TO BS EN STANDARDS</span>
+
+            <div class="spec-table-wrap">
+                <table class="spec-table">
+                    <thead>
+                        <tr>
+                            <th>SPECIFICATION</th>
+                            <th>CATEGORY</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {skills.map((s) => (
+                            <tr class="reveal">
+                                <td class="spec-name">{s}</td>
+                                <td class="spec-cat">TECHNICAL</td>
+                                <td class="spec-status"><span class="checkmark">&#10003;</span> APPROVED</td>
+                            </tr>
+                        ))}
+                        {managementSkills.map((s) => (
+                            <tr class="reveal">
+                                <td class="spec-name">{s}</td>
+                                <td class="spec-cat">MANAGEMENT</td>
+                                <td class="spec-status"><span class="checkmark">&#10003;</span> APPROVED</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- PROJECT DRAWINGS (engagements) -->
+        <section class="bp-section reveal">
+            <div class="corner-tl" aria-hidden="true"></div>
+            <div class="corner-tr" aria-hidden="true"></div>
+            <div class="corner-bl" aria-hidden="true"></div>
+            <div class="corner-br" aria-hidden="true"></div>
+            <span class="section-notation" aria-hidden="true">SECTION E-E</span>
+
+            <h2 class="bp-section-title">PROJECT DRAWINGS</h2>
+            <span class="bp-annotation annotation-projects" aria-hidden="true">DETAIL VIEWS / SCALE VARIES</span>
+
+            <div class="project-grid">
+                {engagements.map((eng, i) => (
+                    <div class="project-card reveal">
+                        <div class="project-number" aria-hidden="true">DWG-{String(i + 1).padStart(3, '0')}</div>
+                        <div class="callout-line" aria-hidden="true"></div>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <span class="project-client">{eng.client}</span>
+                                <span class="project-sector">{eng.sector}</span>
+                            </div>
+                            <div class="project-details">
+                                <span class="project-scope">SCOPE: {eng.scope}</span>
+                                <span class={`project-impact ${eng.trend}`}>IMPACT: {eng.impact}</span>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- ENGINEERING CREDENTIALS (education) -->
+        <section class="bp-section reveal">
+            <div class="corner-tl" aria-hidden="true"></div>
+            <div class="corner-tr" aria-hidden="true"></div>
+            <div class="corner-bl" aria-hidden="true"></div>
+            <div class="corner-br" aria-hidden="true"></div>
+            <span class="section-notation" aria-hidden="true">SECTION F-F</span>
+
+            <h2 class="bp-section-title">ENGINEERING CREDENTIALS</h2>
+
+            <div class="cred-list">
+                {education.map(edu => (
+                    <div class="cred-item reveal">
+                        <div class="cred-degree">{edu.degree}</div>
+                        <div class="cred-meta">
+                            <span>{edu.institution}</span>
+                            <span class="cred-sep">|</span>
+                            <span>{edu.period}</span>
+                            <span class="cred-sep">|</span>
+                            <span>{edu.location}</span>
+                        </div>
+                        {edu.distinction && <span class="cred-distinction">{edu.distinction}</span>}
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- STRUCTURAL APPROVALS (certifications) -->
+        <section class="bp-section reveal">
+            <div class="corner-tl" aria-hidden="true"></div>
+            <div class="corner-tr" aria-hidden="true"></div>
+            <div class="corner-bl" aria-hidden="true"></div>
+            <div class="corner-br" aria-hidden="true"></div>
+            <span class="section-notation" aria-hidden="true">SECTION G-G</span>
+
+            <h2 class="bp-section-title">STRUCTURAL APPROVALS</h2>
+            <span class="bp-annotation annotation-approvals" aria-hidden="true">VERIFIED BY INDEPENDENT REVIEW</span>
+
+            <div class="approval-grid">
+                {certifications.map((c, i) => (
+                    <div class="approval-item reveal">
+                        <span class="approval-stamp">APPROVED</span>
+                        <span class="approval-name">{c}</span>
+                        <span class="approval-ref" aria-hidden="true">REF: SA-{String(i + 1).padStart(3, '0')}</span>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- ADVANCED STUDIES (continuousLearning) -->
+        <section class="bp-section reveal">
+            <div class="corner-tl" aria-hidden="true"></div>
+            <div class="corner-tr" aria-hidden="true"></div>
+            <div class="corner-bl" aria-hidden="true"></div>
+            <div class="corner-br" aria-hidden="true"></div>
+            <span class="section-notation" aria-hidden="true">SECTION H-H</span>
+
+            <h2 class="bp-section-title">ADVANCED STUDIES</h2>
+
+            <div class="studies-list">
+                {continuousLearning.map((l, i) => (
+                    <div class="study-item reveal">
+                        <span class="study-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}.</span>
+                        <span class="study-name">{l}</span>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- TITLE BLOCK (footer) -->
+        <footer class="title-block">
+            <div class="corner-tl" aria-hidden="true"></div>
+            <div class="corner-tr" aria-hidden="true"></div>
+            <div class="corner-bl" aria-hidden="true"></div>
+            <div class="corner-br" aria-hidden="true"></div>
+
+            <div class="title-block-grid">
+                <div class="tb-cell tb-main">
+                    <span class="tb-label">DRAWN BY</span>
+                    <span class="tb-value">D. D'AGNELLI</span>
+                </div>
+                <div class="tb-cell">
+                    <span class="tb-label">DATE</span>
+                    <span class="tb-value">2024</span>
+                </div>
+                <div class="tb-cell">
+                    <span class="tb-label">SCALE</span>
+                    <span class="tb-value">1:1</span>
+                </div>
+                <div class="tb-cell">
+                    <span class="tb-label">REVISION</span>
+                    <span class="tb-value">REV. A</span>
+                </div>
+                <div class="tb-cell">
+                    <span class="tb-label">SHEET</span>
+                    <span class="tb-value">1 OF 1</span>
+                </div>
+            </div>
+
+            <div class="tb-refs">
+                <span class="tb-refs-label">REFERENCE DOCUMENTS:</span>
+                <div class="tb-refs-links">
+                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GITHUB</a>
+                    <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LINKEDIN</a>
+                    <a href={`mailto:${siteMetadata.email}`}>EMAIL</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+</body>
+</html>
+
+<style>
+    /* =========================================
+       BASE RESET & VARIABLES
+       ========================================= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+        --blueprint: #1a3a5c;
+        --blueprint-dark: #122a44;
+        --white: #ffffff;
+        --light-blue: #a8d4ff;
+        --annotation-blue: #4a9eff;
+        --dim-red: #e74c3c;
+        --highlight-yellow: #f1c40f;
+        --mono: 'Roboto Mono', 'Courier New', monospace;
+        --display: 'Archivo', 'Helvetica Neue', sans-serif;
+        scrollbar-width: thin;
+        scrollbar-color: var(--light-blue) var(--blueprint-dark);
+    }
+
+    body {
+        background: var(--blueprint);
+        color: var(--white);
+        font-family: var(--mono);
+        font-size: 14px;
+        line-height: 1.65;
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+
+    a {
+        color: var(--annotation-blue);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    a:hover {
+        color: var(--highlight-yellow);
+        text-decoration: underline;
+    }
+
+    ::selection {
+        background: var(--annotation-blue);
+        color: var(--blueprint-dark);
+    }
+
+    /* =========================================
+       BLUEPRINT GRID BACKGROUND
+       ========================================= */
+    .grid-bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image:
+            /* Major grid lines every ~100px */
+            linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px),
+            /* Minor grid lines every ~20px */
+            linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size:
+            100px 100px,
+            100px 100px,
+            20px 20px,
+            20px 20px;
+    }
+
+    /* =========================================
+       INTRO SEQUENCE
+       ========================================= */
+    .intro {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        background: var(--blueprint);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: opacity 0.5s ease;
+    }
+    .intro.done {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .intro-inner {
+        position: relative;
+        width: 0;
+        max-width: 800px;
+        height: 200px;
+        border: 2px solid var(--white);
+        overflow: hidden;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 40px;
+    }
+    .intro-inner.unrolling {
+        animation: unroll 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .intro-inner.visible {
+        opacity: 1;
+    }
+
+    @keyframes unroll {
+        from { width: 0; opacity: 0; }
+        10% { opacity: 1; }
+        to { width: min(80vw, 800px); opacity: 1; }
+    }
+
+    .intro-title-svg {
+        width: 100%;
+        max-width: 700px;
+        height: 60px;
+        overflow: visible;
+    }
+
+    .intro-title-text {
+        font-family: var(--display);
+        font-size: 22px;
+        font-weight: 800;
+        fill: none;
+        stroke: var(--white);
+        stroke-width: 1;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        letter-spacing: 4px;
+    }
+    .intro-title-text.draw {
+        animation: drawText 2s ease forwards;
+    }
+
+    .intro-subtitle-text {
+        font-family: var(--display);
+        font-size: 16px;
+        font-weight: 600;
+        fill: none;
+        stroke: var(--light-blue);
+        stroke-width: 0.8;
+        stroke-dasharray: 800;
+        stroke-dashoffset: 800;
+        letter-spacing: 6px;
+    }
+    .intro-subtitle-text.draw {
+        animation: drawText 2s ease 0.5s forwards;
+    }
+
+    @keyframes drawText {
+        to { stroke-dashoffset: 0; fill: var(--white); }
+    }
+
+    .intro-dimensions {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    .dim-h-top, .dim-h-bottom, .dim-v-left, .dim-v-right {
+        position: absolute;
+        background: var(--dim-red);
+        opacity: 0;
+    }
+    .dim-h-top, .dim-h-bottom {
+        height: 1px;
+        left: 10px;
+        right: 10px;
+    }
+    .dim-v-left, .dim-v-right {
+        width: 1px;
+        top: 10px;
+        bottom: 10px;
+    }
+    .dim-h-top { top: 8px; }
+    .dim-h-bottom { bottom: 8px; }
+    .dim-v-left { left: 8px; }
+    .dim-v-right { right: 8px; }
+
+    .dim-h-top::before, .dim-h-bottom::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: -3px;
+        width: 1px;
+        height: 7px;
+        background: var(--dim-red);
+    }
+    .dim-h-top::after, .dim-h-bottom::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: -3px;
+        width: 1px;
+        height: 7px;
+        background: var(--dim-red);
+    }
+    .dim-v-left::before, .dim-v-right::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -3px;
+        width: 7px;
+        height: 1px;
+        background: var(--dim-red);
+    }
+    .dim-v-left::after, .dim-v-right::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: -3px;
+        width: 7px;
+        height: 1px;
+        background: var(--dim-red);
+    }
+
+    .intro-dimensions.show span {
+        opacity: 1;
+        transition: opacity 0.6s ease;
+    }
+
+    .intro-meta {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--light-blue);
+        letter-spacing: 3px;
+        margin-top: 12px;
+        opacity: 0;
+        transition: opacity 0.5s ease 0.3s;
+    }
+    .intro-meta.show {
+        opacity: 1;
+    }
+
+    /* =========================================
+       MAIN CONTENT
+       ========================================= */
+    .blueprint {
+        position: relative;
+        z-index: 1;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 24px 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .blueprint.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* =========================================
+       SECTION BASE + CORNER BRACKETS
+       ========================================= */
+    .bp-section {
+        position: relative;
+        border: 1px solid rgba(255,255,255,0.25);
+        outline: 1px solid rgba(255,255,255,0.08);
+        outline-offset: 4px;
+        padding: 36px 32px 32px;
+        margin-bottom: 40px;
+        background: rgba(26,58,92,0.5);
+    }
+
+    .corner-tl, .corner-tr, .corner-bl, .corner-br {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        pointer-events: none;
+    }
+    .corner-tl {
+        top: -2px; left: -2px;
+        border-top: 3px solid var(--white);
+        border-left: 3px solid var(--white);
+    }
+    .corner-tr {
+        top: -2px; right: -2px;
+        border-top: 3px solid var(--white);
+        border-right: 3px solid var(--white);
+    }
+    .corner-bl {
+        bottom: -2px; left: -2px;
+        border-bottom: 3px solid var(--white);
+        border-left: 3px solid var(--white);
+    }
+    .corner-br {
+        bottom: -2px; right: -2px;
+        border-bottom: 3px solid var(--white);
+        border-right: 3px solid var(--white);
+    }
+
+    /* Section notation label */
+    .section-notation {
+        position: absolute;
+        top: -10px;
+        left: 32px;
+        background: var(--blueprint);
+        padding: 0 8px;
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 500;
+        color: var(--light-blue);
+        letter-spacing: 2px;
+    }
+
+    /* Section titles */
+    .bp-section-title {
+        font-family: var(--display);
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        color: var(--white);
+        margin-bottom: 24px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Body text */
+    .bp-body {
+        font-family: var(--mono);
+        font-size: 13px;
+        line-height: 1.8;
+        color: var(--light-blue);
+    }
+
+    /* Annotations */
+    .bp-annotation {
+        position: absolute;
+        font-family: var(--mono);
+        font-size: 9px;
+        font-weight: 300;
+        color: var(--light-blue);
+        opacity: 0.6;
+        letter-spacing: 1px;
+    }
+    .annotation-header { bottom: 8px; right: 16px; }
+    .annotation-intent { bottom: 8px; left: 16px; }
+    .annotation-building { top: 48px; right: 16px; }
+    .annotation-specs { bottom: 8px; right: 16px; }
+    .annotation-projects { top: 48px; right: 16px; }
+    .annotation-approvals { bottom: 8px; right: 16px; }
+
+    /* =========================================
+       HEADER SECTION
+       ========================================= */
+    .header-grid {
+        display: flex;
+        gap: 32px;
+        align-items: flex-start;
+    }
+
+    .header-info {
+        flex: 1;
+    }
+
+    .architect-name {
+        font-family: var(--display);
+        font-size: 32px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        color: var(--white);
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+
+    .architect-role {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--light-blue);
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+    }
+
+    .header-meta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+    }
+
+    .meta-tag {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 1px;
+        padding: 4px 10px;
+        border: 1px solid rgba(255,255,255,0.3);
+        color: var(--light-blue);
+    }
+    .meta-tag.active {
+        border-color: var(--annotation-blue);
+        color: var(--annotation-blue);
+    }
+
+    .header-links {
+        display: flex;
+        gap: 16px;
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    /* Photo with blueprint overlay */
+    .header-photo {
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .photo-frame {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        border: 2px solid var(--white);
+        overflow: hidden;
+    }
+    .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(40%) contrast(1.1);
+    }
+    .photo-overlay {
+        position: absolute;
+        inset: 0;
+        background: var(--blueprint);
+        mix-blend-mode: color;
+        opacity: 0.6;
+    }
+
+    .photo-dim-h {
+        position: absolute;
+        bottom: -18px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 9px;
+        color: var(--dim-red);
+        letter-spacing: 1px;
+    }
+    .photo-dim-h::before {
+        content: '';
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--dim-red);
+    }
+    .photo-dim-h::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 1px;
+        height: 7px;
+        background: var(--dim-red);
+    }
+
+    .photo-dim-v {
+        position: absolute;
+        top: 50%;
+        right: -24px;
+        transform: rotate(90deg) translateX(-50%);
+        font-size: 9px;
+        color: var(--dim-red);
+        letter-spacing: 1px;
+        white-space: nowrap;
+    }
+
+    /* =========================================
+       BUILDING / CONSTRUCTION PHASES
+       ========================================= */
+    .building {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        border-left: 2px solid rgba(255,255,255,0.3);
+        border-right: 2px solid rgba(255,255,255,0.3);
+        margin: 0 16px;
+    }
+
+    .building-roof {
+        position: relative;
+        height: 40px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+    .roof-line {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: var(--white);
+    }
+    .roof-peak {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        border-bottom: 30px solid rgba(255,255,255,0.15);
+    }
+
+    .floor {
+        position: relative;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding: 20px 24px 20px 60px;
+        background:
+            repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.02) 10px,
+                rgba(255,255,255,0.02) 11px
+            );
+        transition: background 0.3s;
+    }
+    .floor:hover {
+        background:
+            repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.04) 10px,
+                rgba(255,255,255,0.04) 11px
+            ),
+            rgba(74,158,255,0.05);
+    }
+    .floor-top {
+        border-top: 2px solid var(--white);
+    }
+
+    .floor-label {
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%) rotate(-90deg);
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--dim-red);
+        letter-spacing: 2px;
+        white-space: nowrap;
+    }
+
+    .floor-content {
+        width: 100%;
+    }
+
+    .floor-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 8px;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .floor-company {
+        font-family: var(--display);
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--white);
+        letter-spacing: 2px;
+    }
+
+    .floor-location {
+        font-size: 11px;
+        color: var(--light-blue);
+        letter-spacing: 1px;
+    }
+
+    .floor-role {
+        margin-top: 8px;
+    }
+
+    .role-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .role-title {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--annotation-blue);
+    }
+
+    .role-period {
+        font-size: 11px;
+        color: var(--light-blue);
+        opacity: 0.8;
+    }
+
+    .role-desc {
+        font-size: 12px;
+        color: var(--light-blue);
+        margin-top: 6px;
+        line-height: 1.6;
+    }
+
+    .role-bullets {
+        list-style: none;
+        margin-top: 8px;
+        padding: 0;
+    }
+    .role-bullets li {
+        font-size: 12px;
+        color: var(--light-blue);
+        padding: 2px 0;
+        padding-left: 16px;
+        position: relative;
+    }
+    .role-bullets li::before {
+        content: '\25B8';
+        position: absolute;
+        left: 0;
+        color: var(--dim-red);
+    }
+
+    .dim-marker {
+        position: absolute;
+        right: -12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 1px;
+        background: var(--dim-red);
+    }
+    .dim-marker::before {
+        content: '';
+        position: absolute;
+        right: -1px;
+        top: -2px;
+        width: 1px;
+        height: 5px;
+        background: var(--dim-red);
+    }
+
+    .building-foundation {
+        background:
+            repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 4px,
+                rgba(255,255,255,0.08) 4px,
+                rgba(255,255,255,0.08) 5px
+            );
+        border-top: 3px solid var(--white);
+        padding: 12px 24px;
+        text-align: center;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--light-blue);
+        letter-spacing: 3px;
+    }
+
+    /* =========================================
+       MATERIAL SPECIFICATIONS TABLE
+       ========================================= */
+    .spec-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .spec-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+    }
+
+    .spec-table thead th {
+        font-family: var(--display);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--white);
+        text-align: left;
+        padding: 10px 12px;
+        border-bottom: 2px solid var(--white);
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .spec-table tbody tr {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        transition: background 0.2s;
+    }
+    .spec-table tbody tr:hover {
+        background: rgba(74,158,255,0.08);
+    }
+
+    .spec-table td {
+        padding: 8px 12px;
+        vertical-align: middle;
+    }
+
+    .spec-name {
+        color: var(--white);
+        font-weight: 500;
+    }
+
+    .spec-cat {
+        color: var(--light-blue);
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .spec-status {
+        color: var(--annotation-blue);
+        font-weight: 500;
+    }
+
+    .checkmark {
+        color: var(--annotation-blue);
+        margin-right: 4px;
+    }
+
+    /* =========================================
+       PROJECT DRAWINGS
+       ========================================= */
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .project-card {
+        position: relative;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 20px 20px 16px;
+        background:
+            repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.015) 20px,
+                rgba(255,255,255,0.015) 21px
+            );
+        transition: border-color 0.3s;
+    }
+    .project-card:hover {
+        border-color: var(--annotation-blue);
+    }
+
+    .project-number {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--dim-red);
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+    }
+
+    .callout-line {
+        width: 40px;
+        height: 1px;
+        background: var(--dim-red);
+        margin-bottom: 12px;
+        position: relative;
+    }
+    .callout-line::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: -3px;
+        width: 6px;
+        height: 6px;
+        border: 1px solid var(--dim-red);
+        border-radius: 50%;
+        background: var(--blueprint);
+    }
+
+    .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 8px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .project-client {
+        font-family: var(--display);
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--white);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .project-sector {
+        font-size: 10px;
+        color: var(--light-blue);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .project-details {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .project-scope {
+        font-size: 12px;
+        color: var(--light-blue);
+    }
+
+    .project-impact {
+        font-size: 12px;
+        font-weight: 500;
+    }
+    .project-impact.positive {
+        color: var(--annotation-blue);
+    }
+    .project-impact.neutral {
+        color: var(--light-blue);
+    }
+
+    /* =========================================
+       ENGINEERING CREDENTIALS
+       ========================================= */
+    .cred-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cred-item {
+        padding: 16px 20px;
+        border: 1px solid rgba(255,255,255,0.15);
+        border-left: 3px solid var(--annotation-blue);
+    }
+
+    .cred-degree {
+        font-family: var(--display);
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--white);
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+    }
+
+    .cred-meta {
+        font-size: 12px;
+        color: var(--light-blue);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        align-items: center;
+    }
+
+    .cred-sep {
+        color: rgba(255,255,255,0.3);
+        margin: 0 4px;
+    }
+
+    .cred-distinction {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--highlight-yellow);
+        text-transform: uppercase;
+        border: 1px solid var(--highlight-yellow);
+        padding: 2px 8px;
+    }
+
+    /* =========================================
+       STRUCTURAL APPROVALS
+       ========================================= */
+    .approval-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+    }
+
+    .approval-item {
+        border: 1px solid rgba(255,255,255,0.15);
+        padding: 16px;
+        text-align: center;
+        position: relative;
+    }
+
+    .approval-stamp {
+        display: block;
+        font-family: var(--display);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        color: var(--annotation-blue);
+        border: 2px solid var(--annotation-blue);
+        border-radius: 4px;
+        padding: 2px 12px;
+        display: inline-block;
+        margin-bottom: 8px;
+        transform: rotate(-3deg);
+    }
+
+    .approval-name {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--white);
+        margin-bottom: 6px;
+    }
+
+    .approval-ref {
+        font-size: 9px;
+        color: var(--light-blue);
+        opacity: 0.6;
+        letter-spacing: 1px;
+    }
+
+    /* =========================================
+       ADVANCED STUDIES
+       ========================================= */
+    .studies-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .study-item {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .study-num {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--dim-red);
+        flex-shrink: 0;
+        letter-spacing: 1px;
+    }
+
+    .study-name {
+        font-size: 13px;
+        color: var(--light-blue);
+    }
+
+    /* =========================================
+       TITLE BLOCK (FOOTER)
+       ========================================= */
+    .title-block {
+        position: relative;
+        border: 2px solid var(--white);
+        outline: 1px solid rgba(255,255,255,0.08);
+        outline-offset: 4px;
+        padding: 24px;
+        margin-top: 20px;
+        margin-bottom: 60px;
+        background: rgba(26,58,92,0.7);
+    }
+
+    .title-block-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+        gap: 0;
+        border: 1px solid rgba(255,255,255,0.3);
+        margin-bottom: 16px;
+    }
+
+    .tb-cell {
+        padding: 10px 14px;
+        border-right: 1px solid rgba(255,255,255,0.2);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .tb-cell:last-child {
+        border-right: none;
+    }
+
+    .tb-label {
+        display: block;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--light-blue);
+        margin-bottom: 4px;
+    }
+
+    .tb-value {
+        display: block;
+        font-family: var(--display);
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--white);
+        letter-spacing: 1px;
+    }
+
+    .tb-refs {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .tb-refs-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--light-blue);
+    }
+
+    .tb-refs-links {
+        display: flex;
+        gap: 20px;
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    /* =========================================
+       SCROLL REVEAL
+       ========================================= */
+    .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* =========================================
+       RESPONSIVE: 1200px
+       ========================================= */
+    @media (max-width: 1200px) {
+        .blueprint {
+            max-width: 840px;
+        }
+    }
+
+    /* =========================================
+       RESPONSIVE: 768px
+       ========================================= */
+    @media (max-width: 768px) {
+        body {
+            font-size: 13px;
+        }
+
+        .blueprint {
+            padding: 24px 16px 0;
+        }
+
+        .bp-section {
+            padding: 28px 20px 24px;
+            margin-bottom: 28px;
+        }
+
+        .header-grid {
+            flex-direction: column-reverse;
+            align-items: center;
+            text-align: center;
+        }
+
+        .header-links {
+            justify-content: center;
+        }
+
+        .header-meta {
+            justify-content: center;
+        }
+
+        .architect-name {
+            font-size: 24px;
+        }
+
+        .bp-section-title {
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .building {
+            margin: 0;
+        }
+
+        .floor {
+            padding: 16px 12px 16px 44px;
+        }
+
+        .floor-label {
+            left: 4px;
+            font-size: 9px;
+        }
+
+        .floor-company {
+            font-size: 15px;
+        }
+
+        .floor-header {
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .role-head {
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .title-block-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .tb-cell.tb-main {
+            grid-column: span 2;
+        }
+
+        .project-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .approval-grid {
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+
+        .intro-inner {
+            height: 160px;
+            padding: 16px 20px;
+        }
+
+        .intro-title-text {
+            font-size: 16px;
+        }
+
+        .intro-subtitle-text {
+            font-size: 12px;
+        }
+
+        .corner-tl, .corner-tr, .corner-bl, .corner-br {
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    /* =========================================
+       RESPONSIVE: 480px
+       ========================================= */
+    @media (max-width: 480px) {
+        body {
+            font-size: 12px;
+        }
+
+        .blueprint {
+            padding: 16px 10px 0;
+        }
+
+        .bp-section {
+            padding: 24px 14px 20px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        .architect-name {
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .architect-role {
+            font-size: 12px;
+        }
+
+        .bp-section-title {
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+        .floor {
+            padding: 14px 10px 14px 36px;
+        }
+
+        .floor-company {
+            font-size: 14px;
+        }
+
+        .spec-table {
+            font-size: 11px;
+        }
+
+        .spec-table thead th {
+            font-size: 10px;
+            padding: 8px 8px;
+        }
+
+        .spec-table td {
+            padding: 6px 8px;
+        }
+
+        .title-block-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .tb-cell.tb-main {
+            grid-column: span 1;
+        }
+
+        .photo-frame {
+            width: 110px;
+            height: 110px;
+        }
+
+        .photo-dim-v {
+            display: none;
+        }
+
+        .bp-annotation {
+            display: none;
+        }
+
+        .header-links {
+            gap: 10px;
+            font-size: 11px;
+        }
+
+        .section-notation {
+            font-size: 9px;
+            left: 16px;
+        }
+
+        .intro-inner {
+            height: 130px;
+            padding: 12px 16px;
+        }
+
+        .intro-title-text {
+            font-size: 13px;
+        }
+
+        .intro-subtitle-text {
+            font-size: 10px;
+        }
+
+        .corner-tl, .corner-tr, .corner-bl, .corner-br {
+            width: 10px;
+            height: 10px;
+            border-width: 2px;
+        }
+
+        .approval-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .tb-refs {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+    }
+
+    /* =========================================
+       RESPONSIVE: 380px
+       ========================================= */
+    @media (max-width: 380px) {
+        .architect-name {
+            font-size: 17px;
+        }
+
+        .bp-section-title {
+            font-size: 14px;
+        }
+
+        .floor {
+            padding: 12px 8px 12px 30px;
+        }
+
+        .floor-label {
+            font-size: 8px;
+            left: 2px;
+        }
+
+        .floor-company {
+            font-size: 13px;
+        }
+
+        .role-title {
+            font-size: 12px;
+        }
+
+        .header-links {
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .meta-tag {
+            font-size: 10px;
+            padding: 3px 6px;
+        }
+
+        .photo-frame {
+            width: 90px;
+            height: 90px;
+        }
+
+        .intro-inner {
+            height: 110px;
+        }
+
+        .intro-title-text {
+            font-size: 11px;
+        }
+
+        .intro-subtitle-text {
+            font-size: 9px;
+        }
+
+        .title-block {
+            padding: 16px;
+        }
+
+        .cred-meta {
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .cred-sep {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    /* =============================================
+       INTRO SEQUENCE
+       ============================================= */
+    const introEl = document.getElementById('intro')!;
+    const introInner = document.getElementById('introInner')!;
+    const introSvg = document.getElementById('introSvg')!;
+    const introTitleText = document.getElementById('introTitleText')!;
+    const introSubtitleText = document.getElementById('introSubtitleText')!;
+    const introDimensions = document.querySelector('.intro-dimensions')!;
+    const introMeta = document.getElementById('introMeta')!;
+    const blueprintEl = document.getElementById('blueprint')!;
+
+    function skipIntro() {
+        introEl.classList.add('done');
+        setTimeout(() => {
+            introEl.style.display = 'none';
+            blueprintEl.classList.add('visible');
+        }, 500);
+    }
+
+    async function runIntro() {
+        if (sessionStorage.getItem('architect-intro')) {
+            skipIntro();
+            return;
+        }
+
+        await sleep(300);
+
+        // Unroll the rectangle
+        introInner.classList.add('visible');
+        introInner.classList.add('unrolling');
+
+        await sleep(1200);
+
+        // Draw title text via stroke animation
+        introTitleText.classList.add('draw');
+        introSubtitleText.classList.add('draw');
+
+        await sleep(1500);
+
+        // Show dimension lines
+        introDimensions.classList.add('show');
+
+        await sleep(600);
+
+        // Show meta text
+        introMeta.classList.add('show');
+
+        await sleep(1200);
+
+        sessionStorage.setItem('architect-intro', '1');
+        skipIntro();
+    }
+
+    function sleep(ms: number): Promise<void> {
+        return new Promise(r => setTimeout(r, ms));
+    }
+
+    // Skip on click / key
+    introEl.addEventListener('click', () => {
+        sessionStorage.setItem('architect-intro', '1');
+        skipIntro();
+    });
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (!introEl.classList.contains('done') && (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter')) {
+            e.preventDefault();
+            sessionStorage.setItem('architect-intro', '1');
+            skipIntro();
+        }
+    });
+
+    runIntro();
+
+    /* =============================================
+       SCROLL REVEAL (Intersection Observer)
+       ============================================= */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    /* =============================================
+       AMBIENT: Dimension arrows on scroll
+       ============================================= */
+    const sections = document.querySelectorAll('.bp-section');
+
+    function addScrollDimensions() {
+        sections.forEach((section) => {
+            const rect = section.getBoundingClientRect();
+            const inView = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+            if (inView) {
+                section.classList.add('dim-visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', addScrollDimensions, { passive: true });
+    addScrollDimensions();
+</script>

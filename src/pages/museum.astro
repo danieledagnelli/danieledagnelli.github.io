@@ -1,0 +1,1357 @@
+---
+import { siteMetadata } from "../siteMetadata";
+import { experience, education, certifications, skills, engagements, continuousLearning, summary, metrics, industries, managementSkills, languages } from "../data/resume";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>Exhibition: {siteMetadata.name} — A Retrospective</title>
+    <meta name="description" content="A curated retrospective exhibition of Daniele D'Agnelli's career — 15+ years of digital transformation, AI deployments, and cybersecurity leadership presented as a museum exhibition catalog." />
+    <meta name="author" content="Daniele D'Agnelli" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://dagnelli.net/museum" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Exhibition: Daniele D'Agnelli — A Retrospective" />
+    <meta property="og:description" content="A curated retrospective exhibition exploring 15+ years of digital transformation, AI deployments, and cybersecurity leadership." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dagnelli.net/museum" />
+    <meta property="og:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta property="og:image:alt" content="Exhibition: Daniele D'Agnelli — A Retrospective" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Daniele D'Agnelli" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Exhibition: Daniele D'Agnelli — A Retrospective" />
+    <meta name="twitter:description" content="A curated retrospective exhibition exploring 15+ years of digital transformation and AI leadership." />
+    <meta name="twitter:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta name="twitter:creator" content="@danieledagnelli" />
+
+    <!-- Structured Data (Person) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Daniele D'Agnelli",
+        "url": "https://dagnelli.net",
+        "image": "https://dagnelli.net/assets/dani.jpeg",
+        "jobTitle": "Senior Engagement Manager",
+        "worksFor": { "@type": "Organization", "name": "C3 AI" },
+        "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+        "email": "daniele@dagnelli.net",
+        "sameAs": [
+            "https://github.com/danieledagnelli",
+            "https://www.linkedin.com/in/dagnelli",
+            "https://bsky.app/profile/dagnelli.net"
+        ],
+        "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "Abertay University" },
+            { "@type": "CollegeOrUniversity", "name": "University of Bari Aldo Moro" }
+        ],
+        "knowsAbout": ["AI", "Cybersecurity", "Machine Learning", "Solution Architecture", "Program Management", "Digital Transformation", "GenAI", "RAG Systems"],
+        "description": "Senior Engagement Manager with 15+ years in Professional Services, leading high-impact digital transformations. Specializing in AI deployments and cybersecurity for global enterprises."
+    })} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- TEXTURE OVERLAY -->
+    <div class="texture-overlay" aria-hidden="true"></div>
+
+    <!-- INTRO: MUSEUM DOORS -->
+    <div class="intro" id="intro">
+        <div class="door door-left" id="doorLeft"></div>
+        <div class="door door-right" id="doorRight"></div>
+        <div class="intro-title-card" id="introTitleCard">
+            <span class="intro-overline">The Gallery presents</span>
+            <h1 class="intro-name">{siteMetadata.name}</h1>
+            <span class="intro-subtitle">A Retrospective</span>
+            <span class="intro-date">Exhibition 2012 — Present</span>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="catalog" id="catalog">
+
+        <!-- EXHIBITION TITLE CARD -->
+        <section class="section title-card">
+            <div class="gold-rule"></div>
+            <span class="overline">The Gallery presents</span>
+            <h1 class="exhibition-title">{siteMetadata.name}</h1>
+            <h2 class="exhibition-subtitle">A Retrospective</h2>
+            <p class="curators-note">
+                This exhibition traces the career of {siteMetadata.name} across fifteen years of
+                professional practice — from software engineering foundations in Milan through
+                consulting engagements at global firms to directing enterprise-scale AI programmes in London.
+                The works presented here span digital transformation, artificial intelligence,
+                cybersecurity, and programme leadership across eight industries.
+            </p>
+            <div class="title-meta">
+                <span class="title-meta-item">{siteMetadata.location}</span>
+                <span class="title-meta-divider"></span>
+                <span class="title-meta-item">Exhibition 2012 — Present</span>
+            </div>
+            <div class="gold-rule"></div>
+        </section>
+
+        <!-- ARTIST PORTRAIT -->
+        <section class="section portrait-section reveal">
+            <div class="portrait-frame">
+                <div class="portrait-inner">
+                    <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="280" height="280" />
+                </div>
+                <span class="portrait-plaque">{siteMetadata.name}</span>
+            </div>
+            <div class="portrait-text">
+                <h3 class="section-label">Artist Statement</h3>
+                <p class="body-text">{summary}</p>
+                <div class="contact-links">
+                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
+                    <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
+                    <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener">Bluesky</a>
+                    <a href={`mailto:${siteMetadata.email}`}>Email</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- KEY FIGURES -->
+        <section class="section metrics-section reveal">
+            <div class="metrics-bar">
+                {metrics.map(m => (
+                    <div class="metric-item">
+                        <span class="metric-value">{m.value}</span>
+                        <span class="metric-label">{m.label}</span>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span class="divider-ornament"></span></div>
+
+        <!-- GALLERY ROOMS (EXPERIENCE) -->
+        <section class="section gallery-rooms reveal">
+            <h3 class="section-label">Gallery Rooms</h3>
+            <p class="section-description">A chronological journey through the principal works and engagements</p>
+
+            {experience.map((exp, i) => (
+                <article class="gallery-room reveal">
+                    <div class="room-header">
+                        <span class="room-number">Room {String(i + 1).padStart(2, '0')}</span>
+                        <div class="room-title-group">
+                            <h4 class="room-company">{exp.company}</h4>
+                            <span class="room-location">{exp.location}</span>
+                        </div>
+                    </div>
+                    {exp.roles.map(role => (
+                        <div class="room-work">
+                            <div class="work-header">
+                                <span class="work-title">{role.title}</span>
+                                <span class="work-period">{role.period}</span>
+                            </div>
+                            {role.description && <p class="work-description">{role.description}</p>}
+                            {role.bullets && role.bullets.length > 0 && (
+                                <ul class="work-details">
+                                    {role.bullets.map(b => <li>{b}</li>)}
+                                </ul>
+                            )}
+                        </div>
+                    ))}
+                </article>
+            ))}
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span class="divider-ornament"></span></div>
+
+        <!-- PERMANENT COLLECTION (SKILLS) -->
+        <section class="section collection-section reveal">
+            <h3 class="section-label">Permanent Collection</h3>
+            <p class="section-description">The enduring techniques and instruments of the practice</p>
+
+            <div class="collection-group">
+                <h4 class="collection-category">Technical Craft</h4>
+                <div class="collection-grid">
+                    {skills.map(s => (
+                        <span class="collection-item">{s}</span>
+                    ))}
+                </div>
+            </div>
+
+            <div class="collection-group">
+                <h4 class="collection-category">Leadership & Strategy</h4>
+                <div class="collection-grid">
+                    {managementSkills.map(s => (
+                        <span class="collection-item">{s}</span>
+                    ))}
+                </div>
+            </div>
+
+            <div class="collection-group">
+                <h4 class="collection-category">Industries Represented</h4>
+                <div class="collection-grid">
+                    {industries.map(ind => (
+                        <span class="collection-item">{ind}</span>
+                    ))}
+                </div>
+            </div>
+
+            <div class="collection-group">
+                <h4 class="collection-category">Languages</h4>
+                <div class="collection-grid">
+                    {languages.map(l => (
+                        <span class="collection-item">{l}</span>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span class="divider-ornament"></span></div>
+
+        <!-- FEATURED EXHIBITIONS (ENGAGEMENTS) -->
+        <section class="section exhibitions-section reveal">
+            <h3 class="section-label">Featured Exhibitions</h3>
+            <p class="section-description">Selected works and their measurable impact on the world stage</p>
+
+            <div class="exhibitions-grid">
+                {engagements.map(eng => (
+                    <div class="exhibition-card reveal">
+                        <div class="exhibition-header">
+                            <span class="exhibition-client">{eng.client}</span>
+                            <span class="exhibition-sector">{eng.sector}</span>
+                        </div>
+                        <div class="exhibition-body">
+                            <div class="exhibition-detail">
+                                <span class="detail-label">Scope</span>
+                                <span class="detail-value">{eng.scope}</span>
+                            </div>
+                            <div class="exhibition-detail">
+                                <span class="detail-label">Impact</span>
+                                <span class={`detail-value detail-impact ${eng.trend}`}>{eng.impact}</span>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span class="divider-ornament"></span></div>
+
+        <!-- ARTIST BIOGRAPHY (EDUCATION & CERTS) -->
+        <section class="section biography-section reveal">
+            <h3 class="section-label">Artist Biography</h3>
+            <p class="section-description">Academic formation, credentials, and ongoing study</p>
+
+            <div class="bio-group">
+                <h4 class="bio-category">Education</h4>
+                {education.map(edu => (
+                    <div class="bio-entry reveal">
+                        <div class="bio-entry-main">
+                            <span class="bio-degree">{edu.degree}</span>
+                            <span class="bio-institution">{edu.institution}, {edu.location}</span>
+                        </div>
+                        <div class="bio-entry-side">
+                            <span class="bio-period">{edu.period}</span>
+                            {edu.distinction && <span class="bio-distinction">{edu.distinction}</span>}
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <div class="bio-group">
+                <h4 class="bio-category">Certifications</h4>
+                <div class="bio-list">
+                    {certifications.map(c => (
+                        <span class="bio-list-item">{c}</span>
+                    ))}
+                </div>
+            </div>
+
+            <div class="bio-group">
+                <h4 class="bio-category">Continuing Studies</h4>
+                <div class="bio-list">
+                    {continuousLearning.map(l => (
+                        <span class="bio-list-item">{l}</span>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"><span class="divider-ornament"></span></div>
+
+        <!-- EXHIBITION CREDITS (FOOTER) -->
+        <footer class="section credits-section">
+            <div class="gold-rule"></div>
+            <h3 class="credits-heading">Exhibition Credits</h3>
+            <div class="credits-grid">
+                <div class="credit-item">
+                    <span class="credit-role">Artist & Subject</span>
+                    <span class="credit-name">{siteMetadata.name}</span>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-role">Location</span>
+                    <span class="credit-name">{siteMetadata.location}</span>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-role">Correspondence</span>
+                    <a href={`mailto:${siteMetadata.email}`} class="credit-name credit-link">{siteMetadata.email}</a>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-role">Digital Archive</span>
+                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener" class="credit-name credit-link">github.com/{siteMetadata.github_handle}</a>
+                </div>
+            </div>
+            <p class="credits-colophon">
+                This exhibition is a continuously evolving retrospective.<br />
+                All works and attributions remain the property of the artist.
+            </p>
+            <div class="gold-rule"></div>
+        </footer>
+    </main>
+</body>
+</html>
+
+<style>
+    /* =========================================
+       CSS CUSTOM PROPERTIES
+       ========================================= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+        --white: #fafafa;
+        --charcoal: #2a2a2a;
+        --gold: #b8860b;
+        --gold-light: #d4a843;
+        --warm-gray: #f0ece4;
+        --accent-blue: #1a3a5c;
+        --text-secondary: #6b6560;
+        --text-tertiary: #9a9490;
+        --border-light: #e0dbd3;
+        --border-subtle: #ebe7e0;
+        --heading: 'Cormorant Garamond', 'Georgia', serif;
+        --body: 'Inter', 'Helvetica Neue', sans-serif;
+        --accent: 'Noto Serif Display', 'Georgia', serif;
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+        scrollbar-color: var(--gold) var(--warm-gray);
+    }
+
+    body {
+        background: var(--white);
+        color: var(--charcoal);
+        font-family: var(--body);
+        font-size: 15px;
+        line-height: 1.7;
+        overflow-x: hidden;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+        color: var(--accent-blue);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    a:hover {
+        color: var(--gold);
+    }
+
+    ::selection {
+        background: var(--gold);
+        color: var(--white);
+    }
+
+    /* =========================================
+       TEXTURE OVERLAY
+       ========================================= */
+    .texture-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+        opacity: 0.5;
+    }
+
+    /* =========================================
+       INTRO: MUSEUM DOORS
+       ========================================= */
+    .intro {
+        position: fixed;
+        inset: 0;
+        z-index: 10001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+    }
+
+    .door {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background: var(--charcoal);
+        z-index: 2;
+        transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .door::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--gold);
+    }
+    .door-left {
+        left: 0;
+    }
+    .door-left::after {
+        right: 0;
+    }
+    .door-right {
+        right: 0;
+    }
+    .door-right::after {
+        left: 0;
+    }
+
+    .intro.open .door-left {
+        transform: translateX(-100%);
+    }
+    .intro.open .door-right {
+        transform: translateX(100%);
+    }
+    .intro.done {
+        pointer-events: none;
+        visibility: hidden;
+    }
+
+    .intro-title-card {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+        padding: 2rem;
+    }
+    .intro.open .intro-title-card {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .intro-overline {
+        display: block;
+        font-family: var(--body);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1rem;
+    }
+
+    .intro-name {
+        font-family: var(--heading);
+        font-size: clamp(36px, 7vw, 72px);
+        font-weight: 300;
+        color: var(--charcoal);
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+    }
+
+    .intro-subtitle {
+        display: block;
+        font-family: var(--accent);
+        font-style: italic;
+        font-size: clamp(16px, 3vw, 24px);
+        color: var(--text-secondary);
+        margin-bottom: 0.75rem;
+    }
+
+    .intro-date {
+        display: block;
+        font-family: var(--body);
+        font-size: 12px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--text-tertiary);
+    }
+
+    /* =========================================
+       MAIN CATALOG
+       ========================================= */
+    .catalog {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 80px 32px 120px;
+        opacity: 0;
+        transition: opacity 0.6s ease 0.3s;
+    }
+    .catalog.visible {
+        opacity: 1;
+    }
+
+    /* =========================================
+       SECTIONS
+       ========================================= */
+    .section {
+        margin-bottom: 0;
+    }
+
+    .section-label {
+        font-family: var(--heading);
+        font-size: 32px;
+        font-weight: 300;
+        color: var(--charcoal);
+        margin-bottom: 6px;
+        line-height: 1.2;
+    }
+
+    .section-description {
+        font-family: var(--accent);
+        font-style: italic;
+        font-size: 14px;
+        color: var(--text-tertiary);
+        margin-bottom: 2rem;
+    }
+
+    /* =========================================
+       GOLD RULE
+       ========================================= */
+    .gold-rule {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        margin: 1.5rem 0;
+    }
+
+    /* =========================================
+       SECTION DIVIDER
+       ========================================= */
+    .section-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 3.5rem 0;
+        position: relative;
+    }
+    .section-divider::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--border-light);
+    }
+    .divider-ornament {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 8px;
+        height: 8px;
+        background: var(--white);
+        border: 1px solid var(--gold);
+        transform: rotate(45deg);
+    }
+
+    /* =========================================
+       REVEAL ANIMATION
+       ========================================= */
+    .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* =========================================
+       TITLE CARD
+       ========================================= */
+    .title-card {
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .overline {
+        display: block;
+        font-family: var(--body);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1rem;
+    }
+
+    .exhibition-title {
+        font-family: var(--heading);
+        font-size: clamp(36px, 6vw, 64px);
+        font-weight: 300;
+        color: var(--charcoal);
+        line-height: 1.1;
+        margin-bottom: 0.25rem;
+    }
+
+    .exhibition-subtitle {
+        font-family: var(--accent);
+        font-style: italic;
+        font-size: clamp(18px, 3vw, 28px);
+        font-weight: 400;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+    }
+
+    .curators-note {
+        font-family: var(--body);
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        max-width: 640px;
+        margin: 0 auto 2rem;
+        text-align: left;
+    }
+
+    .title-meta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--text-tertiary);
+    }
+    .title-meta-divider {
+        width: 24px;
+        height: 1px;
+        background: var(--gold);
+    }
+
+    /* =========================================
+       ARTIST PORTRAIT
+       ========================================= */
+    .portrait-section {
+        display: flex;
+        gap: 3rem;
+        align-items: flex-start;
+        padding: 1rem 0;
+    }
+
+    .portrait-frame {
+        flex-shrink: 0;
+        text-align: center;
+    }
+
+    .portrait-inner {
+        border: 1px solid var(--border-light);
+        padding: 8px;
+        background: var(--white);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .portrait-inner img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        filter: sepia(0.08) contrast(1.02);
+    }
+
+    .portrait-plaque {
+        display: block;
+        margin-top: 12px;
+        font-family: var(--accent);
+        font-style: italic;
+        font-size: 13px;
+        color: var(--text-secondary);
+        letter-spacing: 0.5px;
+    }
+
+    .portrait-text {
+        flex: 1;
+    }
+
+    .body-text {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-links {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    .contact-links a {
+        position: relative;
+        padding-bottom: 2px;
+    }
+    .contact-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: width 0.3s ease;
+    }
+    .contact-links a:hover::after {
+        width: 100%;
+    }
+
+    /* =========================================
+       METRICS BAR
+       ========================================= */
+    .metrics-section {
+        padding: 2rem 0;
+    }
+
+    .metrics-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
+        border-top: 1px solid var(--border-light);
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .metric-item {
+        text-align: center;
+        min-width: 100px;
+    }
+
+    .metric-value {
+        display: block;
+        font-family: var(--heading);
+        font-size: 28px;
+        font-weight: 600;
+        color: var(--gold);
+        line-height: 1.2;
+    }
+
+    .metric-label {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--text-tertiary);
+        margin-top: 4px;
+    }
+
+    /* =========================================
+       GALLERY ROOMS (EXPERIENCE)
+       ========================================= */
+    .gallery-room {
+        border: 1px solid var(--border-subtle);
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, var(--white) 0%, var(--warm-gray) 100%);
+        position: relative;
+    }
+    .gallery-room::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--gold);
+    }
+
+    .room-header {
+        display: flex;
+        align-items: baseline;
+        gap: 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .room-number {
+        font-family: var(--accent);
+        font-style: italic;
+        font-size: 12px;
+        color: var(--gold);
+        letter-spacing: 1px;
+        white-space: nowrap;
+    }
+
+    .room-title-group {
+        flex: 1;
+    }
+
+    .room-company {
+        font-family: var(--heading);
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--charcoal);
+        line-height: 1.2;
+    }
+
+    .room-location {
+        display: block;
+        font-size: 12px;
+        color: var(--text-tertiary);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 2px;
+    }
+
+    .room-work {
+        margin-bottom: 1rem;
+    }
+    .room-work:last-child {
+        margin-bottom: 0;
+    }
+
+    .work-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+
+    .work-title {
+        font-family: var(--body);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--charcoal);
+    }
+
+    .work-period {
+        font-size: 12px;
+        color: var(--text-tertiary);
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+    }
+
+    .work-description {
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+    }
+
+    .work-details {
+        list-style: none;
+        padding: 0;
+    }
+    .work-details li {
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text-secondary);
+        padding-left: 1.25rem;
+        position: relative;
+    }
+    .work-details li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 6px;
+        height: 6px;
+        border: 1px solid var(--gold);
+        transform: rotate(45deg);
+    }
+
+    /* =========================================
+       PERMANENT COLLECTION (SKILLS)
+       ========================================= */
+    .collection-group {
+        margin-bottom: 2rem;
+    }
+    .collection-group:last-child {
+        margin-bottom: 0;
+    }
+
+    .collection-category {
+        font-family: var(--accent);
+        font-style: italic;
+        font-size: 14px;
+        color: var(--gold);
+        margin-bottom: 0.75rem;
+        letter-spacing: 0.5px;
+    }
+
+    .collection-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .collection-item {
+        font-size: 13px;
+        padding: 6px 14px;
+        border: 1px solid var(--border-light);
+        color: var(--charcoal);
+        background: var(--white);
+        transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .collection-item:hover {
+        border-color: var(--gold);
+        background: var(--warm-gray);
+        color: var(--gold);
+    }
+
+    /* =========================================
+       FEATURED EXHIBITIONS (ENGAGEMENTS)
+       ========================================= */
+    .exhibitions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 1.25rem;
+    }
+
+    .exhibition-card {
+        border: 1px solid var(--border-subtle);
+        padding: 1.5rem;
+        background: var(--white);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .exhibition-card:hover {
+        border-color: var(--gold);
+        box-shadow: 0 4px 16px rgba(184, 134, 11, 0.08);
+    }
+
+    .exhibition-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .exhibition-client {
+        font-family: var(--heading);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--charcoal);
+        text-transform: capitalize;
+    }
+
+    .exhibition-sector {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--text-tertiary);
+    }
+
+    .exhibition-body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .exhibition-detail {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .detail-label {
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--text-tertiary);
+    }
+
+    .detail-value {
+        font-size: 13px;
+        color: var(--text-secondary);
+        text-align: right;
+    }
+
+    .detail-impact.positive {
+        color: var(--gold);
+        font-weight: 600;
+    }
+
+    /* =========================================
+       ARTIST BIOGRAPHY (EDUCATION)
+       ========================================= */
+    .bio-group {
+        margin-bottom: 2rem;
+    }
+    .bio-group:last-child {
+        margin-bottom: 0;
+    }
+
+    .bio-category {
+        font-family: var(--accent);
+        font-style: italic;
+        font-size: 14px;
+        color: var(--gold);
+        margin-bottom: 1rem;
+        letter-spacing: 0.5px;
+    }
+
+    .bio-entry {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-subtle);
+    }
+    .bio-entry:last-child {
+        border-bottom: none;
+    }
+
+    .bio-entry-main {
+        flex: 1;
+    }
+
+    .bio-degree {
+        display: block;
+        font-family: var(--heading);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--charcoal);
+        line-height: 1.3;
+    }
+
+    .bio-institution {
+        display: block;
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-top: 2px;
+    }
+
+    .bio-entry-side {
+        text-align: right;
+        flex-shrink: 0;
+    }
+
+    .bio-period {
+        display: block;
+        font-size: 12px;
+        color: var(--text-tertiary);
+        letter-spacing: 0.5px;
+    }
+
+    .bio-distinction {
+        display: inline-block;
+        margin-top: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--gold);
+        border: 1px solid var(--gold);
+        padding: 2px 8px;
+    }
+
+    .bio-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .bio-list-item {
+        font-size: 13px;
+        padding: 6px 14px;
+        border: 1px solid var(--border-light);
+        color: var(--text-secondary);
+        background: var(--white);
+    }
+
+    /* =========================================
+       EXHIBITION CREDITS (FOOTER)
+       ========================================= */
+    .credits-section {
+        text-align: center;
+        padding-top: 1rem;
+    }
+
+    .credits-heading {
+        font-family: var(--heading);
+        font-size: 24px;
+        font-weight: 300;
+        color: var(--charcoal);
+        margin-bottom: 2rem;
+    }
+
+    .credits-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        text-align: left;
+    }
+
+    .credit-item {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .credit-role {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--text-tertiary);
+    }
+
+    .credit-name {
+        font-size: 14px;
+        color: var(--charcoal);
+    }
+
+    .credit-link {
+        color: var(--accent-blue);
+    }
+    .credit-link:hover {
+        color: var(--gold);
+    }
+
+    .credits-colophon {
+        font-family: var(--accent);
+        font-style: italic;
+        font-size: 12px;
+        color: var(--text-tertiary);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+    }
+
+    /* =========================================
+       RESPONSIVE - TABLET (601-1024px)
+       ========================================= */
+    @media (max-width: 1024px) {
+        .catalog { max-width: 720px; padding: 64px 24px 100px; }
+        .exhibition-title { font-size: clamp(32px, 5vw, 52px); }
+        .portrait-inner img { width: 170px; height: 170px; }
+        .portrait-section { gap: 2rem; }
+        .gallery-room { padding: 1.5rem; }
+        .room-company { font-size: 20px; }
+        .exhibitions-grid { grid-template-columns: 1fr; }
+        .metrics-bar { gap: 1.5rem; padding: 1.5rem; }
+        .metric-value { font-size: 24px; }
+        .section-divider { margin: 2.5rem 0; }
+    }
+
+    /* =========================================
+       RESPONSIVE - SMALL TABLET / LARGE PHONE (481-600px)
+       ========================================= */
+    @media (max-width: 600px) {
+        body { font-size: 14px; }
+        .catalog { padding: 48px 16px 80px; }
+
+        /* Title card */
+        .exhibition-title { font-size: 28px; }
+        .exhibition-subtitle { font-size: 16px; }
+        .overline { font-size: 10px; letter-spacing: 3px; }
+        .curators-note { font-size: 13px; }
+        .title-meta { flex-direction: column; gap: 0.5rem; }
+        .title-meta-divider { width: 1px; height: 16px; }
+
+        /* Portrait: stack */
+        .portrait-section {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+        .portrait-inner img { width: 160px; height: 160px; }
+        .contact-links { justify-content: center; flex-wrap: wrap; }
+
+        /* Metrics */
+        .metrics-bar { gap: 1rem; padding: 1.25rem; }
+        .metric-value { font-size: 22px; }
+        .metric-label { font-size: 10px; }
+        .metric-item { min-width: 80px; }
+
+        /* Gallery rooms */
+        .gallery-room { padding: 1.25rem; }
+        .room-header { flex-direction: column; gap: 0.5rem; }
+        .room-company { font-size: 18px; }
+        .work-header { flex-direction: column; gap: 2px; }
+        .work-title { font-size: 13px; }
+        .work-period { font-size: 11px; }
+        .work-description { font-size: 12px; }
+        .work-details li { font-size: 12px; }
+
+        /* Collection */
+        .collection-grid { gap: 6px; }
+        .collection-item { font-size: 12px; padding: 4px 10px; }
+
+        /* Exhibitions */
+        .exhibitions-grid { grid-template-columns: 1fr; }
+        .exhibition-card { padding: 1.25rem; }
+        .exhibition-client { font-size: 16px; }
+        .exhibition-header { flex-direction: column; gap: 4px; }
+
+        /* Biography */
+        .bio-entry { flex-direction: column; gap: 0.5rem; }
+        .bio-entry-side { text-align: left; }
+        .bio-degree { font-size: 16px; }
+        .bio-list-item { font-size: 12px; padding: 4px 10px; }
+
+        /* Credits */
+        .credits-grid { grid-template-columns: 1fr; }
+        .credits-heading { font-size: 20px; }
+
+        /* Section labels */
+        .section-label { font-size: 26px; }
+        .section-description { font-size: 13px; }
+
+        /* Dividers */
+        .section-divider { margin: 2rem 0; }
+        .gold-rule { margin: 1rem 0; }
+
+        /* Intro */
+        .intro-name { font-size: 28px; }
+        .intro-subtitle { font-size: 16px; }
+    }
+
+    /* =========================================
+       RESPONSIVE - SMALL PHONE (<=380px)
+       ========================================= */
+    @media (max-width: 380px) {
+        body { font-size: 13px; }
+        .catalog { padding: 40px 12px 60px; }
+        .exhibition-title { font-size: 24px; }
+        .portrait-inner img { width: 130px; height: 130px; }
+        .section-label { font-size: 22px; }
+        .room-company { font-size: 16px; }
+        .collection-item { font-size: 11px; padding: 3px 8px; }
+        .bio-list-item { font-size: 11px; padding: 3px 8px; }
+        .metric-value { font-size: 18px; }
+        .metric-item { min-width: 70px; }
+        .intro-name { font-size: 22px; }
+        .intro-overline { font-size: 9px; }
+    }
+
+    /* =========================================
+       TOUCH: larger tap targets
+       ========================================= */
+    @media (hover: none) and (pointer: coarse) {
+        .contact-links a {
+            padding: 8px 4px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .collection-item {
+            padding: 8px 14px;
+            min-height: 36px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .bio-list-item {
+            padding: 8px 14px;
+            min-height: 36px;
+            display: inline-flex;
+            align-items: center;
+        }
+    }
+
+    /* =========================================
+       PARALLAX SUBTLE EFFECT
+       ========================================= */
+    .gallery-room,
+    .exhibition-card {
+        will-change: transform;
+    }
+</style>
+
+<script>
+    /* =============================================
+       INTRO: MUSEUM DOORS
+       ============================================= */
+    const introEl = document.getElementById('intro')!;
+    const catalogEl = document.getElementById('catalog')!;
+
+    function openDoors() {
+        introEl.classList.add('open');
+        setTimeout(() => {
+            catalogEl.classList.add('visible');
+        }, 800);
+        setTimeout(() => {
+            introEl.classList.add('done');
+        }, 2200);
+    }
+
+    function skipIntro() {
+        introEl.classList.add('open');
+        introEl.classList.add('done');
+        catalogEl.classList.add('visible');
+    }
+
+    // Check sessionStorage
+    if (sessionStorage.getItem('museum-intro-seen')) {
+        skipIntro();
+    } else {
+        // Small delay before doors open
+        setTimeout(() => {
+            sessionStorage.setItem('museum-intro-seen', '1');
+            openDoors();
+        }, 1200);
+    }
+
+    // Click or key to skip
+    introEl.addEventListener('click', () => {
+        sessionStorage.setItem('museum-intro-seen', '1');
+        skipIntro();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (!introEl.classList.contains('done') && (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter')) {
+            sessionStorage.setItem('museum-intro-seen', '1');
+            skipIntro();
+        }
+    });
+
+    /* =============================================
+       SCROLL REVEAL (Intersection Observer)
+       ============================================= */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    /* =============================================
+       SUBTLE PARALLAX ON SCROLL
+       ============================================= */
+    const parallaxTargets = document.querySelectorAll('.gallery-room, .exhibition-card');
+    let ticking = false;
+
+    function updateParallax() {
+        const scrollY = window.scrollY;
+        parallaxTargets.forEach((el) => {
+            const htmlEl = el as HTMLElement;
+            const rect = htmlEl.getBoundingClientRect();
+            const centerOffset = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+            htmlEl.style.transform = `translateY(${centerOffset * -6}px)`;
+        });
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }, { passive: true });
+</script>
