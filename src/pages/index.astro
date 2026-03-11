@@ -865,17 +865,125 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       RESPONSIVE
+       RESPONSIVE — TABLET (601–1024px)
+       ========================================= */
+    @media (max-width: 1024px) {
+        body { font-size: 13px; }
+        .tape { max-width: 680px; padding: 54px 20px 100px; }
+        .subject-name { font-size: clamp(24px, 4.5vw, 38px); }
+        .dossier-photo { width: 120px; }
+        .dossier-photo img { width: 120px; height: 120px; }
+        .module { font-size: 10.5px; padding: 3px 8px; }
+        .mission-card { padding: 8px 12px; }
+        .corrupt-line { margin: 2rem 0; }
+    }
+
+    /* =========================================
+       RESPONSIVE — SMALL TABLET / LARGE PHONE (481–600px)
        ========================================= */
     @media (max-width: 600px) {
-        .tape { padding: 50px 14px 80px; }
-        .dossier-grid { flex-direction: column-reverse; align-items: flex-start; }
-        .dossier-photo { width: 100px; }
-        .dossier-photo img { width: 100px; height: 100px; }
-        .career-top { flex-direction: column; gap: 0; }
-        .role-head { flex-direction: column; gap: 2px; }
+        body { font-size: 12.5px; }
+        .tape { padding: 48px 14px 80px; }
+
+        /* Dossier: stack photo above info */
+        .dossier-grid {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .dossier-photo { width: 90px; }
+        .dossier-photo img { width: 90px; height: 90px; }
+        .photo-label { font-size: 8px; }
+        .subject-name { font-size: 24px; }
+        .subject-title { font-size: 12px; }
+        .stamp { font-size: 8px; letter-spacing: 2px; padding: 2px 8px; }
+
+        /* Meta chips wrap nicely */
         .meta-row { gap: 4px; }
+        .meta-chip { font-size: 9px; padding: 1px 6px; }
+        .link-row { gap: 10px; font-size: 11px; flex-wrap: wrap; }
+
+        /* Section headers */
+        .sec-head { gap: 6px; font-size: 10px; flex-wrap: wrap; }
+        .sec-pct { font-size: 9px; }
+        .tag { font-size: 8px; padding: 1px 4px; }
+
+        /* Career: stack location below company */
+        .career-top { flex-direction: column; gap: 0; }
+        .career-co { font-size: 13px; }
+        .career-loc { font-size: 10px; }
+        .role-head { flex-direction: column; gap: 2px; }
+        .role-name { font-size: 11.5px; }
+        .role-period { font-size: 9.5px; }
+        .role-desc { font-size: 11px; }
+        .role-list li { font-size: 10.5px; }
+        .career-block { padding-left: 12px; margin-bottom: 16px; }
+
+        /* Skills: smaller tags */
+        .module-grid { gap: 4px; }
+        .module { font-size: 10px; padding: 2px 7px; }
+
+        /* Mission cards */
+        .mission-card { padding: 8px 10px; }
+        .mission-client { font-size: 11px; }
+        .mission-sector { font-size: 9px; }
+        .mission-scope { font-size: 10px; }
+        .mission-impact { font-size: 10px; }
+        .mission-row { flex-wrap: wrap; gap: 4px; }
+
+        /* Credentials */
+        .cred-name { font-size: 11px; }
+        .cred-meta { font-size: 9.5px; }
+        .cred-label { font-size: 9px; }
+
+        /* Body text */
+        .body-text { font-size: 11.5px; }
+
+        /* Dividers */
+        .corrupt-line { margin: 1.5rem 0; }
+
+        /* HUD */
         .hud { font-size: 9px; padding: 6px 10px; }
+
+        /* End */
+        .end-transmission { font-size: 11px; padding: 2rem 0; }
+    }
+
+    /* =========================================
+       RESPONSIVE — SMALL PHONE (≤380px)
+       ========================================= */
+    @media (max-width: 380px) {
+        body { font-size: 12px; }
+        .tape { padding: 44px 10px 60px; }
+        .subject-name { font-size: 20px; }
+        .dossier-photo { width: 70px; }
+        .dossier-photo img { width: 70px; height: 70px; }
+        .link-row { gap: 8px; font-size: 10px; }
+        .meta-chip { font-size: 8px; }
+        .module { font-size: 9px; padding: 2px 5px; }
+        .hud { font-size: 8px; padding: 4px 8px; }
+        .hud-cam { display: none; }
+        .hud-signal { display: none; }
+        .intro-terminal { font-size: 11px; }
+        .warning-flash { font-size: 12px; letter-spacing: 1px; }
+    }
+
+    /* =========================================
+       TOUCH: larger tap targets on mobile
+       ========================================= */
+    @media (hover: none) and (pointer: coarse) {
+        .link-row a {
+            padding: 6px 4px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .module {
+            padding: 6px 10px;
+            min-height: 36px;
+            display: inline-flex;
+            align-items: center;
+        }
     }
 </style>
 
