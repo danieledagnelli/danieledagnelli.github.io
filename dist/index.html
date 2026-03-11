@@ -521,11 +521,13 @@
                 clearIntroKey(nextTheme);
                 hiddenStage.src = nextTheme.path;
             }, CYCLE_DURATION - PRELOAD_AHEAD);
-            cycleTimer = setTimeout(() => cycleToNext(), CYCLE_DURATION);
         }
 
+        progressBar.addEventListener('animationend', () => {
+            if (!isPaused) cycleToNext();
+        });
+
         function clearTimers() {
-            if (cycleTimer) clearTimeout(cycleTimer);
             if (preloadTimer) clearTimeout(preloadTimer);
             stopProgress();
         }
