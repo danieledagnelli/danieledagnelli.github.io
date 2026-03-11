@@ -131,7 +131,7 @@ import { experience, education, certifications, skills, engagements, continuousL
     <main class="logbook" id="logbook">
 
         <!-- WANTED POSTER & CAPTAIN HEADER -->
-        <section class="section header-section">
+        <section class="section header-section" data-section="header">
             <div class="wanted-poster">
                 <div class="wanted-label">WANTED</div>
                 <div class="wanted-frame">
@@ -164,7 +164,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- CAPTAIN'S DECLARATION (summary) -->
-        <section class="section reveal" aria-label="Captain's Declaration">
+        <section class="section reveal" aria-label="Captain's Declaration" data-section="summary">
             <h2 class="section-heading">Captain's Declaration</h2>
             <div class="log-entry declaration">
                 <span class="drop-cap">{summary.charAt(0)}</span>
@@ -179,7 +179,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- VOYAGES & CAMPAIGNS (experience) -->
-        <section class="section reveal" aria-label="Voyages and Campaigns">
+        <section class="section reveal" aria-label="Voyages and Campaigns" data-section="experience">
             <h2 class="section-heading">Voyages & Campaigns</h2>
             <div class="voyage-timeline">
                 {experience.map((exp, i) => (
@@ -222,7 +222,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- ARSENAL & ABILITIES (skills) -->
-        <section class="section reveal" aria-label="Arsenal and Abilities">
+        <section class="section reveal" aria-label="Arsenal and Abilities" data-section="skills">
             <h2 class="section-heading">Arsenal & Abilities</h2>
             <div class="cargo-manifest">
                 <div class="cargo-header" aria-hidden="true">
@@ -269,7 +269,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- PLUNDER & CONQUESTS (engagements) -->
-        <section class="section reveal" aria-label="Plunder and Conquests">
+        <section class="section reveal" aria-label="Plunder and Conquests" data-section="engagements">
             <h2 class="section-heading">Plunder & Conquests</h2>
             <div class="conquest-grid">
                 {engagements.map(eng => (
@@ -304,7 +304,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- NAVIGATION TRAINING (education) -->
-        <section class="section reveal" aria-label="Navigation Training">
+        <section class="section reveal" aria-label="Navigation Training" data-section="education">
             <h2 class="section-heading">Navigation Training</h2>
             {education.map(edu => (
                 <div class="training-entry reveal">
@@ -335,7 +335,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- LETTERS OF MARQUE (certifications) -->
-        <section class="section reveal" aria-label="Letters of Marque">
+        <section class="section reveal" aria-label="Letters of Marque" data-section="certifications">
             <h2 class="section-heading">Letters of Marque</h2>
             <div class="marque-grid">
                 {certifications.map(c => (
@@ -354,7 +354,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- SAILOR'S STUDIES (continuousLearning) -->
-        <section class="section reveal" aria-label="Sailor's Studies">
+        <section class="section reveal" aria-label="Sailor's Studies" data-section="training">
             <h2 class="section-heading">Sailor's Studies</h2>
             <div class="studies-list">
                 {continuousLearning.map((item, i) => (
@@ -373,7 +373,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- SEAS CHARTED (industries) -->
-        <section class="section reveal" aria-label="Seas Charted">
+        <section class="section reveal" aria-label="Seas Charted" data-section="extra-1">
             <h2 class="section-heading">Seas Charted</h2>
             <div class="seas-grid">
                 {industries.map(ind => (
@@ -389,7 +389,7 @@ import { experience, education, certifications, skills, engagements, continuousL
             <span class="divider-line"></span>
         </div>
 
-        <section class="section end-log">
+        <section class="section end-log" data-section="footer">
             <p class="end-text">Here Ends the Log of Captain D'Agnelli</p>
             <p class="end-subtext">May Fair Winds Follow Ye</p>
             <div class="end-links">

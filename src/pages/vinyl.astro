@@ -144,7 +144,7 @@ const currentYear = new Date().getFullYear();
     <main class="album" id="content">
 
         <!-- ALBUM COVER / HEADER -->
-        <section class="album-cover">
+        <section class="album-cover" data-section="header">
             <div class="cover-art">
                 <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="320" height="320" class="cover-photo" />
                 <div class="cover-overlay" aria-hidden="true"></div>
@@ -174,7 +174,7 @@ const currentYear = new Date().getFullYear();
         </section>
 
         <!-- LINER NOTES -->
-        <section class="gatefold-section liner-notes" id="linerNotes">
+        <section class="gatefold-section liner-notes" id="linerNotes" data-section="summary">
             <div class="section-header">
                 <span class="section-icon" aria-hidden="true">&#9835;</span>
                 <h2 class="section-title">Liner Notes</h2>
@@ -193,7 +193,7 @@ const currentYear = new Date().getFullYear();
         </section>
 
         <!-- TRACK LISTING — SIDE A -->
-        <section class="gatefold-section track-listing" id="trackListing">
+        <section class="gatefold-section track-listing" id="trackListing" data-section="experience">
             <div class="section-header">
                 <span class="section-icon" aria-hidden="true">&#9834;</span>
                 <h2 class="section-title">Track Listing</h2>
@@ -260,7 +260,7 @@ const currentYear = new Date().getFullYear();
         </section>
 
         <!-- INSTRUMENTS & EQUIPMENT -->
-        <section class="gatefold-section instruments" id="instruments">
+        <section class="gatefold-section instruments" id="instruments" data-section="skills">
             <div class="section-header">
                 <span class="section-icon" aria-hidden="true">&#9839;</span>
                 <h2 class="section-title">Instruments &amp; Equipment</h2>
@@ -302,7 +302,7 @@ const currentYear = new Date().getFullYear();
         </section>
 
         <!-- FEATURED COLLABORATIONS -->
-        <section class="gatefold-section collaborations" id="collaborations">
+        <section class="gatefold-section collaborations" id="collaborations" data-section="engagements">
             <div class="section-header">
                 <span class="section-icon" aria-hidden="true">&#9733;</span>
                 <h2 class="section-title">Featured Collaborations</h2>
@@ -326,7 +326,7 @@ const currentYear = new Date().getFullYear();
         </section>
 
         <!-- INFLUENCES & TRAINING -->
-        <section class="gatefold-section influences" id="influences">
+        <section class="gatefold-section influences" id="influences" data-section="education">
             <div class="section-header">
                 <span class="section-icon" aria-hidden="true">&#9836;</span>
                 <h2 class="section-title">Influences &amp; Training</h2>
@@ -346,7 +346,7 @@ const currentYear = new Date().getFullYear();
         </section>
 
         <!-- GOLD & PLATINUM RECORDS -->
-        <section class="gatefold-section awards" id="awards">
+        <section class="gatefold-section awards" id="awards" data-section="certifications">
             <div class="section-header">
                 <span class="section-icon" aria-hidden="true">&#127942;</span>
                 <h2 class="section-title">Gold &amp; Platinum Records</h2>
@@ -367,7 +367,7 @@ const currentYear = new Date().getFullYear();
         </section>
 
         <!-- B-SIDES & RARITIES -->
-        <section class="gatefold-section bsides" id="bsides">
+        <section class="gatefold-section bsides" id="bsides" data-section="training">
             <div class="section-header">
                 <span class="section-icon" aria-hidden="true">&#9835;</span>
                 <h2 class="section-title">B-Sides &amp; Rarities</h2>
@@ -383,7 +383,7 @@ const currentYear = new Date().getFullYear();
         </section>
 
         <!-- CREDITS -->
-        <section class="gatefold-section credits" id="credits">
+        <section class="gatefold-section credits" id="credits" data-section="footer">
             <div class="section-header">
                 <span class="section-icon" aria-hidden="true">&#9834;</span>
                 <h2 class="section-title">Credits</h2>

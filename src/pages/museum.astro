@@ -82,7 +82,7 @@ import { experience, education, certifications, skills, engagements, continuousL
     <main class="catalog" id="catalog">
 
         <!-- EXHIBITION TITLE CARD -->
-        <section class="section title-card">
+        <section class="section title-card" data-section="header">
             <div class="gold-rule"></div>
             <span class="overline">The Gallery presents</span>
             <h1 class="exhibition-title">{siteMetadata.name}</h1>
@@ -103,7 +103,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </section>
 
         <!-- ARTIST PORTRAIT -->
-        <section class="section portrait-section reveal">
+        <section class="section portrait-section reveal" data-section="summary">
             <div class="portrait-frame">
                 <div class="portrait-inner">
                     <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="280" height="280" />
@@ -123,7 +123,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </section>
 
         <!-- KEY FIGURES -->
-        <section class="section metrics-section reveal">
+        <section class="section metrics-section reveal" data-section="extra-1">
             <div class="metrics-bar">
                 {metrics.map(m => (
                     <div class="metric-item">
@@ -137,7 +137,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span class="divider-ornament"></span></div>
 
         <!-- GALLERY ROOMS (EXPERIENCE) -->
-        <section class="section gallery-rooms reveal">
+        <section class="section gallery-rooms reveal" data-section="experience">
             <h3 class="section-label">Gallery Rooms</h3>
             <p class="section-description">A chronological journey through the principal works and engagements</p>
 
@@ -171,7 +171,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span class="divider-ornament"></span></div>
 
         <!-- PERMANENT COLLECTION (SKILLS) -->
-        <section class="section collection-section reveal">
+        <section class="section collection-section reveal" data-section="skills">
             <h3 class="section-label">Permanent Collection</h3>
             <p class="section-description">The enduring techniques and instruments of the practice</p>
 
@@ -215,7 +215,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span class="divider-ornament"></span></div>
 
         <!-- FEATURED EXHIBITIONS (ENGAGEMENTS) -->
-        <section class="section exhibitions-section reveal">
+        <section class="section exhibitions-section reveal" data-section="engagements">
             <h3 class="section-label">Featured Exhibitions</h3>
             <p class="section-description">Selected works and their measurable impact on the world stage</p>
 
@@ -244,7 +244,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span class="divider-ornament"></span></div>
 
         <!-- ARTIST BIOGRAPHY (EDUCATION & CERTS) -->
-        <section class="section biography-section reveal">
+        <section class="section biography-section reveal" data-section="education">
             <h3 class="section-label">Artist Biography</h3>
             <p class="section-description">Academic formation, credentials, and ongoing study</p>
 

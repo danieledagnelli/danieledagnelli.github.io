@@ -84,7 +84,7 @@ import { experience, education, certifications, skills, engagements, continuousL
     <main class="film" id="film">
 
         <!-- DIRECTOR'S STATEMENT -->
-        <section class="section section--hero">
+        <section class="section section--hero" data-section="header">
             <div class="hero-inner">
                 <div class="hero-photo">
                     <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="200" height="200" />
@@ -105,7 +105,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- DIRECTOR'S STATEMENT -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="summary">
             <h2 class="section-heading">Director's Statement</h2>
             <div class="statement-card">
                 <span class="quote-mark" aria-hidden="true">&ldquo;</span>
@@ -119,7 +119,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- FILMOGRAPHY -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="experience">
             <h2 class="section-heading">Filmography</h2>
             <div class="poster-grid">
                 {experience.map((exp) => (
@@ -167,7 +167,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- PRODUCTION DEPARTMENTS (Skills) -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="skills">
             <h2 class="section-heading">Production Departments</h2>
             <div class="dept-grid">
                 <div class="dept-card reveal">
@@ -222,7 +222,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- FEATURED FILMS (Engagements) -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="engagements">
             <h2 class="section-heading">Featured Films</h2>
             <div class="featured-grid">
                 {engagements.map((eng) => (
@@ -245,7 +245,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- FILM SCHOOL (Education) -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="education">
             <h2 class="section-heading">Film School</h2>
             <div class="awards-list">
                 {education.map((edu) => (
@@ -270,7 +270,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- AWARDS & NOMINATIONS (Certifications) -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="certifications">
             <h2 class="section-heading">Awards &amp; Nominations</h2>
             <div class="awards-list">
                 {certifications.map((c) => (
@@ -290,7 +290,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- MASTERCLASSES (Continuous Learning) -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="training">
             <h2 class="section-heading">Masterclasses</h2>
             <div class="masterclass-grid">
                 {continuousLearning.map((cl) => (
@@ -307,7 +307,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- KEY METRICS -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="extra-1">
             <h2 class="section-heading">Box Office Numbers</h2>
             <div class="metrics-grid">
                 {metrics.map((m) => (
@@ -324,7 +324,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </div>
 
         <!-- SCROLLING CREDITS -->
-        <section class="section section--credits reveal">
+        <section class="section section--credits reveal" data-section="footer">
             <h2 class="section-heading">End Credits</h2>
             <div class="credits-viewport">
                 <div class="credits-scroll" id="creditsScroll">

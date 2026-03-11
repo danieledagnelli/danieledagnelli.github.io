@@ -76,7 +76,7 @@ import { experience, education, certifications, skills, engagements, continuousL
     <main class="sheet" id="sheet">
 
         <!-- CHARACTER HEADER -->
-        <section class="section char-header">
+        <section class="section char-header" data-section="header">
             <div class="portrait-frame">
                 <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli — Character Portrait" width="160" height="160" class="portrait-img" />
                 <div class="frame-corner tl" aria-hidden="true"></div>
@@ -101,7 +101,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </section>
 
         <!-- STAT BLOCK -->
-        <section class="section stat-block">
+        <section class="section stat-block" data-section="extra-1">
             <h2 class="section-title">Ability Scores</h2>
             <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
             <div class="stats-grid">
@@ -145,7 +145,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         </section>
 
         <!-- VITAL BARS -->
-        <section class="section vitals">
+        <section class="section vitals" data-section="extra-2">
             <div class="bar-group">
                 <div class="bar-label"><span class="bar-icon hp" aria-hidden="true">&#10084;</span> HP (Years Active)</div>
                 <div class="bar-track hp-track">
@@ -169,7 +169,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
 
         <!-- HERO'S LEGEND -->
-        <section class="section legend reveal">
+        <section class="section legend reveal" data-section="summary">
             <h2 class="section-title">Hero's Legend</h2>
             <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
             <div class="scroll-box">
@@ -180,7 +180,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
 
         <!-- QUEST CHRONICLE -->
-        <section class="section quests reveal">
+        <section class="section quests reveal" data-section="experience">
             <h2 class="section-title">Quest Chronicle</h2>
             <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
             {experience.map((exp, i) => (
@@ -215,7 +215,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
 
         <!-- SKILL TREE -->
-        <section class="section skill-tree reveal">
+        <section class="section skill-tree reveal" data-section="skills">
             <h2 class="section-title">Skill Tree</h2>
             <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
 
@@ -271,7 +271,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
 
         <!-- LEGENDARY QUESTS -->
-        <section class="section legendary reveal">
+        <section class="section legendary reveal" data-section="engagements">
             <h2 class="section-title">Legendary Quests</h2>
             <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
             <div class="legendary-grid">
@@ -299,7 +299,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
 
         <!-- TRAINING GROUNDS -->
-        <section class="section training reveal">
+        <section class="section training reveal" data-section="education">
             <h2 class="section-title">Training Grounds</h2>
             <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
             {education.map((edu) => (
@@ -320,7 +320,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
 
         <!-- ACHIEVEMENTS UNLOCKED -->
-        <section class="section achievements reveal">
+        <section class="section achievements reveal" data-section="certifications">
             <h2 class="section-title">Achievements Unlocked</h2>
             <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
             <div class="achievement-grid">
@@ -336,7 +336,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
 
         <!-- SIDE QUESTS -->
-        <section class="section sidequests reveal">
+        <section class="section sidequests reveal" data-section="training">
             <h2 class="section-title">Side Quests</h2>
             <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
             <div class="sidequest-list">
@@ -353,7 +353,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
 
         <!-- REALMS EXPLORED -->
-        <section class="section realms reveal">
+        <section class="section realms reveal" data-section="extra-3">
             <h2 class="section-title">Realms Explored</h2>
             <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
             <div class="realm-grid">

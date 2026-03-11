@@ -71,7 +71,7 @@ import { experience, education, certifications, skills, engagements, continuousL
     <main id="tape" class="tape">
 
         <!-- ====== TITLE SCREEN ====== -->
-        <section class="section title-screen reveal">
+        <section class="section title-screen reveal" data-section="header">
             <div class="arcade-title-frame">
                 <div class="pixel-border-top" aria-hidden="true"></div>
                 <h1 class="arcade-title" data-text={siteMetadata.name.toUpperCase()}>{siteMetadata.name.toUpperCase()}</h1>
@@ -98,7 +98,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="pixel-divider" aria-hidden="true"></div>
 
         <!-- ====== PLAYER SELECT ====== -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="summary">
             <div class="sec-head">
                 <span class="sec-icon">&#9654;</span>
                 <span class="sec-title">PLAYER SELECT</span>
@@ -137,7 +137,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="pixel-divider" aria-hidden="true"></div>
 
         <!-- ====== LEVEL SELECT (EXPERIENCE) ====== -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="experience">
             <div class="sec-head">
                 <span class="sec-icon">&#9654;</span>
                 <span class="sec-title">LEVEL SELECT</span>
@@ -175,7 +175,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="pixel-divider" aria-hidden="true"></div>
 
         <!-- ====== POWER-UPS (SKILLS) ====== -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="skills">
             <div class="sec-head">
                 <span class="sec-icon">&#9654;</span>
                 <span class="sec-title">POWER-UPS</span>
@@ -213,7 +213,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="pixel-divider" aria-hidden="true"></div>
 
         <!-- ====== BOSS BATTLES (ENGAGEMENTS) ====== -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="engagements">
             <div class="sec-head">
                 <span class="sec-icon">&#9654;</span>
                 <span class="sec-title">BOSS BATTLES</span>
@@ -240,7 +240,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="pixel-divider" aria-hidden="true"></div>
 
         <!-- ====== TRAINING STAGES (EDUCATION + CERTS) ====== -->
-        <section class="section reveal">
+        <section class="section reveal" data-section="education">
             <div class="sec-head">
                 <span class="sec-icon">&#9654;</span>
                 <span class="sec-title">TRAINING STAGES</span>
@@ -286,7 +286,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         <div class="pixel-divider" aria-hidden="true"></div>
 
         <!-- ====== GAME OVER / CONTINUE ====== -->
-        <section class="section game-over-section">
+        <section class="section game-over-section" data-section="footer">
             <div class="game-over-text">GAME OVER</div>
             <div class="continue-text">CONTINUE?</div>
             <div class="continue-countdown" id="continueCountdown">10</div>

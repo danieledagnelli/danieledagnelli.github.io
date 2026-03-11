@@ -173,10 +173,35 @@ import { themes } from "../data/themes";
             }
         }
 
+        #cycle-progress {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            z-index: 100;
+            pointer-events: none;
+            transform-origin: right center;
+            transform: scaleX(0);
+            opacity: 0;
+        }
+        #cycle-progress.running {
+            opacity: 1;
+            animation: progress-shrink var(--progress-duration, 15s) linear forwards;
+        }
+        #cycle-progress.paused {
+            animation-play-state: paused;
+        }
+        @keyframes progress-shrink {
+            from { transform: scaleX(1); }
+            to   { transform: scaleX(0); }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .stage, #transition-overlay {
                 transition: none !important;
             }
+            #cycle-progress { display: none; }
         }
     </style>
 </head>
@@ -185,6 +210,8 @@ import { themes } from "../data/themes";
     <iframe id="stage-b" class="stage"></iframe>
     <canvas id="transition-canvas"></canvas>
     <div id="transition-overlay"></div>
+
+    <div id="cycle-progress"></div>
 
     <div id="theme-picker">
         <button id="picker-close" aria-label="Close theme picker">&times;</button>
@@ -209,8 +236,8 @@ import { themes } from "../data/themes";
     <script define:vars={{ themesData: themes }}>
     (function() {
         const THEMES = themesData;
-        const CYCLE_DURATION = 35000;
-        const PRELOAD_AHEAD = 10000;
+        const CYCLE_DURATION = 15000;
+        const PRELOAD_AHEAD = 5000;
         const IDLE_RESUME_MS = 60000;
         let playlist = [];
         let currentIndex = 0;
@@ -219,6 +246,7 @@ import { themes } from "../data/themes";
         let cycleTimer = null;
         let preloadTimer = null;
         let idleTimer = null;
+        let lastVisibleSection = null;
 
         const stageA = document.getElementById('stage-a');
         const stageB = document.getElementById('stage-b');
@@ -227,11 +255,30 @@ import { themes } from "../data/themes";
         const overlay = document.getElementById('transition-overlay');
         const picker = document.getElementById('theme-picker');
         const pickerClose = document.getElementById('picker-close');
+        const progressBar = document.getElementById('cycle-progress');
 
         let activeStage = stageA;
         let hiddenStage = stageB;
 
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function getCurrentThemeColor() {
+            const theme = playlist[currentIndex];
+            return theme?.accentColor || '#39ff14';
+        }
+
+        function startProgress(color) {
+            progressBar.style.background = color;
+            progressBar.style.boxShadow = `0 0 8px ${color}40`;
+            progressBar.style.setProperty('--progress-duration', `${CYCLE_DURATION}ms`);
+            progressBar.classList.remove('paused', 'running');
+            void progressBar.offsetWidth;
+            progressBar.classList.add('running');
+        }
+
+        function stopProgress() {
+            progressBar.classList.remove('running', 'paused');
+        }
 
         function shuffle(arr) {
             const a = [...arr];
@@ -607,6 +654,32 @@ import { themes } from "../data/themes";
             });
         }
 
+        function scrollToSection(stage, sectionName) {
+            if (!sectionName) return;
+            try {
+                const win = stage.contentWindow;
+                const doc = win.document;
+                const target = doc.querySelector(`[data-section="${sectionName}"]`);
+                if (!target) return;
+                // Find the scrollable container inside the iframe
+                let container = target.parentElement;
+                while (container && container !== doc.documentElement) {
+                    const style = win.getComputedStyle(container);
+                    if (/(auto|scroll)/.test(style.overflow + style.overflowY)) break;
+                    container = container.parentElement;
+                }
+                if (container && container !== doc.documentElement) {
+                    const containerRect = container.getBoundingClientRect();
+                    const targetRect = target.getBoundingClientRect();
+                    container.scrollTop += targetRect.top - containerRect.top;
+                } else {
+                    target.scrollIntoView({ behavior: 'instant', block: 'start' });
+                }
+            } catch (e) {
+                // Cross-origin or not loaded yet
+            }
+        }
+
         async function cycleToNext() {
             if (isTransitioning) return;
             isTransitioning = true;
@@ -621,6 +694,7 @@ import { themes } from "../data/themes";
             isTransitioning = false;
             if (!isPaused) {
                 await waitForIntroComplete(nextTheme);
+                scrollToSection(activeStage, lastVisibleSection);
                 if (!isPaused) scheduleCycle();
             }
         }
@@ -639,6 +713,7 @@ import { themes } from "../data/themes";
             isTransitioning = false;
             if (!isPaused) {
                 await waitForIntroComplete(prevTheme);
+                scrollToSection(activeStage, lastVisibleSection);
                 if (!isPaused) scheduleCycle();
             }
         }
@@ -671,6 +746,7 @@ import { themes } from "../data/themes";
 
         function scheduleCycle() {
             clearTimers();
+            startProgress(getCurrentThemeColor());
             preloadTimer = setTimeout(() => {
                 let nextIdx = currentIndex + 1;
                 if (nextIdx >= playlist.length) nextIdx = 0;
@@ -684,6 +760,7 @@ import { themes } from "../data/themes";
         function clearTimers() {
             if (cycleTimer) clearTimeout(cycleTimer);
             if (preloadTimer) clearTimeout(preloadTimer);
+            stopProgress();
         }
 
         function togglePause() {
@@ -736,6 +813,9 @@ import { themes } from "../data/themes";
         // Scroll detection from iframes
         window.addEventListener('message', (e) => {
             if (e.data === 'user-scroll') onIframeActivity();
+            if (e.data && e.data.type === 'section-visible') {
+                lastVisibleSection = e.data.section;
+            }
         });
 
         // Hash support

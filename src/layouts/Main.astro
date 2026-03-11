@@ -89,6 +89,80 @@ const { title, last_modified } = Astro.props;
             <LiveClock id="statusClock" />
         </div>
     </div>
+    <script>
+        // Section visibility tracking for cross-theme scroll sync
+        if (window.self !== window.top) {
+            let currentSection = null;
+            const sections = document.querySelectorAll('[data-section]');
+
+            function findScrollContainer() {
+                // Walk up from the first section to find which ancestor scrolls
+                const el = sections[0];
+                if (!el) return document.documentElement;
+                let parent = el.parentElement;
+                while (parent && parent !== document.documentElement) {
+                    const style = getComputedStyle(parent);
+                    if (/(auto|scroll)/.test(style.overflow + style.overflowY)) return parent;
+                    parent = parent.parentElement;
+                }
+                return document.documentElement;
+            }
+
+            function updateVisibleSection() {
+                if (sections.length === 0) return;
+                let best = null;
+                let bestDist = Infinity;
+                const viewportMid = window.innerHeight / 3;
+                sections.forEach(s => {
+                    const rect = s.getBoundingClientRect();
+                    const dist = Math.abs(rect.top - viewportMid);
+                    if (dist < bestDist) {
+                        bestDist = dist;
+                        best = s;
+                    }
+                });
+                if (best) {
+                    const section = best.getAttribute('data-section');
+                    if (section !== currentSection) {
+                        currentSection = section;
+                        window.parent.postMessage({ type: 'section-visible', section: currentSection }, '*');
+                    }
+                }
+            }
+
+            // Listen for scroll on the actual scrollable container + window
+            function attachScrollListeners() {
+                const container = findScrollContainer();
+                const targets = new Set([window, container]);
+                let scrollTimeout;
+                targets.forEach(target => {
+                    target.addEventListener('scroll', () => {
+                        clearTimeout(scrollTimeout);
+                        scrollTimeout = setTimeout(() => {
+                            updateVisibleSection();
+                            window.parent.postMessage('user-scroll', '*');
+                        }, 100);
+                    }, { passive: true });
+                });
+            }
+
+            // Delay setup until content is visible (after intro animation)
+            const slotEl = document.getElementById('slotComponent');
+            if (slotEl) {
+                const obs = new MutationObserver(() => {
+                    if (slotEl.style.display !== 'none') {
+                        obs.disconnect();
+                        attachScrollListeners();
+                        updateVisibleSection();
+                    }
+                });
+                obs.observe(slotEl, { attributes: true, attributeFilter: ['style'] });
+            } else {
+                attachScrollListeners();
+                updateVisibleSection();
+            }
+        }
+    </script>
 </body>
 </html>
 
