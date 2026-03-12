@@ -178,7 +178,7 @@ import { themes } from "../data/themes";
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 4px;
             z-index: 100;
             pointer-events: none;
             transform-origin: right center;
@@ -197,6 +197,12 @@ import { themes } from "../data/themes";
             to   { transform: scaleX(0); }
         }
 
+        @media (max-width: 768px) {
+            #cycle-progress {
+                height: 5px;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .stage, #transition-overlay {
                 transition: none !important;
@@ -206,8 +212,8 @@ import { themes } from "../data/themes";
     </style>
 </head>
 <body>
-    <iframe id="stage-a" class="stage"></iframe>
-    <iframe id="stage-b" class="stage"></iframe>
+    <iframe id="stage-a" class="stage" scrolling="no"></iframe>
+    <iframe id="stage-b" class="stage" scrolling="no"></iframe>
     <canvas id="transition-canvas"></canvas>
     <div id="transition-overlay"></div>
 
@@ -236,7 +242,7 @@ import { themes } from "../data/themes";
     <script define:vars={{ themesData: themes }}>
     (function() {
         const THEMES = themesData;
-        const CYCLE_DURATION = 10000;
+        const CYCLE_DURATION = 7000;
         const PRELOAD_AHEAD = 5000;
         const IDLE_RESUME_MS = 60000;
         let playlist = [];
@@ -649,7 +655,16 @@ import { themes } from "../data/themes";
         function loadTheme(stage, theme) {
             return new Promise((resolve) => {
                 clearIntroKey(theme);
-                stage.onload = () => resolve();
+                stage.onload = () => {
+                    try {
+                        const doc = stage.contentDocument;
+                        if (doc) {
+                            doc.documentElement.style.overflow = 'hidden';
+                            doc.body.style.overflow = 'hidden';
+                        }
+                    } catch (e) {}
+                    resolve();
+                };
                 stage.src = theme.path;
             });
         }

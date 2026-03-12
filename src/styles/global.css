@@ -94,10 +94,8 @@ img {
     border: 0;
 }
 
-/* Bloomberg terminal: no scroll on large desktop only */
-@media (min-width: 1280px) {
-    html, body {
-        height: 100vh;
-        overflow: hidden;
-    }
+/* Bloomberg terminal: viewport-locked on all devices */
+html, body {
+    height: 100dvh;
+    overflow: hidden;
 }

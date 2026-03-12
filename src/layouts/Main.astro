@@ -171,7 +171,7 @@ const { title, last_modified } = Astro.props;
         display: grid;
         grid-template-columns: minmax(0, 1fr);
         grid-template-rows: auto 1fr auto;
-        height: 100vh;
+        height: 100dvh;
         overflow: hidden;
     }
 
@@ -222,14 +222,4 @@ const { title, last_modified } = Astro.props;
         50% { opacity: 0.4; }
     }
 
-    @media (max-width: 1279px) {
-        .bloomberg {
-            height: auto;
-            min-height: 100vh;
-            overflow: auto;
-        }
-        .bloomberg__main {
-            overflow: visible;
-        }
-    }
 </style>
