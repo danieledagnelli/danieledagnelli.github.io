@@ -1,6 +1,5 @@
 ---
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, metrics, industries, managementSkills, languages } from "../data/resume";
 ---
 
 <!doctype html>
@@ -80,297 +79,27 @@ import { experience, education, certifications, skills, engagements, continuousL
 
     <!-- MAIN CONTENT -->
     <main class="paper" id="paper">
-
-        <!-- PAPER HEADER -->
-        <header class="paper-header reveal">
-            <div class="journal-line">
-                <span class="journal-name">Journal of Professional Excellence & Applied Technology</span>
-                <span class="journal-meta">Vol. 15 | Issue 3 | 2024</span>
+        <div class="lab-narrative">
+            <h1 class="paper-title">A STUDY IN APPLIED INTELLIGENCE</h1>
+            <div class="paper-meta">d'agnelli, d. (2012-present) | london, uk</div>
+            <div class="paper-section">
+                <h2>ABSTRACT</h2>
+                <p>this paper presents the career trajectory of a practitioner operating at the intersection of artificial intelligence, machine learning, and enterprise programme management. the subject demonstrates sustained competency across supervised and unsupervised learning, deep neural networks, reinforcement learning, and large language models, while simultaneously directing programmes exceeding $15m in value.</p>
             </div>
-            <div class="paper-type">Original Research Article</div>
-            <h1 class="paper-title">A Comprehensive Study of Professional Excellence in Digital Transformation, Artificial Intelligence, and Cybersecurity</h1>
-            <div class="authors">
-                <span class="author-primary">{siteMetadata.name}<sup>1,2*</sup></span>
+            <div class="paper-section">
+                <h2>KEY FINDINGS</h2>
+                <p>the subject completed stanford machine learning (2016), followed by deeplearning.ai neural networks, udacity deep learning and deep reinforcement learning nanodegrees, and imperial college mathematics for ml. stanford probabilistic graphical models completed with honors. recent work includes genai rag systems deployment at enterprise scale.</p>
             </div>
-            <div class="affiliations">
-                <div class="affiliation"><sup>1</sup> C3 AI, {siteMetadata.location}</div>
-                <div class="affiliation"><sup>2</sup> Independent Researcher, AI & Cybersecurity</div>
-                <div class="affiliation correspondence">* Correspondence: <a href={`mailto:${siteMetadata.email}`}>{siteMetadata.email}</a></div>
+            <div class="paper-section">
+                <h2>METHODOLOGY</h2>
+                <p>primary toolkit: python, java, go, rust. infrastructure: aws/azure/gcp, mlops, gitops. experimental design: agile & waterfall hybrid. sample sizes: 100+ plants, 2,000+ end users, 75k-employee organisations.</p>
             </div>
-            <div class="paper-dates">
-                <span>Received: April 2012</span>
-                <span class="date-sep">|</span>
-                <span>Revised: August 2021</span>
-                <span class="date-sep">|</span>
-                <span>Accepted: Present</span>
+            <div class="paper-section">
+                <h2>CONCLUSION</h2>
+                <p>the evidence supports classification as a full-spectrum ai practitioner who chose the management track. gchq-certified msc in ethical hacking (distinction) noted as anomalous but consistent with subject's pattern of relentless acquisition.</p>
             </div>
-            <div class="paper-links">
-                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">[GitHub Repository]</a>
-                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">[Author Profile]</a>
-                <a href={`mailto:${siteMetadata.email}`}>[Correspondence]</a>
-            </div>
-        </header>
-
-        <hr class="section-rule" />
-
-        <!-- ABSTRACT -->
-        <section class="section reveal" data-section="summary">
-            <h2 class="section-heading" data-number="0">Abstract</h2>
-            <div class="abstract-box">
-                <p class="abstract-text" id="abstractText">{summary}</p>
-            </div>
-            <div class="keywords">
-                <strong>Keywords:</strong> {industries.map((ind, i) => (
-                    <span class="keyword">{ind}{i < industries.length - 1 ? '; ' : ''}</span>
-                ))}
-            </div>
-        </section>
-
-        <hr class="section-rule" />
-
-        <!-- 1. INTRODUCTION -->
-        <section class="section reveal" data-section="experience">
-            <h2 class="section-heading" data-number="1">Introduction</h2>
-            <div class="intro-grid">
-                <div class="intro-text">
-                    <p class="body-text">
-                        This paper presents a longitudinal study of professional practice spanning 15 years across multiple sectors of the global technology industry. The subject, {siteMetadata.name}, has demonstrated sustained excellence in the domains of digital transformation, artificial intelligence deployment, and cybersecurity research.
-                    </p>
-                    <p class="body-text">
-                        Operating from {siteMetadata.location}, the subject has led engagements exceeding $15M in programme value, achieving measurable outcomes including $18M EBIT impact, NPS scores consistently above 70, and deployment across 100+ manufacturing plants reaching 2,000+ end users.
-                    </p>
-                    <div class="hypothesis-box">
-                        <div class="hypothesis-label">Hypothesis H<sub>1</sub></div>
-                        <p>A professional combining deep technical expertise in software engineering, ML/AI, and cybersecurity with programme management capabilities will consistently deliver above-benchmark results in complex enterprise transformations.</p>
-                    </div>
-                </div>
-                <div class="figure-container">
-                    <div class="figure-frame">
-                        <img src="/assets/dani.jpeg" alt={`${siteMetadata.name} — Principal Investigator`} width="200" height="200" />
-                    </div>
-                    <div class="figure-caption">
-                        <strong>Fig. 1.</strong> Principal Investigator, {siteMetadata.name}. Photographed at research facility, {siteMetadata.location}.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <hr class="section-rule" />
-
-        <!-- 2. METHODS: APPARATUS AND TECHNIQUES -->
-        <section class="section reveal" data-section="skills">
-            <h2 class="section-heading" data-number="2">Methods: Apparatus and Techniques</h2>
-            <p class="body-text">The following instruments and methodologies were employed across all experimental phases. Apparatus is categorized by domain of application.</p>
-
-            <h3 class="subsection-heading" data-number="2.1">Technical Instruments</h3>
-            <div class="apparatus-grid">
-                {skills.map((s, i) => (
-                    <div class="apparatus-item" style={`--i:${i}`}>
-                        <span class="apparatus-id">T-{String(i + 1).padStart(2, '0')}</span>
-                        <span class="apparatus-name">{s}</span>
-                    </div>
-                ))}
-            </div>
-
-            <h3 class="subsection-heading" data-number="2.2">Management Methodologies</h3>
-            <div class="apparatus-grid">
-                {managementSkills.map((s, i) => (
-                    <div class="apparatus-item management" style={`--i:${i}`}>
-                        <span class="apparatus-id">M-{String(i + 1).padStart(2, '0')}</span>
-                        <span class="apparatus-name">{s}</span>
-                    </div>
-                ))}
-            </div>
-
-            <h3 class="subsection-heading" data-number="2.3">Languages</h3>
-            <div class="apparatus-grid">
-                {languages.map((l, i) => (
-                    <div class="apparatus-item language">
-                        <span class="apparatus-id">L-{String(i + 1).padStart(2, '0')}</span>
-                        <span class="apparatus-name">{l}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <hr class="section-rule" />
-
-        <!-- 3. EXPERIMENTAL TIMELINE -->
-        <section class="section reveal" data-section="engagements">
-            <h2 class="section-heading" data-number="3">Experimental Timeline</h2>
-            <p class="body-text">The following chronology documents each experimental phase, ordered from most recent to earliest. Each phase represents a distinct institutional affiliation and research focus.</p>
-
-            {experience.map((exp, i) => (
-                <div class="experiment-block reveal">
-                    <div class="experiment-header">
-                        <span class="experiment-phase">Phase {experience.length - i}</span>
-                        <span class="experiment-institution">{exp.company}</span>
-                        <span class="experiment-location">{exp.location}</span>
-                    </div>
-                    {exp.roles.map(role => (
-                        <div class="experiment-body">
-                            <div class="experiment-role">
-                                <span class="role-title">{role.title}</span>
-                                <span class="role-period">{role.period}</span>
-                            </div>
-                            {role.description && (
-                                <p class="experiment-desc">{role.description}</p>
-                            )}
-                            {role.bullets && role.bullets.length > 0 && (
-                                <div class="findings-list">
-                                    <span class="findings-label">Key Findings:</span>
-                                    <ul>
-                                        {role.bullets.map((b, j) => (
-                                            <li><span class="finding-ref">[{i + 1}.{j + 1}]</span> {b}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            ))}
-        </section>
-
-        <hr class="section-rule" />
-
-        <!-- 4. RESULTS AND DISCUSSION -->
-        <section class="section reveal" data-section="education">
-            <h2 class="section-heading" data-number="4">Results and Discussion</h2>
-
-            <h3 class="subsection-heading" data-number="4.1">Quantitative Metrics</h3>
-            <p class="body-text">Table 1 presents the aggregate quantitative outcomes observed across all experimental phases.</p>
-
-            <div class="table-container">
-                <div class="table-caption"><strong>Table 1.</strong> Summary of Key Performance Metrics</div>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Metric</th>
-                            <th>Observed Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {metrics.map(m => (
-                            <tr>
-                                <td>{m.label}</td>
-                                <td class="metric-value">{m.value}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 class="subsection-heading" data-number="4.2">Experimental Results by Engagement</h3>
-            <p class="body-text">Table 2 details outcomes from individual experimental engagements, classified by sector and scope of intervention.</p>
-
-            <div class="table-container">
-                <div class="table-caption"><strong>Table 2.</strong> Engagement-Level Experimental Results</div>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Subject</th>
-                            <th>Sector</th>
-                            <th>Scope</th>
-                            <th>Measured Impact</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {engagements.map(eng => (
-                            <tr>
-                                <td class="client-cell">{eng.client}</td>
-                                <td>{eng.sector}</td>
-                                <td>{eng.scope}</td>
-                                <td class={`impact-cell ${eng.trend}`}>{eng.impact}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="hypothesis-box result">
-                <div class="hypothesis-label">Result: H<sub>1</sub> Supported</div>
-                <p>The data strongly supports the hypothesis. Across all experimental phases, the combination of technical depth and management expertise yielded consistently above-benchmark results, with measurable positive outcomes in adoption rates, financial impact, and client satisfaction.</p>
-            </div>
-        </section>
-
-        <hr class="section-rule" />
-
-        <!-- 5. RESEARCHER QUALIFICATIONS -->
-        <section class="section reveal" data-section="certifications">
-            <h2 class="section-heading" data-number="5">Researcher Qualifications</h2>
-
-            <h3 class="subsection-heading" data-number="5.1">Academic Credentials</h3>
-            {education.map((edu, i) => (
-                <div class="qualification-block reveal">
-                    <div class="qual-institution">
-                        <span class="qual-degree">{edu.degree}</span>
-                        {edu.distinction && <span class="qual-distinction">{edu.distinction}</span>}
-                    </div>
-                    <div class="qual-meta">
-                        <span>{edu.institution}, {edu.location}</span>
-                        <span class="qual-period">{edu.period}</span>
-                    </div>
-                </div>
-            ))}
-
-            <h3 class="subsection-heading" data-number="5.2">Professional Certifications</h3>
-            <div class="cert-grid">
-                {certifications.map((c, i) => (
-                    <div class="cert-item">
-                        <span class="cert-number">[C{i + 1}]</span>
-                        <span>{c}</span>
-                    </div>
-                ))}
-            </div>
-
-            <h3 class="subsection-heading" data-number="5.3">Continuing Professional Development</h3>
-            <div class="cert-grid">
-                {continuousLearning.map((l, i) => (
-                    <div class="cert-item">
-                        <span class="cert-number">[D{i + 1}]</span>
-                        <span>{l}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <hr class="section-rule" />
-
-        <!-- 6. CONCLUSION -->
-        <section class="section reveal" data-section="training">
-            <h2 class="section-heading" data-number="6">Conclusion</h2>
-            <p class="body-text">This study has demonstrated that {siteMetadata.name} possesses a rare combination of deep technical competency and strategic management acumen, validated across 15 years of empirical practice. The evidence presented in Sections 3 and 4 conclusively supports Hypothesis H<sub>1</sub>.</p>
-            <p class="body-text">Future research directions include continued investigation into generative AI applications, advanced cybersecurity frameworks, and the intersection of machine learning with enterprise-scale operational challenges.</p>
-        </section>
-
-        <hr class="section-rule" />
-
-        <!-- REFERENCES -->
-        <footer class="paper-footer reveal">
-            <h2 class="section-heading" data-number="R">References</h2>
-            <div class="references-list">
-                <div class="reference">[1] D'Agnelli, D. (2012-2014). "Foundational Studies in Software Engineering." <em>Accenture Research, Milan.</em></div>
-                <div class="reference">[2] D'Agnelli, D. (2015-2017). "Applied Consulting Methodologies." <em>Codec Research, Dublin.</em></div>
-                <div class="reference">[3] D'Agnelli, D. (2017-2018). "Demand Forecasting in Aerospace & Defence." <em>Accenture Strategy, London.</em></div>
-                <div class="reference">[4] D'Agnelli, D. (2018-2021). "Enterprise Analytics Platform Deployment at Scale." <em>Deloitte Consulting, London.</em></div>
-                <div class="reference">[5] D'Agnelli, D. (2021-Present). "AI-Driven Enterprise Transformation: A Multi-Sector Study." <em>C3 AI, London.</em></div>
-                <div class="reference">[6] D'Agnelli, D. (2023). "MSc Ethical Hacking and Cybersecurity." <em>Abertay University, Dundee.</em> (Distinction)</div>
-            </div>
-            <div class="footer-meta">
-                <span class="footer-doi">DOI: 10.xxxx/dagnelli.2024.portfolio</span>
-                <span class="footer-license">Open Access | CC BY 4.0</span>
-            </div>
-            <div class="footer-contact">
-                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
-                <span class="footer-sep">|</span>
-                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
-                <span class="footer-sep">|</span>
-                <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener">Bluesky</a>
-                <span class="footer-sep">|</span>
-                <a href={`mailto:${siteMetadata.email}`}>{siteMetadata.email}</a>
-            </div>
-        </footer>
+            <div class="correspondence">CORRESPONDENCE: <a href="mailto:daniele@dagnelli.net">daniele@dagnelli.net</a></div>
+        </div>
     </main>
 </body>
 </html>
@@ -394,8 +123,6 @@ import { experience, education, certifications, skills, engagements, continuousL
         --serif: 'Source Serif 4', 'Georgia', serif;
         --mono: 'Fira Code', 'Courier New', monospace;
         --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        scrollbar-width: thin;
-        scrollbar-color: var(--lab-blue) var(--paper-gray);
     }
 
     body {
@@ -404,9 +131,8 @@ import { experience, education, certifications, skills, engagements, continuousL
         font-family: var(--serif);
         font-size: 16px;
         line-height: 1.8;
-        overflow-x: hidden;
-        min-height: 100vh;
-        counter-reset: line-number;
+        overflow: hidden;
+        height: 100dvh;
     }
 
     a { color: var(--lab-blue); text-decoration: none; }
@@ -493,736 +219,120 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       MAIN PAPER
+       MAIN PAPER — VIEWPORT LOCKED
        ========================================= */
     .paper {
         position: relative;
         z-index: 1;
-        max-width: 780px;
-        margin: 0 auto;
-        padding: 60px 48px 100px;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         opacity: 0;
         transition: opacity 0.5s ease 0.2s;
         background: var(--lab-white);
+        padding: 2rem;
     }
     .paper.visible { opacity: 1; }
 
     /* =========================================
-       SECTION RULES
+       NARRATIVE CONTENT
        ========================================= */
-    .section-rule {
-        border: none;
-        height: 1px;
-        background: var(--border);
-        margin: 2.5rem 0;
+    .lab-narrative {
+        max-width: 640px;
+        width: 100%;
     }
 
-    /* =========================================
-       PAPER HEADER
-       ========================================= */
-    .journal-line {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 8px;
-        padding-bottom: 8px;
+    .lab-narrative .paper-title {
+        font-family: var(--serif);
+        font-size: clamp(18px, 3vw, 26px);
+        font-weight: 700;
+        line-height: 1.3;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+        letter-spacing: 0.5px;
+    }
+
+    .paper-meta {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+        padding-bottom: 16px;
         border-bottom: 2px solid var(--lab-blue);
     }
-    .journal-name {
+
+    .paper-section {
+        margin-bottom: 16px;
+    }
+
+    .paper-section h2 {
         font-family: var(--sans);
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 2px;
         color: var(--lab-blue);
-    }
-    .journal-meta {
-        font-family: var(--sans);
-        font-size: 11px;
-        color: var(--text-muted);
-    }
-    .paper-type {
-        font-family: var(--sans);
-        font-size: 11px;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: var(--annotation-green);
-        margin-bottom: 20px;
-        margin-top: 12px;
-    }
-    .paper-title {
-        font-family: var(--serif);
-        font-size: clamp(22px, 3.5vw, 30px);
-        font-weight: 700;
-        line-height: 1.3;
-        color: var(--text-primary);
-        margin-bottom: 16px;
-    }
-    .authors {
-        margin-bottom: 8px;
-    }
-    .author-primary {
-        font-family: var(--serif);
-        font-size: 17px;
-        font-weight: 600;
-        color: var(--lab-blue);
-    }
-    .author-primary sup {
-        font-size: 11px;
-        color: var(--graph-red);
-    }
-    .affiliations {
-        margin-bottom: 14px;
-    }
-    .affiliation {
-        font-family: var(--sans);
-        font-size: 12px;
-        color: var(--text-muted);
-        line-height: 1.6;
-    }
-    .affiliation sup {
-        font-size: 10px;
-        color: var(--graph-red);
-        margin-right: 2px;
-    }
-    .affiliation.correspondence {
-        margin-top: 4px;
-        font-style: italic;
-    }
-    .paper-dates {
-        font-family: var(--sans);
-        font-size: 11px;
-        color: var(--text-muted);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: 12px;
-    }
-    .date-sep { color: var(--border); }
-    .paper-links {
-        display: flex;
-        gap: 16px;
-        font-family: var(--mono);
-        font-size: 12px;
-        flex-wrap: wrap;
+        margin-bottom: 6px;
     }
 
-    /* =========================================
-       SECTION HEADINGS
-       ========================================= */
-    .section { margin-bottom: 0; }
-
-    .section-heading {
+    .paper-section p {
         font-family: var(--serif);
-        font-size: 20px;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 16px;
-        padding-bottom: 6px;
-        border-bottom: 1px solid var(--border);
-    }
-    .section-heading::before {
-        content: attr(data-number) ". ";
-        color: var(--lab-blue);
-        font-weight: 700;
-    }
-    .section-heading[data-number="0"]::before {
-        content: "";
-    }
-    .section-heading[data-number="R"]::before {
-        content: "";
-    }
-
-    .subsection-heading {
-        font-family: var(--serif);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.7;
         color: var(--text-secondary);
-        margin-top: 20px;
-        margin-bottom: 12px;
-    }
-    .subsection-heading::before {
-        content: attr(data-number) " ";
-        color: var(--lab-blue);
-    }
-
-    /* =========================================
-       BODY TEXT
-       ========================================= */
-    .body-text {
-        font-family: var(--serif);
-        font-size: 15px;
-        line-height: 1.8;
-        color: var(--text-secondary);
-        margin-bottom: 14px;
         text-align: justify;
         hyphens: auto;
     }
 
-    /* =========================================
-       ABSTRACT
-       ========================================= */
-    .abstract-box {
-        background: var(--paper-gray);
-        border-left: 4px solid var(--lab-blue);
-        padding: 20px 24px;
-        margin-bottom: 16px;
-    }
-    .abstract-text {
-        font-family: var(--serif);
-        font-size: 14px;
-        font-style: italic;
-        line-height: 1.8;
-        color: var(--text-secondary);
-    }
-    .keywords {
-        font-family: var(--sans);
-        font-size: 12px;
-        color: var(--text-muted);
-        line-height: 1.8;
-    }
-    .keywords strong {
-        color: var(--text-secondary);
-    }
-    .keyword {
-        font-style: italic;
-    }
-
-    /* =========================================
-       HYPOTHESIS BOX
-       ========================================= */
-    .hypothesis-box {
-        border: 2px solid var(--lab-blue);
-        background: rgba(26, 82, 118, 0.03);
-        padding: 18px 22px;
-        margin: 20px 0;
-        position: relative;
-    }
-    .hypothesis-box.result {
-        border-color: var(--annotation-green);
-        background: rgba(39, 174, 96, 0.03);
-    }
-    .hypothesis-label {
-        font-family: var(--sans);
-        font-size: 12px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: var(--lab-blue);
-        margin-bottom: 8px;
-    }
-    .hypothesis-box.result .hypothesis-label {
-        color: var(--annotation-green);
-    }
-    .hypothesis-box p {
-        font-family: var(--serif);
-        font-size: 14px;
-        font-style: italic;
-        line-height: 1.7;
-        color: var(--text-secondary);
-    }
-
-    /* =========================================
-       INTRODUCTION GRID (text + figure)
-       ========================================= */
-    .intro-grid {
-        display: grid;
-        grid-template-columns: 1fr 220px;
-        gap: 30px;
-        align-items: start;
-    }
-    .figure-container {
-        text-align: center;
-    }
-    .figure-frame {
-        border: 1px solid var(--border);
-        padding: 8px;
-        background: var(--paper-gray);
-        display: inline-block;
-    }
-    .figure-frame img {
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
-        display: block;
-        filter: grayscale(0.15) contrast(1.05);
-    }
-    .figure-caption {
-        font-family: var(--sans);
+    .correspondence {
+        font-family: var(--mono);
         font-size: 11px;
         color: var(--text-muted);
-        margin-top: 10px;
-        line-height: 1.5;
-        text-align: left;
-    }
-
-    /* =========================================
-       APPARATUS GRID (SKILLS)
-       ========================================= */
-    .apparatus-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 16px;
-    }
-    .apparatus-item {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-family: var(--mono);
-        font-size: 12px;
-        padding: 5px 12px;
-        border: 1px solid var(--border);
-        background: var(--paper-gray);
-        color: var(--text-secondary);
-        transition: border-color 0.2s, background 0.2s, transform 0.2s;
-    }
-    .apparatus-item:hover {
-        border-color: var(--lab-blue);
-        background: rgba(26, 82, 118, 0.05);
-        transform: translateY(-1px);
-    }
-    .apparatus-item.management:hover {
-        border-color: var(--annotation-green);
-        background: rgba(39, 174, 96, 0.05);
-    }
-    .apparatus-item.language:hover {
-        border-color: var(--graph-red);
-        background: rgba(192, 57, 43, 0.05);
-    }
-    .apparatus-id {
-        font-size: 10px;
-        font-weight: 500;
-        color: var(--lab-blue);
-        min-width: 28px;
-    }
-    .apparatus-item.management .apparatus-id {
-        color: var(--annotation-green);
-    }
-    .apparatus-item.language .apparatus-id {
-        color: var(--graph-red);
-    }
-
-    /* =========================================
-       EXPERIMENTAL TIMELINE
-       ========================================= */
-    .experiment-block {
-        border-left: 3px solid var(--lab-blue);
-        padding-left: 20px;
-        margin-bottom: 28px;
         margin-top: 20px;
-        position: relative;
-    }
-    .experiment-block::before {
-        content: '';
-        position: absolute;
-        left: -7px;
-        top: 6px;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        background: var(--lab-blue);
-        border: 2px solid var(--lab-white);
-    }
-    .experiment-header {
-        display: flex;
-        align-items: baseline;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-bottom: 8px;
-    }
-    .experiment-phase {
-        font-family: var(--sans);
-        font-size: 10px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: var(--lab-white);
-        background: var(--lab-blue);
-        padding: 2px 10px;
-        border-radius: 2px;
-    }
-    .experiment-institution {
-        font-family: var(--serif);
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--text-primary);
-    }
-    .experiment-location {
-        font-family: var(--sans);
-        font-size: 12px;
-        color: var(--text-muted);
-    }
-    .experiment-body {
-        margin-top: 6px;
-    }
-    .experiment-role {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 6px;
-    }
-    .role-title {
-        font-family: var(--serif);
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--text-secondary);
-    }
-    .role-period {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--text-muted);
-    }
-    .experiment-desc {
-        font-family: var(--serif);
-        font-size: 14px;
-        color: var(--text-muted);
-        line-height: 1.7;
-        margin-bottom: 8px;
-    }
-    .findings-list {
-        margin-top: 8px;
-    }
-    .findings-label {
-        font-family: var(--sans);
-        font-size: 11px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--annotation-green);
-        display: block;
-        margin-bottom: 4px;
-    }
-    .findings-list ul {
-        list-style: none;
-        padding: 0;
-    }
-    .findings-list li {
-        font-family: var(--serif);
-        font-size: 13px;
-        color: var(--text-secondary);
-        line-height: 1.7;
-        padding: 2px 0;
-    }
-    .finding-ref {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--lab-blue);
-        font-weight: 500;
-    }
-
-    /* =========================================
-       DATA TABLES
-       ========================================= */
-    .table-container {
-        margin: 20px 0;
-        overflow-x: auto;
-    }
-    .table-caption {
-        font-family: var(--sans);
-        font-size: 12px;
-        color: var(--text-muted);
-        margin-bottom: 8px;
-    }
-    .data-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-family: var(--sans);
-        font-size: 13px;
-    }
-    .data-table thead {
-        background: var(--lab-blue);
-        color: var(--lab-white);
-    }
-    .data-table th {
-        padding: 10px 14px;
-        text-align: left;
-        font-weight: 600;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    .data-table td {
-        padding: 10px 14px;
-        border-bottom: 1px solid var(--border);
-        color: var(--text-secondary);
-    }
-    .data-table tbody tr:nth-child(even) {
-        background: var(--paper-gray);
-    }
-    .data-table tbody tr:hover {
-        background: rgba(26, 82, 118, 0.05);
-    }
-    .metric-value {
-        font-family: var(--mono);
-        font-weight: 500;
-        color: var(--lab-blue);
-    }
-    .client-cell {
-        font-weight: 500;
-        text-transform: capitalize;
-    }
-    .impact-cell {
-        font-family: var(--mono);
-        font-weight: 500;
-    }
-    .impact-cell.positive {
-        color: var(--annotation-green);
-    }
-    .impact-cell.neutral {
-        color: var(--text-muted);
-    }
-
-    /* =========================================
-       QUALIFICATIONS
-       ========================================= */
-    .qualification-block {
-        border-left: 3px solid var(--annotation-green);
-        padding-left: 18px;
-        margin-bottom: 18px;
-        margin-top: 14px;
-    }
-    .qual-degree {
-        font-family: var(--serif);
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text-primary);
-    }
-    .qual-distinction {
-        font-family: var(--sans);
-        font-size: 10px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: var(--lab-white);
-        background: var(--annotation-green);
-        padding: 2px 8px;
-        margin-left: 10px;
-        border-radius: 2px;
-        vertical-align: middle;
-    }
-    .qual-institution {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 4px;
-    }
-    .qual-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-        font-family: var(--sans);
-        font-size: 13px;
-        color: var(--text-muted);
-        margin-top: 4px;
-    }
-    .qual-period {
-        font-family: var(--mono);
-        font-size: 12px;
-    }
-
-    .cert-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        margin-bottom: 12px;
-    }
-    .cert-item {
-        display: flex;
-        align-items: baseline;
-        gap: 8px;
-        font-family: var(--serif);
-        font-size: 14px;
-        color: var(--text-secondary);
-    }
-    .cert-number {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--lab-blue);
-        min-width: 30px;
-    }
-
-    /* =========================================
-       FOOTER
-       ========================================= */
-    .paper-footer {
-        margin-top: 0;
-    }
-    .references-list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-bottom: 24px;
-    }
-    .reference {
-        font-family: var(--serif);
-        font-size: 13px;
-        color: var(--text-muted);
-        line-height: 1.6;
-        padding-left: 28px;
-        text-indent: -28px;
-    }
-    .reference em {
-        font-style: italic;
-    }
-    .footer-meta {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 8px;
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--text-muted);
-        padding: 14px 0;
+        padding-top: 14px;
         border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-        margin-bottom: 16px;
+        letter-spacing: 0.5px;
     }
-    .footer-contact {
-        font-family: var(--sans);
-        font-size: 13px;
-        text-align: center;
-        padding: 16px 0;
-    }
-    .footer-sep {
-        color: var(--border);
-        margin: 0 8px;
+
+    .correspondence a {
+        color: var(--lab-blue);
     }
 
     /* =========================================
-       REVEAL ANIMATION
-       ========================================= */
-    .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* =========================================
-       RESPONSIVE -- TABLET (601-1024px)
+       RESPONSIVE -- TABLET
        ========================================= */
     @media (max-width: 1024px) {
-        body { font-size: 15px; }
-        .paper { max-width: 680px; padding: 50px 32px 80px; }
-        .paper-title { font-size: clamp(20px, 3vw, 26px); }
-        .intro-grid { grid-template-columns: 1fr 180px; gap: 20px; }
-        .figure-frame img { width: 160px; height: 160px; }
-        .experiment-institution { font-size: 16px; }
-        .data-table { font-size: 12px; }
-        .data-table th, .data-table td { padding: 8px 10px; }
+        .paper { padding: 1.5rem; }
+        .lab-narrative .paper-title { font-size: clamp(17px, 2.8vw, 24px); }
+        .paper-section p { font-size: 13px; }
     }
 
     /* =========================================
-       RESPONSIVE -- SMALL TABLET / LARGE PHONE (481-600px)
+       RESPONSIVE -- PHONE
        ========================================= */
     @media (max-width: 600px) {
-        body { font-size: 14px; }
-        .paper { padding: 40px 18px 60px; }
-        .paper-title { font-size: 20px; }
-
-        /* Header */
-        .journal-line { flex-direction: column; gap: 4px; }
-        .journal-name { font-size: 10px; letter-spacing: 1.5px; }
-        .author-primary { font-size: 15px; }
-        .paper-links { gap: 10px; font-size: 11px; }
-        .paper-dates { font-size: 10px; }
-
-        /* Intro grid: stack */
-        .intro-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        .figure-container { order: -1; }
-        .figure-frame img { width: 140px; height: 140px; }
-
-        /* Text */
-        .body-text { font-size: 14px; text-align: left; }
-        .abstract-text { font-size: 13px; }
-        .abstract-box { padding: 14px 16px; }
-
-        /* Headings */
-        .section-heading { font-size: 18px; }
-        .subsection-heading { font-size: 15px; }
-
-        /* Apparatus */
-        .apparatus-item { font-size: 11px; padding: 4px 8px; }
-        .apparatus-id { font-size: 9px; min-width: 24px; }
-
-        /* Timeline */
-        .experiment-block { padding-left: 14px; }
-        .experiment-header { gap: 6px; }
-        .experiment-institution { font-size: 15px; }
-        .experiment-phase { font-size: 9px; }
-        .role-title { font-size: 14px; }
-        .experiment-role { flex-direction: column; gap: 2px; }
-
-        /* Tables */
-        .data-table { font-size: 11px; }
-        .data-table th, .data-table td { padding: 6px 8px; }
-        .data-table th { font-size: 10px; }
-
-        /* Qualifications */
-        .qual-degree { font-size: 14px; }
-        .cert-item { font-size: 13px; }
-
-        /* References */
-        .reference { font-size: 12px; padding-left: 20px; text-indent: -20px; }
-        .footer-meta { font-size: 10px; }
-
-        /* Dividers */
-        .section-rule { margin: 1.5rem 0; }
-
-        /* Hypothesis */
-        .hypothesis-box { padding: 14px 16px; }
+        .paper { padding: 1.25rem; }
+        .lab-narrative { max-width: 100%; }
+        .lab-narrative .paper-title { font-size: 17px; }
+        .paper-meta { font-size: 11px; margin-bottom: 18px; padding-bottom: 12px; }
+        .paper-section { margin-bottom: 12px; }
+        .paper-section h2 { font-size: 10px; letter-spacing: 1.5px; margin-bottom: 4px; }
+        .paper-section p { font-size: 13px; line-height: 1.6; text-align: left; }
+        .correspondence { font-size: 10px; margin-top: 14px; padding-top: 10px; }
+        .journal-badge { font-size: 9px; letter-spacing: 2px; padding: 4px 12px; }
     }
 
     /* =========================================
-       RESPONSIVE -- SMALL PHONE (<=380px)
+       RESPONSIVE -- SMALL PHONE
        ========================================= */
     @media (max-width: 380px) {
-        body { font-size: 13px; }
-        .paper { padding: 30px 12px 50px; }
-        .paper-title { font-size: 18px; }
-        .journal-badge { font-size: 9px; letter-spacing: 2px; padding: 4px 12px; }
-        .figure-frame img { width: 120px; height: 120px; }
-        .apparatus-item { font-size: 10px; padding: 3px 6px; }
-        .experiment-institution { font-size: 14px; }
-        .data-table { font-size: 10px; }
-        .data-table th, .data-table td { padding: 5px 6px; }
-        .footer-contact { font-size: 12px; }
-    }
-
-    /* =========================================
-       TOUCH: larger tap targets on mobile
-       ========================================= */
-    @media (hover: none) and (pointer: coarse) {
-        .paper-links a {
-            padding: 6px 4px;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-        }
-        .apparatus-item {
-            padding: 8px 12px;
-            min-height: 36px;
-        }
-        .footer-contact a {
-            padding: 6px 4px;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-        }
+        .paper { padding: 1rem; }
+        .lab-narrative .paper-title { font-size: 15px; }
+        .paper-section p { font-size: 12px; line-height: 1.55; }
+        .paper-meta { font-size: 10px; }
     }
 
     /* =========================================
@@ -1230,9 +340,8 @@ import { experience, education, certifications, skills, engagements, continuousL
        ========================================= */
     @media print {
         .grid-overlay, .intro { display: none !important; }
-        .paper { opacity: 1 !important; max-width: 100%; padding: 0; }
-        .reveal { opacity: 1 !important; transform: none !important; }
-        body { font-size: 12pt; }
+        .paper { opacity: 1 !important; height: auto; overflow: visible; }
+        body { overflow: visible; height: auto; }
     }
 </style>
 
@@ -1293,34 +402,4 @@ import { experience, education, certifications, skills, engagements, continuousL
     });
 
     runIntro();
-
-    /* =============================================
-       SCROLL REVEAL (Intersection Observer)
-       ============================================= */
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    revealEls.forEach(el => observer.observe(el));
-
-    /* =============================================
-       CITATION NUMBERING (auto-superscript)
-       ============================================= */
-    let citationCounter = 0;
-    document.querySelectorAll('.experiment-block').forEach(block => {
-        citationCounter++;
-        const phase = block.querySelector('.experiment-phase');
-        if (phase) {
-            const sup = document.createElement('sup');
-            sup.textContent = `[${citationCounter}]`;
-            sup.style.cssText = 'font-size:10px;color:#c0392b;margin-left:4px;font-family:Fira Code,monospace;';
-            const inst = block.querySelector('.experiment-institution');
-            if (inst) inst.appendChild(sup);
-        }
-    });
 </script>

@@ -1,6 +1,5 @@
 ---
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, metrics, industries, managementSkills, languages } from "../data/resume";
 ---
 
 <!doctype html>
@@ -82,257 +81,26 @@ import { experience, education, certifications, skills, engagements, continuousL
 
     <!-- MAIN CONTENT -->
     <main class="broadcast" id="broadcast">
+        <div class="radio-narrative">
+            <div class="on-air-badge">[ON AIR]</div>
+            <h1 class="station-title">STATION DAGNELLI — BROADCASTING FROM LONDON</h1>
+            <div class="programme-title">TONIGHT'S PROGRAMME: "THE MULTIPLIER EFFECT"</div>
 
-        <!-- ON AIR HEADER WITH DIAL -->
-        <header class="section header-section">
-            <div class="on-air-badge">ON AIR</div>
-            <div class="dial-display">
-                <div class="dial-window">
-                    <div class="dial-frequencies">
-                        <span>53</span><span>60</span><span>70</span><span>80</span>
-                        <span>90</span><span>100</span><span>108</span>
-                    </div>
-                    <div class="dial-indicator"></div>
-                </div>
-                <div class="vu-meters">
-                    <div class="vu-meter" id="vuLeft">
-                        <div class="vu-label">L</div>
-                        <div class="vu-bar"><div class="vu-fill" id="vuFillLeft"></div></div>
-                    </div>
-                    <div class="vu-meter" id="vuRight">
-                        <div class="vu-label">R</div>
-                        <div class="vu-bar"><div class="vu-fill" id="vuFillRight"></div></div>
-                    </div>
-                </div>
+            <div class="transcript">
+                <p>good evening, listeners. tonight we're talking about what happens when you don't just deliver — you build the capability for others to deliver too.</p>
+                <p>our subject: daniele d'agnelli. at deloitte, he didn't just run projects. he built an entire anaplan practice from nothing. zero practitioners to twenty-five plus. that's not consulting. that's institution-building.</p>
+                <p>at c3 ai, the pattern continued. partner enablement across consulting firms. practice-building. training the trainers. leading a 20+ cross-functional team across app dev, data science, qa, and devops. not just shipping software — shipping the ability to ship software.</p>
+                <p>the result? $15m in programme value. $18m ebit impact for clients. nps above 70, which in this business is like getting a standing ovation from people who don't stand.</p>
             </div>
-            <div class="station-info">
-                <div class="station-name">WDDA 98.7 FM</div>
-                <div class="station-tagline">The Voice of Professional Excellence</div>
-            </div>
-        </header>
 
-        <div class="deco-border" aria-hidden="true"></div>
+            <div class="sign-off">this has been station dagnelli. transmitting on all frequencies.</div>
 
-        <!-- OPENING ANNOUNCEMENT -->
-        <section class="section reveal" id="announcement" data-section="summary">
-            <div class="section-header">
-                <span class="section-icon">&#9834;</span>
-                <h2 class="section-title">Opening Announcement</h2>
-                <span class="section-icon">&#9834;</span>
+            <div class="radio-footer">
+                <a href="mailto:daniele@dagnelli.net">[signal]</a>
+                <a href="https://github.com/danieledagnelli">[github]</a>
+                <a href="https://linkedin.com/in/dagnelli">[linkedin]</a>
             </div>
-            <div class="announcer-card">
-                <div class="announcer-photo">
-                    <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="160" height="160" />
-                    <div class="photo-glow"></div>
-                </div>
-                <div class="announcer-info">
-                    <h1 class="announcer-name">{siteMetadata.name}</h1>
-                    <div class="announcer-role">Senior Engagement Manager &mdash; AI &amp; Cybersecurity</div>
-                    <div class="announcer-meta">
-                        <span class="meta-item">Broadcasting from {siteMetadata.location}</span>
-                    </div>
-                    <div class="announcer-links">
-                        <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
-                        <span class="link-dot">&bull;</span>
-                        <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
-                        <span class="link-dot">&bull;</span>
-                        <a href={`mailto:${siteMetadata.email}`}>Contact</a>
-                    </div>
-                </div>
-            </div>
-            <div class="announcer-script">
-                <p class="script-text">&ldquo;Good evening, listeners. You are tuned in to WDDA 98.7 FM. Tonight&rsquo;s featured guest brings over fifteen years of professional services expertise to our airwaves.&rdquo;</p>
-                <p class="summary-text">{summary}</p>
-            </div>
-            <div class="metrics-ticker">
-                {metrics.map(m => (
-                    <div class="ticker-item">
-                        <span class="ticker-value">{m.value}</span>
-                        <span class="ticker-label">{m.label}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="deco-border" aria-hidden="true"></div>
-
-        <!-- PROGRAM SCHEDULE (Experience) -->
-        <section class="section reveal" id="program" data-section="experience">
-            <div class="section-header">
-                <span class="section-icon">&#9834;</span>
-                <h2 class="section-title">Tonight&rsquo;s Program Schedule</h2>
-                <span class="section-icon">&#9834;</span>
-            </div>
-            <div class="program-list">
-                {experience.map((exp, i) => (
-                    <div class="program-block reveal">
-                        <div class="program-time-slot">
-                            <div class="program-indicator">
-                                <span class="indicator-light"></span>
-                            </div>
-                            <div class="program-details">
-                                <div class="program-top">
-                                    <span class="program-company">{exp.company}</span>
-                                    <span class="program-location">{exp.location}</span>
-                                </div>
-                                {exp.roles.map(role => (
-                                    <div class="program-role">
-                                        <div class="role-header">
-                                            <span class="role-title">{role.title}</span>
-                                            <span class="role-time">{role.period}</span>
-                                        </div>
-                                        {role.description && <p class="role-description">{role.description}</p>}
-                                        {role.bullets && role.bullets.length > 0 && (
-                                            <ul class="role-highlights">
-                                                {role.bullets.map(b => <li>{b}</li>)}
-                                            </ul>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="deco-border" aria-hidden="true"></div>
-
-        <!-- STATION DIRECTORY (Skills) -->
-        <section class="section reveal" id="directory" data-section="skills">
-            <div class="section-header">
-                <span class="section-icon">&#9834;</span>
-                <h2 class="section-title">Station Frequency Directory</h2>
-                <span class="section-icon">&#9834;</span>
-            </div>
-            <div class="frequency-group">
-                <h3 class="freq-group-label">Technical Frequencies</h3>
-                <div class="frequency-grid">
-                    {skills.map((s, i) => (
-                        <div class="freq-chip" style={`--i:${i}`}>
-                            <span class="freq-number">{(88.1 + i * 0.8).toFixed(1)}</span>
-                            <span class="freq-name">{s}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div class="frequency-group">
-                <h3 class="freq-group-label">Management Frequencies</h3>
-                <div class="frequency-grid">
-                    {managementSkills.map((s, i) => (
-                        <div class="freq-chip management" style={`--i:${i}`}>
-                            <span class="freq-number">{(101.1 + i * 0.4).toFixed(1)}</span>
-                            <span class="freq-name">{s}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div class="frequency-group">
-                <h3 class="freq-group-label">Industry Coverage</h3>
-                <div class="frequency-grid">
-                    {industries.map((ind, i) => (
-                        <div class="freq-chip industry" style={`--i:${i}`}>
-                            <span class="freq-number">{(90.1 + i * 1.2).toFixed(1)}</span>
-                            <span class="freq-name">{ind}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div class="frequency-group">
-                <h3 class="freq-group-label">Languages On Air</h3>
-                <div class="frequency-grid">
-                    {languages.map((lang, i) => (
-                        <div class="freq-chip language" style={`--i:${i}`}>
-                            <span class="freq-number">{(107.1 + i * 0.6).toFixed(1)}</span>
-                            <span class="freq-name">{lang}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="deco-border" aria-hidden="true"></div>
-
-        <!-- NEWS BULLETINS (Engagements) -->
-        <section class="section reveal" id="bulletins" data-section="engagements">
-            <div class="section-header">
-                <span class="section-icon">&#9834;</span>
-                <h2 class="section-title">Breaking News Bulletins</h2>
-                <span class="section-icon">&#9834;</span>
-            </div>
-            <div class="bulletin-intro">We interrupt this broadcast for the following special reports&hellip;</div>
-            <div class="bulletin-grid">
-                {engagements.map(eng => (
-                    <div class="bulletin-card reveal">
-                        <div class="bulletin-flash">BULLETIN</div>
-                        <div class="bulletin-content">
-                            <div class="bulletin-top">
-                                <span class="bulletin-client">{eng.client}</span>
-                                <span class="bulletin-sector">{eng.sector}</span>
-                            </div>
-                            <div class="bulletin-details">
-                                <span class="bulletin-scope">{eng.scope}</span>
-                                <span class={`bulletin-impact ${eng.trend}`}>{eng.impact}</span>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="deco-border" aria-hidden="true"></div>
-
-        <!-- SPONSOR MESSAGES (Education & Certifications) -->
-        <section class="section reveal" id="sponsors" data-section="education">
-            <div class="section-header">
-                <span class="section-icon">&#9834;</span>
-                <h2 class="section-title">Brought to You By</h2>
-                <span class="section-icon">&#9834;</span>
-            </div>
-            <div class="sponsor-group">
-                <h3 class="sponsor-label">Academic Sponsors</h3>
-                {education.map(edu => (
-                    <div class="sponsor-card reveal">
-                        <div class="sponsor-badge">{edu.distinction || "Alumnus"}</div>
-                        <div class="sponsor-details">
-                            <div class="sponsor-degree">{edu.degree}</div>
-                            <div class="sponsor-meta">{edu.institution} &mdash; {edu.location}</div>
-                            <div class="sponsor-period">{edu.period}</div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            <div class="sponsor-group">
-                <h3 class="sponsor-label">Professional Certifications</h3>
-                <div class="cert-grid">
-                    {certifications.map(c => (
-                        <div class="cert-chip">{c}</div>
-                    ))}
-                </div>
-            </div>
-            <div class="sponsor-group">
-                <h3 class="sponsor-label">Continuing Education Programs</h3>
-                <div class="learning-list">
-                    {continuousLearning.map(l => (
-                        <div class="learning-item">{l}</div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="deco-border" aria-hidden="true"></div>
-
-        <!-- SIGN-OFF FOOTER -->
-        <footer class="section sign-off">
-            <div class="sign-off-text">
-                <p>&ldquo;That concludes tonight&rsquo;s broadcast on WDDA 98.7 FM. Thank you for tuning in, dear listeners.&rdquo;</p>
-                <p class="sign-off-sub">This has been {siteMetadata.name}, broadcasting from {siteMetadata.location}.</p>
-                <p class="sign-off-sub">Until next time &mdash; keep your dial tuned and your signal strong.</p>
-            </div>
-            <div class="sign-off-bar">
-                <span class="off-air-badge">OFF AIR</span>
-            </div>
-        </footer>
+        </div>
     </main>
 </body>
 </html>
@@ -355,8 +123,6 @@ import { experience, education, certifications, skills, engagements, continuousL
         --display: 'Abril Fatface', serif;
         --body: 'Source Sans 3', sans-serif;
         --mono: 'JetBrains Mono', monospace;
-        scrollbar-width: thin;
-        scrollbar-color: var(--brass) var(--walnut);
     }
 
     body {
@@ -365,8 +131,8 @@ import { experience, education, certifications, skills, engagements, continuousL
         font-family: var(--body);
         font-size: 16px;
         line-height: 1.6;
-        overflow-x: hidden;
-        min-height: 100vh;
+        overflow: hidden;
+        margin: 0;
     }
 
     a { color: var(--amber); text-decoration: none; transition: color 0.2s; }
@@ -495,12 +261,15 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       MAIN CONTENT
+       MAIN CONTENT — VIEWPORT-LOCKED
        ========================================= */
     .broadcast {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 40px 24px 120px;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         position: relative;
         z-index: 1;
         opacity: 0;
@@ -508,747 +277,72 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
     .broadcast.visible { opacity: 1; }
 
-    /* =========================================
-       SECTION STYLING
-       ========================================= */
-    .section { margin-bottom: 0; }
-
-    .section-header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        margin-bottom: 28px;
-    }
-
-    .section-title {
-        font-family: var(--display);
-        font-size: 28px;
-        color: var(--amber);
+    .radio-narrative {
+        max-width: 580px;
+        padding: 1.5rem;
         text-align: center;
-        text-shadow: 0 0 15px var(--amber-glow);
-    }
-
-    .section-icon {
-        color: var(--brass);
-        font-size: 18px;
-        opacity: 0.6;
-    }
-
-    /* ART DECO BORDER */
-    .deco-border {
-        height: 3px;
-        margin: 40px 0;
-        background: linear-gradient(
-            90deg,
-            transparent 0%,
-            var(--brass) 15%,
-            var(--amber) 40%,
-            var(--cream) 50%,
-            var(--amber) 60%,
-            var(--brass) 85%,
-            transparent 100%
-        );
-        opacity: 0.4;
-        position: relative;
-    }
-    .deco-border::before,
-    .deco-border::after {
-        content: '';
-        position: absolute;
-        top: -3px;
-        width: 9px;
-        height: 9px;
-        background: var(--brass);
-        transform: rotate(45deg);
-        opacity: 0.6;
-    }
-    .deco-border::before { left: 14%; }
-    .deco-border::after { right: 14%; }
-
-    /* REVEAL ANIMATION */
-    .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* =========================================
-       ON AIR HEADER
-       ========================================= */
-    .header-section {
-        text-align: center;
-        padding-top: 20px;
     }
 
     .on-air-badge {
-        display: inline-block;
-        font-family: var(--display);
-        font-size: 42px;
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+        margin-bottom: 0.5rem;
+        font-family: var(--mono);
         color: #c0392b;
-        letter-spacing: 10px;
-        padding: 8px 32px;
-        border: 3px solid #c0392b;
-        border-radius: 8px;
-        margin-bottom: 28px;
-        text-shadow: 0 0 20px rgba(192, 57, 43, 0.5);
-        box-shadow: 0 0 20px rgba(192, 57, 43, 0.15), inset 0 0 20px rgba(192, 57, 43, 0.05);
+        text-shadow: 0 0 10px rgba(192, 57, 43, 0.5);
         animation: onAirPulse 2s ease-in-out infinite;
     }
 
-    .dial-display {
-        background: linear-gradient(145deg, var(--mahogany), var(--walnut));
-        border: 2px solid var(--brass);
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 20px;
-        box-shadow: inset 0 2px 8px rgba(0,0,0,0.5), 0 0 12px var(--brass-glow);
-    }
-
-    .dial-window {
-        background: linear-gradient(180deg, #1a1408, #0d0a04);
-        border: 1px solid var(--brass);
-        border-radius: 6px;
-        padding: 16px 20px 12px;
-        position: relative;
-        margin-bottom: 16px;
-    }
-
-    .dial-frequencies {
-        display: flex;
-        justify-content: space-between;
-        font-family: var(--mono);
-        font-size: 14px;
-        color: var(--amber);
-        opacity: 0.8;
-    }
-
-    .dial-indicator {
-        width: 2px;
-        height: 24px;
-        background: #c0392b;
-        margin: 8px auto 0;
-        box-shadow: 0 0 6px rgba(192, 57, 43, 0.6);
-        animation: dialSlide 8s ease-in-out infinite;
-    }
-
-    .vu-meters {
-        display: flex;
-        gap: 12px;
-        justify-content: center;
-    }
-
-    .vu-meter {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .vu-label {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--brass);
-        width: 14px;
-    }
-
-    .vu-bar {
-        width: 160px;
-        height: 10px;
-        background: #0d0a04;
-        border: 1px solid var(--brass);
-        border-radius: 3px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .vu-fill {
-        height: 100%;
-        width: 60%;
-        background: linear-gradient(90deg, var(--radio-green), var(--radio-green) 70%, var(--amber) 85%, #c0392b);
-        border-radius: 2px;
-        transition: width 0.15s ease;
-        box-shadow: 0 0 4px var(--amber-glow);
-    }
-
-    .station-info {
-        margin-top: 8px;
-    }
-
-    .station-name {
+    .station-title {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
         font-family: var(--display);
-        font-size: 24px;
         color: var(--amber);
-        letter-spacing: 3px;
-        text-shadow: 0 0 10px var(--amber-glow);
+        text-shadow: 0 0 15px var(--amber-glow);
     }
 
-    .station-tagline {
-        font-family: var(--body);
-        font-size: 14px;
-        color: var(--brass);
-        font-style: italic;
-        margin-top: 4px;
-        opacity: 0.8;
-    }
-
-    /* =========================================
-       OPENING ANNOUNCEMENT
-       ========================================= */
-    .announcer-card {
-        display: flex;
-        gap: 28px;
-        align-items: flex-start;
-        margin-bottom: 24px;
-    }
-
-    .announcer-photo {
-        position: relative;
-        flex-shrink: 0;
-    }
-
-    .announcer-photo img {
-        width: 160px;
-        height: 160px;
-        object-fit: cover;
-        border-radius: 8px;
-        border: 3px solid var(--brass);
-        filter: sepia(0.3) contrast(1.1) brightness(0.9);
-        display: block;
-    }
-
-    .photo-glow {
-        position: absolute;
-        inset: -4px;
-        border-radius: 12px;
-        border: 1px solid var(--amber);
-        opacity: 0.3;
-        pointer-events: none;
-        box-shadow: 0 0 20px var(--amber-glow);
-    }
-
-    .announcer-info {
-        flex: 1;
-    }
-
-    .announcer-name {
-        font-family: var(--display);
-        font-size: clamp(28px, 5vw, 42px);
-        color: var(--cream);
-        line-height: 1.2;
-        margin-bottom: 8px;
-    }
-
-    .announcer-role {
-        font-family: var(--mono);
-        font-size: 13px;
-        color: var(--amber);
-        letter-spacing: 0.5px;
-        margin-bottom: 12px;
-    }
-
-    .announcer-meta {
-        margin-bottom: 12px;
-    }
-
-    .meta-item {
-        font-size: 14px;
-        color: var(--brass);
-        font-style: italic;
-    }
-
-    .announcer-links {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 14px;
-    }
-
-    .link-dot {
-        color: var(--brass);
-        opacity: 0.5;
-    }
-
-    .announcer-script {
-        background: linear-gradient(145deg, rgba(42, 24, 16, 0.6), rgba(26, 15, 8, 0.8));
-        border-left: 3px solid var(--amber);
-        padding: 20px 24px;
-        border-radius: 0 8px 8px 0;
-        margin-bottom: 24px;
-    }
-
-    .script-text {
-        font-family: var(--body);
-        font-size: 16px;
-        font-style: italic;
-        color: var(--cream);
-        line-height: 1.7;
-        margin-bottom: 16px;
-        opacity: 0.9;
-    }
-
-    .summary-text {
-        font-family: var(--body);
-        font-size: 14px;
-        color: var(--cream);
-        line-height: 1.7;
-        opacity: 0.75;
-    }
-
-    .metrics-ticker {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
-    }
-
-    .ticker-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 12px 18px;
-        background: linear-gradient(145deg, var(--mahogany), var(--walnut));
-        border: 1px solid var(--brass);
-        border-radius: 6px;
-        min-width: 100px;
-    }
-
-    .ticker-value {
-        font-family: var(--display);
-        font-size: 22px;
-        color: var(--amber);
-        text-shadow: 0 0 8px var(--amber-glow);
-    }
-
-    .ticker-label {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--brass);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-top: 2px;
-    }
-
-    /* =========================================
-       PROGRAM SCHEDULE (Experience)
-       ========================================= */
-    .program-list {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    .program-block {
-        background: linear-gradient(145deg, rgba(42, 24, 16, 0.4), rgba(26, 15, 8, 0.6));
-        border: 1px solid rgba(184, 134, 11, 0.2);
-        border-radius: 8px;
-        padding: 20px;
-        transition: border-color 0.3s;
-    }
-    .program-block:hover {
-        border-color: rgba(184, 134, 11, 0.5);
-    }
-
-    .program-time-slot {
-        display: flex;
-        gap: 16px;
-    }
-
-    .program-indicator {
-        flex-shrink: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 6px;
-    }
-
-    .indicator-light {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--amber);
-        box-shadow: 0 0 8px var(--amber-glow);
-        animation: indicatorPulse 3s ease-in-out infinite;
-    }
-
-    .program-details { flex: 1; }
-
-    .program-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 8px;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .program-company {
-        font-family: var(--display);
-        font-size: 22px;
-        color: var(--amber);
-    }
-
-    .program-location {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--brass);
+    .programme-title {
+        font-size: 0.75rem;
         opacity: 0.7;
-    }
-
-    .program-role { margin-bottom: 8px; }
-
-    .role-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 4px;
-    }
-
-    .role-title {
-        font-family: var(--body);
-        font-weight: 600;
-        font-size: 15px;
-        color: var(--cream);
-    }
-
-    .role-time {
+        margin-bottom: 1rem;
         font-family: var(--mono);
-        font-size: 11px;
         color: var(--brass);
-        opacity: 0.7;
+        letter-spacing: 0.05em;
     }
 
-    .role-description {
-        font-size: 14px;
+    .transcript {
+        text-align: left;
+    }
+
+    .transcript p {
+        font-size: 0.78rem;
+        line-height: 1.5;
+        margin-bottom: 0.5rem;
         color: var(--cream);
-        opacity: 0.7;
-        margin-bottom: 8px;
-        line-height: 1.6;
-    }
-
-    .role-highlights {
-        list-style: none;
-        padding: 0;
-    }
-
-    .role-highlights li {
-        font-size: 13px;
-        color: var(--cream);
-        opacity: 0.65;
-        line-height: 1.7;
-        padding-left: 16px;
-        position: relative;
-    }
-    .role-highlights li::before {
-        content: '\25B8';
-        position: absolute;
-        left: 0;
-        color: var(--amber);
-    }
-
-    /* =========================================
-       STATION DIRECTORY (Skills)
-       ========================================= */
-    .frequency-group {
-        margin-bottom: 24px;
-    }
-    .frequency-group:last-child {
-        margin-bottom: 0;
-    }
-
-    .freq-group-label {
         font-family: var(--body);
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--brass);
-        margin-bottom: 12px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
     }
 
-    .frequency-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .freq-chip {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 14px;
-        background: linear-gradient(145deg, var(--mahogany), var(--walnut));
-        border: 1px solid rgba(184, 134, 11, 0.25);
-        border-radius: 20px;
-        transition: border-color 0.2s, box-shadow 0.2s;
-        cursor: default;
-    }
-    .freq-chip:hover {
-        border-color: var(--amber);
-        box-shadow: 0 0 12px var(--amber-glow);
-    }
-    .freq-chip.management { border-color: rgba(74, 124, 89, 0.3); }
-    .freq-chip.management:hover { border-color: var(--radio-green); box-shadow: 0 0 12px rgba(74, 124, 89, 0.3); }
-    .freq-chip.industry { border-color: rgba(212, 147, 13, 0.15); }
-    .freq-chip.language { border-color: rgba(245, 230, 200, 0.15); }
-
-    .freq-number {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--amber);
-        opacity: 0.6;
-        min-width: 32px;
-    }
-
-    .freq-name {
-        font-family: var(--body);
-        font-size: 13px;
-        color: var(--cream);
-        opacity: 0.85;
-    }
-
-    /* =========================================
-       NEWS BULLETINS (Engagements)
-       ========================================= */
-    .bulletin-intro {
-        font-family: var(--body);
-        font-size: 15px;
-        font-style: italic;
-        color: var(--cream);
-        text-align: center;
-        margin-bottom: 20px;
-        opacity: 0.7;
-    }
-
-    .bulletin-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .bulletin-card {
-        background: linear-gradient(145deg, rgba(42, 24, 16, 0.5), rgba(26, 15, 8, 0.7));
-        border: 1px solid rgba(192, 57, 43, 0.2);
-        border-radius: 6px;
-        padding: 16px 20px;
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-        transition: border-color 0.3s;
-    }
-    .bulletin-card:hover {
-        border-color: rgba(192, 57, 43, 0.5);
-    }
-
-    .bulletin-flash {
-        font-family: var(--mono);
-        font-size: 9px;
-        font-weight: 700;
-        color: #c0392b;
-        letter-spacing: 1px;
-        border: 1px solid #c0392b;
-        padding: 2px 8px;
-        border-radius: 3px;
-        flex-shrink: 0;
-        animation: bulletinFlash 3s ease-in-out infinite;
-    }
-
-    .bulletin-content { flex: 1; }
-
-    .bulletin-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 4px;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .bulletin-client {
-        font-family: var(--body);
-        font-weight: 600;
-        font-size: 15px;
-        color: var(--amber);
-        text-transform: capitalize;
-    }
-
-    .bulletin-sector {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--brass);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .bulletin-details {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .bulletin-scope {
-        font-size: 13px;
-        color: var(--cream);
-        opacity: 0.65;
-    }
-
-    .bulletin-impact {
-        font-family: var(--mono);
-        font-size: 12px;
-        font-weight: 700;
-    }
-    .bulletin-impact.positive { color: var(--radio-green); }
-    .bulletin-impact.neutral { color: var(--brass); }
-
-    /* =========================================
-       SPONSOR MESSAGES (Education)
-       ========================================= */
-    .sponsor-group {
-        margin-bottom: 28px;
-    }
-    .sponsor-group:last-child { margin-bottom: 0; }
-
-    .sponsor-label {
-        font-family: var(--body);
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--brass);
-        margin-bottom: 12px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .sponsor-card {
-        background: linear-gradient(145deg, rgba(42, 24, 16, 0.4), rgba(26, 15, 8, 0.6));
-        border: 1px solid rgba(184, 134, 11, 0.2);
-        border-radius: 8px;
-        padding: 16px 20px;
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-        margin-bottom: 12px;
-    }
-
-    .sponsor-badge {
-        font-family: var(--mono);
-        font-size: 10px;
-        font-weight: 700;
-        color: var(--amber);
-        border: 1px solid var(--amber);
-        padding: 4px 10px;
-        border-radius: 4px;
-        flex-shrink: 0;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .sponsor-details { flex: 1; }
-
-    .sponsor-degree {
-        font-family: var(--body);
-        font-weight: 600;
-        font-size: 15px;
-        color: var(--cream);
-        margin-bottom: 2px;
-    }
-
-    .sponsor-meta {
-        font-size: 13px;
-        color: var(--cream);
-        opacity: 0.65;
-    }
-
-    .sponsor-period {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--brass);
-        opacity: 0.6;
-        margin-top: 2px;
-    }
-
-    .cert-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .cert-chip {
-        font-family: var(--body);
-        font-size: 13px;
-        color: var(--cream);
-        padding: 6px 14px;
-        background: linear-gradient(145deg, var(--mahogany), var(--walnut));
-        border: 1px solid rgba(184, 134, 11, 0.2);
-        border-radius: 20px;
-        opacity: 0.85;
-    }
-
-    .learning-list {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .learning-item {
-        font-size: 13px;
-        color: var(--cream);
-        opacity: 0.7;
-        padding-left: 16px;
-        position: relative;
-    }
-    .learning-item::before {
-        content: '\25C8';
-        position: absolute;
-        left: 0;
-        color: var(--brass);
-        font-size: 10px;
-        top: 3px;
-    }
-
-    /* =========================================
-       SIGN-OFF FOOTER
-       ========================================= */
     .sign-off {
-        text-align: center;
-        padding: 40px 0 20px;
-    }
-
-    .sign-off-text p {
-        font-family: var(--body);
-        font-size: 16px;
+        font-size: 0.75rem;
         font-style: italic;
-        color: var(--cream);
         opacity: 0.8;
-        line-height: 1.7;
-        margin-bottom: 8px;
+        margin: 0.8rem 0;
+        text-align: center;
+        color: var(--cream);
+        font-family: var(--body);
     }
 
-    .sign-off-sub {
-        font-size: 14px !important;
-        opacity: 0.6 !important;
+    .radio-footer {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 0.8rem;
     }
 
-    .sign-off-bar {
-        margin-top: 32px;
-    }
-
-    .off-air-badge {
-        display: inline-block;
-        font-family: var(--display);
-        font-size: 24px;
-        color: var(--brass);
-        letter-spacing: 6px;
-        padding: 6px 24px;
-        border: 2px solid var(--brass);
-        border-radius: 6px;
-        opacity: 0.5;
+    .radio-footer a {
+        text-decoration: none;
+        font-family: var(--mono);
+        font-size: 0.75rem;
     }
 
     /* =========================================
@@ -1259,154 +353,25 @@ import { experience, education, certifications, skills, engagements, continuousL
         50% { opacity: 0.7; }
     }
 
-    @keyframes dialSlide {
-        0%, 100% { margin-left: 20%; }
-        25% { margin-left: 60%; }
-        50% { margin-left: 40%; }
-        75% { margin-left: 70%; }
-    }
-
-    @keyframes indicatorPulse {
-        0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--amber-glow); }
-        50% { opacity: 0.5; box-shadow: 0 0 4px var(--amber-glow); }
-    }
-
-    @keyframes bulletinFlash {
-        0%, 70%, 100% { opacity: 1; }
-        75% { opacity: 0.3; }
-        80% { opacity: 1; }
-        85% { opacity: 0.3; }
-    }
-
-    @keyframes freqScan {
-        0%, 100% { opacity: 0.6; }
-        50% { opacity: 1; text-shadow: 0 0 8px var(--amber-glow); }
-    }
-
     /* =========================================
-       RESPONSIVE -- TABLET (601-1024px)
+       RESPONSIVE — MOBILE
        ========================================= */
-    @media (max-width: 1024px) {
-        body { font-size: 15px; }
-        .broadcast { max-width: 700px; padding: 36px 20px 100px; }
-        .on-air-badge { font-size: 34px; letter-spacing: 6px; padding: 6px 24px; }
-        .section-title { font-size: 24px; }
-        .announcer-name { font-size: 32px; }
-        .announcer-photo img { width: 130px; height: 130px; }
-        .program-company { font-size: 20px; }
-        .vu-bar { width: 120px; }
-        .deco-border { margin: 32px 0; }
+    @media (max-width: 768px) {
+        .transcript p {
+            font-size: 0.72rem;
+        }
     }
 
-    /* =========================================
-       RESPONSIVE -- SMALL TABLET / LARGE PHONE (481-600px)
-       ========================================= */
     @media (max-width: 600px) {
-        body { font-size: 14px; }
-        .broadcast { padding: 28px 14px 80px; }
-
-        .on-air-badge {
-            font-size: 26px;
-            letter-spacing: 4px;
-            padding: 6px 16px;
-        }
-
-        .dial-display { padding: 14px; }
-        .dial-frequencies { font-size: 11px; }
-        .vu-meters { flex-direction: column; align-items: center; }
-        .vu-bar { width: 200px; }
-
-        .station-name { font-size: 20px; letter-spacing: 2px; }
-        .station-tagline { font-size: 12px; }
-
-        .section-header { gap: 10px; margin-bottom: 20px; }
-        .section-title { font-size: 20px; }
-        .section-icon { font-size: 14px; }
-
-        .announcer-card {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 16px;
-        }
-        .announcer-photo img { width: 120px; height: 120px; }
-        .announcer-name { font-size: 28px; }
-        .announcer-role { font-size: 12px; }
-        .announcer-links { justify-content: center; flex-wrap: wrap; }
-        .announcer-script { padding: 14px 16px; }
-        .script-text { font-size: 14px; }
-        .summary-text { font-size: 13px; }
-
-        .metrics-ticker { gap: 8px; }
-        .ticker-item { min-width: 80px; padding: 10px 12px; }
-        .ticker-value { font-size: 18px; }
-        .ticker-label { font-size: 9px; }
-
-        .program-time-slot { gap: 12px; }
-        .program-company { font-size: 18px; }
-        .program-top { flex-direction: column; gap: 2px; }
-        .role-header { flex-direction: column; gap: 2px; }
-        .role-title { font-size: 14px; }
-        .role-description { font-size: 13px; }
-        .role-highlights li { font-size: 12px; }
-
-        .freq-chip { padding: 4px 10px; gap: 6px; }
-        .freq-name { font-size: 12px; }
-        .freq-number { font-size: 9px; }
-
-        .bulletin-card { flex-direction: column; gap: 8px; padding: 12px 14px; }
-        .bulletin-top { flex-direction: column; gap: 2px; }
-        .bulletin-client { font-size: 14px; }
-        .bulletin-details { flex-direction: column; gap: 2px; }
-
-        .sponsor-card { flex-direction: column; gap: 8px; padding: 12px 14px; }
-        .sponsor-degree { font-size: 14px; }
-
-        .deco-border { margin: 24px 0; }
-
-        .sign-off-text p { font-size: 14px; }
-        .off-air-badge { font-size: 18px; letter-spacing: 4px; }
-
         .intro-dial-label { font-size: 22px; }
         .intro-on-air { font-size: 36px; letter-spacing: 6px; }
     }
 
-    /* =========================================
-       RESPONSIVE -- SMALL PHONE (<=380px)
-       ========================================= */
     @media (max-width: 380px) {
-        body { font-size: 13px; }
-        .broadcast { padding: 20px 10px 60px; }
-        .on-air-badge { font-size: 20px; letter-spacing: 3px; padding: 4px 12px; border-width: 2px; }
-        .section-title { font-size: 18px; }
-        .announcer-name { font-size: 24px; }
-        .announcer-photo img { width: 100px; height: 100px; }
-        .program-company { font-size: 16px; }
-        .freq-chip { padding: 3px 8px; }
-        .freq-name { font-size: 11px; }
-        .freq-number { display: none; }
-        .ticker-item { min-width: 70px; padding: 8px 10px; }
-        .ticker-value { font-size: 16px; }
         .intro-dial-label { font-size: 18px; }
         .intro-on-air { font-size: 28px; letter-spacing: 4px; }
         .intro-frequency-bars { height: 40px; }
         .intro-frequency-bars span { width: 5px; }
-    }
-
-    /* =========================================
-       TOUCH: larger tap targets on mobile
-       ========================================= */
-    @media (hover: none) and (pointer: coarse) {
-        .announcer-links a {
-            padding: 6px 4px;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-        }
-        .freq-chip {
-            padding: 8px 14px;
-            min-height: 36px;
-        }
     }
 </style>
 
@@ -1508,33 +473,4 @@ import { experience, education, certifications, skills, engagements, continuousL
     });
 
     runIntro();
-
-    /* =============================================
-       SCROLL REVEAL (Intersection Observer)
-       ============================================= */
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    revealEls.forEach(el => observer.observe(el));
-
-    /* =============================================
-       VU METER ANIMATION
-       ============================================= */
-    const vuFillLeft = document.getElementById('vuFillLeft') as HTMLElement;
-    const vuFillRight = document.getElementById('vuFillRight') as HTMLElement;
-
-    function animateVU(): void {
-        const baseL = 40 + Math.random() * 35;
-        const baseR = 40 + Math.random() * 35;
-        vuFillLeft.style.width = baseL + '%';
-        vuFillRight.style.width = baseR + '%';
-        setTimeout(animateVU, 120 + Math.random() * 180);
-    }
-    animateVU();
 </script>

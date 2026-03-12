@@ -1,6 +1,5 @@
 ---
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, metrics, industries, managementSkills, languages } from "../data/resume";
 ---
 
 <!doctype html>
@@ -69,236 +68,16 @@ import { experience, education, certifications, skills, engagements, continuousL
 
     <!-- MAIN CONTENT -->
     <main id="tape" class="tape">
-
-        <!-- ====== TITLE SCREEN ====== -->
-        <section class="section title-screen reveal" data-section="header">
-            <div class="arcade-title-frame">
-                <div class="pixel-border-top" aria-hidden="true"></div>
-                <h1 class="arcade-title" data-text={siteMetadata.name.toUpperCase()}>{siteMetadata.name.toUpperCase()}</h1>
-                <div class="arcade-subtitle">SENIOR ENGAGEMENT MANAGER</div>
-                <div class="arcade-subtitle sub2">AI & CYBERSECURITY</div>
-                <div class="pixel-border-bottom" aria-hidden="true"></div>
+        <div class="arcade-narrative">
+            <div class="level-display">
+                <div class="level-row"><span class="level-num">LEVEL 1</span><span class="level-title">SOFTWARE ENGINEER</span><div class="level-detail">accenture, milan (2012-2014) — [first code. first build. game begins.]</div></div>
+                <div class="level-row"><span class="level-num">LEVEL 2</span><span class="level-title">SENIOR CONSULTANT</span><div class="level-detail">codec, dublin (2015-2017) — [new territory unlocked. ireland arc.]</div></div>
+                <div class="level-row"><span class="level-num">LEVEL 3</span><span class="level-title">MANAGEMENT CONSULTANT</span><div class="level-detail">accenture, london (2017-2018) — [class upgrade: aerospace & defence.]</div></div>
+                <div class="level-row"><span class="level-num">LEVEL 4</span><span class="level-title">MANAGER</span><div class="level-detail">deloitte, london (2018-2021) — [built anaplan practice from zero. 25+ recruited.]</div></div>
+                <div class="level-row boss"><span class="level-num">★ BOSS LEVEL ★</span><span class="level-title">SENIOR ENGAGEMENT MANAGER</span><div class="level-detail">c3 ai, london (2021-present) — [$15m programme. 70+ crew. 100+ plants. $18m ebit. nps>70.]</div></div>
             </div>
-            <div class="hi-score-panel">
-                <div class="hi-row">
-                    <span class="hi-label">RANK</span>
-                    <span class="hi-label">NAME</span>
-                    <span class="hi-label">SCORE</span>
-                </div>
-                {metrics.map((m, i) => (
-                    <div class="hi-row">
-                        <span class="hi-rank">{String(i + 1).padStart(2, '0')}</span>
-                        <span class="hi-name">{m.label.toUpperCase()}</span>
-                        <span class="hi-score-val">{m.value}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="pixel-divider" aria-hidden="true"></div>
-
-        <!-- ====== PLAYER SELECT ====== -->
-        <section class="section reveal" data-section="summary">
-            <div class="sec-head">
-                <span class="sec-icon">&#9654;</span>
-                <span class="sec-title">PLAYER SELECT</span>
-            </div>
-            <div class="player-card">
-                <div class="player-avatar-frame">
-                    <img src="/assets/dani.jpeg" alt={siteMetadata.name} class="player-avatar" width="140" height="140" />
-                    <div class="avatar-scanlines" aria-hidden="true"></div>
-                    <div class="avatar-label">P1</div>
-                </div>
-                <div class="player-info">
-                    <div class="player-name">{siteMetadata.name.toUpperCase()}</div>
-                    <div class="player-class">CLASS: ENGAGEMENT MANAGER</div>
-                    <div class="player-stats">
-                        <div class="stat-row"><span class="stat-label">LOC</span><span class="stat-val">{siteMetadata.location.toUpperCase()}</span></div>
-                        <div class="stat-row"><span class="stat-label">HP</span><span class="stat-bar"><span class="stat-fill" style="width:95%"></span></span></div>
-                        <div class="stat-row"><span class="stat-label">MP</span><span class="stat-bar"><span class="stat-fill mp" style="width:88%"></span></span></div>
-                        <div class="stat-row"><span class="stat-label">EXP</span><span class="stat-val">15+ YEARS</span></div>
-                    </div>
-                    <div class="player-bio">{summary}</div>
-                    <div class="player-links">
-                        <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GITHUB</a>
-                        <a href={`https://linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LINKEDIN</a>
-                        <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener">BLUESKY</a>
-                        <a href={`mailto:${siteMetadata.email}`}>EMAIL</a>
-                    </div>
-                    <div class="player-langs">
-                        {languages.map(l => (
-                            <span class="lang-badge">{l.toUpperCase()}</span>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="pixel-divider" aria-hidden="true"></div>
-
-        <!-- ====== LEVEL SELECT (EXPERIENCE) ====== -->
-        <section class="section reveal" data-section="experience">
-            <div class="sec-head">
-                <span class="sec-icon">&#9654;</span>
-                <span class="sec-title">LEVEL SELECT</span>
-                <span class="sec-sub">// CAREER STAGES</span>
-            </div>
-            <div class="level-grid">
-                {experience.map((exp, i) => (
-                    <div class="level-card reveal">
-                        <div class="level-header">
-                            <span class="level-num">LVL {String(experience.length - i).padStart(2, '0')}</span>
-                            <span class="level-company">{exp.company.toUpperCase()}</span>
-                            <span class="level-loc">{exp.location.toUpperCase()}</span>
-                        </div>
-                        {exp.roles.map(role => (
-                            <div class="level-body">
-                                <div class="level-role-row">
-                                    <span class="level-role">{role.title.toUpperCase()}</span>
-                                    <span class="level-period">{role.period}</span>
-                                </div>
-                                {role.description && <p class="level-desc">{role.description}</p>}
-                                {role.bullets && role.bullets.length > 0 && (
-                                    <ul class="level-loot">
-                                        {role.bullets.map(b => (
-                                            <li><span class="loot-icon" aria-hidden="true">&#9733;</span> {b}</li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="pixel-divider" aria-hidden="true"></div>
-
-        <!-- ====== POWER-UPS (SKILLS) ====== -->
-        <section class="section reveal" data-section="skills">
-            <div class="sec-head">
-                <span class="sec-icon">&#9654;</span>
-                <span class="sec-title">POWER-UPS</span>
-                <span class="sec-sub">// TECHNICAL SKILLS</span>
-            </div>
-            <div class="powerup-grid">
-                {skills.map((s, i) => (
-                    <span class="powerup" style={`--i:${i}`}>{s.toUpperCase()}</span>
-                ))}
-            </div>
-
-            <div class="sec-head sub-sec">
-                <span class="sec-icon">&#9654;</span>
-                <span class="sec-title">SPECIAL MOVES</span>
-                <span class="sec-sub">// MANAGEMENT SKILLS</span>
-            </div>
-            <div class="powerup-grid mgmt">
-                {managementSkills.map((s, i) => (
-                    <span class="powerup mgmt-skill" style={`--i:${i}`}>{s.toUpperCase()}</span>
-                ))}
-            </div>
-
-            <div class="sec-head sub-sec">
-                <span class="sec-icon">&#9654;</span>
-                <span class="sec-title">WORLD MAP</span>
-                <span class="sec-sub">// INDUSTRIES</span>
-            </div>
-            <div class="powerup-grid industries">
-                {industries.map((ind, i) => (
-                    <span class="powerup industry" style={`--i:${i}`}>{ind.toUpperCase()}</span>
-                ))}
-            </div>
-        </section>
-
-        <div class="pixel-divider" aria-hidden="true"></div>
-
-        <!-- ====== BOSS BATTLES (ENGAGEMENTS) ====== -->
-        <section class="section reveal" data-section="engagements">
-            <div class="sec-head">
-                <span class="sec-icon">&#9654;</span>
-                <span class="sec-title">BOSS BATTLES</span>
-                <span class="sec-sub">// KEY ENGAGEMENTS</span>
-            </div>
-            <div class="boss-grid">
-                {engagements.map((eng, i) => (
-                    <div class="boss-card reveal">
-                        <div class="boss-header">
-                            <span class="boss-num">BOSS {String(i + 1).padStart(2, '0')}</span>
-                            <span class="boss-sector">{eng.sector.toUpperCase()}</span>
-                        </div>
-                        <div class="boss-name">{eng.client.toUpperCase()}</div>
-                        <div class="boss-stats">
-                            <div class="boss-stat"><span class="bs-label">SCOPE</span><span class="bs-val">{eng.scope}</span></div>
-                            <div class="boss-stat"><span class="bs-label">IMPACT</span><span class={`bs-val ${eng.trend}`}>{eng.impact}</span></div>
-                        </div>
-                        <div class={`boss-status ${eng.trend}`}>{eng.trend === 'positive' ? 'VICTORY!' : 'CLEARED'}</div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="pixel-divider" aria-hidden="true"></div>
-
-        <!-- ====== TRAINING STAGES (EDUCATION + CERTS) ====== -->
-        <section class="section reveal" data-section="education">
-            <div class="sec-head">
-                <span class="sec-icon">&#9654;</span>
-                <span class="sec-title">TRAINING STAGES</span>
-                <span class="sec-sub">// EDUCATION</span>
-            </div>
-            <div class="training-list">
-                {education.map((edu, i) => (
-                    <div class="training-card reveal">
-                        <div class="training-header">
-                            <span class="training-stage">STAGE {String(i + 1).padStart(2, '0')}</span>
-                            <span class="training-period">{edu.period}</span>
-                        </div>
-                        <div class="training-degree">{edu.degree.toUpperCase()}</div>
-                        <div class="training-inst">{edu.institution.toUpperCase()} — {edu.location.toUpperCase()}</div>
-                        {edu.distinction && <div class="training-badge">ACHIEVEMENT UNLOCKED: {edu.distinction.toUpperCase()}</div>}
-                    </div>
-                ))}
-            </div>
-
-            <div class="sec-head sub-sec">
-                <span class="sec-icon">&#9654;</span>
-                <span class="sec-title">ACHIEVEMENTS</span>
-                <span class="sec-sub">// CERTIFICATIONS</span>
-            </div>
-            <div class="achievement-grid">
-                {certifications.map(c => (
-                    <div class="achievement-badge">{c.toUpperCase()}</div>
-                ))}
-            </div>
-
-            <div class="sec-head sub-sec">
-                <span class="sec-icon">&#9654;</span>
-                <span class="sec-title">BONUS ROUNDS</span>
-                <span class="sec-sub">// CONTINUOUS LEARNING</span>
-            </div>
-            <div class="achievement-grid bonus">
-                {continuousLearning.map(l => (
-                    <div class="achievement-badge bonus-badge">{l.toUpperCase()}</div>
-                ))}
-            </div>
-        </section>
-
-        <div class="pixel-divider" aria-hidden="true"></div>
-
-        <!-- ====== GAME OVER / CONTINUE ====== -->
-        <section class="section game-over-section" data-section="footer">
-            <div class="game-over-text">GAME OVER</div>
-            <div class="continue-text">CONTINUE?</div>
-            <div class="continue-countdown" id="continueCountdown">10</div>
-            <div class="game-over-links">
-                <a href={`mailto:${siteMetadata.email}`} class="continue-btn">YES — CONTACT ME</a>
-                <a href="/" class="continue-btn alt">NO — MAIN MENU</a>
-            </div>
-            <div class="credits-text">
-                {siteMetadata.name.toUpperCase()} &copy; {new Date().getFullYear()}<br />
-                {siteMetadata.location.toUpperCase()}
-            </div>
-        </section>
+            <div class="arcade-footer"><a href="mailto:daniele@dagnelli.net">[INSERT COIN]</a><a href="https://github.com/danieledagnelli">[GITHUB]</a><a href="https://linkedin.com/in/dagnelli">[LINKEDIN]</a></div>
+        </div>
     </main>
 </body>
 </html>
@@ -319,8 +98,6 @@ import { experience, education, certifications, skills, engagements, continuousL
         --dim: #333;
         --heading-font: 'Press Start 2P', monospace;
         --body-font: 'VT323', monospace;
-        scrollbar-width: thin;
-        scrollbar-color: var(--pink) var(--black);
     }
 
     body {
@@ -329,8 +106,8 @@ import { experience, education, certifications, skills, engagements, continuousL
         font-family: var(--body-font);
         font-size: 18px;
         line-height: 1.6;
-        overflow-x: hidden;
-        min-height: 100vh;
+        overflow: hidden;
+        height: 100dvh;
     }
 
     a { color: var(--blue); text-decoration: none; }
@@ -447,596 +224,136 @@ import { experience, education, certifications, skills, engagements, continuousL
     .score-value.hi { color: var(--yellow); }
 
     /* =========================================
-       MAIN CONTENT
+       MAIN CONTENT — VIEWPORT LOCKED
        ========================================= */
     .tape {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 60px 24px 80px;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         opacity: 0;
         transition: opacity 0.5s ease 0.2s;
         position: relative;
         z-index: 1;
+        padding: 0 24px;
     }
     .tape.visible { opacity: 1; }
 
     /* =========================================
-       SECTION HEADS
+       ARCADE NARRATIVE
        ========================================= */
-    .section { margin-bottom: 0; }
-
-    .sec-head {
-        display: flex; align-items: center; gap: 10px;
-        margin-bottom: 16px;
-        font-family: var(--heading-font);
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    .sec-head.sub-sec { margin-top: 24px; }
-    .sec-icon { color: var(--pink); font-size: 10px; }
-    .sec-title { color: var(--yellow); text-shadow: 0 0 8px rgba(255,255,0,0.3); }
-    .sec-sub { color: var(--dim); font-family: var(--body-font); font-size: 16px; }
-
-    /* REVEAL ANIMATION */
-    .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .reveal.in-view {
-        opacity: 1;
-        transform: translateY(0);
+    .arcade-narrative {
+        width: 100%;
+        max-width: 720px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
     }
 
-    /* PIXEL DIVIDER */
-    .pixel-divider {
-        height: 4px;
-        margin: 2.5rem 0;
-        background: repeating-linear-gradient(
-            90deg,
-            var(--pink) 0px, var(--pink) 8px,
-            transparent 8px, transparent 12px,
-            var(--blue) 12px, var(--blue) 20px,
-            transparent 20px, transparent 24px,
-            var(--green) 24px, var(--green) 32px,
-            transparent 32px, transparent 36px,
-            var(--yellow) 36px, var(--yellow) 44px,
-            transparent 44px, transparent 48px
-        );
-        image-rendering: pixelated;
+    .level-display {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
 
-    /* =========================================
-       TITLE SCREEN
-       ========================================= */
-    .arcade-title-frame {
-        text-align: center;
-        margin-bottom: 28px;
-        padding: 24px 16px;
-        border: 3px solid var(--pink);
-        position: relative;
-        background: rgba(255,0,255,0.03);
-        image-rendering: pixelated;
-    }
-
-    .pixel-border-top,
-    .pixel-border-bottom {
-        position: absolute; left: -3px; right: -3px;
-        height: 3px;
-        background: repeating-linear-gradient(
-            90deg,
-            var(--pink) 0px, var(--pink) 6px,
-            var(--blue) 6px, var(--blue) 12px,
-            var(--green) 12px, var(--green) 18px,
-            var(--yellow) 18px, var(--yellow) 24px
-        );
-    }
-    .pixel-border-top { top: -3px; }
-    .pixel-border-bottom { bottom: -3px; }
-
-    .arcade-title {
-        font-family: var(--heading-font);
-        font-size: clamp(20px, 4.5vw, 36px);
-        color: var(--white);
-        text-shadow:
-            0 0 10px var(--pink),
-            0 0 30px rgba(255,0,255,0.4),
-            3px 3px 0 var(--blue);
-        line-height: 1.3;
-        margin-bottom: 12px;
-    }
-
-    .arcade-subtitle {
-        font-family: var(--heading-font);
-        font-size: clamp(8px, 1.8vw, 12px);
-        color: var(--green);
-        text-shadow: 0 0 10px rgba(57,255,20,0.4);
-        letter-spacing: 2px;
-        margin-bottom: 4px;
-    }
-    .arcade-subtitle.sub2 { color: var(--blue); text-shadow: 0 0 10px rgba(0,204,255,0.4); }
-
-    /* HI-SCORE TABLE */
-    .hi-score-panel {
-        border: 2px solid var(--yellow);
-        padding: 12px 16px;
-        background: rgba(255,255,0,0.02);
-    }
-    .hi-row {
-        display: flex; gap: 16px;
-        font-family: var(--heading-font);
-        font-size: 9px;
-        padding: 4px 0;
-        border-bottom: 1px solid rgba(255,255,0,0.1);
-    }
-    .hi-row:last-child { border-bottom: none; }
-    .hi-label { color: var(--yellow); flex: 1; font-size: 8px; }
-    .hi-rank { color: var(--pink); width: 40px; }
-    .hi-name { color: var(--white); flex: 1; }
-    .hi-score-val { color: var(--green); text-align: right; min-width: 80px; }
-
-    /* =========================================
-       PLAYER SELECT
-       ========================================= */
-    .player-card {
-        display: flex; gap: 24px;
-        align-items: flex-start;
-        border: 2px solid var(--blue);
-        padding: 20px;
-        background: rgba(0,204,255,0.02);
-    }
-
-    .player-avatar-frame {
-        position: relative;
-        flex-shrink: 0;
-        border: 3px solid var(--pink);
-        padding: 4px;
-        background: var(--black);
-    }
-    .player-avatar {
-        width: 140px; height: 140px;
-        object-fit: cover;
-        display: block;
-        image-rendering: auto;
-        filter: contrast(1.15) saturate(1.1);
-    }
-    .avatar-scanlines {
-        position: absolute; inset: 4px;
-        background: repeating-linear-gradient(
-            0deg,
-            transparent 0px, transparent 2px,
-            rgba(255,0,255,0.06) 2px, rgba(255,0,255,0.06) 4px
-        );
-        pointer-events: none;
-    }
-    .avatar-label {
-        position: absolute; bottom: -10px; left: 50%;
-        transform: translateX(-50%);
-        font-family: var(--heading-font);
-        font-size: 10px;
-        color: var(--yellow);
-        background: var(--black);
-        padding: 0 8px;
-        text-shadow: 0 0 8px rgba(255,255,0,0.5);
-    }
-
-    .player-info { flex: 1; min-width: 0; }
-
-    .player-name {
-        font-family: var(--heading-font);
-        font-size: clamp(12px, 2.5vw, 18px);
-        color: var(--white);
-        text-shadow: 0 0 8px var(--pink);
-        margin-bottom: 4px;
-    }
-    .player-class {
-        font-family: var(--heading-font);
-        font-size: 9px;
-        color: var(--green);
-        margin-bottom: 12px;
-    }
-
-    .player-stats { margin-bottom: 12px; }
-    .stat-row {
-        display: flex; align-items: center; gap: 10px;
-        margin-bottom: 4px;
-        font-size: 16px;
-    }
-    .stat-label {
-        font-family: var(--heading-font);
-        font-size: 8px;
-        color: var(--yellow);
-        width: 32px;
-    }
-    .stat-val { color: var(--white); font-size: 16px; }
-    .stat-bar {
-        flex: 1;
-        height: 10px;
-        background: var(--dim);
-        border: 1px solid rgba(255,255,255,0.1);
-        max-width: 200px;
-    }
-    .stat-fill {
-        display: block;
-        height: 100%;
-        background: var(--green);
-        box-shadow: 0 0 6px var(--green);
-    }
-    .stat-fill.mp {
-        background: var(--blue);
-        box-shadow: 0 0 6px var(--blue);
-    }
-
-    .player-bio {
-        color: #bbb;
-        font-size: 16px;
-        line-height: 1.5;
-        margin-bottom: 12px;
-    }
-
-    .player-links {
-        display: flex; flex-wrap: wrap; gap: 8px;
-        margin-bottom: 10px;
-    }
-    .player-links a {
-        font-family: var(--heading-font);
-        font-size: 8px;
-        padding: 4px 10px;
-        border: 2px solid var(--blue);
-        color: var(--blue);
-        transition: all 0.2s;
-    }
-    .player-links a:hover {
-        background: var(--blue);
-        color: var(--black);
-        box-shadow: 0 0 12px var(--blue);
-    }
-
-    .player-langs { display: flex; gap: 8px; }
-    .lang-badge {
-        font-family: var(--heading-font);
-        font-size: 7px;
-        color: var(--yellow);
-        border: 1px solid var(--yellow);
-        padding: 2px 8px;
-    }
-
-    /* =========================================
-       LEVEL SELECT (EXPERIENCE)
-       ========================================= */
-    .level-grid {
-        display: flex; flex-direction: column; gap: 16px;
-    }
-
-    .level-card {
-        border: 2px solid var(--dim);
-        padding: 16px;
+    .level-row {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        gap: 0 16px;
+        padding: 10px 14px;
+        border-left: 3px solid var(--dim);
         background: rgba(255,255,255,0.01);
-        transition: border-color 0.3s;
-        position: relative;
+        transition: border-color 0.3s, background 0.3s;
     }
-    .level-card:hover { border-color: var(--pink); }
-    .level-card::before {
-        content: '';
-        position: absolute; top: 0; left: 0;
-        width: 4px; height: 100%;
-        background: var(--pink);
+    .level-row:hover {
+        border-color: var(--pink);
+        background: rgba(255,0,255,0.03);
     }
 
-    .level-header {
-        display: flex; align-items: baseline; gap: 12px;
-        margin-bottom: 8px;
-        flex-wrap: wrap;
-    }
     .level-num {
         font-family: var(--heading-font);
-        font-size: 9px;
+        font-size: clamp(7px, 1.4vw, 9px);
         color: var(--pink);
         text-shadow: 0 0 6px rgba(255,0,255,0.4);
-    }
-    .level-company {
-        font-family: var(--heading-font);
-        font-size: 11px;
-        color: var(--yellow);
-    }
-    .level-loc {
-        font-size: 14px;
-        color: var(--dim);
-        margin-left: auto;
+        white-space: nowrap;
+        align-self: center;
     }
 
-    .level-body { margin-top: 4px; }
-    .level-role-row {
-        display: flex; justify-content: space-between; align-items: baseline;
-        flex-wrap: wrap; gap: 8px;
-        margin-bottom: 4px;
-    }
-    .level-role {
-        color: var(--white);
-        font-size: 16px;
-    }
-    .level-period {
+    .level-title {
         font-family: var(--heading-font);
-        font-size: 7px;
-        color: var(--dim);
+        font-size: clamp(9px, 1.8vw, 13px);
+        color: var(--yellow);
+        text-shadow: 0 0 8px rgba(255,255,0,0.3);
+        align-self: center;
     }
-    .level-desc {
+
+    .level-detail {
+        grid-column: 1 / -1;
+        font-family: var(--body-font);
+        font-size: clamp(14px, 2.2vw, 18px);
         color: #999;
-        font-size: 16px;
-        margin-bottom: 6px;
-    }
-    .level-loot {
-        list-style: none;
-    }
-    .level-loot li {
-        color: #bbb;
-        font-size: 15px;
-        line-height: 1.6;
-        padding-left: 4px;
-    }
-    .loot-icon {
-        color: var(--yellow);
-        font-size: 12px;
-        margin-right: 4px;
+        line-height: 1.4;
+        margin-top: 4px;
     }
 
-    /* =========================================
-       POWER-UPS (SKILLS)
-       ========================================= */
-    .powerup-grid {
-        display: flex; flex-wrap: wrap; gap: 8px;
-    }
-
-    .powerup {
-        font-family: var(--heading-font);
-        font-size: 8px;
-        padding: 6px 12px;
-        border: 2px solid var(--green);
-        color: var(--green);
+    /* BOSS LEVEL */
+    .level-row.boss {
+        border-color: var(--yellow);
+        background: rgba(255,255,0,0.03);
+        border-width: 3px;
         position: relative;
-        overflow: hidden;
-        transition: all 0.2s;
+    }
+    .level-row.boss .level-num {
+        color: var(--yellow);
+        text-shadow: 0 0 10px rgba(255,255,0,0.6);
+        animation: coinBlink 1.2s step-end infinite;
+    }
+    .level-row.boss .level-title {
+        color: var(--white);
+        text-shadow: 0 0 10px var(--pink), 3px 3px 0 rgba(0,204,255,0.3);
+    }
+    .level-row.boss .level-detail {
+        color: var(--green);
         text-shadow: 0 0 6px rgba(57,255,20,0.3);
     }
-    .powerup:hover {
-        background: var(--green);
-        color: var(--black);
-        box-shadow: 0 0 16px rgba(57,255,20,0.4);
-    }
-    .powerup::after {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(57,255,20,0.15), transparent);
-        animation: powerScan 3s ease-in-out infinite;
-        animation-delay: calc(var(--i) * 0.12s);
+    .level-row.boss:hover {
+        border-color: var(--pink);
+        background: rgba(255,0,255,0.05);
     }
 
-    .powerup.mgmt-skill {
-        border-color: var(--blue);
-        color: var(--blue);
-        text-shadow: 0 0 6px rgba(0,204,255,0.3);
+    /* ARCADE FOOTER */
+    .arcade-footer {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        padding-top: 8px;
     }
-    .powerup.mgmt-skill:hover {
+    .arcade-footer a {
+        font-family: var(--heading-font);
+        font-size: clamp(7px, 1.4vw, 10px);
+        padding: 8px 16px;
+        border: 2px solid var(--blue);
+        color: var(--blue);
+        transition: all 0.2s;
+        white-space: nowrap;
+    }
+    .arcade-footer a:hover {
         background: var(--blue);
         color: var(--black);
-        box-shadow: 0 0 16px rgba(0,204,255,0.4);
+        box-shadow: 0 0 16px var(--blue);
     }
-    .powerup.mgmt-skill::after {
-        background: linear-gradient(90deg, transparent, rgba(0,204,255,0.15), transparent);
-    }
-
-    .powerup.industry {
-        border-color: var(--yellow);
-        color: var(--yellow);
-        text-shadow: 0 0 6px rgba(255,255,0,0.3);
-    }
-    .powerup.industry:hover {
-        background: var(--yellow);
-        color: var(--black);
-        box-shadow: 0 0 16px rgba(255,255,0,0.4);
-    }
-    .powerup.industry::after {
-        background: linear-gradient(90deg, transparent, rgba(255,255,0,0.15), transparent);
-    }
-
-    /* =========================================
-       BOSS BATTLES (ENGAGEMENTS)
-       ========================================= */
-    .boss-grid {
-        display: flex; flex-direction: column; gap: 12px;
-    }
-
-    .boss-card {
-        border: 2px solid var(--dim);
-        padding: 14px 18px;
-        background: rgba(255,0,255,0.02);
-        transition: border-color 0.3s;
-        position: relative;
-    }
-    .boss-card:hover { border-color: var(--pink); }
-
-    .boss-header {
-        display: flex; justify-content: space-between; align-items: center;
-        margin-bottom: 6px;
-    }
-    .boss-num {
-        font-family: var(--heading-font);
-        font-size: 8px;
-        color: var(--pink);
-    }
-    .boss-sector {
-        font-family: var(--heading-font);
-        font-size: 7px;
-        color: var(--dim);
-    }
-    .boss-name {
-        font-family: var(--heading-font);
-        font-size: 11px;
-        color: var(--yellow);
-        margin-bottom: 8px;
-        text-shadow: 0 0 6px rgba(255,255,0,0.3);
-    }
-    .boss-stats { display: flex; gap: 24px; margin-bottom: 8px; }
-    .boss-stat { display: flex; flex-direction: column; }
-    .bs-label {
-        font-family: var(--heading-font);
-        font-size: 7px;
-        color: var(--dim);
-        margin-bottom: 2px;
-    }
-    .bs-val { color: var(--white); font-size: 15px; }
-    .bs-val.positive { color: var(--green); }
-    .bs-val.neutral { color: #bbb; }
-
-    .boss-status {
-        font-family: var(--heading-font);
-        font-size: 8px;
-        text-align: right;
-    }
-    .boss-status.positive { color: var(--green); text-shadow: 0 0 8px var(--green); }
-    .boss-status.neutral { color: var(--blue); }
-
-    /* =========================================
-       TRAINING STAGES (EDUCATION)
-       ========================================= */
-    .training-list {
-        display: flex; flex-direction: column; gap: 12px;
-    }
-
-    .training-card {
-        border: 2px solid var(--dim);
-        padding: 14px 18px;
-        background: rgba(0,204,255,0.02);
-        transition: border-color 0.3s;
-    }
-    .training-card:hover { border-color: var(--blue); }
-
-    .training-header {
-        display: flex; justify-content: space-between; align-items: center;
-        margin-bottom: 6px;
-    }
-    .training-stage {
-        font-family: var(--heading-font);
-        font-size: 8px;
-        color: var(--blue);
-    }
-    .training-period {
-        font-family: var(--heading-font);
-        font-size: 7px;
-        color: var(--dim);
-    }
-    .training-degree {
-        font-family: var(--heading-font);
-        font-size: 10px;
-        color: var(--white);
-        margin-bottom: 4px;
-    }
-    .training-inst {
-        font-size: 15px;
-        color: #999;
-        margin-bottom: 6px;
-    }
-    .training-badge {
-        font-family: var(--heading-font);
-        font-size: 8px;
-        color: var(--yellow);
-        text-shadow: 0 0 8px rgba(255,255,0,0.4);
-        animation: coinBlink 1.5s step-end infinite;
-    }
-
-    /* ACHIEVEMENTS */
-    .achievement-grid {
-        display: flex; flex-wrap: wrap; gap: 8px;
-    }
-    .achievement-badge {
-        font-family: var(--heading-font);
-        font-size: 7px;
-        padding: 6px 12px;
-        border: 2px solid var(--yellow);
-        color: var(--yellow);
-        transition: all 0.2s;
-    }
-    .achievement-badge:hover {
-        background: var(--yellow);
-        color: var(--black);
-        box-shadow: 0 0 12px rgba(255,255,0,0.4);
-    }
-    .achievement-badge.bonus-badge {
-        border-color: var(--pink);
-        color: var(--pink);
-    }
-    .achievement-badge.bonus-badge:hover {
-        background: var(--pink);
-        color: var(--black);
-        box-shadow: 0 0 12px rgba(255,0,255,0.4);
-    }
-
-    /* =========================================
-       GAME OVER
-       ========================================= */
-    .game-over-section {
-        text-align: center;
-        padding: 3rem 0;
-    }
-    .game-over-text {
-        font-family: var(--heading-font);
-        font-size: clamp(24px, 5vw, 48px);
-        color: var(--pink);
-        text-shadow:
-            0 0 20px var(--pink),
-            0 0 40px rgba(255,0,255,0.3),
-            3px 3px 0 var(--blue);
-        margin-bottom: 16px;
-        animation: gameOverPulse 2s ease-in-out infinite;
-    }
-    .continue-text {
-        font-family: var(--heading-font);
-        font-size: clamp(12px, 2.5vw, 20px);
-        color: var(--yellow);
-        animation: coinBlink 0.8s step-end infinite;
-        margin-bottom: 8px;
-    }
-    .continue-countdown {
-        font-family: var(--heading-font);
-        font-size: clamp(18px, 3vw, 28px);
-        color: var(--white);
-        margin-bottom: 20px;
-    }
-    .game-over-links {
-        display: flex; justify-content: center; gap: 16px;
-        flex-wrap: wrap;
-        margin-bottom: 24px;
-    }
-    .continue-btn {
-        font-family: var(--heading-font);
-        font-size: 9px;
-        padding: 10px 20px;
-        border: 2px solid var(--green);
+    .arcade-footer a:first-child {
+        border-color: var(--green);
         color: var(--green);
-        transition: all 0.2s;
-        display: inline-block;
     }
-    .continue-btn:hover {
+    .arcade-footer a:first-child:hover {
         background: var(--green);
         color: var(--black);
         box-shadow: 0 0 16px var(--green);
-    }
-    .continue-btn.alt {
-        border-color: var(--dim);
-        color: var(--dim);
-    }
-    .continue-btn.alt:hover {
-        background: var(--dim);
-        color: var(--white);
-    }
-    .credits-text {
-        font-family: var(--heading-font);
-        font-size: 7px;
-        color: var(--dim);
-        line-height: 2;
     }
 
     /* =========================================
@@ -1045,11 +362,6 @@ import { experience, education, certifications, skills, engagements, continuousL
     @keyframes coinBlink {
         0%, 49% { opacity: 1; }
         50%, 100% { opacity: 0; }
-    }
-
-    @keyframes powerScan {
-        0%, 100% { left: -100%; }
-        50% { left: 100%; }
     }
 
     @keyframes screenWipe {
@@ -1062,11 +374,6 @@ import { experience, education, certifications, skills, engagements, continuousL
         75% { clip-path: inset(0 0 25% 0); }
         87.5% { clip-path: inset(0 0 12.5% 0); }
         100% { clip-path: inset(0 0 0% 0); opacity: 0; }
-    }
-
-    @keyframes gameOverPulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.7; }
     }
 
     /* CRT body flicker */
@@ -1083,13 +390,8 @@ import { experience, education, certifications, skills, engagements, continuousL
        ========================================= */
     @media (max-width: 1024px) {
         body { font-size: 17px; }
-        .tape { max-width: 700px; padding: 54px 20px 70px; }
-        .arcade-title { font-size: clamp(18px, 4vw, 30px); }
-        .player-avatar { width: 120px; height: 120px; }
-        .player-avatar-frame { padding: 3px; }
-        .powerup { font-size: 7px; padding: 5px 10px; }
+        .tape { padding: 0 20px; }
         .score-bar { gap: 14px; font-size: 9px; }
-        .pixel-divider { margin: 2rem 0; }
     }
 
     /* =========================================
@@ -1097,48 +399,22 @@ import { experience, education, certifications, skills, engagements, continuousL
        ========================================= */
     @media (max-width: 600px) {
         body { font-size: 16px; }
-        .tape { padding: 48px 12px 60px; }
-
-        .player-card {
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-        .player-avatar { width: 100px; height: 100px; }
-        .player-name { font-size: 12px; text-align: center; }
-        .player-class { font-size: 8px; text-align: center; }
-        .player-links { justify-content: center; }
-        .player-langs { justify-content: center; }
-
-        .arcade-title { font-size: 18px; }
-        .arcade-subtitle { font-size: 8px; }
-
-        .sec-head { flex-wrap: wrap; font-size: 9px; gap: 6px; }
-        .sec-sub { font-size: 13px; }
-
-        .level-header { flex-direction: column; gap: 2px; }
-        .level-loc { margin-left: 0; }
-        .level-role-row { flex-direction: column; gap: 2px; }
-        .level-company { font-size: 9px; }
-        .level-num { font-size: 8px; }
-
-        .powerup { font-size: 7px; padding: 4px 8px; }
-        .achievement-badge { font-size: 6px; padding: 4px 8px; }
-
-        .boss-stats { flex-direction: column; gap: 8px; }
-        .boss-name { font-size: 9px; }
-
-        .hi-row { font-size: 7px; gap: 8px; }
-        .hi-score-val { min-width: 60px; }
-
+        .tape { padding: 0 12px; }
         .score-bar { gap: 8px; font-size: 8px; padding: 6px 10px; }
 
-        .game-over-text { font-size: 24px; }
-        .continue-btn { font-size: 8px; padding: 8px 14px; }
+        .level-row {
+            padding: 8px 10px;
+            gap: 0 10px;
+        }
+        .level-num { font-size: 7px; }
+        .level-title { font-size: 8px; }
+        .level-detail { font-size: 13px; }
 
-        .stat-bar { max-width: 140px; }
+        .arcade-footer { gap: 10px; }
+        .arcade-footer a { font-size: 7px; padding: 6px 12px; }
 
-        .player-bio { font-size: 15px; }
+        .arcade-narrative { gap: 20px; }
+        .level-display { gap: 8px; }
     }
 
     /* =========================================
@@ -1146,39 +422,31 @@ import { experience, education, certifications, skills, engagements, continuousL
        ========================================= */
     @media (max-width: 380px) {
         body { font-size: 15px; }
-        .tape { padding: 42px 8px 50px; }
-        .arcade-title { font-size: 14px; }
-        .player-avatar { width: 80px; height: 80px; }
-        .player-name { font-size: 10px; }
-        .powerup { font-size: 6px; padding: 3px 6px; }
-        .achievement-badge { font-size: 6px; padding: 3px 6px; }
+        .tape { padding: 0 8px; }
         .score-bar { font-size: 7px; gap: 6px; padding: 4px 6px; }
-        .level-company { font-size: 8px; }
-        .boss-name { font-size: 8px; }
-        .training-degree { font-size: 8px; }
-        .continue-btn { font-size: 7px; padding: 6px 10px; }
-        .stat-bar { max-width: 100px; }
+
+        .level-row {
+            padding: 6px 8px;
+            gap: 0 8px;
+        }
+        .level-num { font-size: 6px; }
+        .level-title { font-size: 7px; }
+        .level-detail { font-size: 12px; }
+
+        .arcade-footer a { font-size: 6px; padding: 5px 8px; }
+        .arcade-narrative { gap: 16px; }
+        .level-display { gap: 6px; }
     }
 
     /* =========================================
        TOUCH: larger tap targets
        ========================================= */
     @media (hover: none) and (pointer: coarse) {
-        .player-links a {
-            padding: 8px 12px;
+        .arcade-footer a {
+            padding: 10px 16px;
             min-height: 44px;
             display: inline-flex;
             align-items: center;
-        }
-        .powerup {
-            padding: 8px 12px;
-            min-height: 36px;
-            display: inline-flex;
-            align-items: center;
-        }
-        .continue-btn {
-            padding: 12px 20px;
-            min-height: 44px;
         }
     }
 </style>
@@ -1313,19 +581,6 @@ import { experience, education, certifications, skills, engagements, continuousL
     runIntro();
 
     /* =============================================
-       SCROLL REVEAL (Intersection Observer)
-       ============================================= */
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => observer.observe(el));
-
-    /* =============================================
        SCORE COUNTER ANIMATION
        ============================================= */
     const scoreEl = document.getElementById('scoreCounter')!;
@@ -1351,27 +606,4 @@ import { experience, education, certifications, skills, engagements, continuousL
         }
     });
     tapeObserver.observe(tapeEl, { attributes: true, attributeFilter: ['class'] });
-
-    /* =============================================
-       CONTINUE COUNTDOWN
-       ============================================= */
-    const countdownEl = document.getElementById('continueCountdown')!;
-    let countVal = 10;
-    const countdownObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                countdownObserver.unobserve(entry.target);
-                const countInterval = setInterval(() => {
-                    countVal--;
-                    if (countVal <= 0) {
-                        countdownEl.textContent = '00';
-                        clearInterval(countInterval);
-                    } else {
-                        countdownEl.textContent = String(countVal).padStart(2, '0');
-                    }
-                }, 1000);
-            }
-        });
-    }, { threshold: 0.5 });
-    countdownObserver.observe(countdownEl);
 </script>

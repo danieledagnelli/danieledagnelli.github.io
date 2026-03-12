@@ -1,6 +1,5 @@
 ---
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary } from "../data/resume";
 ---
 
 <!doctype html>
@@ -113,164 +112,28 @@ import { experience, education, certifications, skills, engagements, continuousL
 
     <!-- MAIN CONTENT -->
     <main class="tape" id="tape">
-
-        <!-- DOSSIER HEADER -->
-        <section class="section dossier" data-section="header">
-            <div class="stamp">CLASSIFIED // EYES ONLY</div>
-            <div class="dossier-grid">
-                <div class="dossier-info">
-                    <h1 class="subject-name" data-text={siteMetadata.name.toLowerCase()}>
-                        {siteMetadata.name.toLowerCase()}
-                    </h1>
-                    <div class="subject-title">{siteMetadata.description}</div>
-                    <div class="meta-row">
-                        <span class="meta-chip">LOC: {siteMetadata.location.toLowerCase()}</span>
-                        <span class="meta-chip active">STATUS: active</span>
-                        <span class="meta-chip warn">THREAT: high</span>
-                    </div>
-                    <div class="link-row">
-                        <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">[github]</a>
-                        <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">[linkedin]</a>
-                        <a href={`mailto:${siteMetadata.email}`}>[comms]</a>
-                    </div>
-                </div>
-                <div class="dossier-photo">
-                    <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="140" height="140" />
-                    <div class="photo-scanlines"></div>
-                    <span class="photo-label">SUBJ_001</span>
-                </div>
+        <div class="module" data-label="subject.profile">
+            <div class="narrative-header">
+                <div class="rec-badge"><span class="rec-dot"></span> rec</div>
+                <h1 class="subject-name">{siteMetadata.name}</h1>
+                <div class="classification">classification: level_5 // eyes only</div>
             </div>
-        </section>
-
-        <hr class="corrupt-line" />
-
-        <!-- PROFILE -->
-        <section class="section reveal" data-section="summary">
-            <div class="sec-head">
-                <span class="tag decoded">[DECRYPTED]</span>
-                <span class="sec-title">SUBJECT PROFILE</span>
-                <span class="sec-pct">■■■■■ 100%</span>
+        </div>
+        <div class="module" data-label="intercepted.dossier">
+            <div class="narrative-text">
+                <p>subject operates under cover as senior engagement manager at c3 ai, london. directs $15m programme with 70+ assets across multiple divisions. previous cells identified: deloitte (london), accenture (london, milan), codec (dublin). 15 years deep. high-value target.</p>
+                <p>secondary profile flagged: msc ethical hacking & cybersecurity — abertay university, gchq-certified programme. distinction grade. active penetration tester. reverse engineering capability confirmed. known tools: python, rust, go, linux, security tooling. active on hack the box.</p>
+                <p>operational impact: ceo-sponsored predictive maintenance rollout across 100+ manufacturing plants, 2,000+ end users, $18m ebit. genai rag deployment across enterprise knowledge base. sustained nps above 70.</p>
             </div>
-            <p class="body-text">{summary.toLowerCase()}</p>
-        </section>
-
-        <hr class="corrupt-line" />
-
-        <!-- CAREER FEED -->
-        <section class="section reveal" data-section="experience">
-            <div class="sec-head">
-                <span class="tag intercepted">[INTERCEPTED]</span>
-                <span class="sec-title">CAREER FEED</span>
-                <span class="sec-pct">■■■■■ 100%</span>
+        </div>
+        <div class="module" data-label="signal.footer">
+            <div class="narrative-links">
+                <a href="mailto:daniele@dagnelli.net">[contact]</a>
+                <a href="https://github.com/danieledagnelli">[github]</a>
+                <a href="https://linkedin.com/in/dagnelli">[linkedin]</a>
+                <a href="https://bsky.app/profile/dagnelli.net">[bluesky]</a>
             </div>
-            {experience.map((exp, i) => (
-                <div class="career-block reveal">
-                    <div class="career-top">
-                        <span class="career-co">{exp.company.toLowerCase()}</span>
-                        <span class="career-loc">{exp.location.split(',')[0].toLowerCase()}</span>
-                    </div>
-                    {exp.roles.map(role => (
-                        <div class="career-role">
-                            <div class="role-head">
-                                <span class="role-name">{role.title.toLowerCase()}</span>
-                                <span class="role-period">{role.period.toLowerCase()}</span>
-                            </div>
-                            {role.description && <p class="role-desc">{role.description.toLowerCase()}</p>}
-                            {role.bullets && role.bullets.length > 0 && (
-                                <ul class="role-list">
-                                    {role.bullets.map(b => <li>▸ {b.toLowerCase()}</li>)}
-                                </ul>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            ))}
-        </section>
-
-        <hr class="corrupt-line" />
-
-        <!-- SYSTEM MODULES -->
-        <section class="section reveal" data-section="skills">
-            <div class="sec-head">
-                <span class="tag scanned">[SCANNED]</span>
-                <span class="sec-title">SYSTEM MODULES</span>
-                <span class="sec-pct">■■■■■ 100%</span>
-            </div>
-            <div class="module-grid">
-                {skills.map((s, i) => (
-                    <span class="module" style={`--i:${i}`}>{s.toLowerCase()}</span>
-                ))}
-            </div>
-        </section>
-
-        <hr class="corrupt-line" />
-
-        <!-- MISSION LOG -->
-        <section class="section reveal" data-section="engagements">
-            <div class="sec-head">
-                <span class="tag surveillance">[SURVEILLANCE]</span>
-                <span class="sec-title">MISSION LOG</span>
-                <span class="sec-pct">■■■■■ 100%</span>
-            </div>
-            <div class="mission-grid">
-                {engagements.map(eng => (
-                    <div class="mission-card reveal">
-                        <div class="mission-row">
-                            <span class="mission-client">{eng.client}</span>
-                            <span class="mission-sector">{eng.sector}</span>
-                        </div>
-                        <div class="mission-row">
-                            <span class="mission-scope">{eng.scope}</span>
-                            <span class={`mission-impact ${eng.trend}`}>{eng.impact}</span>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <hr class="corrupt-line" />
-
-        <!-- CREDENTIALS -->
-        <section class="section reveal" data-section="education">
-            <div class="sec-head">
-                <span class="tag verified">[VERIFIED]</span>
-                <span class="sec-title">CREDENTIALS DUMP</span>
-                <span class="sec-pct">■■■■■ 100%</span>
-            </div>
-            <div class="cred-groups">
-                <div class="cred-group">
-                    <span class="cred-label">// education</span>
-                    {education.map(edu => (
-                        <div class="cred-item">
-                            <span class="cred-name">{edu.degree.toLowerCase()}</span>
-                            <span class="cred-meta">{edu.institution.toLowerCase()} — {edu.period}</span>
-                            {edu.distinction && <span class="cred-badge">{edu.distinction.toLowerCase()}</span>}
-                        </div>
-                    ))}
-                </div>
-                <div class="cred-group">
-                    <span class="cred-label">// certifications</span>
-                    {certifications.map(c => (
-                        <div class="cred-item"><span class="cred-name">{c.toLowerCase()}</span></div>
-                    ))}
-                </div>
-                <div class="cred-group">
-                    <span class="cred-label">// training_log</span>
-                    {continuousLearning.map(l => (
-                        <div class="cred-item"><span class="cred-name">{l.toLowerCase()}</span></div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <hr class="corrupt-line" />
-
-        <!-- END TRANSMISSION -->
-        <section class="section end-transmission" data-section="footer">
-            <span>// END OF INTERCEPTED TRANSMISSION</span>
-            <span>// CONNECTION TERMINATED</span>
-            <span class="cursor-blink">█</span>
-        </section>
+        </div>
     </main>
 </body>
 </html>
@@ -464,7 +327,7 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       MAIN CONTENT
+       MAIN CONTENT — VIEWPORT LOCKED
        ========================================= */
     .tape {
         max-width: 820px;
@@ -472,94 +335,52 @@ import { experience, education, certifications, skills, engagements, continuousL
         padding: 60px 24px 120px;
         opacity: 0;
         transition: opacity 0.5s ease 0.2s;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .tape.visible { opacity: 1; }
 
     /* =========================================
-       SECTIONS
+       MODULES
        ========================================= */
-    .section { margin-bottom: 0; }
-
-    .sec-head {
-        display: flex; align-items: center; gap: 10px;
-        margin-bottom: 12px;
-        font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
-    }
-    .sec-title { color: #888; }
-    .sec-pct { margin-left: auto; color: var(--green); font-size: 10px; }
-
-    .tag {
-        padding: 1px 6px;
-        font-size: 9px; font-weight: 700; letter-spacing: 1px;
-        border: 1px solid;
-    }
-    .tag.decoded { color: var(--green); border-color: var(--green); }
-    .tag.intercepted { color: var(--amber); border-color: var(--amber); }
-    .tag.scanned { color: var(--cyan); border-color: var(--cyan); }
-    .tag.surveillance { color: var(--red); border-color: var(--red); }
-    .tag.verified { color: #aaa; border-color: #555; }
-
-    /* REVEAL ANIMATION */
-    .reveal {
-        opacity: 0;
-        transform: translateY(12px) skewX(-0.3deg);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .reveal.in-view {
-        opacity: 1;
-        transform: translateY(0) skewX(0deg);
-    }
-
-    /* CORRUPT DIVIDER */
-    .corrupt-line {
-        border: none;
-        height: 1px;
-        margin: 2.5rem 0;
-        background: linear-gradient(
-            90deg,
-            transparent 0%,
-            var(--dim) 10%,
-            var(--green) 30%,
-            var(--red) 50%,
-            var(--green) 70%,
-            var(--dim) 90%,
-            transparent 100%
-        );
-        opacity: 0.3;
+    .module {
         position: relative;
+        overflow: hidden;
     }
-    .corrupt-line::after {
-        content: '■';
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+    .module::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 9px;
         color: var(--dim);
-        font-size: 8px;
-        background: var(--body-bg);
-        padding: 0 8px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 6px;
     }
 
     /* =========================================
-       DOSSIER HEADER
+       NARRATIVE HEADER
        ========================================= */
-    .stamp {
-        font-size: 10px;
-        letter-spacing: 3px;
-        color: var(--red);
-        border: 1px solid var(--red);
-        display: inline-block;
-        padding: 2px 10px;
-        margin-bottom: 20px;
-        opacity: 0.8;
-        animation: stampFlicker 4s ease-in-out infinite;
+    .narrative-header {
+        text-align: center;
+        margin-bottom: 1rem;
     }
 
-    .dossier-grid {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 24px;
+    .rec-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10px;
+        color: var(--red);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+    .rec-badge .rec-dot {
+        display: inline-block;
     }
 
     .subject-name {
@@ -568,229 +389,34 @@ import { experience, education, certifications, skills, engagements, continuousL
         color: #fff;
         line-height: 1.1;
         margin-bottom: 6px;
-        position: relative;
-        display: inline-block;
-    }
-    .subject-name::before,
-    .subject-name::after {
-        content: attr(data-text);
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        overflow: hidden;
-    }
-    .subject-name::before {
-        color: var(--red);
-        z-index: -1;
-        animation: rgbShift1 3s infinite steps(2);
-    }
-    .subject-name::after {
-        color: var(--cyan);
-        z-index: -1;
-        animation: rgbShift2 2.5s infinite steps(3);
     }
 
-    .subject-title {
-        font-size: 13px;
-        color: var(--green);
-        margin-bottom: 14px;
-        letter-spacing: 0.5px;
-    }
-
-    .meta-row {
-        display: flex; flex-wrap: wrap; gap: 8px;
-        margin-bottom: 14px;
-    }
-    .meta-chip {
-        font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
-        padding: 2px 8px;
-        border: 1px solid var(--dim);
-        color: #777;
-    }
-    .meta-chip.active { color: var(--green); border-color: var(--green); }
-    .meta-chip.warn { color: var(--red); border-color: var(--red); animation: stampFlicker 3s ease-in-out infinite; }
-
-    .link-row {
-        display: flex; gap: 14px;
-        font-size: 12px;
-    }
-
-    /* PHOTO */
-    .dossier-photo {
-        position: relative;
-        flex-shrink: 0;
-        width: 140px;
-    }
-    .dossier-photo img {
-        width: 140px; height: 140px;
-        object-fit: cover;
-        filter: grayscale(0.3) contrast(1.2) brightness(0.85);
-        display: block;
-        border: 1px solid var(--green);
-    }
-    .photo-scanlines {
-        position: absolute; inset: 0;
-        background: repeating-linear-gradient(
-            0deg,
-            transparent 0px, transparent 2px,
-            rgba(0,255,65,0.05) 2px, rgba(0,255,65,0.05) 4px
-        );
-        pointer-events: none;
-        mix-blend-mode: overlay;
-    }
-    .photo-label {
-        display: block;
-        text-align: center;
-        font-size: 9px;
-        color: var(--dim);
-        letter-spacing: 2px;
-        margin-top: 4px;
-    }
-
-    /* =========================================
-       BODY TEXT
-       ========================================= */
-    .body-text {
-        color: #999;
-        font-size: 12.5px;
-        line-height: 1.7;
-    }
-
-    /* =========================================
-       CAREER FEED
-       ========================================= */
-    .career-block {
-        border-left: 2px solid var(--dim);
-        padding-left: 16px;
-        margin-bottom: 20px;
-        position: relative;
-    }
-    .career-block::before {
-        content: '▸';
-        position: absolute;
-        left: -7px; top: 0;
-        color: var(--green);
-        font-size: 12px;
-    }
-    .career-top {
-        display: flex; justify-content: space-between; align-items: baseline;
-        margin-bottom: 4px;
-    }
-    .career-co {
-        font-weight: 700;
-        color: var(--amber);
-        font-size: 14px;
-        letter-spacing: 0.5px;
-    }
-    .career-loc { color: var(--dim); font-size: 11px; }
-
-    .career-role { margin-bottom: 8px; }
-    .role-head {
-        display: flex; justify-content: space-between; align-items: baseline;
-        flex-wrap: wrap; gap: 8px;
-    }
-    .role-name { color: #ddd; font-size: 12px; }
-    .role-period { color: var(--dim); font-size: 10px; letter-spacing: 0.5px; }
-    .role-desc { color: #888; font-size: 11.5px; margin-top: 4px; }
-    .role-list {
-        list-style: none; margin-top: 4px;
-    }
-    .role-list li {
-        color: #777; font-size: 11px; line-height: 1.7;
-    }
-
-    /* =========================================
-       SYSTEM MODULES (SKILLS)
-       ========================================= */
-    .module-grid {
-        display: flex; flex-wrap: wrap; gap: 6px;
-    }
-    .module {
+    .classification {
         font-size: 11px;
-        padding: 3px 10px;
-        border: 1px solid #2a2a2a;
-        color: var(--green);
-        position: relative;
-        overflow: hidden;
-        transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    }
-    .module:hover {
-        border-color: var(--green);
-        box-shadow: 0 0 8px rgba(0,255,65,0.15);
-        color: #fff;
-    }
-    .module::after {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(0,255,65,0.08), transparent);
-        animation: moduleScan 4s ease-in-out infinite;
-        animation-delay: calc(var(--i) * 0.15s);
+        color: var(--amber);
+        letter-spacing: 1.5px;
+        text-transform: lowercase;
     }
 
     /* =========================================
-       MISSION LOG
+       NARRATIVE TEXT
        ========================================= */
-    .mission-grid {
-        display: flex; flex-direction: column; gap: 8px;
-    }
-    .mission-card {
-        border: 1px solid #1a1a1a;
-        padding: 10px 14px;
-        background: rgba(255,255,255,0.01);
-        transition: border-color 0.2s;
-    }
-    .mission-card:hover { border-color: var(--dim); }
-    .mission-row {
-        display: flex; justify-content: space-between; align-items: baseline;
-    }
-    .mission-client { color: var(--amber); font-size: 12px; font-weight: 700; }
-    .mission-sector { color: var(--dim); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
-    .mission-scope { color: #888; font-size: 11px; }
-    .mission-impact { font-size: 11px; font-weight: 700; }
-    .mission-impact.positive { color: var(--green); }
-    .mission-impact.neutral { color: #888; }
-
-    /* =========================================
-       CREDENTIALS
-       ========================================= */
-    .cred-groups {
-        display: flex; flex-direction: column; gap: 18px;
-    }
-    .cred-label {
-        display: block;
-        color: var(--dim);
-        font-size: 10px;
-        letter-spacing: 1px;
-        margin-bottom: 6px;
-        font-style: italic;
-    }
-    .cred-item {
-        display: flex; flex-direction: column;
-        margin-bottom: 4px;
-    }
-    .cred-name { color: #bbb; font-size: 12px; }
-    .cred-meta { color: var(--dim); font-size: 10px; }
-    .cred-badge {
-        color: var(--green); font-size: 10px; text-transform: uppercase;
-        letter-spacing: 1px;
+    .narrative-text p {
+        font-size: 0.82rem;
+        line-height: 1.5;
+        margin-bottom: 0.6rem;
+        color: #999;
     }
 
     /* =========================================
-       END TRANSMISSION
+       NARRATIVE LINKS
        ========================================= */
-    .end-transmission {
-        display: flex; flex-direction: column; align-items: center;
-        gap: 4px;
-        color: var(--dim);
+    .narrative-links {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1rem;
         font-size: 12px;
-        padding: 3rem 0;
-        letter-spacing: 1px;
-    }
-    .cursor-blink {
-        color: var(--green);
-        animation: blink 1s step-end infinite;
     }
 
     /* =========================================
@@ -865,102 +491,42 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       RESPONSIVE — TABLET (601–1024px)
+       RESPONSIVE — TABLET (601-1024px)
        ========================================= */
     @media (max-width: 1024px) {
         body { font-size: 13px; }
         .tape { max-width: 680px; padding: 54px 20px 100px; }
         .subject-name { font-size: clamp(24px, 4.5vw, 38px); }
-        .dossier-photo { width: 120px; }
-        .dossier-photo img { width: 120px; height: 120px; }
-        .module { font-size: 10.5px; padding: 3px 8px; }
-        .mission-card { padding: 8px 12px; }
-        .corrupt-line { margin: 2rem 0; }
     }
 
     /* =========================================
-       RESPONSIVE — SMALL TABLET / LARGE PHONE (481–600px)
+       RESPONSIVE — MOBILE (max-width: 768px)
+       ========================================= */
+    @media (max-width: 768px) {
+        .narrative-text p { font-size: 0.75rem; }
+    }
+
+    /* =========================================
+       RESPONSIVE — SMALL TABLET / LARGE PHONE (481-600px)
        ========================================= */
     @media (max-width: 600px) {
         body { font-size: 12.5px; }
         .tape { padding: 48px 14px 80px; }
-
-        /* Dossier: stack photo above info */
-        .dossier-grid {
-            flex-direction: column-reverse;
-            align-items: flex-start;
-            gap: 16px;
-        }
-        .dossier-photo { width: 90px; }
-        .dossier-photo img { width: 90px; height: 90px; }
-        .photo-label { font-size: 8px; }
         .subject-name { font-size: 24px; }
-        .subject-title { font-size: 12px; }
-        .stamp { font-size: 8px; letter-spacing: 2px; padding: 2px 8px; }
-
-        /* Meta chips wrap nicely */
-        .meta-row { gap: 4px; }
-        .meta-chip { font-size: 9px; padding: 1px 6px; }
-        .link-row { gap: 10px; font-size: 11px; flex-wrap: wrap; }
-
-        /* Section headers */
-        .sec-head { gap: 6px; font-size: 10px; flex-wrap: wrap; }
-        .sec-pct { font-size: 9px; }
-        .tag { font-size: 8px; padding: 1px 4px; }
-
-        /* Career: stack location below company */
-        .career-top { flex-direction: column; gap: 0; }
-        .career-co { font-size: 13px; }
-        .career-loc { font-size: 10px; }
-        .role-head { flex-direction: column; gap: 2px; }
-        .role-name { font-size: 11.5px; }
-        .role-period { font-size: 9.5px; }
-        .role-desc { font-size: 11px; }
-        .role-list li { font-size: 10.5px; }
-        .career-block { padding-left: 12px; margin-bottom: 16px; }
-
-        /* Skills: smaller tags */
-        .module-grid { gap: 4px; }
-        .module { font-size: 10px; padding: 2px 7px; }
-
-        /* Mission cards */
-        .mission-card { padding: 8px 10px; }
-        .mission-client { font-size: 11px; }
-        .mission-sector { font-size: 9px; }
-        .mission-scope { font-size: 10px; }
-        .mission-impact { font-size: 10px; }
-        .mission-row { flex-wrap: wrap; gap: 4px; }
-
-        /* Credentials */
-        .cred-name { font-size: 11px; }
-        .cred-meta { font-size: 9.5px; }
-        .cred-label { font-size: 9px; }
-
-        /* Body text */
-        .body-text { font-size: 11.5px; }
-
-        /* Dividers */
-        .corrupt-line { margin: 1.5rem 0; }
+        .narrative-links { gap: 10px; font-size: 11px; flex-wrap: wrap; }
 
         /* HUD */
         .hud { font-size: 9px; padding: 6px 10px; }
-
-        /* End */
-        .end-transmission { font-size: 11px; padding: 2rem 0; }
     }
 
     /* =========================================
-       RESPONSIVE — SMALL PHONE (≤380px)
+       RESPONSIVE — SMALL PHONE (<=380px)
        ========================================= */
     @media (max-width: 380px) {
         body { font-size: 12px; }
         .tape { padding: 44px 10px 60px; }
         .subject-name { font-size: 20px; }
-        .dossier-photo { width: 70px; }
-        .dossier-photo img { width: 70px; height: 70px; }
-        .link-row { gap: 8px; font-size: 10px; }
-        .meta-chip { font-size: 8px; }
-        .module { font-size: 9px; padding: 2px 5px; }
+        .narrative-links { gap: 8px; font-size: 10px; }
         .hud { font-size: 8px; padding: 4px 8px; }
         .hud-cam { display: none; }
         .hud-signal { display: none; }
@@ -972,15 +538,9 @@ import { experience, education, certifications, skills, engagements, continuousL
        TOUCH: larger tap targets on mobile
        ========================================= */
     @media (hover: none) and (pointer: coarse) {
-        .link-row a {
+        .narrative-links a {
             padding: 6px 4px;
             min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-        }
-        .module {
-            padding: 6px 10px;
-            min-height: 36px;
             display: inline-flex;
             align-items: center;
         }
@@ -1038,18 +598,12 @@ import { experience, education, certifications, skills, engagements, continuousL
     const tapeEl = document.getElementById('tape')!;
 
     const introLines = [
-        { text: '> scanning frequencies...', delay: 60 },
-        { text: '> ██████ signal detected at 2.4ghz', delay: 40 },
-        { text: '> attempting handshake...', delay: 70 },
-        { text: '> firewall detected [████████.███.██]', delay: 50 },
-        { text: '> deploying exploit...', delay: 80 },
-        { text: '> ███████████████ success', delay: 30 },
-        { text: '> establishing encrypted tunnel...', delay: 60 },
-        { text: '> decrypting personnel file...', delay: 50 },
-        { text: '> target: daniele d\'agnelli', delay: 40 },
-        { text: '> classification: level_5 // eyes only', delay: 45 },
+        { text: '> scanning frequencies... signal at 2.4ghz', delay: 30 },
+        { text: '> exploit deployed. decrypting target...', delay: 25 },
+        { text: '> target: daniele d\'agnelli', delay: 35 },
+        { text: '> classification: level_5 // eyes only', delay: 30 },
         { text: '', delay: 0 },
-        { text: '  [ACCESS GRANTED]', delay: 35, cls: 'access' },
+        { text: '  [ACCESS GRANTED]', delay: 20, cls: 'access' },
     ];
 
     function sleep(ms: number) {
@@ -1111,20 +665,6 @@ import { experience, education, certifications, skills, engagements, continuousL
     runIntro();
 
     /* =============================================
-       SCROLL REVEAL (Intersection Observer)
-       ============================================= */
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    revealEls.forEach(el => observer.observe(el));
-
-    /* =============================================
        RANDOM GLITCH BURSTS
        ============================================= */
     const burstEl = document.getElementById('glitchBurst')!;
@@ -1171,7 +711,7 @@ import { experience, education, certifications, skills, engagements, continuousL
        TEXT SCRAMBLE on random elements
        ============================================= */
     const scrambleChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▄▀';
-    const scrambleTargets = document.querySelectorAll('.career-co, .mission-client, .module');
+    const scrambleTargets = document.querySelectorAll('.subject-name, .classification, .narrative-links a');
 
     function scrambleElement(el: Element) {
         const original = el.textContent || '';

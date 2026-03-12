@@ -1,6 +1,6 @@
 ---
+import Main from "../layouts/Main.astro";
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, managementSkills, languages, industries, metrics } from "../data/resume";
 ---
 
 <!doctype html>
@@ -88,342 +88,25 @@ import { experience, education, certifications, skills, engagements, continuousL
 
     <!-- MAIN CONTENT -->
     <main class="journal" id="journal">
-
-        <!-- JOURNAL COVER -->
-        <header class="journal-cover reveal">
-            <svg class="vine-border-top" viewBox="0 0 800 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path class="vine-path" d="M0 20 C100 5, 200 35, 300 20 C400 5, 500 35, 600 20 C700 5, 800 20, 800 20" stroke="#4a7c29" stroke-width="2" fill="none" />
-                <circle cx="150" cy="12" r="4" fill="#2d5016" class="vine-dot" />
-                <circle cx="400" cy="28" r="4" fill="#2d5016" class="vine-dot" />
-                <circle cx="650" cy="12" r="4" fill="#2d5016" class="vine-dot" />
-            </svg>
-
-            <div class="cover-content">
-                <div class="cover-photo-frame">
-                    <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="180" height="180" class="cover-photo" />
-                    <span class="photo-caption">Specimen Collector, circa present day</span>
-                </div>
-                <div class="cover-text">
-                    <p class="cover-subtitle">The Royal Society of Professional Cultivation</p>
-                    <h1 class="cover-title">Botanical Field Journal</h1>
-                    <p class="cover-subject">Subject: {siteMetadata.name}</p>
-                    <div class="cover-meta">
-                        <span class="meta-item">Location: {siteMetadata.location}</span>
-                        <span class="meta-item">Classification: {siteMetadata.description}</span>
-                    </div>
-                    <div class="cover-links">
-                        <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener" class="journal-link">Herbarium Archive</a>
-                        <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener" class="journal-link">Society Register</a>
-                        <a href={`mailto:${siteMetadata.email}`} class="journal-link">Send Correspondence</a>
-                    </div>
-                </div>
+        <div class="botanist-narrative">
+            <h1 class="journal-title">FIELD JOURNAL — OBSERVATIONS ON PROFESSIONAL GROWTH</h1>
+            <div class="journal-meta">botanist: daniele d'agnelli | location: london | season: 15th year</div>
+            <div class="specimen">
+                <h2>SPECIMEN: PRACTICE CULTIVATION (DELOITTE, 2018-2021)</h2>
+                <p>the most remarkable specimen in the collection. planted the first seed of an anaplan practice at deloitte uk. soil conditions: zero existing practitioners. no root system. no canopy.</p>
+                <p>through careful cultivation — three years of client work, recruitment, training, and knowledge transfer — the specimen grew to 25+ practitioners. a self-sustaining ecosystem. the practice survived and thrived after the original botanist departed. that is the mark of true cultivation.</p>
             </div>
-
-            <svg class="vine-border-bottom" viewBox="0 0 800 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path class="vine-path" d="M0 20 C100 35, 200 5, 300 20 C400 35, 500 5, 600 20 C700 35, 800 20, 800 20" stroke="#4a7c29" stroke-width="2" fill="none" />
-                <circle cx="200" cy="28" r="4" fill="#2d5016" class="vine-dot" />
-                <circle cx="500" cy="8" r="4" fill="#2d5016" class="vine-dot" />
-                <circle cx="750" cy="25" r="4" fill="#2d5016" class="vine-dot" />
-            </svg>
-        </header>
-
-        <!-- BOTANICAL DIVIDER -->
-        <div class="botanical-divider" aria-hidden="true">
-            <svg viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="15" x2="70" y2="15" stroke="#c4a35a" stroke-width="1" />
-                <path d="M85 15 C90 5, 100 2, 100 15 C100 2, 110 5, 115 15 C110 25, 100 28, 100 15 C100 28, 90 25, 85 15Z" fill="none" stroke="#2d5016" stroke-width="1.5" />
-                <line x1="130" y1="15" x2="200" y2="15" stroke="#c4a35a" stroke-width="1" />
-            </svg>
+            <div class="specimen">
+                <h2>SPECIMEN: TEAM GROWTH (C3 AI, 2021-PRESENT)</h2>
+                <p>the current garden: 70+ resources across app dev, data science, qa, devops. a 20+ cross-functional team directly led. the organism has reached programme-level scale — $15m budget, operations spanning 100+ sites.</p>
+            </div>
+            <div class="root-system">
+                <h2>ROOT SYSTEM</h2>
+                <p>bsc computer science (bari) → software engineer → senior consultant → management consultant → manager → senior engagement manager. each layer of growth built on the one beneath.</p>
+            </div>
+            <div class="field-note">NOTES: the subject shows no signs of dormancy.</div>
+            <div class="botanist-footer"><a href="mailto:daniele@dagnelli.net">[contact]</a><a href="https://github.com/danieledagnelli">[herbarium]</a><a href="https://linkedin.com/in/dagnelli">[linkedin]</a></div>
         </div>
-
-        <!-- GARDEN OVERVIEW (summary) -->
-        <section class="journal-section reveal" data-section="summary">
-            <h2 class="section-heading">Garden Overview</h2>
-            <p class="annotation">Initial observations upon first survey of the grounds</p>
-            <div class="journal-page">
-                <p class="body-text">{summary}</p>
-                <div class="metrics-row">
-                    {metrics.map(m => (
-                        <div class="metric-card">
-                            <span class="metric-value">{m.value}</span>
-                            <span class="metric-label">{m.label}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="botanical-divider" aria-hidden="true">
-            <svg viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="15" x2="70" y2="15" stroke="#c4a35a" stroke-width="1" />
-                <path d="M90 8 C95 15, 100 20, 100 15 M100 15 C100 20, 105 15, 110 8" fill="none" stroke="#2d5016" stroke-width="1.5" />
-                <path d="M95 22 L100 10 L105 22" fill="none" stroke="#4a7c29" stroke-width="1" />
-                <line x1="130" y1="15" x2="200" y2="15" stroke="#c4a35a" stroke-width="1" />
-            </svg>
-        </div>
-
-        <!-- GROWTH SEASONS (experience) -->
-        <section class="journal-section reveal" data-section="experience">
-            <h2 class="section-heading">Growth Seasons</h2>
-            <p class="annotation">A chronological record of cultivation periods and their yields</p>
-            <div class="journal-page">
-                <div class="timeline">
-                    {experience.map((exp, i) => (
-                        <div class="timeline-entry reveal">
-                            <div class="timeline-marker">
-                                <svg viewBox="0 0 24 24" class="leaf-icon" aria-hidden="true">
-                                    <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22L6.66 19.7C7.14 19.87 7.64 20 8 20C19 20 22 3 22 3C21 5 14 5.25 9 6.25C4 7.25 2 11.5 2 13.5C2 15.5 3.75 17.25 3.75 17.25" fill="none" stroke="#2d5016" stroke-width="1.5" stroke-linecap="round" />
-                                </svg>
-                            </div>
-                            <div class="timeline-content">
-                                <div class="season-header">
-                                    <h3 class="season-company">{exp.company}</h3>
-                                    <span class="season-location">{exp.location}</span>
-                                </div>
-                                {exp.roles.map(role => (
-                                    <div class="season-role">
-                                        <div class="role-header">
-                                            <span class="role-title">{role.title}</span>
-                                            <span class="role-period">{role.period}</span>
-                                        </div>
-                                        {role.description && <p class="role-description">{role.description}</p>}
-                                        {role.bullets && role.bullets.length > 0 && (
-                                            <ul class="role-bullets">
-                                                {role.bullets.map(b => <li>{b}</li>)}
-                                            </ul>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="botanical-divider" aria-hidden="true">
-            <svg viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="15" x2="70" y2="15" stroke="#c4a35a" stroke-width="1" />
-                <circle cx="100" cy="15" r="8" fill="none" stroke="#2d5016" stroke-width="1.5" />
-                <circle cx="100" cy="15" r="3" fill="#c4a35a" />
-                <line x1="130" y1="15" x2="200" y2="15" stroke="#c4a35a" stroke-width="1" />
-            </svg>
-        </div>
-
-        <!-- SPECIES CATALOG (skills) -->
-        <section class="journal-section reveal" data-section="skills">
-            <h2 class="section-heading">Species Catalog</h2>
-            <p class="annotation">Documented specimens observed across all field expeditions</p>
-            <div class="journal-page">
-                <h3 class="catalog-subhead">Technical Specimens</h3>
-                <div class="catalog-grid">
-                    {skills.map((skill, i) => (
-                        <div class="catalog-card reveal">
-                            <span class="specimen-number">No. {String(i + 1).padStart(2, '0')}</span>
-                            <span class="specimen-name">{skill}</span>
-                        </div>
-                    ))}
-                </div>
-                <h3 class="catalog-subhead">Cultivar Management Varieties</h3>
-                <div class="catalog-grid">
-                    {managementSkills.map((skill, i) => (
-                        <div class="catalog-card reveal">
-                            <span class="specimen-number">No. {String(skills.length + i + 1).padStart(2, '0')}</span>
-                            <span class="specimen-name">{skill}</span>
-                        </div>
-                    ))}
-                </div>
-                <h3 class="catalog-subhead">Terrain Classifications</h3>
-                <div class="terrain-tags">
-                    {industries.map(ind => (
-                        <span class="terrain-tag">{ind}</span>
-                    ))}
-                </div>
-                <h3 class="catalog-subhead">Linguistic Adaptations</h3>
-                <div class="terrain-tags">
-                    {languages.map(lang => (
-                        <span class="terrain-tag">{lang}</span>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="botanical-divider" aria-hidden="true">
-            <svg viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="15" x2="70" y2="15" stroke="#c4a35a" stroke-width="1" />
-                <path d="M88 10 Q94 5 100 10 Q106 5 112 10 Q106 20 100 25 Q94 20 88 10Z" fill="none" stroke="#2d5016" stroke-width="1.5" />
-                <line x1="130" y1="15" x2="200" y2="15" stroke="#c4a35a" stroke-width="1" />
-            </svg>
-        </div>
-
-        <!-- FIELD STUDIES (engagements) -->
-        <section class="journal-section reveal" data-section="engagements">
-            <h2 class="section-heading">Field Studies</h2>
-            <p class="annotation">Detailed accounts of notable expeditions and their botanical impact</p>
-            <div class="journal-page">
-                <div class="field-studies">
-                    {engagements.map((eng, i) => (
-                        <div class="field-study-card reveal">
-                            <div class="study-number">Study {String(i + 1).padStart(2, '0')}</div>
-                            <div class="study-body">
-                                <div class="study-header">
-                                    <span class="study-client">{eng.client}</span>
-                                    <span class="study-sector">{eng.sector}</span>
-                                </div>
-                                <div class="study-details">
-                                    <span class="study-scope"><strong>Scope:</strong> {eng.scope}</span>
-                                    <span class="study-impact"><strong>Yield:</strong> {eng.impact}</span>
-                                </div>
-                                <div class={`study-trend trend-${eng.trend}`}>
-                                    {eng.trend === 'positive' ? 'Flourishing' : 'Established'}
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="botanical-divider" aria-hidden="true">
-            <svg viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="15" x2="70" y2="15" stroke="#c4a35a" stroke-width="1" />
-                <path d="M92 8 L100 22 L108 8" fill="none" stroke="#2d5016" stroke-width="1.5" />
-                <path d="M96 15 L104 15" stroke="#4a7c29" stroke-width="1" />
-                <line x1="130" y1="15" x2="200" y2="15" stroke="#c4a35a" stroke-width="1" />
-            </svg>
-        </div>
-
-        <!-- ROOT SYSTEM (education) -->
-        <section class="journal-section reveal" data-section="education">
-            <h2 class="section-heading">Root System</h2>
-            <p class="annotation">The foundational root structure from which all growth extends</p>
-            <div class="journal-page">
-                <div class="root-system">
-                    <div class="root-trunk" aria-hidden="true">
-                        <svg viewBox="0 0 40 100" class="root-svg">
-                            <path d="M20 0 L20 30 C15 50, 5 60, 3 80 M20 30 C25 50, 35 60, 37 80 M20 30 L20 100" stroke="#5c3d2e" stroke-width="2.5" fill="none" stroke-linecap="round" />
-                        </svg>
-                    </div>
-                    {education.map(edu => (
-                        <div class="root-entry reveal">
-                            <div class="root-node" aria-hidden="true"></div>
-                            <div class="root-content">
-                                <h3 class="root-institution">{edu.institution}</h3>
-                                <p class="root-degree">{edu.degree}</p>
-                                <div class="root-meta">
-                                    <span>{edu.period}</span>
-                                    <span>{edu.location}</span>
-                                    {edu.distinction && <span class="root-distinction">{edu.distinction}</span>}
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="botanical-divider" aria-hidden="true">
-            <svg viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="15" x2="70" y2="15" stroke="#c4a35a" stroke-width="1" />
-                <path d="M95 8 A8 8 0 1 1 105 8 A8 8 0 1 1 95 8Z" fill="none" stroke="#c4a35a" stroke-width="1.5" />
-                <line x1="130" y1="15" x2="200" y2="15" stroke="#c4a35a" stroke-width="1" />
-            </svg>
-        </div>
-
-        <!-- SOCIETY MEMBERSHIPS (certifications) -->
-        <section class="journal-section reveal" data-section="certifications">
-            <h2 class="section-heading">Society Memberships</h2>
-            <p class="annotation">Formal recognitions bestowed by learned institutions</p>
-            <div class="journal-page">
-                <div class="memberships-grid">
-                    {certifications.map(cert => (
-                        <div class="membership-badge reveal">
-                            <div class="badge-seal" aria-hidden="true">
-                                <svg viewBox="0 0 60 60" class="seal-svg">
-                                    <circle cx="30" cy="30" r="26" fill="none" stroke="#c4a35a" stroke-width="1.5" />
-                                    <circle cx="30" cy="30" r="22" fill="none" stroke="#c4a35a" stroke-width="0.5" stroke-dasharray="3,3" />
-                                    <circle cx="30" cy="30" r="5" fill="#c4a35a" opacity="0.3" />
-                                </svg>
-                            </div>
-                            <span class="badge-name">{cert}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="botanical-divider" aria-hidden="true">
-            <svg viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="15" x2="70" y2="15" stroke="#c4a35a" stroke-width="1" />
-                <path d="M93 10 Q100 25, 107 10 M96 12 Q100 22, 104 12" fill="none" stroke="#2d5016" stroke-width="1" />
-                <line x1="130" y1="15" x2="200" y2="15" stroke="#c4a35a" stroke-width="1" />
-            </svg>
-        </div>
-
-        <!-- SEASONAL STUDIES (continuousLearning) -->
-        <section class="journal-section reveal" data-section="training">
-            <h2 class="section-heading">Seasonal Studies</h2>
-            <p class="annotation">Ongoing investigations into emerging species and methodologies</p>
-            <div class="journal-page">
-                <ul class="seasonal-list">
-                    {continuousLearning.map((item, i) => (
-                        <li class="seasonal-item reveal">
-                            <span class="seasonal-marker" aria-hidden="true">
-                                <svg viewBox="0 0 16 16">
-                                    <path d="M8 2 C6 4, 3 6, 3 9 C3 12, 5 14, 8 14 C11 14, 13 12, 13 9 C13 6, 10 4, 8 2Z" fill="none" stroke="#2d5016" stroke-width="1.2" />
-                                    <line x1="8" y1="7" x2="8" y2="12" stroke="#4a7c29" stroke-width="0.8" />
-                                </svg>
-                            </span>
-                            <span class="seasonal-text">{item}</span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="journal-footer">
-            <div class="botanical-divider" aria-hidden="true">
-                <svg viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="0" y1="15" x2="60" y2="15" stroke="#c4a35a" stroke-width="1" />
-                    <path d="M75 15 C80 5, 90 2, 100 8 C110 2, 120 5, 125 15 C120 25, 110 28, 100 22 C90 28, 80 25, 75 15Z" fill="none" stroke="#2d5016" stroke-width="1.5" />
-                    <circle cx="100" cy="15" r="3" fill="#c4a35a" opacity="0.5" />
-                    <line x1="140" y1="15" x2="200" y2="15" stroke="#c4a35a" stroke-width="1" />
-                </svg>
-            </div>
-
-            <div class="pressed-flower" aria-hidden="true">
-                <svg viewBox="0 0 120 140" class="flower-svg">
-                    <!-- stem -->
-                    <line x1="60" y1="70" x2="60" y2="135" stroke="#4a7c29" stroke-width="1.5" />
-                    <!-- leaves on stem -->
-                    <path d="M60 95 C50 88, 42 82, 45 78 C48 74, 55 80, 60 95" fill="#2d5016" opacity="0.4" />
-                    <path d="M60 110 C70 103, 78 97, 75 93 C72 89, 65 95, 60 110" fill="#2d5016" opacity="0.3" />
-                    <!-- petals -->
-                    <ellipse cx="60" cy="45" rx="10" ry="22" fill="#c4a35a" opacity="0.25" transform="rotate(0,60,60)" />
-                    <ellipse cx="60" cy="45" rx="10" ry="22" fill="#c4a35a" opacity="0.2" transform="rotate(60,60,60)" />
-                    <ellipse cx="60" cy="45" rx="10" ry="22" fill="#c4a35a" opacity="0.2" transform="rotate(120,60,60)" />
-                    <ellipse cx="60" cy="45" rx="10" ry="22" fill="#c4a35a" opacity="0.25" transform="rotate(180,60,60)" />
-                    <ellipse cx="60" cy="45" rx="10" ry="22" fill="#c4a35a" opacity="0.2" transform="rotate(240,60,60)" />
-                    <ellipse cx="60" cy="45" rx="10" ry="22" fill="#c4a35a" opacity="0.2" transform="rotate(300,60,60)" />
-                    <!-- center -->
-                    <circle cx="60" cy="60" r="8" fill="#5c3d2e" opacity="0.35" />
-                    <circle cx="60" cy="60" r="4" fill="#c4a35a" opacity="0.4" />
-                </svg>
-            </div>
-
-            <p class="footer-end">End of Field Study</p>
-            <p class="footer-note">Compiled with great care and botanical rigour</p>
-            <div class="footer-links">
-                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">Herbarium</a>
-                <span class="footer-sep" aria-hidden="true">&mdash;</span>
-                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">Society Register</a>
-                <span class="footer-sep" aria-hidden="true">&mdash;</span>
-                <a href={`mailto:${siteMetadata.email}`}>Correspondence</a>
-            </div>
-            <p class="footer-copy">&copy; {new Date().getFullYear()} {siteMetadata.name}. All specimens catalogued.</p>
-        </footer>
-
     </main>
 
 </body>
@@ -448,7 +131,7 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     html {
-        scroll-behavior: smooth;
+        height: 100%;
     }
 
     body {
@@ -456,8 +139,9 @@ import { experience, education, certifications, skills, engagements, continuousL
         background: var(--parchment);
         color: var(--earth);
         line-height: 1.7;
-        overflow-x: hidden;
-        min-height: 100vh;
+        overflow: hidden;
+        height: 100%;
+        margin: 0;
     }
 
     /* ===== INTRO SEQUENCE ===== */
@@ -630,942 +314,260 @@ import { experience, education, certifications, skills, engagements, continuousL
         }
     }
 
-    /* ===== JOURNAL MAIN ===== */
+    /* ===== JOURNAL MAIN (viewport-locked) ===== */
     .journal {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 3rem 2rem 2rem;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         opacity: 0;
         transition: opacity 0.6s ease;
+        padding: 1.5rem;
     }
 
     .journal.visible {
         opacity: 1;
     }
 
-    /* ===== JOURNAL COVER ===== */
-    .journal-cover {
-        text-align: center;
-        padding: 2.5rem 2rem;
-        margin-bottom: 2rem;
-    }
-
-    .vine-border-top, .vine-border-bottom {
+    /* ===== BOTANIST NARRATIVE ===== */
+    .botanist-narrative {
+        max-width: 720px;
         width: 100%;
-        height: 40px;
-        display: block;
-    }
-
-    .vine-path {
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-    }
-
-    .vine-border-top.animated .vine-path,
-    .vine-border-bottom.animated .vine-path {
-        animation: vineGrow 2s ease forwards;
-    }
-
-    @keyframes vineGrow {
-        to { stroke-dashoffset: 0; }
-    }
-
-    .vine-dot {
-        opacity: 0;
-    }
-
-    .vine-border-top.animated .vine-dot,
-    .vine-border-bottom.animated .vine-dot {
-        animation: dotAppear 0.3s ease forwards 1.5s;
-    }
-
-    @keyframes dotAppear {
-        to { opacity: 1; }
-    }
-
-    .cover-content {
-        display: flex;
-        align-items: center;
-        gap: 2.5rem;
-        padding: 2rem 0;
         text-align: left;
     }
 
-    .cover-photo-frame {
-        flex-shrink: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .cover-photo {
-        width: 180px;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 4px;
-        border: 4px solid var(--earth);
-        padding: 4px;
-        background: var(--sage);
-        filter: sepia(0.35) contrast(1.05);
-        box-shadow: 3px 3px 12px rgba(92, 61, 46, 0.25);
-    }
-
-    .photo-caption {
-        font-family: 'Caveat', cursive;
-        font-size: 0.85rem;
-        color: var(--earth);
-        opacity: 0.7;
-    }
-
-    .cover-text {
-        flex: 1;
-    }
-
-    .cover-subtitle {
-        font-family: 'Lora', serif;
-        font-size: 0.8rem;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--gold);
-        margin-bottom: 0.25rem;
-    }
-
-    .cover-title {
+    .journal-title {
         font-family: 'Playfair Display', serif;
-        font-size: 2.8rem;
+        font-size: 1.5rem;
         font-weight: 900;
         color: var(--dark-green);
-        line-height: 1.15;
-        margin-bottom: 0.5rem;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.4rem;
+        border-bottom: 2px solid var(--gold);
+        padding-bottom: 0.4rem;
+        text-transform: uppercase;
     }
 
-    .cover-subject {
+    .journal-meta {
         font-family: 'Caveat', cursive;
-        font-size: 1.5rem;
+        font-size: 1.05rem;
         color: var(--earth);
-        margin-bottom: 0.75rem;
+        opacity: 0.7;
+        margin-bottom: 1.25rem;
     }
 
-    .cover-meta {
-        display: flex;
-        flex-direction: column;
-        gap: 0.2rem;
+    .specimen {
         margin-bottom: 1rem;
     }
 
-    .meta-item {
+    .specimen h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--dark-green);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 0.3rem;
+        border-left: 3px solid var(--mid-green);
+        padding-left: 0.6rem;
+    }
+
+    .specimen p {
+        font-family: 'Lora', serif;
         font-size: 0.85rem;
+        line-height: 1.65;
+        margin-bottom: 0.35rem;
         color: var(--earth);
-        opacity: 0.8;
     }
 
-    .cover-links {
+    .root-system {
+        margin-bottom: 1rem;
+    }
+
+    .root-system h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--dark-green);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 0.3rem;
+        border-left: 3px solid var(--gold);
+        padding-left: 0.6rem;
+    }
+
+    .root-system p {
+        font-family: 'Lora', serif;
+        font-size: 0.85rem;
+        line-height: 1.65;
+        color: var(--earth);
+    }
+
+    .field-note {
+        font-family: 'Caveat', cursive;
+        font-size: 1.1rem;
+        color: var(--mid-green);
+        font-weight: 600;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding: 0.5rem 0;
+        border-top: 1px dashed var(--gold);
+        border-bottom: 1px dashed var(--gold);
+        text-align: center;
+    }
+
+    .botanist-footer {
         display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
+        gap: 1.25rem;
+        justify-content: center;
     }
 
-    .journal-link {
+    .botanist-footer a {
         font-family: 'Lora', serif;
         font-size: 0.85rem;
         color: var(--dark-green);
         text-decoration: none;
         border: 1px solid var(--dark-green);
-        padding: 0.35rem 0.9rem;
+        padding: 0.3rem 0.75rem;
         border-radius: 2px;
         transition: all 0.2s ease;
     }
 
-    .journal-link:hover {
+    .botanist-footer a:hover {
         background: var(--dark-green);
         color: var(--parchment);
-    }
-
-    /* ===== BOTANICAL DIVIDERS ===== */
-    .botanical-divider {
-        display: flex;
-        justify-content: center;
-        padding: 1.5rem 0;
-    }
-
-    .botanical-divider svg {
-        width: 200px;
-        height: 30px;
-    }
-
-    /* ===== JOURNAL SECTIONS ===== */
-    .journal-section {
-        margin-bottom: 1rem;
-    }
-
-    .section-heading {
-        font-family: 'Caveat', cursive;
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: var(--dark-green);
-        text-align: center;
-        margin-bottom: 0.25rem;
-    }
-
-    .annotation {
-        font-family: 'Caveat', cursive;
-        font-size: 1.05rem;
-        color: var(--earth);
-        opacity: 0.65;
-        text-align: center;
-        font-style: italic;
-        margin-bottom: 1.5rem;
-    }
-
-    .journal-page {
-        background: var(--sage);
-        border: 1px solid var(--gold);
-        padding: 2rem;
-        position: relative;
-        clip-path: polygon(
-            0% 2%, 3% 0%, 8% 1%, 15% 0%, 22% 0.5%, 30% 0%, 40% 0.8%, 50% 0%, 60% 0.5%, 70% 0%, 78% 1%, 85% 0%, 92% 0.5%, 97% 0%, 100% 1.5%,
-            100% 98%, 97% 100%, 92% 99%, 85% 100%, 78% 99.5%, 70% 100%, 60% 99%, 50% 100%, 40% 99.5%, 30% 100%, 22% 99%, 15% 100%, 8% 99.5%, 3% 100%, 0% 98.5%
-        );
-    }
-
-    .journal-page::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: repeating-linear-gradient(
-            transparent,
-            transparent 28px,
-            rgba(92, 61, 46, 0.06) 28px,
-            rgba(92, 61, 46, 0.06) 29px
-        );
-        pointer-events: none;
-    }
-
-    .body-text {
-        font-size: 0.95rem;
-        line-height: 1.8;
-        margin-bottom: 1.5rem;
-    }
-
-    /* ===== METRICS ===== */
-    .metrics-row {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-top: 1rem;
-    }
-
-    .metric-card {
-        text-align: center;
-        padding: 1rem 0.5rem;
-        border: 1px double var(--gold);
-        border-radius: 2px;
-    }
-
-    .metric-value {
-        display: block;
-        font-family: 'Playfair Display', serif;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--dark-green);
-    }
-
-    .metric-label {
-        display: block;
-        font-family: 'Caveat', cursive;
-        font-size: 0.95rem;
-        color: var(--earth);
-        opacity: 0.75;
-        margin-top: 0.2rem;
-    }
-
-    /* ===== TIMELINE (Growth Seasons) ===== */
-    .timeline {
-        position: relative;
-        padding-left: 2.5rem;
-    }
-
-    .timeline::before {
-        content: '';
-        position: absolute;
-        left: 12px;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: linear-gradient(to bottom, var(--dark-green), var(--mid-green), var(--dark-green));
-    }
-
-    .timeline-entry {
-        position: relative;
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px dashed rgba(92, 61, 46, 0.15);
-    }
-
-    .timeline-entry:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
-    }
-
-    .timeline-marker {
-        position: absolute;
-        left: -2.5rem;
-        top: 0.25rem;
-        width: 26px;
-        height: 26px;
-        background: var(--sage);
-        border: 2px solid var(--dark-green);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .leaf-icon {
-        width: 16px;
-        height: 16px;
-    }
-
-    .season-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 0.5rem;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .season-company {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--dark-green);
-    }
-
-    .season-location {
-        font-family: 'Caveat', cursive;
-        font-size: 1rem;
-        color: var(--earth);
-        opacity: 0.7;
-    }
-
-    .season-role {
-        margin-bottom: 0.75rem;
-    }
-
-    .role-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 0.3rem;
-    }
-
-    .role-title {
-        font-family: 'Lora', serif;
-        font-weight: 600;
-        font-size: 0.95rem;
-        color: var(--earth);
-    }
-
-    .role-period {
-        font-family: 'Caveat', cursive;
-        font-size: 0.9rem;
-        color: var(--gold);
-    }
-
-    .role-description {
-        font-size: 0.88rem;
-        line-height: 1.7;
-        margin-bottom: 0.5rem;
-        opacity: 0.85;
-    }
-
-    .role-bullets {
-        list-style: none;
-        padding: 0;
-    }
-
-    .role-bullets li {
-        font-size: 0.88rem;
-        line-height: 1.6;
-        padding-left: 1.2rem;
-        position: relative;
-        margin-bottom: 0.25rem;
-    }
-
-    .role-bullets li::before {
-        content: '\273F';
-        position: absolute;
-        left: 0;
-        color: var(--mid-green);
-        font-size: 0.8rem;
-    }
-
-    /* ===== SPECIES CATALOG (skills) ===== */
-    .catalog-subhead {
-        font-family: 'Caveat', cursive;
-        font-size: 1.3rem;
-        color: var(--earth);
-        margin-bottom: 0.75rem;
-        margin-top: 1.5rem;
-        border-bottom: 1px solid var(--gold);
-        padding-bottom: 0.3rem;
-    }
-
-    .catalog-subhead:first-child {
-        margin-top: 0;
-    }
-
-    .catalog-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-        gap: 0.75rem;
-    }
-
-    .catalog-card {
-        border: 2px double var(--earth);
-        padding: 0.6rem 0.8rem;
-        text-align: center;
-        background: var(--parchment);
-        position: relative;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .catalog-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 2px 2px 8px rgba(92, 61, 46, 0.15);
-    }
-
-    .specimen-number {
-        display: block;
-        font-family: 'Caveat', cursive;
-        font-size: 0.75rem;
-        color: var(--gold);
-        margin-bottom: 0.15rem;
-    }
-
-    .specimen-name {
-        font-family: 'Lora', serif;
-        font-size: 0.85rem;
-        color: var(--dark-green);
-        font-weight: 600;
-    }
-
-    .terrain-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-    }
-
-    .terrain-tag {
-        font-family: 'Lora', serif;
-        font-size: 0.8rem;
-        padding: 0.3rem 0.75rem;
-        border: 1px solid var(--mid-green);
-        color: var(--dark-green);
-        border-radius: 2px;
-        background: rgba(45, 80, 22, 0.05);
-    }
-
-    /* ===== FIELD STUDIES (engagements) ===== */
-    .field-studies {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-    }
-
-    .field-study-card {
-        display: flex;
-        gap: 1rem;
-        border: 1px solid var(--gold);
-        background: var(--parchment);
-        padding: 1.25rem;
-        align-items: flex-start;
-    }
-
-    .study-number {
-        font-family: 'Caveat', cursive;
-        font-size: 1rem;
-        color: var(--gold);
-        white-space: nowrap;
-        flex-shrink: 0;
-        padding-top: 0.15rem;
-    }
-
-    .study-body {
-        flex: 1;
-    }
-
-    .study-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 0.4rem;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .study-client {
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        color: var(--dark-green);
-        font-size: 1.05rem;
-        text-transform: capitalize;
-    }
-
-    .study-sector {
-        font-family: 'Caveat', cursive;
-        font-size: 0.9rem;
-        color: var(--earth);
-        opacity: 0.7;
-    }
-
-    .study-details {
-        display: flex;
-        gap: 1.5rem;
-        font-size: 0.85rem;
-        margin-bottom: 0.5rem;
-        flex-wrap: wrap;
-    }
-
-    .study-trend {
-        font-family: 'Caveat', cursive;
-        font-size: 0.9rem;
-        font-weight: 600;
-    }
-
-    .trend-positive { color: var(--dark-green); }
-    .trend-neutral { color: var(--gold); }
-
-    /* ===== ROOT SYSTEM (education) ===== */
-    .root-system {
-        position: relative;
-        padding-left: 3rem;
-    }
-
-    .root-trunk {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 40px;
-    }
-
-    .root-svg {
-        width: 40px;
-        height: 100%;
-    }
-
-    .root-entry {
-        margin-bottom: 1.5rem;
-        position: relative;
-    }
-
-    .root-entry:last-child {
-        margin-bottom: 0;
-    }
-
-    .root-node {
-        position: absolute;
-        left: -2.35rem;
-        top: 0.5rem;
-        width: 14px;
-        height: 14px;
-        background: var(--earth);
-        border-radius: 50%;
-        border: 2px solid var(--gold);
-    }
-
-    .root-institution {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: var(--dark-green);
-        margin-bottom: 0.15rem;
-    }
-
-    .root-degree {
-        font-family: 'Lora', serif;
-        font-size: 0.9rem;
-        margin-bottom: 0.3rem;
-    }
-
-    .root-meta {
-        display: flex;
-        gap: 1rem;
-        font-family: 'Caveat', cursive;
-        font-size: 0.95rem;
-        color: var(--earth);
-        opacity: 0.75;
-        flex-wrap: wrap;
-    }
-
-    .root-distinction {
-        color: var(--dark-green);
-        font-weight: 700;
-        opacity: 1;
-        border: 1px solid var(--gold);
-        padding: 0 0.4rem;
-        border-radius: 2px;
-    }
-
-    /* ===== SOCIETY MEMBERSHIPS (certifications) ===== */
-    .memberships-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1.25rem;
-    }
-
-    .membership-badge {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 1.25rem 0.75rem;
-        border: 1px solid var(--gold);
-        background: var(--parchment);
-    }
-
-    .badge-seal {
-        margin-bottom: 0.75rem;
-    }
-
-    .seal-svg {
-        width: 50px;
-        height: 50px;
-    }
-
-    .badge-name {
-        font-family: 'Lora', serif;
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--dark-green);
-    }
-
-    /* ===== SEASONAL STUDIES (continuousLearning) ===== */
-    .seasonal-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    .seasonal-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0.6rem 0;
-        border-bottom: 1px dashed rgba(92, 61, 46, 0.12);
-    }
-
-    .seasonal-item:last-child {
-        border-bottom: none;
-    }
-
-    .seasonal-marker {
-        flex-shrink: 0;
-        width: 18px;
-        height: 18px;
-    }
-
-    .seasonal-marker svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    .seasonal-text {
-        font-size: 0.9rem;
-        color: var(--earth);
-    }
-
-    /* ===== FOOTER ===== */
-    .journal-footer {
-        text-align: center;
-        padding: 2rem 0 3rem;
-        margin-top: 2rem;
-    }
-
-    .pressed-flower {
-        margin: 1rem auto;
-    }
-
-    .flower-svg {
-        width: 80px;
-        height: 100px;
-        opacity: 0.6;
-    }
-
-    .footer-end {
-        font-family: 'Caveat', cursive;
-        font-size: 1.6rem;
-        color: var(--dark-green);
-        margin-bottom: 0.25rem;
-    }
-
-    .footer-note {
-        font-family: 'Caveat', cursive;
-        font-size: 1rem;
-        color: var(--earth);
-        opacity: 0.6;
-        margin-bottom: 1.25rem;
-    }
-
-    .footer-links {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .footer-links a {
-        font-family: 'Lora', serif;
-        font-size: 0.85rem;
-        color: var(--dark-green);
-        text-decoration: none;
-        border-bottom: 1px solid var(--gold);
-        padding-bottom: 2px;
-        transition: color 0.2s ease;
-    }
-
-    .footer-links a:hover {
-        color: var(--mid-green);
-    }
-
-    .footer-sep {
-        color: var(--gold);
-        font-size: 0.75rem;
-    }
-
-    .footer-copy {
-        font-size: 0.75rem;
-        color: var(--earth);
-        opacity: 0.5;
-    }
-
-    /* ===== SCROLL REVEAL ===== */
-    .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* ===== RESPONSIVE: 1200px ===== */
-    @media (max-width: 1200px) {
-        .journal {
-            max-width: 760px;
-        }
     }
 
     /* ===== RESPONSIVE: 768px ===== */
     @media (max-width: 768px) {
         .journal {
-            padding: 2rem 1.25rem;
+            padding: 1.25rem;
         }
 
-        .cover-content {
-            flex-direction: column;
-            text-align: center;
-            gap: 1.5rem;
+        .journal-title {
+            font-size: 1.2rem;
         }
 
-        .cover-text {
-            text-align: center;
+        .journal-meta {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
         }
 
-        .cover-title {
-            font-size: 2.2rem;
+        .specimen h2,
+        .root-system h2 {
+            font-size: 0.9rem;
         }
 
-        .cover-links {
-            justify-content: center;
+        .specimen p,
+        .root-system p {
+            font-size: 0.8rem;
+            line-height: 1.55;
         }
 
-        .cover-meta {
+        .field-note {
+            font-size: 1rem;
+        }
+
+        .botanist-footer a {
+            font-size: 0.8rem;
+            padding: 0.35rem 0.6rem;
+            min-height: 44px;
+            display: inline-flex;
             align-items: center;
-        }
-
-        .cover-photo {
-            width: 150px;
-            height: 150px;
-        }
-
-        .journal-page {
-            padding: 1.5rem;
-        }
-
-        .section-heading {
-            font-size: 1.9rem;
-        }
-
-        .metrics-row {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .catalog-grid {
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        }
-
-        .memberships-grid {
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        }
-
-        .season-header {
-            flex-direction: column;
-            gap: 0.15rem;
-        }
-
-        .role-header {
-            flex-direction: column;
-            gap: 0.15rem;
-        }
-
-        .field-study-card {
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .study-details {
-            flex-direction: column;
-            gap: 0.3rem;
         }
     }
 
     /* ===== RESPONSIVE: 480px ===== */
     @media (max-width: 480px) {
         .journal {
-            padding: 1.5rem 1rem;
+            padding: 1rem 0.75rem;
         }
 
-        .cover-title {
-            font-size: 1.75rem;
+        .journal-title {
+            font-size: 1rem;
+            letter-spacing: 0.02em;
         }
 
-        .cover-subject {
-            font-size: 1.2rem;
+        .journal-meta {
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
         }
 
-        .cover-photo {
-            width: 130px;
-            height: 130px;
+        .specimen {
+            margin-bottom: 0.75rem;
         }
 
-        .section-heading {
-            font-size: 1.6rem;
+        .specimen h2,
+        .root-system h2 {
+            font-size: 0.82rem;
         }
 
-        .journal-page {
-            padding: 1.25rem 1rem;
+        .specimen p,
+        .root-system p {
+            font-size: 0.75rem;
+            line-height: 1.5;
+            margin-bottom: 0.25rem;
         }
 
-        .metrics-row {
-            grid-template-columns: 1fr 1fr;
+        .root-system {
+            margin-bottom: 0.75rem;
+        }
+
+        .field-note {
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding: 0.35rem 0;
+        }
+
+        .botanist-footer {
             gap: 0.75rem;
         }
 
-        .metric-value {
-            font-size: 1.2rem;
-        }
-
-        .catalog-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-        }
-
-        .memberships-grid {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .timeline {
-            padding-left: 2rem;
-        }
-
-        .timeline-marker {
-            left: -2rem;
-            width: 22px;
-            height: 22px;
+        .botanist-footer a {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.5rem;
         }
 
         .intro-text {
             font-size: 1.2rem;
-        }
-
-        .journal-link {
-            padding: 0.4rem 0.75rem;
-            font-size: 0.8rem;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .footer-links a {
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
         }
     }
 
     /* ===== RESPONSIVE: 380px ===== */
     @media (max-width: 380px) {
         .journal {
-            padding: 1rem 0.75rem;
+            padding: 0.75rem 0.5rem;
         }
 
-        .cover-title {
-            font-size: 1.5rem;
-        }
-
-        .cover-subtitle {
-            font-size: 0.7rem;
-        }
-
-        .cover-photo {
-            width: 110px;
-            height: 110px;
-        }
-
-        .section-heading {
-            font-size: 1.4rem;
-        }
-
-        .journal-page {
-            padding: 1rem 0.75rem;
-            clip-path: none;
-        }
-
-        .catalog-grid {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .memberships-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .metrics-row {
-            grid-template-columns: 1fr;
-        }
-
-        .body-text {
+        .journal-title {
             font-size: 0.88rem;
         }
 
-        .root-system {
-            padding-left: 2rem;
+        .journal-meta {
+            font-size: 0.78rem;
+            margin-bottom: 0.6rem;
         }
 
-        .root-node {
-            left: -1.75rem;
+        .specimen h2,
+        .root-system h2 {
+            font-size: 0.78rem;
+        }
+
+        .specimen p,
+        .root-system p {
+            font-size: 0.7rem;
+            line-height: 1.45;
+        }
+
+        .field-note {
+            font-size: 0.82rem;
+        }
+
+        .botanist-footer a {
+            font-size: 0.7rem;
         }
     }
 
@@ -1574,12 +576,6 @@ import { experience, education, certifications, skills, engagements, continuousL
         .leaf {
             animation: none;
             display: none;
-        }
-
-        .reveal {
-            opacity: 1;
-            transform: none;
-            transition: none;
         }
 
         .sprout-svg .stem,
@@ -1598,14 +594,6 @@ import { experience, education, certifications, skills, engagements, continuousL
 
         .intro-text {
             animation: none;
-            opacity: 1;
-        }
-
-        .vine-path {
-            stroke-dashoffset: 0;
-        }
-
-        .vine-dot {
             opacity: 1;
         }
     }
@@ -1637,8 +625,6 @@ import { experience, education, certifications, skills, engagements, continuousL
                     journal.style.opacity = '1';
                     journal.classList.add('visible');
                 }
-                initScrollReveal();
-                initVineBorders();
                 return;
             }
         } catch (e) { /* private browsing */ }
@@ -1665,51 +651,5 @@ import { experience, education, certifications, skills, engagements, continuousL
             endIntro();
             cleanup();
         }, 3200);
-
-        // Init scroll reveal and vine animations after intro
-        setTimeout(() => {
-            initScrollReveal();
-            initVineBorders();
-        }, 100);
     })();
-
-    /* ===== SCROLL REVEAL ===== */
-    function initScrollReveal() {
-        const reveals = document.querySelectorAll('.reveal');
-        if (!reveals.length) return;
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-        );
-
-        reveals.forEach((el) => observer.observe(el));
-    }
-
-    /* ===== VINE BORDER ANIMATIONS ===== */
-    function initVineBorders() {
-        const vineBorders = document.querySelectorAll('.vine-border-top, .vine-border-bottom');
-        if (!vineBorders.length) return;
-
-        const vineObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                        vineObserver.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.3 }
-        );
-
-        vineBorders.forEach((el) => vineObserver.observe(el));
-    }
 </script>

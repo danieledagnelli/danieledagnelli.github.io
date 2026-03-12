@@ -242,7 +242,8 @@ import { themes } from "../data/themes";
     <script define:vars={{ themesData: themes }}>
     (function() {
         const THEMES = themesData;
-        const CYCLE_DURATION = 7000;
+        const TARGET_TOTAL = 12000;
+        const MIN_CONTENT = 5000;
         const PRELOAD_AHEAD = 5000;
         const IDLE_RESUME_MS = 60000;
         let playlist = [];
@@ -273,10 +274,10 @@ import { themes } from "../data/themes";
             return theme?.accentColor || '#39ff14';
         }
 
-        function startProgress(color) {
+        function startProgress(color, duration) {
             progressBar.style.background = color;
             progressBar.style.boxShadow = `0 0 8px ${color}40`;
-            progressBar.style.setProperty('--progress-duration', `${CYCLE_DURATION}ms`);
+            progressBar.style.setProperty('--progress-duration', `${duration}ms`);
             progressBar.classList.remove('paused', 'running');
             void progressBar.offsetWidth;
             progressBar.classList.add('running');
@@ -702,6 +703,7 @@ import { themes } from "../data/themes";
             if (currentIndex >= playlist.length) { playlist = buildPlaylist(); currentIndex = 0; }
             const nextTheme = playlist[currentIndex];
             const transition = nextTransition();
+            const introStart = Date.now();
             await loadTheme(hiddenStage, nextTheme);
             await transition.play(activeStage, hiddenStage);
             const temp = activeStage; activeStage = hiddenStage; hiddenStage = temp;
@@ -710,7 +712,9 @@ import { themes } from "../data/themes";
             if (!isPaused) {
                 await waitForIntroComplete(nextTheme);
                 scrollToSection(activeStage, lastVisibleSection);
-                if (!isPaused) scheduleCycle();
+                const introElapsed = Date.now() - introStart;
+                const contentDuration = Math.max(TARGET_TOTAL - introElapsed, MIN_CONTENT);
+                if (!isPaused) scheduleCycle(contentDuration);
             }
         }
 
@@ -721,6 +725,7 @@ import { themes } from "../data/themes";
             if (currentIndex < 0) currentIndex = playlist.length - 1;
             const prevTheme = playlist[currentIndex];
             const transition = nextTransition();
+            const introStart = Date.now();
             await loadTheme(hiddenStage, prevTheme);
             await transition.play(activeStage, hiddenStage);
             const temp = activeStage; activeStage = hiddenStage; hiddenStage = temp;
@@ -729,7 +734,9 @@ import { themes } from "../data/themes";
             if (!isPaused) {
                 await waitForIntroComplete(prevTheme);
                 scrollToSection(activeStage, lastVisibleSection);
-                if (!isPaused) scheduleCycle();
+                const introElapsed = Date.now() - introStart;
+                const contentDuration = Math.max(TARGET_TOTAL - introElapsed, MIN_CONTENT);
+                if (!isPaused) scheduleCycle(contentDuration);
             }
         }
 
@@ -748,6 +755,7 @@ import { themes } from "../data/themes";
             }
             const theme = playlist[currentIndex];
             const transition = nextTransition();
+            const introStart = Date.now();
             await loadTheme(hiddenStage, theme);
             await transition.play(activeStage, hiddenStage);
             const temp = activeStage; activeStage = hiddenStage; hiddenStage = temp;
@@ -755,20 +763,23 @@ import { themes } from "../data/themes";
             isTransitioning = false;
             if (!isPaused) {
                 await waitForIntroComplete(theme);
-                if (!isPaused) scheduleCycle();
+                const introElapsed = Date.now() - introStart;
+                const contentDuration = Math.max(TARGET_TOTAL - introElapsed, MIN_CONTENT);
+                if (!isPaused) scheduleCycle(contentDuration);
             }
         }
 
-        function scheduleCycle() {
+        function scheduleCycle(duration) {
             clearTimers();
-            startProgress(getCurrentThemeColor());
+            const d = duration || TARGET_TOTAL;
+            startProgress(getCurrentThemeColor(), d);
             preloadTimer = setTimeout(() => {
                 let nextIdx = currentIndex + 1;
                 if (nextIdx >= playlist.length) nextIdx = 0;
                 const nextTheme = playlist[nextIdx];
                 clearIntroKey(nextTheme);
                 hiddenStage.src = nextTheme.path;
-            }, CYCLE_DURATION - PRELOAD_AHEAD);
+            }, Math.max(d - PRELOAD_AHEAD, 0));
         }
 
         progressBar.addEventListener('animationend', () => {
@@ -783,7 +794,7 @@ import { themes } from "../data/themes";
         function togglePause() {
             isPaused = !isPaused;
             if (isPaused) clearTimers();
-            else scheduleCycle();
+            else scheduleCycle(TARGET_TOTAL);
         }
 
         function openPicker() { picker.classList.add('open'); updatePickerHighlight(); }
@@ -807,7 +818,7 @@ import { themes } from "../data/themes";
             idleTimer = setTimeout(() => {
                 if (isPaused) {
                     isPaused = false;
-                    scheduleCycle();
+                    scheduleCycle(TARGET_TOTAL);
                 }
             }, IDLE_RESUME_MS);
         }
@@ -854,11 +865,14 @@ import { themes } from "../data/themes";
                 if (idx >= 0) [playlist[0], playlist[idx]] = [playlist[idx], playlist[0]];
             }
             currentIndex = 0;
+            const introStart = Date.now();
             await loadTheme(activeStage, playlist[0]);
             activeStage.classList.add('active');
             updatePickerHighlight();
             await waitForIntroComplete(playlist[0]);
-            scheduleCycle();
+            const introElapsed = Date.now() - introStart;
+            const contentDuration = Math.max(TARGET_TOTAL - introElapsed, MIN_CONTENT);
+            scheduleCycle(contentDuration);
         }
 
         init();

@@ -1,6 +1,5 @@
 ---
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, managementSkills, languages, industries, metrics } from "../data/resume";
 ---
 
 <!doctype html>
@@ -83,309 +82,30 @@ import { experience, education, certifications, skills, engagements, continuousL
     <!-- MAIN CONTENT -->
     <main class="film" id="film">
 
-        <!-- DIRECTOR'S STATEMENT -->
-        <section class="section section--hero" data-section="header">
-            <div class="hero-inner">
-                <div class="hero-photo">
-                    <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="200" height="200" />
-                    <div class="photo-border" aria-hidden="true"></div>
-                </div>
-                <h1 class="hero-name">{siteMetadata.name}</h1>
-                <p class="hero-tagline">Senior Engagement Manager &mdash; AI &amp; Cybersecurity</p>
-                <div class="hero-meta">
-                    <span>{siteMetadata.location}</span>
-                    <span class="hero-dot" aria-hidden="true"></span>
-                    <span>15+ Years in Production</span>
-                </div>
+        <div class="credits-narrative">
+            <div class="credits-block">
+                <div class="credits-studio">A C3 AI PRODUCTION</div>
+                <div class="credits-role">DIRECTED BY</div>
+                <div class="credits-name">daniele d'agnelli</div>
+                <div class="credits-role">PRODUCED BY</div>
+                <div class="credits-name">customer services division</div>
+                <div class="credits-detail">reporting to vp of customer services</div>
+                <div class="credits-role">CAST (70+)</div>
+                <div class="credits-name">app dev · data science · qa · devops</div>
+                <div class="credits-detail">cross-functional ensemble</div>
+                <div class="credits-numbers">BUDGET: $15M &nbsp;|&nbsp; BOX OFFICE: $18M EBIT</div>
+                <div class="credits-role">BASED ON A TRUE STORY</div>
+                <div class="credits-detail">15 years of professional services across<br>accenture · codec · deloitte · c3 ai<br>milan · dublin · london</div>
+                <div class="credits-role">ORIGINAL SCORE</div>
+                <div class="credits-detail">bsc computer science — university of bari<br>msc ethical hacking — abertay university (distinction)</div>
+                <div class="credits-quote">"sustained nps above 70" — the critics</div>
             </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-diamond"></span>
+            <div class="credits-footer">
+                <a href="mailto:daniele@dagnelli.net">NOW SHOWING</a> |
+                <a href="https://github.com/danieledagnelli">GITHUB</a> |
+                <a href="https://linkedin.com/in/dagnelli">LINKEDIN</a>
+            </div>
         </div>
-
-        <!-- DIRECTOR'S STATEMENT -->
-        <section class="section reveal" data-section="summary">
-            <h2 class="section-heading">Director's Statement</h2>
-            <div class="statement-card">
-                <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-                <p class="statement-text">{summary}</p>
-                <span class="quote-mark quote-mark--end" aria-hidden="true">&rdquo;</span>
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-diamond"></span>
-        </div>
-
-        <!-- FILMOGRAPHY -->
-        <section class="section reveal" data-section="experience">
-            <h2 class="section-heading">Filmography</h2>
-            <div class="poster-grid">
-                {experience.map((exp) => (
-                    <div class="poster-card reveal">
-                        <div class="poster-deco-corner poster-deco-corner--tl" aria-hidden="true"></div>
-                        <div class="poster-deco-corner poster-deco-corner--tr" aria-hidden="true"></div>
-                        <div class="poster-deco-corner poster-deco-corner--bl" aria-hidden="true"></div>
-                        <div class="poster-deco-corner poster-deco-corner--br" aria-hidden="true"></div>
-                        <div class="poster-header">
-                            <span class="poster-presents">A {exp.company} Production</span>
-                        </div>
-                        {exp.roles.map((role) => (
-                            <div class="poster-body">
-                                <h3 class="poster-title">{role.title}</h3>
-                                <div class="poster-starring">
-                                    <span class="poster-label">Starring</span>
-                                    <span class="poster-star">Daniele D'Agnelli</span>
-                                </div>
-                                <div class="poster-meta-row">
-                                    <span class="poster-location">{exp.location}</span>
-                                    <span class="poster-period">{role.period}</span>
-                                </div>
-                                {role.description && (
-                                    <div class="poster-synopsis">
-                                        <span class="poster-label">Synopsis</span>
-                                        <p>{role.description}</p>
-                                    </div>
-                                )}
-                                {role.bullets && role.bullets.length > 0 && (
-                                    <ul class="poster-highlights">
-                                        {role.bullets.map((b) => (
-                                            <li>{b}</li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-diamond"></span>
-        </div>
-
-        <!-- PRODUCTION DEPARTMENTS (Skills) -->
-        <section class="section reveal" data-section="skills">
-            <h2 class="section-heading">Production Departments</h2>
-            <div class="dept-grid">
-                <div class="dept-card reveal">
-                    <h3 class="dept-title">Department of Engineering</h3>
-                    <div class="dept-credits">
-                        {skills.map((s) => (
-                            <div class="credit-line">
-                                <span class="credit-role">{s}</span>
-                                <span class="credit-dots" aria-hidden="true"></span>
-                                <span class="credit-name">D. D'Agnelli</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div class="dept-card reveal">
-                    <h3 class="dept-title">Department of Strategy</h3>
-                    <div class="dept-credits">
-                        {managementSkills.map((s) => (
-                            <div class="credit-line">
-                                <span class="credit-role">{s}</span>
-                                <span class="credit-dots" aria-hidden="true"></span>
-                                <span class="credit-name">D. D'Agnelli</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div class="dept-card reveal">
-                    <h3 class="dept-title">Languages</h3>
-                    <div class="dept-credits">
-                        {languages.map((l) => (
-                            <div class="credit-line">
-                                <span class="credit-role">{l}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div class="dept-card reveal">
-                    <h3 class="dept-title">Industries on Location</h3>
-                    <div class="dept-credits">
-                        {industries.map((ind) => (
-                            <div class="credit-line">
-                                <span class="credit-role">{ind}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-diamond"></span>
-        </div>
-
-        <!-- FEATURED FILMS (Engagements) -->
-        <section class="section reveal" data-section="engagements">
-            <h2 class="section-heading">Featured Films</h2>
-            <div class="featured-grid">
-                {engagements.map((eng) => (
-                    <div class="featured-card reveal">
-                        <div class="featured-genre">{eng.sector}</div>
-                        <h3 class="featured-title">{eng.client}</h3>
-                        <div class="featured-scope">{eng.scope}</div>
-                        <div class="featured-divider" aria-hidden="true"></div>
-                        <div class="featured-impact">
-                            <span class="featured-impact-label">{eng.trend === 'positive' ? 'Box Office' : 'Critical Acclaim'}</span>
-                            <span class="featured-impact-value">{eng.impact}</span>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-diamond"></span>
-        </div>
-
-        <!-- FILM SCHOOL (Education) -->
-        <section class="section reveal" data-section="education">
-            <h2 class="section-heading">Film School</h2>
-            <div class="awards-list">
-                {education.map((edu) => (
-                    <div class="award-card reveal">
-                        <div class="award-trophy" aria-hidden="true">&#127942;</div>
-                        <div class="award-info">
-                            <h3 class="award-degree">{edu.degree}</h3>
-                            <p class="award-institution">{edu.institution} &mdash; {edu.location}</p>
-                            <p class="award-period">{edu.period}</p>
-                            {edu.distinction && (
-                                <span class="award-badge">{edu.distinction}</span>
-                            )}
-                            <p class="award-to">Awarded to Daniele D'Agnelli</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-diamond"></span>
-        </div>
-
-        <!-- AWARDS & NOMINATIONS (Certifications) -->
-        <section class="section reveal" data-section="certifications">
-            <h2 class="section-heading">Awards &amp; Nominations</h2>
-            <div class="awards-list">
-                {certifications.map((c) => (
-                    <div class="award-card award-card--cert reveal">
-                        <div class="award-trophy" aria-hidden="true">&#9733;</div>
-                        <div class="award-info">
-                            <h3 class="award-degree">{c}</h3>
-                            <p class="award-to">Presented to Daniele D'Agnelli</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-diamond"></span>
-        </div>
-
-        <!-- MASTERCLASSES (Continuous Learning) -->
-        <section class="section reveal" data-section="training">
-            <h2 class="section-heading">Masterclasses</h2>
-            <div class="masterclass-grid">
-                {continuousLearning.map((cl) => (
-                    <div class="masterclass-item reveal">
-                        <span class="masterclass-reel" aria-hidden="true">&#9654;</span>
-                        <span class="masterclass-name">{cl}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-diamond"></span>
-        </div>
-
-        <!-- KEY METRICS -->
-        <section class="section reveal" data-section="extra-1">
-            <h2 class="section-heading">Box Office Numbers</h2>
-            <div class="metrics-grid">
-                {metrics.map((m) => (
-                    <div class="metric-card reveal">
-                        <span class="metric-value">{m.value}</span>
-                        <span class="metric-label">{m.label}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-diamond"></span>
-        </div>
-
-        <!-- SCROLLING CREDITS -->
-        <section class="section section--credits reveal" data-section="footer">
-            <h2 class="section-heading">End Credits</h2>
-            <div class="credits-viewport">
-                <div class="credits-scroll" id="creditsScroll">
-                    <p class="credits-heading">Directed, Produced &amp; Written by</p>
-                    <p class="credits-name">Daniele D'Agnelli</p>
-
-                    <p class="credits-heading">Education</p>
-                    {education.map((edu) => (
-                        <p class="credits-line">{edu.degree}<br/><span class="credits-sub">{edu.institution} &mdash; {edu.period}</span></p>
-                    ))}
-
-                    <p class="credits-heading">Certifications</p>
-                    {certifications.map((c) => (
-                        <p class="credits-line">{c}</p>
-                    ))}
-
-                    <p class="credits-heading">Continuous Learning</p>
-                    {continuousLearning.map((cl) => (
-                        <p class="credits-line">{cl}</p>
-                    ))}
-
-                    <p class="credits-heading">Technical Skills</p>
-                    {skills.map((s) => (
-                        <p class="credits-line">{s}</p>
-                    ))}
-
-                    <p class="credits-heading">Management</p>
-                    {managementSkills.map((ms) => (
-                        <p class="credits-line">{ms}</p>
-                    ))}
-
-                    <p class="credits-heading">Languages</p>
-                    {languages.map((l) => (
-                        <p class="credits-line">{l}</p>
-                    ))}
-
-                    <p class="credits-heading">Industries</p>
-                    {industries.map((ind) => (
-                        <p class="credits-line">{ind}</p>
-                    ))}
-
-                    <p class="credits-spacer" aria-hidden="true">&nbsp;</p>
-                    <p class="credits-name">A Daniele D'Agnelli Production</p>
-                    <p class="credits-line credits-year">&copy; {new Date().getFullYear()}</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER / FIN -->
-        <footer class="cinema-footer">
-            <div class="fin-text">FIN</div>
-            <p class="fin-disclaimer">No animals were harmed in the making of this portfolio.</p>
-            <div class="fin-contact">
-                <span class="fin-contact-label">Contact the Production Office</span>
-                <div class="fin-links">
-                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
-                    <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
-                    <a href={`mailto:${siteMetadata.email}`}>Email</a>
-                </div>
-            </div>
-        </footer>
 
     </main>
 </body>
@@ -640,908 +360,99 @@ import { experience, education, certifications, skills, engagements, continuousL
     .production-deco-bottom::before { bottom: -5px; }
 
     /* =========================================
-       MAIN CONTENT
+       MAIN CONTENT — viewport-locked
        ========================================= */
     .film {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 40px 40px 0;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         opacity: 0;
         transition: opacity 0.6s ease 0.3s;
     }
     .film.visible { opacity: 1; }
 
     /* =========================================
-       SECTION HEADINGS
+       CREDITS NARRATIVE
        ========================================= */
-    .section {
-        margin-bottom: 0;
-        padding: 40px 0;
-    }
-
-    .section-heading {
-        font-family: var(--serif);
-        font-size: clamp(28px, 4vw, 42px);
-        font-weight: 900;
-        color: var(--gold);
+    .credits-narrative {
+        max-width: 500px;
+        padding: 1.5rem;
         text-align: center;
-        margin-bottom: 40px;
-        letter-spacing: 1px;
-        position: relative;
-    }
-    .section-heading::after {
-        content: '';
-        display: block;
-        width: 60px;
-        height: 2px;
-        background: var(--gold);
-        margin: 12px auto 0;
     }
 
-    /* =========================================
-       SECTION DIVIDER
-       ========================================= */
-    .section-divider {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 0;
-    }
-    .section-divider::before,
-    .section-divider::after {
-        content: '';
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(212, 175, 55, 0.3),
-            transparent
-        );
-    }
-    .divider-diamond {
-        width: 8px;
-        height: 8px;
-        border: 1px solid var(--gold-dark);
-        transform: rotate(45deg);
-        margin: 0 16px;
-        opacity: 0.5;
+    .credits-studio {
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+        margin-bottom: 1rem;
     }
 
-    /* =========================================
-       REVEAL ANIMATION
-       ========================================= */
-    .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* =========================================
-       HERO SECTION
-       ========================================= */
-    .section--hero {
-        text-align: center;
-        padding: 60px 0 40px;
-    }
-
-    .hero-inner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .hero-photo {
-        position: relative;
-        width: 180px;
-        height: 180px;
-        margin-bottom: 8px;
-    }
-    .hero-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 4px;
-        filter: grayscale(1);
-        display: block;
-    }
-    .photo-border {
-        position: absolute;
-        inset: -6px;
-        border: 2px solid var(--gold);
-        border-radius: 6px;
-        pointer-events: none;
-    }
-    .photo-border::before {
-        content: '';
-        position: absolute;
-        inset: -4px;
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        border-radius: 8px;
-    }
-
-    .hero-name {
-        font-family: var(--serif);
-        font-size: clamp(36px, 7vw, 64px);
-        font-weight: 900;
-        color: var(--white);
-        letter-spacing: 2px;
-        line-height: 1.1;
-    }
-
-    .hero-tagline {
-        font-family: var(--sans);
-        font-size: clamp(14px, 2vw, 18px);
-        color: var(--gold);
-        font-weight: 300;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-    }
-
-    .hero-meta {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 14px;
-        color: rgba(250, 243, 224, 0.5);
-        font-weight: 300;
-    }
-    .hero-dot {
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background: var(--gold-dark);
-    }
-
-    /* =========================================
-       DIRECTOR'S STATEMENT
-       ========================================= */
-    .statement-card {
-        background: var(--bg-card);
-        border: 1px solid rgba(212, 175, 55, 0.15);
-        border-radius: 4px;
-        padding: 40px 48px;
-        position: relative;
-        text-align: center;
-        max-width: 760px;
-        margin: 0 auto;
-    }
-
-    .quote-mark {
-        font-family: var(--serif);
-        font-size: 60px;
-        color: var(--gold);
-        opacity: 0.3;
-        line-height: 1;
-        position: absolute;
-        top: 12px;
-        left: 20px;
-    }
-    .quote-mark--end {
-        top: auto;
-        left: auto;
-        bottom: 0;
-        right: 20px;
-    }
-
-    .statement-text {
-        font-family: var(--sans);
-        font-size: 15px;
-        line-height: 1.8;
-        color: var(--cream);
-        font-weight: 300;
-    }
-
-    /* =========================================
-       POSTER CARDS (Filmography)
-       ========================================= */
-    .poster-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    .poster-card {
-        background: var(--bg-card);
-        border: 2px solid rgba(212, 175, 55, 0.25);
-        border-radius: 4px;
-        padding: 48px 40px;
-        text-align: center;
-        position: relative;
-        transition: border-color 0.3s, background 0.3s;
-    }
-    .poster-card:hover {
-        border-color: rgba(212, 175, 55, 0.5);
-        background: var(--bg-card-hover);
-    }
-
-    .poster-deco-corner {
-        position: absolute;
-        width: 24px;
-        height: 24px;
-        border-color: var(--gold);
-        border-style: solid;
-        border-width: 0;
-        opacity: 0.4;
-    }
-    .poster-deco-corner--tl { top: 8px; left: 8px; border-top-width: 1px; border-left-width: 1px; }
-    .poster-deco-corner--tr { top: 8px; right: 8px; border-top-width: 1px; border-right-width: 1px; }
-    .poster-deco-corner--bl { bottom: 8px; left: 8px; border-bottom-width: 1px; border-left-width: 1px; }
-    .poster-deco-corner--br { bottom: 8px; right: 8px; border-bottom-width: 1px; border-right-width: 1px; }
-
-    .poster-header {
-        margin-bottom: 16px;
-    }
-    .poster-presents {
-        font-family: var(--sans);
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        color: rgba(250, 243, 224, 0.4);
-        font-weight: 300;
-    }
-
-    .poster-body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .poster-title {
-        font-family: var(--serif);
-        font-size: clamp(20px, 3vw, 28px);
-        font-weight: 700;
-        color: var(--white);
-        line-height: 1.3;
-    }
-
-    .poster-starring {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2px;
-    }
-    .poster-label {
-        font-family: var(--sans);
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        color: var(--gold-dark);
-        font-weight: 500;
-    }
-    .poster-star {
-        font-family: var(--serif);
-        font-size: 16px;
-        font-style: italic;
-        color: var(--gold);
-    }
-
-    .poster-meta-row {
-        display: flex;
-        gap: 20px;
-        font-size: 13px;
-        color: rgba(250, 243, 224, 0.5);
-        font-weight: 300;
-    }
-
-    .poster-synopsis {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        margin-top: 8px;
-        max-width: 600px;
-    }
-    .poster-synopsis p {
-        font-size: 14px;
-        line-height: 1.7;
-        color: rgba(250, 243, 224, 0.7);
-        font-weight: 300;
-    }
-
-    .poster-highlights {
-        list-style: none;
-        margin-top: 8px;
-        text-align: left;
-        max-width: 550px;
-        width: 100%;
-    }
-    .poster-highlights li {
-        font-size: 13px;
-        color: rgba(250, 243, 224, 0.6);
-        padding: 4px 0 4px 20px;
-        position: relative;
-        font-weight: 300;
-        line-height: 1.5;
-    }
-    .poster-highlights li::before {
-        content: '\2726';
-        position: absolute;
-        left: 0;
-        color: var(--gold-dark);
-        font-size: 10px;
-        top: 6px;
-    }
-
-    /* =========================================
-       PRODUCTION DEPARTMENTS (Skills)
-       ========================================= */
-    .dept-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
-    }
-
-    .dept-card {
-        background: var(--bg-card);
-        border: 1px solid rgba(212, 175, 55, 0.12);
-        border-radius: 4px;
-        padding: 32px;
-    }
-
-    .dept-title {
-        font-family: var(--serif);
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--gold);
-        margin-bottom: 20px;
-        text-align: center;
-        padding-bottom: 12px;
-        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    }
-
-    .dept-credits {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .credit-line {
-        display: flex;
-        align-items: baseline;
-        gap: 6px;
-        font-size: 13px;
-        line-height: 1.6;
-    }
-    .credit-role {
-        color: var(--cream);
-        font-weight: 400;
-        white-space: nowrap;
-    }
-    .credit-dots {
-        flex: 1;
-        border-bottom: 1px dotted rgba(212, 175, 55, 0.2);
-        min-width: 16px;
-        margin-bottom: 4px;
-    }
-    .credit-name {
-        color: rgba(250, 243, 224, 0.5);
-        font-weight: 300;
-        white-space: nowrap;
-        font-style: italic;
-    }
-
-    /* =========================================
-       FEATURED FILMS (Engagements)
-       ========================================= */
-    .featured-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 24px;
-    }
-
-    .featured-card {
-        background: var(--bg-card);
-        border: 1px solid rgba(212, 175, 55, 0.15);
-        border-radius: 4px;
-        padding: 32px 24px;
-        text-align: center;
-        transition: border-color 0.3s, transform 0.3s;
-    }
-    .featured-card:hover {
-        border-color: rgba(212, 175, 55, 0.4);
-        transform: translateY(-2px);
-    }
-
-    .featured-genre {
-        font-family: var(--sans);
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        color: var(--red-light);
-        font-weight: 500;
-        margin-bottom: 8px;
-    }
-
-    .featured-title {
-        font-family: var(--serif);
-        font-size: 20px;
-        font-weight: 700;
-        color: var(--white);
-        text-transform: capitalize;
-        margin-bottom: 4px;
-    }
-
-    .featured-scope {
-        font-size: 13px;
-        color: rgba(250, 243, 224, 0.5);
-        font-weight: 300;
-        margin-bottom: 16px;
-    }
-
-    .featured-divider {
-        width: 40px;
-        height: 1px;
-        background: var(--gold-dark);
-        margin: 0 auto 16px;
-        opacity: 0.4;
-    }
-
-    .featured-impact {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-    }
-    .featured-impact-label {
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: var(--gold-dark);
-        font-weight: 500;
-    }
-    .featured-impact-value {
-        font-family: var(--serif);
-        font-size: 16px;
-        font-weight: 700;
-        color: var(--gold);
-    }
-
-    /* =========================================
-       AWARDS (Education + Certifications)
-       ========================================= */
-    .awards-list {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        max-width: 700px;
-        margin: 0 auto;
-    }
-
-    .award-card {
-        display: flex;
-        align-items: flex-start;
-        gap: 24px;
-        background: var(--bg-card);
-        border: 1px solid rgba(212, 175, 55, 0.12);
-        border-radius: 4px;
-        padding: 28px 32px;
-        transition: border-color 0.3s;
-    }
-    .award-card:hover {
-        border-color: rgba(212, 175, 55, 0.3);
-    }
-
-    .award-trophy {
-        font-size: 32px;
-        flex-shrink: 0;
-        filter: grayscale(0.3);
-    }
-
-    .award-info {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .award-degree {
-        font-family: var(--serif);
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--white);
-    }
-
-    .award-institution {
-        font-size: 14px;
-        color: rgba(250, 243, 224, 0.6);
-        font-weight: 300;
-    }
-
-    .award-period {
-        font-size: 13px;
-        color: rgba(250, 243, 224, 0.4);
-        font-weight: 300;
-    }
-
-    .award-badge {
-        display: inline-block;
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: var(--gold);
-        border: 1px solid var(--gold-dark);
-        padding: 2px 10px;
-        border-radius: 2px;
-        margin-top: 4px;
-        align-self: flex-start;
-    }
-
-    .award-to {
-        font-size: 12px;
-        font-style: italic;
-        color: rgba(250, 243, 224, 0.35);
-        margin-top: 4px;
-    }
-
-    .award-card--cert .award-trophy {
-        color: var(--gold);
-    }
-
-    /* =========================================
-       MASTERCLASSES
-       ========================================= */
-    .masterclass-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 12px;
-        max-width: 760px;
-        margin: 0 auto;
-    }
-
-    .masterclass-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 20px;
-        background: var(--bg-card);
-        border: 1px solid rgba(212, 175, 55, 0.08);
-        border-radius: 4px;
-        transition: border-color 0.3s;
-    }
-    .masterclass-item:hover {
-        border-color: rgba(212, 175, 55, 0.25);
-    }
-
-    .masterclass-reel {
-        color: var(--gold-dark);
-        font-size: 10px;
-        flex-shrink: 0;
-    }
-
-    .masterclass-name {
-        font-size: 14px;
-        color: var(--cream);
-        font-weight: 300;
-    }
-
-    /* =========================================
-       METRICS
-       ========================================= */
-    .metrics-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 20px;
-        max-width: 700px;
-        margin: 0 auto;
-    }
-
-    .metric-card {
-        text-align: center;
-        padding: 24px 16px;
-        background: var(--bg-card);
-        border: 1px solid rgba(212, 175, 55, 0.12);
-        border-radius: 4px;
-    }
-
-    .metric-value {
-        display: block;
-        font-family: var(--serif);
-        font-size: 28px;
-        font-weight: 900;
-        color: var(--gold);
-        line-height: 1.2;
-    }
-
-    .metric-label {
-        display: block;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: rgba(250, 243, 224, 0.4);
-        margin-top: 6px;
-        font-weight: 400;
-    }
-
-    /* =========================================
-       SCROLLING CREDITS
-       ========================================= */
-    .section--credits {
-        padding-bottom: 0;
-    }
-
-    .credits-viewport {
-        height: 400px;
-        overflow: hidden;
-        position: relative;
-        background: var(--bg);
-        border-top: 1px solid rgba(212, 175, 55, 0.1);
-        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-    }
-    .credits-viewport::before,
-    .credits-viewport::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 80px;
-        z-index: 2;
-        pointer-events: none;
-    }
-    .credits-viewport::before {
-        top: 0;
-        background: linear-gradient(180deg, var(--bg), transparent);
-    }
-    .credits-viewport::after {
-        bottom: 0;
-        background: linear-gradient(0deg, var(--bg), transparent);
-    }
-
-    .credits-scroll {
-        text-align: center;
-        padding: 400px 20px;
-        animation: creditsRoll 60s linear infinite;
-    }
-
-    @keyframes creditsRoll {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-50%); }
-    }
-
-    .credits-heading {
-        font-family: var(--serif);
-        font-size: 16px;
-        font-weight: 700;
-        color: var(--gold);
-        margin-top: 32px;
-        margin-bottom: 12px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-    }
-    .credits-heading:first-child {
-        margin-top: 0;
+    .credits-role {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        opacity: 0.6;
+        margin-top: 0.7rem;
     }
 
     .credits-name {
-        font-family: var(--serif);
-        font-size: 22px;
-        font-weight: 700;
-        color: var(--white);
-        margin-bottom: 24px;
+        font-size: 1rem;
+        margin: 0.2rem 0;
     }
 
-    .credits-line {
-        font-size: 14px;
-        color: rgba(250, 243, 224, 0.6);
-        font-weight: 300;
-        margin-bottom: 6px;
-        line-height: 1.5;
+    .credits-detail {
+        font-size: 0.75rem;
+        opacity: 0.8;
+        line-height: 1.4;
     }
 
-    .credits-sub {
-        font-size: 12px;
-        color: rgba(250, 243, 224, 0.35);
+    .credits-numbers {
+        font-size: 0.85rem;
+        margin: 0.8rem 0;
+        font-weight: bold;
     }
 
-    .credits-year {
-        font-size: 16px;
-        color: rgba(250, 243, 224, 0.4);
-        margin-top: 12px;
-    }
-
-    .credits-spacer {
-        height: 40px;
-    }
-
-    /* =========================================
-       FOOTER
-       ========================================= */
-    .cinema-footer {
-        text-align: center;
-        padding: 80px 20px 60px;
-        border-top: 1px solid rgba(212, 175, 55, 0.1);
-    }
-
-    .fin-text {
-        font-family: var(--serif);
-        font-size: clamp(48px, 10vw, 96px);
-        font-weight: 900;
-        color: var(--gold);
-        letter-spacing: 8px;
-        margin-bottom: 16px;
-        text-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
-    }
-
-    .fin-disclaimer {
-        font-size: 13px;
-        color: rgba(250, 243, 224, 0.3);
+    .credits-quote {
         font-style: italic;
-        font-weight: 300;
-        margin-bottom: 40px;
+        font-size: 0.75rem;
+        margin-top: 0.8rem;
+        opacity: 0.8;
     }
 
-    .fin-contact {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
+    .credits-footer {
+        margin-top: 1rem;
+        font-size: 0.7rem;
     }
 
-    .fin-contact-label {
-        font-family: var(--sans);
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        color: rgba(250, 243, 224, 0.35);
-        font-weight: 500;
-    }
-
-    .fin-links {
-        display: flex;
-        gap: 24px;
-    }
-    .fin-links a {
-        font-size: 15px;
-        color: var(--gold);
-        font-weight: 400;
-        padding: 8px 4px;
-        min-height: 44px;
-        display: inline-flex;
-        align-items: center;
-        transition: color 0.2s;
-    }
-    .fin-links a:hover {
-        color: var(--gold-light);
-    }
-
-    /* =========================================
-       RESPONSIVE — LARGE (<=1200px)
-       ========================================= */
-    @media (max-width: 1200px) {
-        .film { max-width: 800px; padding: 40px 32px 0; }
+    .credits-footer a {
+        text-decoration: none;
     }
 
     /* =========================================
        RESPONSIVE — TABLET (<=768px)
        ========================================= */
     @media (max-width: 768px) {
-        .film { padding: 32px 20px 0; }
         .film-perfs { display: none; }
 
-        .section { padding: 28px 0; }
-        .section-heading { font-size: 26px; margin-bottom: 28px; }
+        .credits-name {
+            font-size: 0.85rem;
+        }
 
-        .hero-photo { width: 140px; height: 140px; }
-        .hero-name { font-size: 32px; }
-
-        .statement-card { padding: 28px 24px; }
-        .quote-mark { font-size: 40px; top: 8px; left: 12px; }
-        .quote-mark--end { bottom: -4px; right: 12px; }
-
-        .poster-card { padding: 32px 24px; }
-        .poster-title { font-size: 20px; }
-
-        .dept-grid { grid-template-columns: 1fr; gap: 20px; }
-        .dept-card { padding: 24px 20px; }
-
-        .featured-grid { grid-template-columns: 1fr; }
-
-        .award-card { padding: 20px 24px; gap: 16px; }
-        .award-degree { font-size: 16px; }
-
-        .metrics-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .metric-value { font-size: 22px; }
-        .metric-card { padding: 16px 12px; }
-
-        .credits-viewport { height: 300px; }
-
-        .fin-text { font-size: 48px; }
-    }
-
-    /* =========================================
-       RESPONSIVE — MOBILE (<=480px)
-       ========================================= */
-    @media (max-width: 480px) {
-        body { font-size: 14px; }
-        .film { padding: 20px 16px 0; }
-
-        .section { padding: 20px 0; }
-        .section-heading { font-size: 22px; margin-bottom: 20px; }
-
-        .hero-photo { width: 120px; height: 120px; }
-        .hero-name { font-size: 26px; }
-        .hero-tagline { font-size: 12px; letter-spacing: 1px; }
-        .hero-meta { font-size: 12px; gap: 8px; flex-wrap: wrap; justify-content: center; }
-
-        .statement-card { padding: 24px 16px; }
-        .statement-text { font-size: 13px; }
-        .quote-mark { font-size: 32px; position: static; display: block; text-align: left; margin-bottom: -10px; }
-        .quote-mark--end { text-align: right; margin-bottom: 0; margin-top: -10px; }
-
-        .poster-card { padding: 24px 16px; }
-        .poster-title { font-size: 18px; }
-        .poster-meta-row { flex-direction: column; gap: 4px; }
-        .poster-highlights li { font-size: 12px; padding-left: 16px; }
-        .poster-deco-corner { display: none; }
-
-        .credit-line { font-size: 12px; }
-        .credit-dots { display: none; }
-        .credit-name { display: none; }
-
-        .featured-card { padding: 24px 16px; }
-        .featured-title { font-size: 17px; }
-
-        .award-card { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
-        .award-badge { align-self: center; }
-
-        .masterclass-grid { grid-template-columns: 1fr; }
-        .masterclass-name { font-size: 13px; }
-
-        .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-        .metric-value { font-size: 20px; }
-
-        .credits-viewport { height: 250px; }
-        .credits-scroll { padding: 250px 16px; }
-
-        .fin-text { font-size: 40px; letter-spacing: 4px; }
-        .fin-links { gap: 16px; }
-    }
-
-    /* =========================================
-       RESPONSIVE — SMALL PHONE (<=380px)
-       ========================================= */
-    @media (max-width: 380px) {
-        body { font-size: 13px; }
-        .film { padding: 16px 12px 0; }
-
-        .section-heading { font-size: 20px; }
-
-        .hero-photo { width: 100px; height: 100px; }
-        .hero-name { font-size: 22px; }
-
-        .poster-card { padding: 20px 12px; }
-        .poster-title { font-size: 16px; }
-        .poster-presents { font-size: 10px; letter-spacing: 2px; }
-
-        .dept-card { padding: 20px 16px; }
-        .dept-title { font-size: 15px; }
-
-        .award-card { padding: 16px; }
-        .award-trophy { font-size: 24px; }
-        .award-degree { font-size: 15px; }
-
-        .metric-card { padding: 12px 8px; }
-        .metric-value { font-size: 18px; }
-        .metric-label { font-size: 10px; }
-
-        .fin-text { font-size: 32px; }
-        .fin-disclaimer { font-size: 11px; }
+        .credits-detail {
+            font-size: 0.7rem;
+        }
     }
 
     /* =========================================
        TOUCH TARGETS
        ========================================= */
     @media (hover: none) and (pointer: coarse) {
-        .fin-links a {
+        .credits-footer a {
             padding: 10px 8px;
             min-height: 44px;
-        }
-        .masterclass-item {
-            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
         }
     }
 </style>
@@ -1650,27 +561,4 @@ import { experience, education, certifications, skills, engagements, continuousL
     });
 
     runIntro();
-
-    /* =============================================
-       SCROLL REVEAL (Intersection Observer)
-       ============================================= */
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    revealEls.forEach(el => observer.observe(el));
-
-    /* =============================================
-       CREDITS SCROLL — duplicate content for loop
-       ============================================= */
-    const creditsScroll = document.getElementById('creditsScroll');
-    if (creditsScroll) {
-        const clone = creditsScroll.innerHTML;
-        creditsScroll.innerHTML = clone + clone;
-    }
 </script>

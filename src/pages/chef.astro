@@ -1,23 +1,5 @@
 ---
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, managementSkills, languages, industries, metrics } from "../data/resume";
-
-const courseNames: Record<string, { course: string; number: string; wine?: string }> = {
-  "Accenture-engineer": { course: "Amuse-Bouche", number: "I", wine: "Prosecco di Valdobbiadene" },
-  "Codec": { course: "Intermezzo", number: "II", wine: "Vermentino di Sardegna" },
-  "Accenture-consultant": { course: "Poisson", number: "III", wine: "Chablis Premier Cru" },
-  "Deloitte": { course: "Entrée", number: "IV", wine: "Barolo Riserva" },
-  "C3 AI": { course: "Plat Principal", number: "V", wine: "Château Margaux" },
-};
-
-function getCourseKey(exp: { company: string; roles: { title: string }[] }): string {
-  if (exp.company === "Accenture") {
-    return exp.roles[0].title.toLowerCase().includes("engineer") ? "Accenture-engineer" : "Accenture-consultant";
-  }
-  return exp.company;
-}
-
-const orderedExperience = [...experience].reverse();
 ---
 
 <!doctype html>
@@ -78,231 +60,29 @@ const orderedExperience = [...experience].reverse();
     <!-- MAIN CONTENT -->
     <main class="menu" id="menu">
 
-        <!-- MENU COVER / HEADER -->
-        <header class="menu-header">
-            <div class="ornament">&#9670;</div>
-            <p class="menu-subtitle">presents</p>
-            <h1 class="menu-title">Chef's Tasting Menu</h1>
-            <div class="rule-ornament">
-                <span class="rule-line"></span>
-                <span class="rule-diamond">&#9670;</span>
-                <span class="rule-line"></span>
-            </div>
-            <div class="chef-portrait">
-                <img src="/assets/dani.jpeg" alt="Chef Daniele D'Agnelli" width="160" height="160" />
-            </div>
-            <p class="chef-name">Chef Daniele D'Agnelli</p>
-            <p class="chef-location">{siteMetadata.location}</p>
-            <div class="rule-ornament">
-                <span class="rule-line"></span>
-                <span class="rule-diamond">&#9670;</span>
-                <span class="rule-line"></span>
-            </div>
-            <p class="courses-count">Five Courses &middot; Paired Wines &middot; Seasonal</p>
-        </header>
+        <div class="recipe-narrative">
+            <h1 class="recipe-title">RECIPE: DIGITAL TRANSFORMATION &Agrave; LA D'AGNELLI</h1>
+            <div class="recipe-meta">serves: global enterprises | prep: 15 years | yield: $18m ebit</div>
 
-        <!-- CHEF'S PHILOSOPHY -->
-        <section class="section cream-section reveal" data-section="summary">
-            <div class="section-header">
-                <span class="rule-line"></span>
-                <h2>Chef's Philosophy</h2>
-                <span class="rule-line"></span>
-            </div>
-            <blockquote class="philosophy">
-                {summary}
-            </blockquote>
-            <p class="handwritten-note">— every dish tells a story</p>
-        </section>
-
-        <!-- TASTING MENU (EXPERIENCE) -->
-        <section class="section chalkboard-section reveal" data-section="experience">
-            <div class="section-header chalkboard-header">
-                <span class="rule-line light"></span>
-                <h2>The Tasting Menu</h2>
-                <span class="rule-line light"></span>
-            </div>
-            <p class="section-annotation">Five courses, each a chapter in a culinary journey</p>
-
-            <div class="courses">
-                {orderedExperience.map((exp) => {
-                    const key = getCourseKey(exp);
-                    const course = courseNames[key];
-                    if (!course) return null;
-                    const role = exp.roles[0];
-                    return (
-                        <article class="course reveal">
-                            <div class="course-number">{course.number}</div>
-                            <div class="course-header">
-                                <h3 class="course-name">{course.course}</h3>
-                                <span class="course-company">{exp.company}</span>
-                            </div>
-                            <p class="course-role">{role.title}</p>
-                            <p class="course-period">{role.period} &middot; {exp.location}</p>
-                            {role.description && (
-                                <p class="course-description">{role.description}</p>
-                            )}
-                            {role.bullets && role.bullets.length > 0 && (
-                                <ul class="course-details">
-                                    {role.bullets.map((b) => <li>{b}</li>)}
-                                </ul>
-                            )}
-                            {course.wine && (
-                                <p class="wine-pairing">
-                                    <span class="wine-icon">&#127863;</span> Paired with {course.wine}
-                                </p>
-                            )}
-                        </article>
-                    );
-                })}
-            </div>
-        </section>
-
-        <!-- THE PANTRY (SKILLS) -->
-        <section class="section cream-section reveal" data-section="skills">
-            <div class="section-header">
-                <span class="rule-line"></span>
-                <h2>The Pantry</h2>
-                <span class="rule-line"></span>
-            </div>
-            <p class="section-annotation handwritten">Fresh, seasonal, sourced with care</p>
-
-            <div class="pantry-grid">
-                <div class="pantry-column">
-                    <h3 class="pantry-heading">Technical Ingredients</h3>
-                    <div class="ingredient-list">
-                        {skills.map((skill) => (
-                            <span class="ingredient">{skill}</span>
-                        ))}
-                    </div>
-                </div>
-                <div class="pantry-column">
-                    <h3 class="pantry-heading">Management Seasoning</h3>
-                    <div class="ingredient-list">
-                        {managementSkills.map((skill) => (
-                            <span class="ingredient">{skill}</span>
-                        ))}
-                    </div>
-                </div>
+            <div class="recipe-section">
+                <h2>INGREDIENTS</h2>
+                <p><strong>technical</strong> — python, go, rust, ml pipelines, deep learning, llms & genai, rag systems, cloud (aws/azure/gcp)</p>
+                <p><strong>management</strong> — programme management, stakeholder management, digital transformation, agile & waterfall, value consulting</p>
             </div>
 
-            <div class="languages-row">
-                <h3 class="pantry-heading">Languages Spoken in the Kitchen</h3>
-                <div class="language-tags">
-                    {languages.map((lang) => (
-                        <span class="language-tag">{lang}</span>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <!-- SIGNATURE DISHES (ENGAGEMENTS) -->
-        <section class="section chalkboard-section reveal" data-section="engagements">
-            <div class="section-header chalkboard-header">
-                <span class="rule-line light"></span>
-                <h2>Signature Dishes</h2>
-                <span class="rule-line light"></span>
-            </div>
-            <p class="section-annotation">Our most celebrated creations</p>
-
-            <div class="signature-dishes">
-                {engagements.map((eng) => (
-                    <article class="dish reveal">
-                        <div class="dish-header">
-                            <h3 class="dish-name">{eng.client}</h3>
-                            <span class="dish-sector">{eng.sector}</span>
-                        </div>
-                        <p class="dish-description">{eng.scope}</p>
-                        <p class="dish-review">
-                            <em>"{eng.impact}"</em>
-                            {eng.trend === "positive" && <span class="star-rating"> &#9733;&#9733;&#9733;</span>}
-                            {eng.trend === "neutral" && <span class="star-rating"> &#9733;&#9733;</span>}
-                        </p>
-                    </article>
-                ))}
-            </div>
-        </section>
-
-        <!-- CULINARY SCHOOL (EDUCATION) -->
-        <section class="section cream-section reveal" data-section="education">
-            <div class="section-header">
-                <span class="rule-line"></span>
-                <h2>Culinary School</h2>
-                <span class="rule-line"></span>
+            <div class="recipe-section">
+                <h2>METHOD</h2>
+                <p>begin with a strong base of computer science (bsc, university of bari). fold in three years of software engineering at accenture milan. let rise through consulting roles across dublin and london. at deloitte, cultivate an anaplan practice from scratch — grow to 25+ practitioners. for the main course: combine all ingredients at c3 ai. direct a $15m programme, lead 70+ resources, deploy across 100+ plants. season with a gchq-certified msc in ethical hacking for depth. serve hot.</p>
             </div>
 
-            <div class="education-list">
-                {education.map((edu) => (
-                    <article class="education-item reveal">
-                        <h3 class="edu-institution">{edu.institution}</h3>
-                        <p class="edu-degree">{edu.degree}</p>
-                        <p class="edu-meta">{edu.period} &middot; {edu.location}</p>
-                        {edu.distinction && (
-                            <p class="edu-distinction">Graduated with {edu.distinction}</p>
-                        )}
-                    </article>
-                ))}
-            </div>
-        </section>
+            <div class="recipe-pairing">WINE PAIRING: a robust italian red — like the chef himself.</div>
 
-        <!-- STARS & AWARDS (CERTIFICATIONS) -->
-        <section class="section chalkboard-section reveal" data-section="certifications">
-            <div class="section-header chalkboard-header">
-                <span class="rule-line light"></span>
-                <h2>Stars & Awards</h2>
-                <span class="rule-line light"></span>
+            <div class="recipe-footer">
+                <a href="mailto:daniele@dagnelli.net">[reservations]</a>
+                <a href="https://github.com/danieledagnelli">[github]</a>
+                <a href="https://linkedin.com/in/dagnelli">[linkedin]</a>
             </div>
-            <p class="section-annotation">Recognised by the guides</p>
-
-            <div class="awards-grid">
-                {certifications.map((cert) => (
-                    <div class="award-item reveal">
-                        <span class="award-star">&#9733;</span>
-                        <span class="award-name">{cert}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <!-- CONTINUING EDUCATION -->
-        <section class="section cream-section reveal" data-section="training">
-            <div class="section-header">
-                <span class="rule-line"></span>
-                <h2>Continuing Education</h2>
-                <span class="rule-line"></span>
-            </div>
-            <p class="section-annotation handwritten">A chef never stops learning</p>
-
-            <div class="learning-list">
-                {continuousLearning.map((item) => (
-                    <div class="learning-item reveal">
-                        <span class="learning-bullet">&#9670;</span>
-                        <span>{item}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="menu-footer">
-            <div class="rule-ornament">
-                <span class="rule-line"></span>
-                <span class="rule-diamond">&#9670;</span>
-                <span class="rule-line"></span>
-            </div>
-            <p class="footer-merci">Merci &mdash; The Kitchen is Closed</p>
-            <p class="footer-gratuity">Gratuity not included</p>
-            <div class="footer-links">
-                <span class="footer-links-label">Reservations</span>
-                <div class="footer-link-row">
-                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
-                    <span class="footer-dot">&middot;</span>
-                    <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
-                    <span class="footer-dot">&middot;</span>
-                    <a href={`mailto:${siteMetadata.email}`}>Email</a>
-                </div>
-            </div>
-            <p class="footer-copy">&copy; {new Date().getFullYear()} Daniele D'Agnelli</p>
-        </footer>
+        </div>
 
     </main>
 
@@ -479,12 +259,15 @@ const orderedExperience = [...experience].reverse();
     }
 
     /* =========================================
-       MAIN MENU CONTAINER
+       MAIN MENU CONTAINER (VIEWPORT-LOCKED)
        ========================================= */
     .menu {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 3rem 2rem 2rem;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         opacity: 0;
         transition: opacity 0.8s ease;
         position: relative;
@@ -496,709 +279,71 @@ const orderedExperience = [...experience].reverse();
     }
 
     /* =========================================
-       MENU HEADER
+       RECIPE NARRATIVE
        ========================================= */
-    .menu-header {
-        text-align: center;
-        padding: 3rem 0 2rem;
-    }
-
-    .ornament {
-        font-size: 1rem;
-        color: #d4930d;
-        margin-bottom: 0.5rem;
-        letter-spacing: 0.5em;
-    }
-
-    .menu-subtitle {
-        font-family: 'Caveat', cursive;
-        font-size: 1.3rem;
-        color: #8a8070;
-        margin-bottom: 0.25rem;
-    }
-
-    .menu-title {
-        font-family: 'Cormorant Garamond', 'Georgia', serif;
-        font-weight: 300;
-        font-size: 3.2rem;
-        color: #2c2c2c;
-        letter-spacing: 0.06em;
-        margin-bottom: 1rem;
-        line-height: 1.15;
-    }
-
-    .rule-ornament {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        margin: 1.5rem 0;
-    }
-
-    .rule-line {
-        flex: 1;
-        height: 1px;
-        background: #d4930d;
-        max-width: 120px;
-        opacity: 0.5;
-    }
-
-    .rule-diamond {
-        color: #d4930d;
-        font-size: 0.6rem;
-    }
-
-    .chef-portrait {
-        width: 160px;
-        height: 160px;
-        margin: 1.5rem auto;
-        border: 2px solid #d4930d;
-        padding: 4px;
-        overflow: hidden;
-    }
-
-    .chef-portrait img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    .chef-name {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: #2c2c2c;
-        margin-top: 0.75rem;
-        letter-spacing: 0.05em;
-    }
-
-    .chef-location {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
-        color: #8a8070;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        margin-top: 0.25rem;
-    }
-
-    .courses-count {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1rem;
-        font-style: italic;
-        color: #8a8070;
-        letter-spacing: 0.05em;
-    }
-
-    /* =========================================
-       SECTION STYLES
-       ========================================= */
-    .section {
-        padding: 3rem 0;
-    }
-
-    .section-header {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-        text-align: center;
-    }
-
-    .section-header h2 {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 400;
-        font-size: 2rem;
-        color: #2c2c2c;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        white-space: nowrap;
-    }
-
-    .section-header .rule-line {
-        flex: 1;
-        height: 1px;
-        background: #d4930d;
-        opacity: 0.4;
-        max-width: none;
-    }
-
-    .section-annotation {
-        text-align: center;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
-        color: #8a8070;
-        font-style: italic;
-        margin-bottom: 2rem;
-        letter-spacing: 0.03em;
-    }
-
-    .section-annotation.handwritten {
-        font-family: 'Caveat', cursive;
-        font-size: 1.2rem;
-        font-style: normal;
-    }
-
-    /* CREAM SECTIONS */
-    .cream-section {
-        background: transparent;
-    }
-
-    /* CHALKBOARD SECTIONS */
-    .chalkboard-section {
-        background: #2c2c2c;
-        margin-left: -2rem;
-        margin-right: -2rem;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        border-top: 1px solid rgba(212, 147, 13, 0.2);
-        border-bottom: 1px solid rgba(212, 147, 13, 0.2);
-    }
-
-    .chalkboard-section .section-annotation {
-        color: rgba(253, 245, 230, 0.6);
-    }
-
-    .chalkboard-header h2 {
-        color: #fdf5e6;
-        font-family: 'Caveat', cursive;
-        font-weight: 600;
-        font-size: 2.2rem;
-        letter-spacing: 0.02em;
-    }
-
-    .chalkboard-header .rule-line.light {
-        background: rgba(253, 245, 230, 0.25);
-    }
-
-    /* =========================================
-       CHEF'S PHILOSOPHY
-       ========================================= */
-    .philosophy {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.15rem;
-        line-height: 1.85;
-        color: #5a5248;
-        text-align: center;
-        max-width: 640px;
-        margin: 0 auto 1.5rem;
-        font-style: italic;
-        border-left: none;
-        padding: 0 1rem;
-    }
-
-    .handwritten-note {
-        font-family: 'Caveat', cursive;
-        font-size: 1.3rem;
-        color: #c0501a;
-        text-align: center;
-    }
-
-    /* =========================================
-       TASTING MENU COURSES
-       ========================================= */
-    .courses {
-        display: flex;
-        flex-direction: column;
-        gap: 2.5rem;
-    }
-
-    .course {
-        border: 1px solid rgba(253, 245, 230, 0.1);
-        padding: 2rem;
-        position: relative;
-        background: rgba(253, 245, 230, 0.03);
-    }
-
-    .course-number {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 3rem;
-        font-weight: 300;
-        color: #d4930d;
-        line-height: 1;
-        margin-bottom: 0.5rem;
-        opacity: 0.7;
-    }
-
-    .course-header {
-        display: flex;
-        align-items: baseline;
-        gap: 1rem;
-        flex-wrap: wrap;
-        margin-bottom: 0.5rem;
-    }
-
-    .course-name {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 500;
-        font-size: 1.6rem;
-        color: #fdf5e6;
-        letter-spacing: 0.04em;
-    }
-
-    .course-company {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.75rem;
-        color: #d4930d;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-    }
-
-    .course-role {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.1rem;
-        font-style: italic;
-        color: rgba(253, 245, 230, 0.75);
-        margin-bottom: 0.25rem;
-    }
-
-    .course-period {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.75rem;
-        color: rgba(253, 245, 230, 0.4);
-        letter-spacing: 0.05em;
-        margin-bottom: 1rem;
-    }
-
-    .course-description {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.9rem;
-        line-height: 1.7;
-        color: rgba(253, 245, 230, 0.7);
-        margin-bottom: 0.75rem;
-    }
-
-    .course-details {
-        list-style: none;
-        padding: 0;
-    }
-
-    .course-details li {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
-        color: rgba(253, 245, 230, 0.6);
-        padding: 0.3rem 0;
-        padding-left: 1rem;
-        position: relative;
-        line-height: 1.5;
-    }
-
-    .course-details li::before {
-        content: '\25C6';
-        position: absolute;
-        left: 0;
-        color: #d4930d;
-        font-size: 0.55rem;
-        top: 0.55rem;
-    }
-
-    .wine-pairing {
-        font-family: 'Caveat', cursive;
-        font-size: 1.05rem;
-        color: #c0501a;
-        margin-top: 1rem;
-        padding-top: 0.75rem;
-        border-top: 1px solid rgba(253, 245, 230, 0.08);
-    }
-
-    .wine-icon {
-        margin-right: 0.25rem;
-    }
-
-    /* =========================================
-       THE PANTRY (SKILLS)
-       ========================================= */
-    .pantry-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        margin-bottom: 2.5rem;
-    }
-
-    .pantry-column {
-        border: 1px solid rgba(212, 147, 13, 0.25);
+    .recipe-narrative {
+        max-width: 600px;
         padding: 1.5rem;
     }
 
-    .pantry-heading {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 500;
-        font-size: 1.15rem;
-        color: #2c2c2c;
-        text-align: center;
-        margin-bottom: 1rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid rgba(212, 147, 13, 0.2);
-        letter-spacing: 0.05em;
-    }
-
-    .ingredient-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: center;
-    }
-
-    .ingredient {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.78rem;
-        color: #5a5248;
-        padding: 0.35rem 0.75rem;
-        border: 1px solid rgba(138, 128, 112, 0.2);
-        letter-spacing: 0.02em;
-        transition: border-color 0.3s ease, color 0.3s ease;
-    }
-
-    .ingredient:hover {
-        border-color: #d4930d;
-        color: #2c2c2c;
-    }
-
-    .languages-row {
-        text-align: center;
-        margin-top: 1rem;
-    }
-
-    .languages-row .pantry-heading {
-        border-bottom: none;
-        margin-bottom: 0.5rem;
-    }
-
-    .language-tags {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-    }
-
-    .language-tag {
-        font-family: 'Caveat', cursive;
+    .recipe-title {
         font-size: 1.1rem;
-        color: #c0501a;
+        text-align: center;
+        margin-bottom: 0.3rem;
     }
 
-    /* =========================================
-       SIGNATURE DISHES (ENGAGEMENTS)
-       ========================================= */
-    .signature-dishes {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .dish {
-        padding: 1.5rem;
-        border-bottom: 1px solid rgba(253, 245, 230, 0.08);
-    }
-
-    .dish:last-child {
-        border-bottom: none;
-    }
-
-    .dish-header {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 1rem;
-        flex-wrap: wrap;
-        margin-bottom: 0.5rem;
-    }
-
-    .dish-name {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 500;
-        font-size: 1.35rem;
-        color: #fdf5e6;
-        text-transform: capitalize;
-        letter-spacing: 0.03em;
-    }
-
-    .dish-sector {
-        font-family: 'Inter', sans-serif;
+    .recipe-meta {
         font-size: 0.7rem;
-        color: rgba(253, 245, 230, 0.4);
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-    }
-
-    .dish-description {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.88rem;
-        color: rgba(253, 245, 230, 0.6);
-        margin-bottom: 0.5rem;
-        font-style: italic;
-    }
-
-    .dish-review {
-        font-family: 'Caveat', cursive;
-        font-size: 1.1rem;
-        color: rgba(253, 245, 230, 0.8);
-    }
-
-    .star-rating {
-        color: #d4930d;
-    }
-
-    /* =========================================
-       CULINARY SCHOOL (EDUCATION)
-       ========================================= */
-    .education-list {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        max-width: 560px;
-        margin: 0 auto;
-    }
-
-    .education-item {
         text-align: center;
-        padding: 1.5rem;
-        border: 1px solid rgba(212, 147, 13, 0.15);
+        opacity: 0.7;
+        margin-bottom: 1rem;
     }
 
-    .edu-institution {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 500;
-        font-size: 1.35rem;
-        color: #2c2c2c;
-        letter-spacing: 0.04em;
-        margin-bottom: 0.25rem;
+    .recipe-section {
+        margin-bottom: 0.8rem;
     }
 
-    .edu-degree {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.9rem;
-        color: #5a5248;
-        margin-bottom: 0.25rem;
+    .recipe-section h2 {
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.3rem;
     }
 
-    .edu-meta {
-        font-family: 'Inter', sans-serif;
+    .recipe-section p {
         font-size: 0.78rem;
-        color: #8a8070;
-        letter-spacing: 0.03em;
+        line-height: 1.5;
+        margin-bottom: 0.4rem;
     }
 
-    .edu-distinction {
-        font-family: 'Caveat', cursive;
-        font-size: 1.1rem;
-        color: #d4930d;
-        margin-top: 0.5rem;
-    }
-
-    /* =========================================
-       STARS & AWARDS (CERTIFICATIONS)
-       ========================================= */
-    .awards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.25rem;
-    }
-
-    .award-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0.75rem 1rem;
-        border: 1px solid rgba(253, 245, 230, 0.1);
-    }
-
-    .award-star {
-        color: #d4930d;
-        font-size: 1.2rem;
-        flex-shrink: 0;
-    }
-
-    .award-name {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
-        color: rgba(253, 245, 230, 0.8);
-    }
-
-    /* =========================================
-       CONTINUING EDUCATION
-       ========================================= */
-    .learning-list {
-        max-width: 560px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .learning-item {
-        display: flex;
-        align-items: baseline;
-        gap: 0.75rem;
-        padding: 0.4rem 0;
-    }
-
-    .learning-bullet {
-        color: #d4930d;
-        font-size: 0.5rem;
-        flex-shrink: 0;
-        position: relative;
-        top: 0.15rem;
-    }
-
-    .learning-item span:last-child {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.88rem;
-        color: #5a5248;
-    }
-
-    /* =========================================
-       FOOTER
-       ========================================= */
-    .menu-footer {
+    .recipe-pairing {
+        font-size: 0.75rem;
+        font-style: italic;
         text-align: center;
-        padding: 3rem 0 2rem;
+        margin: 1rem 0;
+        opacity: 0.8;
+    }
+
+    .recipe-footer {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
         margin-top: 1rem;
     }
 
-    .footer-merci {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 400;
-        font-size: 1.8rem;
-        color: #2c2c2c;
-        letter-spacing: 0.05em;
-        margin-top: 1.5rem;
-    }
-
-    .footer-gratuity {
-        font-family: 'Caveat', cursive;
-        font-size: 1rem;
-        color: #8a8070;
-        margin-top: 0.5rem;
-        margin-bottom: 2rem;
-    }
-
-    .footer-links {
-        margin-bottom: 2rem;
-    }
-
-    .footer-links-label {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 0.9rem;
-        color: #8a8070;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        display: block;
-        margin-bottom: 0.75rem;
-    }
-
-    .footer-link-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-    }
-
-    .footer-link-row a {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
-        color: #d4930d;
+    .recipe-footer a {
         text-decoration: none;
-        letter-spacing: 0.03em;
-        padding: 0.5rem 0;
-        transition: color 0.3s ease;
-    }
-
-    .footer-link-row a:hover {
-        color: #c0501a;
-    }
-
-    .footer-dot {
-        color: #d4930d;
-        opacity: 0.4;
-    }
-
-    .footer-copy {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.72rem;
-        color: #8a8070;
-        opacity: 0.5;
-        letter-spacing: 0.03em;
-    }
-
-    /* =========================================
-       SCROLL REVEAL
-       ========================================= */
-    .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* =========================================
-       RESPONSIVE: 1200px
-       ========================================= */
-    @media (max-width: 1200px) {
-        .menu {
-            max-width: 720px;
-        }
     }
 
     /* =========================================
        RESPONSIVE: 768px
        ========================================= */
     @media (max-width: 768px) {
-        .menu {
-            padding: 2rem 1.5rem 1.5rem;
+        .recipe-section p {
+            font-size: 0.72rem;
         }
 
-        .menu-title {
-            font-size: 2.4rem;
-        }
-
-        .section-header h2 {
-            font-size: 1.5rem;
-        }
-
-        .chalkboard-header h2 {
-            font-size: 1.8rem;
-        }
-
-        .pantry-grid {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .course {
-            padding: 1.5rem;
-        }
-
-        .course-number {
-            font-size: 2.2rem;
-        }
-
-        .course-name {
-            font-size: 1.35rem;
-        }
-
-        .chalkboard-section {
-            margin-left: -1.5rem;
-            margin-right: -1.5rem;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
-
-        .dish-header {
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-
-        .awards-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .chef-portrait {
-            width: 130px;
-            height: 130px;
+        .recipe-narrative {
+            padding: 1rem;
         }
     }
 
@@ -1206,132 +351,12 @@ const orderedExperience = [...experience].reverse();
        RESPONSIVE: 480px
        ========================================= */
     @media (max-width: 480px) {
-        .menu {
-            padding: 1.5rem 1rem 1rem;
-        }
-
-        .menu-title {
-            font-size: 1.9rem;
-            letter-spacing: 0.03em;
-        }
-
-        .menu-subtitle {
-            font-size: 1.1rem;
-        }
-
-        .section-header {
-            gap: 0.75rem;
-        }
-
-        .section-header h2 {
-            font-size: 1.25rem;
-        }
-
-        .chalkboard-header h2 {
-            font-size: 1.5rem;
-        }
-
-        .section {
-            padding: 2rem 0;
-        }
-
-        .philosophy {
-            font-size: 1rem;
-            padding: 0;
-        }
-
-        .course {
-            padding: 1.25rem;
-        }
-
-        .course-number {
-            font-size: 1.8rem;
-        }
-
-        .course-name {
-            font-size: 1.2rem;
-        }
-
-        .course-header {
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-
-        .chef-portrait {
-            width: 110px;
-            height: 110px;
-        }
-
-        .chef-name {
-            font-size: 1.25rem;
-        }
-
-        .footer-merci {
-            font-size: 1.4rem;
-        }
-
-        .chalkboard-section {
-            margin-left: -1rem;
-            margin-right: -1rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
         .ticket {
             padding: 2rem 1.5rem;
         }
 
         .ticket-text {
             font-size: 0.75rem;
-        }
-
-        .footer-link-row a {
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-        }
-    }
-
-    /* =========================================
-       RESPONSIVE: 380px
-       ========================================= */
-    @media (max-width: 380px) {
-        .menu-title {
-            font-size: 1.6rem;
-        }
-
-        .section-header h2 {
-            font-size: 1.1rem;
-        }
-
-        .chalkboard-header h2 {
-            font-size: 1.3rem;
-        }
-
-        .course-name {
-            font-size: 1.1rem;
-        }
-
-        .dish-name {
-            font-size: 1.15rem;
-        }
-
-        .edu-institution {
-            font-size: 1.15rem;
-        }
-
-        .pantry-column {
-            padding: 1rem;
-        }
-
-        .ingredient {
-            font-size: 0.72rem;
-            padding: 0.3rem 0.6rem;
-        }
-
-        .chef-portrait {
-            width: 90px;
-            height: 90px;
         }
     }
 </style>
@@ -1349,7 +374,6 @@ const orderedExperience = [...experience].reverse();
         if (skipIntro) {
             intro.style.display = 'none';
             menu.classList.add('visible');
-            initScrollReveal();
             return;
         }
 
@@ -1387,7 +411,7 @@ const orderedExperience = [...experience].reverse();
             const line = lines[currentLine];
 
             if (currentChar <= line.length) {
-                ticketText.textContent = displayText + line.substring(0, currentChar) + '█';
+                ticketText.textContent = displayText + line.substring(0, currentChar) + '\u2588';
                 currentChar++;
                 const delay = currentLine === lines.length - 1 ? 60 : 35;
                 typingTimer = setTimeout(typeNextChar, delay);
@@ -1395,7 +419,7 @@ const orderedExperience = [...experience].reverse();
                 displayText += line + '\n';
                 currentLine++;
                 currentChar = 0;
-                const pauseDelay = line.startsWith('───') ? 200 : 120;
+                const pauseDelay = line.startsWith('\u2500') ? 200 : 120;
                 typingTimer = setTimeout(typeNextChar, pauseDelay);
             }
         }
@@ -1411,7 +435,6 @@ const orderedExperience = [...experience].reverse();
             setTimeout(() => {
                 intro.classList.add('hidden');
                 menu.classList.add('visible');
-                initScrollReveal();
             }, 600);
 
             setTimeout(() => {
@@ -1434,23 +457,5 @@ const orderedExperience = [...experience].reverse();
         setTimeout(() => {
             typeNextChar();
         }, 600);
-
-        // Scroll reveal
-        function initScrollReveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                },
-                { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-            );
-
-            reveals.forEach((el) => observer.observe(el));
-        }
     });
 </script>

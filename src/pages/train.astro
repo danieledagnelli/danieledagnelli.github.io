@@ -1,6 +1,6 @@
 ---
+import Main from "../layouts/Main.astro";
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, metrics, industries, managementSkills, languages } from "../data/resume";
 ---
 
 <!doctype html>
@@ -97,234 +97,46 @@ import { experience, education, certifications, skills, engagements, continuousL
     <!-- MAIN CONTENT -->
     <main class="journey" id="journey">
 
-        <!-- RAILWAY TRACK LINE (decorative) -->
-        <div class="track-line" aria-hidden="true"></div>
+        <div class="train-narrative">
+            <h1 class="route-title">ORIENT EXPRESS — CAREER LINE</h1>
+            <div class="route-meta">service: 2012-present | class: first | status: on time</div>
 
-        <!-- DEPARTURE BOARD HEADER -->
-        <section class="section header-section" data-section="header">
-            <div class="ornament-top" aria-hidden="true"></div>
-            <div class="window-frame">
-                <div class="departure-header">
-                    <div class="route-badge">Orient Express</div>
-                    <h1 class="passenger-name">{siteMetadata.name}</h1>
-                    <p class="route-subtitle">Senior Engagement Manager &mdash; AI &amp; Cybersecurity</p>
-                    <div class="timetable-meta">
-                        <span class="meta-item"><span class="meta-label">Origin</span> <span class="meta-value">{siteMetadata.location}</span></span>
-                        <span class="meta-divider">&bull;</span>
-                        <span class="meta-item"><span class="meta-label">Route</span> <span class="meta-value">15+ Years of Excellence</span></span>
-                        <span class="meta-divider">&bull;</span>
-                        <span class="meta-item"><span class="meta-label">Class</span> <span class="meta-value">First</span></span>
-                    </div>
-                    <div class="header-links">
-                        <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
-                        <span class="link-ornament">&loz;</span>
-                        <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
-                        <span class="link-ornament">&loz;</span>
-                        <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener">Bluesky</a>
-                        <span class="link-ornament">&loz;</span>
-                        <a href={`mailto:${siteMetadata.email}`}>Contact</a>
-                    </div>
-                </div>
+            <div class="station">
+                <div class="station-header">STATION 1 ─────── ACCENTURE, MILAN</div>
+                <div class="station-dates">apr 2012 — dec 2014 | software engineer</div>
+                <div class="station-note">[the departure. where it all began.]</div>
             </div>
-            <div class="golden-divider" aria-hidden="true"></div>
-        </section>
 
-        <!-- PASSENGER PROFILE -->
-        <section class="section reveal" data-section="summary">
-            <div class="station-marker" aria-hidden="true"><span class="station-dot"></span></div>
-            <div class="section-header">
-                <span class="section-number">I</span>
-                <h2 class="section-title">Passenger Profile</h2>
+            <div class="station">
+                <div class="station-header">STATION 2 ─────── CODEC, DUBLIN</div>
+                <div class="station-dates">jan 2015 — mar 2017 | senior consultant</div>
+                <div class="station-note">[crossing the channel. new market, same drive.]</div>
             </div>
-            <div class="window-frame profile-frame">
-                <div class="profile-grid">
-                    <div class="passport-photo">
-                        <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="160" height="160" />
-                        <div class="photo-stamp">Verified Passenger</div>
-                    </div>
-                    <div class="profile-text">
-                        <p class="summary-text">{summary}</p>
-                        <div class="passenger-details">
-                            <div class="detail-row">
-                                <span class="detail-label">Languages</span>
-                                <span class="detail-value">{languages.join(" / ")}</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Industries</span>
-                                <span class="detail-value">{industries.join(", ")}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="metrics-bar">
-                    {metrics.map(m => (
-                        <div class="metric-item">
-                            <span class="metric-value">{m.value}</span>
-                            <span class="metric-label">{m.label}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div class="golden-divider" aria-hidden="true"></div>
-        </section>
 
-        <!-- ROUTE MAP / STATIONS (Experience) -->
-        <section class="section reveal" data-section="experience">
-            <div class="station-marker" aria-hidden="true"><span class="station-dot"></span></div>
-            <div class="section-header">
-                <span class="section-number">II</span>
-                <h2 class="section-title">Route Map &mdash; Stations of Service</h2>
+            <div class="station">
+                <div class="station-header">STATION 3 ─────── ACCENTURE, LONDON</div>
+                <div class="station-dates">apr 2017 — sep 2018 | management consultant</div>
+                <div class="station-note">[the return. aerospace & defence.]</div>
             </div>
-            <div class="stations-list">
-                {experience.map((exp, i) => (
-                    <div class="station-card reveal">
-                        <div class="station-connector" aria-hidden="true">
-                            <span class="connector-dot"></span>
-                            {i < experience.length - 1 && <span class="connector-line"></span>}
-                        </div>
-                        <div class="window-frame station-content">
-                            <div class="station-top">
-                                <h3 class="station-name">{exp.company}</h3>
-                                <span class="station-location">{exp.location}</span>
-                            </div>
-                            {exp.roles.map(role => (
-                                <div class="role-block">
-                                    <div class="role-header">
-                                        <span class="role-title">{role.title}</span>
-                                        <span class="role-period">{role.period}</span>
-                                    </div>
-                                    {role.description && <p class="role-description">{role.description}</p>}
-                                    {role.bullets && role.bullets.length > 0 && (
-                                        <ul class="role-bullets">
-                                            {role.bullets.map(b => <li>{b}</li>)}
-                                        </ul>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </div>
-            <div class="golden-divider" aria-hidden="true"></div>
-        </section>
 
-        <!-- ONBOARD AMENITIES (Skills) -->
-        <section class="section reveal" data-section="skills">
-            <div class="station-marker" aria-hidden="true"><span class="station-dot"></span></div>
-            <div class="section-header">
-                <span class="section-number">III</span>
-                <h2 class="section-title">Onboard Amenities</h2>
+            <div class="station">
+                <div class="station-header">STATION 4 ─────── DELOITTE, LONDON</div>
+                <div class="station-dates">oct 2018 — jul 2021 | manager</div>
+                <div class="station-note">[building the practice. 0 → 25+.]</div>
             </div>
-            <div class="window-frame amenities-frame">
-                <div class="amenity-group">
-                    <h3 class="amenity-category">Technical Expertise</h3>
-                    <div class="amenity-tags">
-                        {skills.map(s => (
-                            <span class="amenity-tag">{s}</span>
-                        ))}
-                    </div>
-                </div>
-                <div class="amenity-group">
-                    <h3 class="amenity-category">Management &amp; Strategy</h3>
-                    <div class="amenity-tags">
-                        {managementSkills.map(s => (
-                            <span class="amenity-tag management">{s}</span>
-                        ))}
-                    </div>
-                </div>
-            </div>
-            <div class="golden-divider" aria-hidden="true"></div>
-        </section>
 
-        <!-- JOURNEY HIGHLIGHTS (Engagements) -->
-        <section class="section reveal" data-section="engagements">
-            <div class="station-marker" aria-hidden="true"><span class="station-dot"></span></div>
-            <div class="section-header">
-                <span class="section-number">IV</span>
-                <h2 class="section-title">Journey Highlights</h2>
+            <div class="station terminal">
+                <div class="station-header">TERMINAL ─────── C3 AI, LONDON</div>
+                <div class="station-dates">aug 2021 — present | senior engagement manager</div>
+                <div class="station-note">[$15m programme. 70+ crew. the journey continues.]</div>
             </div>
-            <div class="highlights-grid">
-                {engagements.map(eng => (
-                    <div class="window-frame highlight-card reveal">
-                        <div class="highlight-top">
-                            <span class="highlight-client">{eng.client}</span>
-                            <span class="highlight-sector">{eng.sector}</span>
-                        </div>
-                        <div class="highlight-details">
-                            <div class="highlight-row">
-                                <span class="highlight-label">Scope</span>
-                                <span class="highlight-value">{eng.scope}</span>
-                            </div>
-                            <div class="highlight-row">
-                                <span class="highlight-label">Impact</span>
-                                <span class={`highlight-value impact ${eng.trend}`}>{eng.impact}</span>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            <div class="golden-divider" aria-hidden="true"></div>
-        </section>
 
-        <!-- PASSENGER CREDENTIALS (Education & Certs) -->
-        <section class="section reveal" data-section="education">
-            <div class="station-marker" aria-hidden="true"><span class="station-dot"></span></div>
-            <div class="section-header">
-                <span class="section-number">V</span>
-                <h2 class="section-title">Passenger Credentials</h2>
+            <div class="train-footer">
+                <a href="mailto:daniele@dagnelli.net">[tickets]</a>
+                <a href="https://github.com/danieledagnelli">[github]</a>
+                <a href="https://linkedin.com/in/dagnelli">[linkedin]</a>
             </div>
-            <div class="window-frame credentials-frame">
-                <div class="cred-section">
-                    <h3 class="cred-heading">Education</h3>
-                    {education.map(edu => (
-                        <div class="cred-entry">
-                            <div class="cred-main">
-                                <span class="cred-degree">{edu.degree}</span>
-                                {edu.distinction && <span class="cred-distinction">{edu.distinction}</span>}
-                            </div>
-                            <div class="cred-sub">
-                                <span class="cred-institution">{edu.institution}</span>
-                                <span class="cred-period">{edu.period}</span>
-                                <span class="cred-location">{edu.location}</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                <div class="cred-section">
-                    <h3 class="cred-heading">Certifications</h3>
-                    <div class="cert-list">
-                        {certifications.map(c => (
-                            <span class="cert-item">{c}</span>
-                        ))}
-                    </div>
-                </div>
-                <div class="cred-section">
-                    <h3 class="cred-heading">Continuous Learning</h3>
-                    <div class="learning-list">
-                        {continuousLearning.map(l => (
-                            <div class="learning-item">{l}</div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-            <div class="golden-divider" aria-hidden="true"></div>
-        </section>
-
-        <!-- TERMINUS / END OF LINE -->
-        <section class="section terminus reveal" data-section="footer">
-            <div class="station-marker terminus-marker" aria-hidden="true"><span class="station-dot final"></span></div>
-            <div class="terminus-content">
-                <div class="terminus-ornament" aria-hidden="true"></div>
-                <p class="terminus-text">End of the Line</p>
-                <p class="terminus-sub">Thank you for travelling with the Orient Express</p>
-                <div class="terminus-links">
-                    <a href={`mailto:${siteMetadata.email}`}>Send a Telegram</a>
-                    <span class="link-ornament">&loz;</span>
-                    <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">Connect</a>
-                </div>
-                <div class="terminus-ornament" aria-hidden="true"></div>
-            </div>
-        </section>
+        </div>
 
     </main>
 </body>
@@ -352,18 +164,15 @@ import { experience, education, certifications, skills, engagements, continuousL
         --heading: 'Playfair Display', Georgia, serif;
         --body: 'Raleway', 'Helvetica Neue', sans-serif;
         --mono: 'JetBrains Mono', monospace;
-        scrollbar-width: thin;
-        scrollbar-color: var(--gold) var(--bg);
     }
 
     body {
         background: var(--bg);
         color: var(--text);
-        font-family: var(--body);
+        font-family: var(--mono);
         font-size: 15px;
         line-height: 1.7;
-        overflow-x: hidden;
-        min-height: 100vh;
+        overflow: hidden;
     }
 
     a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
@@ -397,6 +206,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         padding: 2rem;
         transition: opacity 0.8s ease;
     }
+
     .intro.done {
         opacity: 0;
         pointer-events: none;
@@ -553,9 +363,12 @@ import { experience, education, certifications, skills, engagements, continuousL
        MAIN CONTENT / JOURNEY
        ========================================= */
     .journey {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 60px 24px 120px;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         position: relative;
         opacity: 0;
         transition: opacity 0.6s ease 0.3s;
@@ -563,874 +376,94 @@ import { experience, education, certifications, skills, engagements, continuousL
     .journey.visible { opacity: 1; }
 
     /* =========================================
-       RAILWAY TRACK LINE
+       TRAIN NARRATIVE
        ========================================= */
-    .track-line {
-        position: absolute;
-        left: 36px;
-        top: 200px;
-        bottom: 200px;
-        width: 2px;
-        background: linear-gradient(
-            180deg,
-            transparent,
-            var(--gold-dim) 5%,
-            var(--gold-dim) 95%,
-            transparent
-        );
-    }
-    .track-line::before,
-    .track-line::after {
-        content: '';
-        position: absolute;
-        left: -3px;
-        width: 8px;
-        height: 2px;
-        background: var(--gold-dim);
-    }
-    .track-line::before { top: 5%; }
-    .track-line::after { bottom: 5%; }
-
-    /* =========================================
-       STATION MARKERS
-       ========================================= */
-    .station-marker {
-        position: absolute;
-        left: 28px;
-        margin-top: 8px;
-    }
-    .station-dot {
-        display: block;
-        width: 18px; height: 18px;
-        border-radius: 50%;
-        border: 2px solid var(--gold);
-        background: var(--bg);
-        position: relative;
-    }
-    .station-dot::after {
-        content: '';
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        width: 6px; height: 6px;
-        border-radius: 50%;
-        background: var(--gold);
-    }
-    .station-dot.final {
-        border-color: var(--burgundy);
-        background: var(--burgundy);
-    }
-    .station-dot.final::after {
-        background: var(--gold);
-    }
-
-    /* =========================================
-       SECTIONS
-       ========================================= */
-    .section {
-        margin-bottom: 3rem;
-        position: relative;
-        padding-left: 40px;
-    }
-    .header-section {
-        padding-left: 0;
-        text-align: center;
-        margin-bottom: 3.5rem;
-    }
-
-    .section-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 1.2rem;
-    }
-
-    .section-number {
-        font-family: var(--heading);
-        font-size: 14px;
-        color: var(--gold);
-        font-weight: 700;
-        min-width: 24px;
-    }
-
-    .section-title {
-        font-family: var(--heading);
-        font-size: 22px;
-        font-weight: 700;
-        color: var(--cream);
-        letter-spacing: 0.5px;
-    }
-
-    /* =========================================
-       WINDOW FRAME (Art Nouveau borders)
-       ========================================= */
-    .window-frame {
-        border: 1px solid var(--gold-dim);
-        border-radius: 4px;
+    .train-narrative {
+        max-width: 600px;
         padding: 1.5rem;
-        background: var(--bg-card);
-        position: relative;
-    }
-    .window-frame::before {
-        content: '';
-        position: absolute;
-        top: -1px; left: 20px; right: 20px;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-    .window-frame::after {
-        content: '';
-        position: absolute;
-        bottom: -1px; left: 20px; right: 20px;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
     }
 
-    /* =========================================
-       ORNAMENTS & DIVIDERS
-       ========================================= */
-    .ornament-top {
-        width: 60px; height: 2px;
-        background: var(--gold);
-        margin: 0 auto 1.5rem;
-        position: relative;
-    }
-    .ornament-top::before,
-    .ornament-top::after {
-        content: '';
-        position: absolute;
-        top: -3px;
-        width: 8px; height: 8px;
-        border: 1px solid var(--gold);
-        transform: rotate(45deg);
-        background: var(--bg);
-    }
-    .ornament-top::before { left: -12px; }
-    .ornament-top::after { right: -12px; }
-
-    .golden-divider {
-        height: 1px;
-        margin: 2rem 0 0;
-        background: linear-gradient(
-            90deg,
-            transparent,
-            var(--gold-dim) 20%,
-            var(--gold) 50%,
-            var(--gold-dim) 80%,
-            transparent
-        );
-        opacity: 0.4;
-    }
-
-    .link-ornament {
-        color: var(--gold-dim);
-        font-size: 10px;
-    }
-
-    /* =========================================
-       DEPARTURE HEADER
-       ========================================= */
-    .route-badge {
-        font-family: var(--heading);
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        color: var(--gold);
-        border: 1px solid var(--gold);
-        display: inline-block;
-        padding: 4px 16px;
-        margin-bottom: 1rem;
-    }
-
-    .passenger-name {
-        font-family: var(--heading);
-        font-size: clamp(32px, 6vw, 54px);
-        font-weight: 900;
-        color: var(--cream);
-        line-height: 1.1;
-        margin-bottom: 0.5rem;
-        letter-spacing: 1px;
-    }
-
-    .route-subtitle {
-        font-family: var(--body);
-        font-size: 16px;
-        color: var(--gold);
-        font-weight: 300;
-        letter-spacing: 1px;
-        margin-bottom: 1.2rem;
-    }
-
-    .timetable-meta {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-bottom: 1.2rem;
-    }
-
-    .meta-item {
-        font-size: 12px;
-    }
-
-    .meta-label {
-        font-family: var(--mono);
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: var(--text-muted);
-    }
-
-    .meta-value {
-        color: var(--text);
-        font-weight: 500;
-        margin-left: 4px;
-    }
-
-    .meta-divider {
-        color: var(--gold-dim);
-        font-size: 8px;
-    }
-
-    .header-links {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        font-size: 13px;
-    }
-
-    /* =========================================
-       PASSENGER PROFILE
-       ========================================= */
-    .profile-grid {
-        display: flex;
-        gap: 1.5rem;
-        align-items: flex-start;
-        margin-bottom: 1.5rem;
-    }
-
-    .passport-photo {
-        flex-shrink: 0;
+    .route-title {
+        font-size: 1.1rem;
         text-align: center;
-    }
-
-    .passport-photo img {
-        width: 140px; height: 140px;
-        object-fit: cover;
-        border: 2px solid var(--gold);
-        border-radius: 4px;
-        filter: sepia(0.15) contrast(1.05);
-        display: block;
-    }
-
-    .photo-stamp {
+        margin-bottom: 0.2rem;
         font-family: var(--mono);
-        font-size: 8px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
         color: var(--gold);
-        margin-top: 6px;
-        border: 1px solid var(--gold-dim);
-        padding: 2px 8px;
-        display: inline-block;
+        font-weight: 700;
+        letter-spacing: 2px;
     }
 
-    .summary-text {
-        font-size: 13.5px;
-        line-height: 1.8;
+    .route-meta {
+        font-size: 0.7rem;
+        text-align: center;
+        opacity: 0.7;
+        margin-bottom: 1rem;
+        color: var(--text-dim);
+        letter-spacing: 1px;
+    }
+
+    .station {
+        margin-bottom: 0.6rem;
+    }
+
+    .station-header {
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: var(--cream);
+        letter-spacing: 1px;
+    }
+
+    .station-dates {
+        font-size: 0.7rem;
+        opacity: 0.7;
+        color: var(--text-dim);
+    }
+
+    .station-note {
+        font-size: 0.75rem;
+        opacity: 0.8;
+        font-style: italic;
         color: var(--text);
     }
 
-    .passenger-details {
+    .station.terminal .station-header {
+        font-size: 0.9rem;
+        color: var(--gold);
+    }
+
+    .train-footer {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
         margin-top: 1rem;
     }
 
-    .detail-row {
-        display: flex;
-        gap: 8px;
-        align-items: baseline;
-        margin-bottom: 4px;
-        font-size: 12.5px;
-    }
-
-    .detail-label {
-        font-family: var(--mono);
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--gold);
-        min-width: 80px;
-    }
-
-    .detail-value {
-        color: var(--text-dim);
-    }
-
-    /* Metrics bar */
-    .metrics-bar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: space-between;
-        padding-top: 1rem;
-        border-top: 1px solid var(--gold-dim);
-    }
-
-    .metric-item {
-        text-align: center;
-        flex: 1;
-        min-width: 80px;
-    }
-
-    .metric-value {
-        display: block;
-        font-family: var(--mono);
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--gold);
-        line-height: 1.2;
-    }
-
-    .metric-label {
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--text-muted);
+    .train-footer a {
+        text-decoration: none;
     }
 
     /* =========================================
-       STATIONS (Experience)
+       RESPONSIVE -- MOBILE
        ========================================= */
-    .stations-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .station-card {
-        display: flex;
-        gap: 1rem;
-        position: relative;
-    }
-
-    .station-connector {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-shrink: 0;
-        width: 20px;
-        padding-top: 1.5rem;
-    }
-
-    .connector-dot {
-        width: 12px; height: 12px;
-        border-radius: 50%;
-        border: 2px solid var(--gold);
-        background: var(--bg);
-        flex-shrink: 0;
-        z-index: 1;
-    }
-
-    .connector-line {
-        width: 2px;
-        flex: 1;
-        background: var(--gold-dim);
-        margin-top: 4px;
-    }
-
-    .station-content {
-        flex: 1;
-    }
-
-    .station-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 0.6rem;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .station-name {
-        font-family: var(--heading);
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--cream);
-    }
-
-    .station-location {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--text-muted);
-        letter-spacing: 0.5px;
-    }
-
-    .role-block {
-        margin-bottom: 0.8rem;
-    }
-    .role-block:last-child { margin-bottom: 0; }
-
-    .role-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 4px;
-    }
-
-    .role-title {
-        font-family: var(--body);
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--gold);
-    }
-
-    .role-period {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--text-muted);
-    }
-
-    .role-description {
-        font-size: 13px;
-        color: var(--text-dim);
-        margin-bottom: 6px;
-        line-height: 1.6;
-    }
-
-    .role-bullets {
-        list-style: none;
-        padding: 0;
-    }
-
-    .role-bullets li {
-        font-size: 12.5px;
-        color: var(--text-dim);
-        line-height: 1.7;
-        padding-left: 16px;
-        position: relative;
-    }
-
-    .role-bullets li::before {
-        content: '\2666';
-        position: absolute;
-        left: 0;
-        color: var(--gold-dim);
-        font-size: 8px;
-        top: 4px;
+    @media (max-width: 768px) {
+        .station-note { font-size: 0.7rem; }
+        .station { margin-bottom: 0.4rem; }
     }
 
     /* =========================================
-       AMENITIES (Skills)
-       ========================================= */
-    .amenity-group {
-        margin-bottom: 1.2rem;
-    }
-    .amenity-group:last-child { margin-bottom: 0; }
-
-    .amenity-category {
-        font-family: var(--heading);
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--gold);
-        margin-bottom: 0.8rem;
-        font-style: italic;
-    }
-
-    .amenity-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .amenity-tag {
-        font-family: var(--mono);
-        font-size: 11px;
-        padding: 4px 12px;
-        border: 1px solid var(--gold-dim);
-        color: var(--text);
-        border-radius: 2px;
-        transition: border-color 0.2s, background 0.2s;
-        background: rgba(201, 168, 76, 0.04);
-    }
-
-    .amenity-tag:hover {
-        border-color: var(--gold);
-        background: rgba(201, 168, 76, 0.1);
-    }
-
-    .amenity-tag.management {
-        border-color: rgba(107, 29, 42, 0.4);
-        background: rgba(107, 29, 42, 0.08);
-        color: var(--cream);
-    }
-
-    .amenity-tag.management:hover {
-        border-color: var(--burgundy);
-        background: rgba(107, 29, 42, 0.15);
-    }
-
-    /* =========================================
-       HIGHLIGHTS (Engagements)
-       ========================================= */
-    .highlights-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 1rem;
-    }
-
-    .highlight-card {
-        padding: 1.2rem;
-    }
-
-    .highlight-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 0.8rem;
-        gap: 8px;
-    }
-
-    .highlight-client {
-        font-family: var(--heading);
-        font-size: 15px;
-        font-weight: 700;
-        color: var(--cream);
-        text-transform: capitalize;
-    }
-
-    .highlight-sector {
-        font-family: var(--mono);
-        font-size: 9px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--text-muted);
-        white-space: nowrap;
-    }
-
-    .highlight-details {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .highlight-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 8px;
-    }
-
-    .highlight-label {
-        font-family: var(--mono);
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--text-muted);
-    }
-
-    .highlight-value {
-        font-size: 12.5px;
-        color: var(--text-dim);
-    }
-
-    .highlight-value.impact.positive {
-        color: var(--gold);
-        font-weight: 600;
-    }
-
-    /* =========================================
-       CREDENTIALS
-       ========================================= */
-    .cred-section {
-        margin-bottom: 1.5rem;
-    }
-    .cred-section:last-child { margin-bottom: 0; }
-
-    .cred-heading {
-        font-family: var(--heading);
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--gold);
-        font-style: italic;
-        margin-bottom: 0.8rem;
-        padding-bottom: 4px;
-        border-bottom: 1px solid var(--gold-dim);
-    }
-
-    .cred-entry {
-        margin-bottom: 0.8rem;
-    }
-
-    .cred-main {
-        display: flex;
-        align-items: baseline;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .cred-degree {
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--cream);
-    }
-
-    .cred-distinction {
-        font-family: var(--mono);
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--gold);
-        border: 1px solid var(--gold-dim);
-        padding: 1px 8px;
-    }
-
-    .cred-sub {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        font-size: 12px;
-        color: var(--text-muted);
-        margin-top: 2px;
-    }
-
-    .cert-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .cert-item {
-        font-size: 12px;
-        padding: 3px 10px;
-        border: 1px solid var(--gold-dim);
-        color: var(--text);
-        border-radius: 2px;
-    }
-
-    .learning-list {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .learning-item {
-        font-size: 12.5px;
-        color: var(--text-dim);
-        padding-left: 16px;
-        position: relative;
-    }
-
-    .learning-item::before {
-        content: '\2666';
-        position: absolute;
-        left: 0;
-        color: var(--gold-dim);
-        font-size: 8px;
-        top: 4px;
-    }
-
-    /* =========================================
-       TERMINUS
-       ========================================= */
-    .terminus {
-        text-align: center;
-        padding-top: 2rem;
-    }
-
-    .terminus-content {
-        padding: 2rem 0;
-    }
-
-    .terminus-ornament {
-        width: 40px; height: 2px;
-        background: var(--gold);
-        margin: 1rem auto;
-        position: relative;
-    }
-    .terminus-ornament::before {
-        content: '\2666';
-        position: absolute;
-        left: 50%; top: 50%;
-        transform: translate(-50%, -50%);
-        color: var(--gold);
-        font-size: 10px;
-        background: var(--bg-card);
-        padding: 0 6px;
-    }
-
-    .terminus-text {
-        font-family: var(--heading);
-        font-size: 24px;
-        font-weight: 700;
-        color: var(--cream);
-        margin-bottom: 0.5rem;
-    }
-
-    .terminus-sub {
-        font-size: 13px;
-        color: var(--text-muted);
-        font-style: italic;
-        margin-bottom: 1rem;
-    }
-
-    .terminus-links {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        font-size: 13px;
-    }
-
-    /* =========================================
-       REVEAL ANIMATION
-       ========================================= */
-    .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* =========================================
-       GENTLE ROCKING / PARALLAX
-       ========================================= */
-    @keyframes gentleRock {
-        0%, 100% { transform: translateX(0) rotate(0deg); }
-        25% { transform: translateX(0.5px) rotate(0.05deg); }
-        75% { transform: translateX(-0.5px) rotate(-0.05deg); }
-    }
-
-    .window-frame {
-        animation: gentleRock 8s ease-in-out infinite;
-    }
-
-    /* =========================================
-       RESPONSIVE -- TABLET (601-1024px)
-       ========================================= */
-    @media (max-width: 1024px) {
-        body { font-size: 14px; }
-        .journey { max-width: 720px; padding: 50px 20px 100px; }
-        .section { padding-left: 32px; }
-        .track-line { left: 28px; }
-        .station-marker { left: 20px; }
-        .station-dot { width: 16px; height: 16px; }
-        .passenger-name { font-size: clamp(28px, 5vw, 44px); }
-        .section-title { font-size: 20px; }
-        .station-name { font-size: 16px; }
-        .highlights-grid { grid-template-columns: 1fr 1fr; }
-        .board-frame { min-width: 320px; padding: 1.2rem 1.5rem; }
-    }
-
-    /* =========================================
-       RESPONSIVE -- SMALL TABLET / LARGE PHONE (481-600px)
+       RESPONSIVE -- SMALL PHONE
        ========================================= */
     @media (max-width: 600px) {
-        body { font-size: 13px; }
-        .journey { padding: 40px 14px 80px; }
-        .section { padding-left: 0; }
-
-        /* Hide track on mobile */
-        .track-line { display: none; }
-        .station-marker { display: none; }
-        .station-connector { display: none; }
-
-        /* Header */
-        .passenger-name { font-size: 28px; }
-        .route-subtitle { font-size: 14px; }
-        .route-badge { font-size: 9px; letter-spacing: 3px; padding: 3px 12px; }
-        .timetable-meta { gap: 8px; }
-        .meta-label { font-size: 9px; }
-        .header-links { gap: 8px; font-size: 12px; flex-wrap: wrap; }
-
-        /* Profile */
-        .profile-grid { flex-direction: column; align-items: center; text-align: center; }
-        .passport-photo img { width: 110px; height: 110px; }
-        .detail-row { flex-direction: column; gap: 2px; align-items: center; }
-        .metrics-bar { gap: 0.6rem; }
-        .metric-value { font-size: 15px; }
-        .metric-label { font-size: 9px; }
-
-        /* Sections */
-        .section-title { font-size: 18px; }
-        .section-header { gap: 8px; }
-
-        /* Stations */
-        .station-card { flex-direction: column; gap: 0; }
-        .station-top { flex-direction: column; gap: 2px; }
-        .station-name { font-size: 15px; }
-        .role-header { flex-direction: column; gap: 2px; }
-        .role-title { font-size: 13px; }
-
-        /* Highlights */
-        .highlights-grid { grid-template-columns: 1fr; }
-        .highlight-card { padding: 1rem; }
-
-        /* Window frames */
-        .window-frame { padding: 1rem; }
-
-        /* Amenities */
-        .amenity-tag { font-size: 10px; padding: 3px 8px; }
-
-        /* Credentials */
-        .cred-degree { font-size: 13px; }
-        .cred-sub { font-size: 11px; gap: 8px; }
-        .cert-item { font-size: 11px; padding: 2px 8px; }
-
         /* Intro */
         .board-frame { min-width: 0; width: 100%; padding: 1rem; }
         .board-row-intro { flex-wrap: wrap; gap: 8px; font-size: 13px; }
         .board-platform { margin-left: 0; }
-
-        /* Terminus */
-        .terminus-text { font-size: 20px; }
     }
 
-    /* =========================================
-       RESPONSIVE -- SMALL PHONE (<=380px)
-       ========================================= */
     @media (max-width: 380px) {
-        body { font-size: 12px; }
-        .journey { padding: 36px 10px 60px; }
-        .passenger-name { font-size: 24px; }
-        .section-title { font-size: 16px; }
-        .passport-photo img { width: 90px; height: 90px; }
-        .window-frame { padding: 0.8rem; }
-        .amenity-tag { font-size: 9px; padding: 2px 6px; }
-        .metric-value { font-size: 14px; }
         .board-row-intro { font-size: 11px; }
-        .highlight-client { font-size: 13px; }
-    }
-
-    /* =========================================
-       TOUCH: larger tap targets on mobile
-       ========================================= */
-    @media (hover: none) and (pointer: coarse) {
-        .header-links a,
-        .terminus-links a {
-            padding: 6px 4px;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-        }
-        .amenity-tag {
-            padding: 6px 12px;
-            min-height: 36px;
-            display: inline-flex;
-            align-items: center;
-        }
-        .cert-item {
-            padding: 6px 10px;
-            min-height: 36px;
-            display: inline-flex;
-            align-items: center;
-        }
+        .train-narrative { padding: 1rem; }
+        .route-title { font-size: 0.95rem; }
     }
 
     /* =========================================
@@ -1438,12 +471,8 @@ import { experience, education, certifications, skills, engagements, continuousL
        ========================================= */
     @media print {
         .texture-overlay,
-        .intro,
-        .track-line,
-        .station-marker { display: none; }
-        .journey { opacity: 1; }
-        .reveal { opacity: 1; transform: none; }
-        .window-frame { animation: none; border-color: #ccc; }
+        .intro { display: none; }
+        .journey { opacity: 1; height: auto; overflow: visible; }
         body { background: #fff; color: #222; }
         a { color: #333; }
     }
@@ -1526,18 +555,4 @@ import { experience, education, certifications, skills, engagements, continuousL
     });
 
     runIntro();
-
-    /* =============================================
-       SCROLL REVEAL (Intersection Observer)
-       ============================================= */
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    revealEls.forEach(el => observer.observe(el));
 </script>

@@ -1,6 +1,6 @@
 ---
+import Main from "../layouts/Main.astro";
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, managementSkills, languages, industries, metrics } from "../data/resume";
 ---
 
 <!doctype html>
@@ -99,290 +99,35 @@ import { experience, education, certifications, skills, engagements, continuousL
     <!-- MAIN CONTENT -->
     <main class="journal" id="journal">
 
-        <!-- JOURNAL COVER -->
-        <header class="journal-cover">
-            <div class="journal-binding" aria-hidden="true"></div>
-            <div class="cover-content">
-                <div class="cover-stamp">FIELD EXPEDITION JOURNAL</div>
-                <h1 class="cover-title">Wildlife Safari<br/>Expedition Log</h1>
-                <div class="cover-subject">
-                    <span class="cover-label">Subject:</span>
-                    {siteMetadata.name}
-                </div>
-                <div class="cover-meta">
-                    <span class="cover-label">Classification:</span> Homo Technologicus
-                </div>
-                <div class="cover-meta">
-                    <span class="cover-label">Base Camp:</span> {siteMetadata.location}
-                </div>
-                <div class="cover-meta">
-                    <span class="cover-label">Lead Researcher:</span> You, the reader
-                </div>
-            </div>
-        </header>
+        <div class="safari-narrative">
+            <h1 class="expedition-title">EXPEDITION LOG — D'AGNELLI SURVEY</h1>
+            <div class="expedition-meta">field seasons: 2012-present | base camp: london</div>
 
-        <!-- SPECIMEN PHOTOGRAPH -->
-        <section class="section specimen-photo-section" data-section="header">
-            <div class="polaroid">
-                <div class="tape tape-left" aria-hidden="true"></div>
-                <div class="tape tape-right" aria-hidden="true"></div>
-                <img src="/assets/dani.jpeg" alt="Specimen photograph of Daniele D'Agnelli" class="specimen-img" width="280" height="280" loading="eager" />
-                <div class="polaroid-label">
-                    <span class="label-handwritten">Specimen #001</span>
-                    <span class="label-date">Photographed in natural habitat</span>
-                </div>
-            </div>
-            <div class="specimen-tag">
-                <div class="tag-header">FIELD IDENTIFICATION TAG</div>
-                <div class="tag-row"><span class="tag-key">Common Name:</span> <span class="tag-val">{siteMetadata.name}</span></div>
-                <div class="tag-row"><span class="tag-key">Classification:</span> <span class="tag-val">Homo Technologicus</span></div>
-                <div class="tag-row"><span class="tag-key">Habitat:</span> <span class="tag-val">{siteMetadata.location}</span></div>
-                <div class="tag-row"><span class="tag-key">Temperament:</span> <span class="tag-val">Collaborative, Persistent</span></div>
-                <div class="tag-row"><span class="tag-key">Contact:</span> <span class="tag-val">{siteMetadata.email}</span></div>
-                <div class="tag-row links-row">
-                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener noreferrer">Bluesky</a>
-                </div>
-            </div>
-        </section>
+            <h2 class="section-title">HABITATS DOCUMENTED</h2>
 
-        <!-- SECTION DIVIDER -->
-        <div class="divider" aria-hidden="true"><span class="divider-tracks">&#128062; &middot; &#128062; &middot; &#128062;</span></div>
-
-        <!-- FIELD OBSERVATION SUMMARY -->
-        <section class="section" id="summary" data-section="summary">
-            <div class="section-header">
-                <div class="gps-stamp">GPS: 51.5074&deg; N, 0.1278&deg; W</div>
-                <div class="date-stamp">Date: 2024.03.15 &mdash; 06:42 UTC</div>
+            <div class="habitat">
+                <strong>manufacturing</strong> — the dominant biome. 100+ sites catalogued for swiss industrial giant. predictive maintenance species identified. $18m yield.
             </div>
-            <h2 class="section-title">Field Observation Summary</h2>
-            <div class="margin-note" aria-hidden="true">First sighting &mdash; remarkable specimen</div>
-            <div class="journal-entry">
-                <p class="observation-text">{summary}</p>
+            <div class="habitat">
+                <strong>telecom</strong> — dense urban habitat. first enterprise-wide deployment across 7 territories for british telco.
             </div>
-            <div class="field-metrics">
-                {metrics.map((m) => (
-                    <div class="metric-card">
-                        <div class="metric-value">{m.value}</div>
-                        <div class="metric-label">{m.label}</div>
-                    </div>
-                ))}
+            <div class="habitat">
+                <strong>financial services</strong> — two distinct subspecies observed. american bank (75k-strong colony, data architecture). uk investment firm (&pound;170.3b foraging range, financial planning).
             </div>
-        </section>
-
-        <div class="divider" aria-hidden="true"><span class="divider-compass">&#9733;</span></div>
-
-        <!-- HABITAT MIGRATION HISTORY -->
-        <section class="section" id="experience" data-section="experience">
-            <div class="section-header">
-                <div class="gps-stamp">GPS: 51.5155&deg; N, 0.0922&deg; W</div>
-                <div class="date-stamp">Date: 2024.03.16 &mdash; 08:15 UTC</div>
-            </div>
-            <h2 class="section-title">Habitat Migration History</h2>
-            <div class="margin-note" aria-hidden="true">Tracked across multiple continents</div>
-            <div class="migration-timeline">
-                {experience.map((exp, i) => (
-                    <article class="habitat-card">
-                        <div class="habitat-marker" aria-hidden="true">
-                            <span class="marker-num">{String(i + 1).padStart(2, '0')}</span>
-                        </div>
-                        <div class="habitat-content">
-                            <div class="habitat-header">
-                                <h3 class="habitat-name">{exp.company}</h3>
-                                <span class="habitat-location">{exp.location}</span>
-                            </div>
-                            {exp.roles.map((role) => (
-                                <div class="observation-entry">
-                                    <div class="observation-role">{role.title}</div>
-                                    <div class="observation-period">{role.period}</div>
-                                    {role.description && (
-                                        <p class="observation-desc">{role.description}</p>
-                                    )}
-                                    {role.bullets && role.bullets.length > 0 && (
-                                        <ul class="observation-findings">
-                                            {role.bullets.map((b) => (
-                                                <li>{b}</li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </article>
-                ))}
-            </div>
-        </section>
-
-        <div class="divider" aria-hidden="true"><span class="divider-tracks">&#128062; &middot; &#128062; &middot; &#128062;</span></div>
-
-        <!-- OBSERVED CAPABILITIES -->
-        <section class="section" id="skills" data-section="skills">
-            <div class="section-header">
-                <div class="gps-stamp">GPS: 51.5033&deg; N, 0.1195&deg; W</div>
-                <div class="date-stamp">Date: 2024.03.17 &mdash; 14:30 UTC</div>
-            </div>
-            <h2 class="section-title">Observed Capabilities</h2>
-            <div class="margin-note" aria-hidden="true">Catalogued from multiple field sessions</div>
-
-            <div class="catalog-group">
-                <h3 class="catalog-subhead">Technical Proficiencies</h3>
-                <div class="specimen-cards">
-                    {skills.map((skill) => (
-                        <div class="specimen-card">
-                            <div class="card-pin" aria-hidden="true"></div>
-                            <div class="card-content">{skill}</div>
-                        </div>
-                    ))}
-                </div>
+            <div class="habitat">
+                <strong>healthcare &middot; oil &amp; gas &middot; aerospace &amp; defence</strong> — additional biomes explored. high-sensitivity environments. resilient solutions deployed.
             </div>
 
-            <div class="catalog-group">
-                <h3 class="catalog-subhead">Management &amp; Leadership</h3>
-                <div class="specimen-cards">
-                    {managementSkills.map((skill) => (
-                        <div class="specimen-card">
-                            <div class="card-pin" aria-hidden="true"></div>
-                            <div class="card-content">{skill}</div>
-                        </div>
-                    ))}
-                </div>
+            <div class="credentials">
+                EXPEDITION LEADER CREDENTIALS: msc ethical hacking (distinction) | bsc computer science | prince2 practitioner | stanford ml certified
             </div>
 
-            <div class="catalog-group">
-                <h3 class="catalog-subhead">Observed Territories (Industries)</h3>
-                <div class="specimen-cards">
-                    {industries.map((ind) => (
-                        <div class="specimen-card territory-card">
-                            <div class="card-pin" aria-hidden="true"></div>
-                            <div class="card-content">{ind}</div>
-                        </div>
-                    ))}
-                </div>
+            <div class="safari-footer">
+                <a href="mailto:daniele@dagnelli.net">[field contact]</a>
+                <a href="https://github.com/danieledagnelli">[github]</a>
+                <a href="https://linkedin.com/in/dagnelli">[linkedin]</a>
             </div>
-
-            <div class="catalog-group">
-                <h3 class="catalog-subhead">Vocalizations (Languages)</h3>
-                <div class="specimen-cards">
-                    {languages.map((lang) => (
-                        <div class="specimen-card lang-card">
-                            <div class="card-pin" aria-hidden="true"></div>
-                            <div class="card-content">{lang}</div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="divider" aria-hidden="true"><span class="divider-compass">&#9733;</span></div>
-
-        <!-- NOTABLE ENCOUNTERS -->
-        <section class="section" id="engagements" data-section="engagements">
-            <div class="section-header">
-                <div class="gps-stamp">GPS: 51.5142&deg; N, 0.0931&deg; W</div>
-                <div class="date-stamp">Date: 2024.03.18 &mdash; 10:00 UTC</div>
-            </div>
-            <h2 class="section-title">Notable Encounters</h2>
-            <div class="margin-note" aria-hidden="true">Each sighting confirmed by multiple observers</div>
-            <div class="encounter-log">
-                {engagements.map((eng) => (
-                    <div class="encounter-row">
-                        <div class="encounter-client">{eng.client}</div>
-                        <div class="encounter-detail">
-                            <span class="encounter-sector">{eng.sector}</span>
-                            <span class="encounter-scope">{eng.scope}</span>
-                        </div>
-                        <div class="encounter-impact">
-                            <span class={`trend-indicator ${eng.trend}`} aria-hidden="true">{eng.trend === 'positive' ? '\u25B2' : '\u25C6'}</span>
-                            {eng.impact}
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="divider" aria-hidden="true"><span class="divider-tracks">&#128062; &middot; &#128062; &middot; &#128062;</span></div>
-
-        <!-- NATURALIST TRAINING -->
-        <section class="section" id="education" data-section="education">
-            <div class="section-header">
-                <div class="gps-stamp">GPS: 56.4620&deg; N, 2.9707&deg; W</div>
-                <div class="date-stamp">Date: 2024.03.19 &mdash; 09:20 UTC</div>
-            </div>
-            <h2 class="section-title">Naturalist Training</h2>
-            <div class="margin-note" aria-hidden="true">Formal instruction in the wild sciences</div>
-            <div class="training-entries">
-                {education.map((edu) => (
-                    <div class="training-card">
-                        <div class="training-institution">{edu.institution}</div>
-                        <div class="training-degree">{edu.degree}</div>
-                        <div class="training-meta">
-                            <span>{edu.period}</span>
-                            <span>&mdash;</span>
-                            <span>{edu.location}</span>
-                        </div>
-                        {edu.distinction && (
-                            <div class="training-distinction">{edu.distinction}</div>
-                        )}
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="divider" aria-hidden="true"><span class="divider-compass">&#9733;</span></div>
-
-        <!-- EXPEDITION CREDENTIALS -->
-        <section class="section" id="certifications" data-section="certifications">
-            <div class="section-header">
-                <div class="gps-stamp">GPS: 51.4988&deg; N, 0.1749&deg; W</div>
-                <div class="date-stamp">Date: 2024.03.20 &mdash; 11:45 UTC</div>
-            </div>
-            <h2 class="section-title">Expedition Credentials</h2>
-            <div class="margin-note" aria-hidden="true">Permits &amp; certifications verified</div>
-            <div class="credentials-grid">
-                {certifications.map((cert) => (
-                    <div class="credential-badge">
-                        <div class="badge-seal" aria-hidden="true">&#9673;</div>
-                        <div class="badge-text">{cert}</div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="divider" aria-hidden="true"><span class="divider-tracks">&#128062; &middot; &#128062; &middot; &#128062;</span></div>
-
-        <!-- ONGOING FIELDWORK -->
-        <section class="section" id="learning" data-section="training">
-            <div class="section-header">
-                <div class="gps-stamp">GPS: 37.4419&deg; N, 122.1430&deg; W</div>
-                <div class="date-stamp">Date: 2024.03.21 &mdash; 16:00 UTC</div>
-            </div>
-            <h2 class="section-title">Ongoing Fieldwork</h2>
-            <div class="margin-note" aria-hidden="true">Subject continues to evolve</div>
-            <div class="fieldwork-list">
-                {continuousLearning.map((item) => (
-                    <div class="fieldwork-entry">
-                        <span class="fieldwork-bullet" aria-hidden="true">&#9670;</span>
-                        <span>{item}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <!-- JOURNAL FOOTER -->
-        <footer class="journal-footer">
-            <div class="footer-stamp">END OF EXPEDITION LOG</div>
-            <div class="footer-note">
-                Field journal maintained by {siteMetadata.name} &mdash; {siteMetadata.location}
-            </div>
-            <div class="footer-links">
-                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener noreferrer">Bluesky</a>
-                <a href={`mailto:${siteMetadata.email}`}>Email</a>
-            </div>
-            <div class="footer-copy">&copy; {new Date().getFullYear()} {siteMetadata.name}. All field observations reserved.</div>
-        </footer>
+        </div>
 
     </main>
 </body>
@@ -640,17 +385,21 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* ========================================
-       JOURNAL — MAIN CONTAINER
+       JOURNAL — MAIN CONTAINER (VIEWPORT-LOCKED)
        ======================================== */
 
     .journal {
         position: relative;
         z-index: 2;
-        max-width: 900px;
         margin: 0 auto;
-        padding: 0 24px 60px;
         opacity: 0;
         transition: opacity 0.8s ease;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .journal.visible {
@@ -658,263 +407,80 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* ========================================
-       JOURNAL COVER
+       SAFARI NARRATIVE — SINGLE VIEWPORT
        ======================================== */
 
-    .journal-cover {
-        position: relative;
-        padding: 60px 40px 50px;
-        margin-bottom: 40px;
-        background: linear-gradient(135deg, var(--earth-brown) 0%, #6b4226 50%, var(--earth-brown) 100%);
-        border-radius: 2px 8px 8px 2px;
-        color: var(--canvas);
-        box-shadow: 4px 4px 20px rgba(0,0,0,0.25), inset 0 0 40px rgba(0,0,0,0.15);
+    .safari-narrative {
+        max-width: 620px;
+        padding: 1.5rem;
     }
 
-    .journal-binding {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 18px;
-        background: repeating-linear-gradient(
-            to bottom,
-            #4a2a10 0px,
-            #4a2a10 8px,
-            #6b4226 8px,
-            #6b4226 12px
-        );
-        border-radius: 2px 0 0 2px;
-    }
-
-    .cover-stamp {
+    .expedition-title {
         font-family: var(--font-sans);
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-        color: var(--savanna-gold);
-        border: 1px solid var(--savanna-gold);
-        display: inline-block;
-        padding: 4px 14px;
-        margin-bottom: 24px;
-        margin-left: 14px;
-    }
-
-    .cover-title {
-        font-family: var(--font-serif);
-        font-size: 2.4rem;
-        font-weight: 700;
-        line-height: 1.2;
-        margin-bottom: 28px;
-        margin-left: 14px;
-        color: var(--canvas);
-    }
-
-    .cover-subject {
-        font-family: var(--font-handwriting);
-        font-size: 1.6rem;
-        margin-bottom: 12px;
-        margin-left: 14px;
-        color: var(--savanna-gold);
-    }
-
-    .cover-meta {
-        font-family: var(--font-sans);
-        font-size: 0.85rem;
-        margin-bottom: 6px;
-        margin-left: 14px;
-        color: var(--dusty-khaki);
-    }
-
-    .cover-label {
-        font-weight: 600;
-        color: var(--savanna-gold);
-    }
-
-    /* ========================================
-       SPECIMEN PHOTOGRAPH (POLAROID)
-       ======================================== */
-
-    .specimen-photo-section {
-        display: flex;
-        gap: 32px;
-        align-items: flex-start;
-        flex-wrap: wrap;
-    }
-
-    .polaroid {
-        position: relative;
-        background: #fff;
-        padding: 12px 12px 44px;
-        box-shadow: 2px 3px 12px rgba(0,0,0,0.15);
-        transform: rotate(-2deg);
-        flex-shrink: 0;
-    }
-
-    .tape {
-        position: absolute;
-        width: 60px;
-        height: 20px;
-        background: rgba(212, 197, 160, 0.55);
-        z-index: 2;
-    }
-
-    .tape-left {
-        top: -8px;
-        left: 20px;
-        transform: rotate(-12deg);
-    }
-
-    .tape-right {
-        top: -6px;
-        right: 16px;
-        transform: rotate(8deg);
-    }
-
-    .specimen-img {
-        display: block;
-        width: 220px;
-        height: 220px;
-        object-fit: cover;
-        filter: sepia(0.12) contrast(1.05);
-    }
-
-    .polaroid-label {
-        padding-top: 8px;
-        text-align: center;
-    }
-
-    .label-handwritten {
-        display: block;
-        font-family: var(--font-handwriting);
-        font-size: 1.2rem;
-        color: var(--earth-brown);
-    }
-
-    .label-date {
-        display: block;
-        font-family: var(--font-sans);
-        font-size: 0.65rem;
-        color: var(--ink-light);
-        letter-spacing: 0.05em;
-    }
-
-    .specimen-tag {
-        flex: 1;
-        min-width: 250px;
-        background: var(--canvas-dark);
-        border: 1px dashed var(--dusty-khaki);
-        padding: 20px 24px;
-        border-radius: 2px;
-    }
-
-    .tag-header {
-        font-family: var(--font-sans);
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--earth-brown);
-        border-bottom: 1px solid var(--dusty-khaki);
-        padding-bottom: 8px;
-        margin-bottom: 12px;
-    }
-
-    .tag-row {
-        font-family: var(--font-sans);
-        font-size: 0.85rem;
-        margin-bottom: 6px;
-        display: flex;
-        gap: 8px;
-    }
-
-    .tag-key {
-        font-weight: 600;
-        color: var(--earth-brown);
-        min-width: 110px;
-        flex-shrink: 0;
-    }
-
-    .tag-val {
-        color: var(--ink);
-    }
-
-    .links-row {
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 1px solid var(--dusty-khaki);
-        display: flex;
-        gap: 16px;
-    }
-
-    .links-row a {
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
-
-    /* ========================================
-       SECTION DIVIDERS
-       ======================================== */
-
-    .divider {
-        text-align: center;
-        padding: 28px 0;
         font-size: 1rem;
-        color: var(--dusty-khaki);
-        letter-spacing: 0.3em;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 0.2rem;
+        color: var(--earth-brown);
+        letter-spacing: 0.1em;
+        animation: heatHaze 6s ease-in-out infinite;
     }
 
-    .divider-tracks {
-        font-size: 1.1rem;
-    }
-
-    .divider-compass {
-        font-size: 1.4rem;
-        color: var(--savanna-gold);
-    }
-
-    /* ========================================
-       SECTIONS — COMMON
-       ======================================== */
-
-    .section {
-        position: relative;
-        margin-bottom: 16px;
-        padding: 32px;
-        background: rgba(255, 255, 255, 0.35);
-        border: 1px solid var(--dusty-khaki);
-        border-radius: 2px;
-        box-shadow: 0 1px 6px rgba(0,0,0,0.04);
-    }
-
-    .section-header {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 16px;
-    }
-
-    .gps-stamp,
-    .date-stamp {
+    .expedition-meta {
         font-family: var(--font-sans);
         font-size: 0.7rem;
-        font-weight: 300;
-        color: var(--ink-light);
+        text-align: center;
+        opacity: 0.7;
+        margin-bottom: 1rem;
         letter-spacing: 0.05em;
     }
 
     .section-title {
-        font-family: var(--font-serif);
-        font-size: 1.6rem;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
         font-weight: 700;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.5rem;
         color: var(--earth-brown);
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid var(--savanna-gold);
-        animation: heatHaze 6s ease-in-out infinite;
     }
+
+    .habitat {
+        font-family: var(--font-sans);
+        font-size: 0.78rem;
+        line-height: 1.5;
+        margin-bottom: 0.5rem;
+        color: var(--ink);
+    }
+
+    .habitat strong {
+        color: var(--safari-green);
+        font-weight: 600;
+    }
+
+    .credentials {
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        opacity: 0.7;
+        margin: 0.8rem 0;
+        line-height: 1.5;
+    }
+
+    .safari-footer {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .safari-footer a {
+        font-family: var(--font-sans);
+        font-size: 0.78rem;
+        text-decoration: none;
+    }
+
+    /* ========================================
+       ANIMATIONS (kept for Kodachrome aesthetic)
+       ======================================== */
 
     @keyframes heatHaze {
         0%, 100% { filter: blur(0px); transform: translateX(0); }
@@ -923,601 +489,17 @@ import { experience, education, certifications, skills, engagements, continuousL
         75% { filter: blur(0.2px); transform: translateX(-0.2px); }
     }
 
-    .margin-note {
-        position: absolute;
-        right: -10px;
-        top: 80px;
-        transform: rotate(3deg);
-        font-family: var(--font-handwriting);
-        font-size: 0.95rem;
-        color: var(--sunset-orange);
-        opacity: 0.6;
-        max-width: 140px;
-        text-align: right;
-        pointer-events: none;
-    }
-
-    .journal-entry {
-        margin-bottom: 20px;
-    }
-
-    .observation-text {
-        font-family: var(--font-serif);
-        font-size: 0.95rem;
-        line-height: 1.8;
-        color: var(--ink);
-        max-width: 680px;
-    }
-
-    /* ========================================
-       FIELD METRICS
-       ======================================== */
-
-    .field-metrics {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: 12px;
-        margin-top: 20px;
-    }
-
-    .metric-card {
-        background: var(--canvas-dark);
-        border: 1px solid var(--dusty-khaki);
-        padding: 14px 12px;
-        text-align: center;
-        border-radius: 2px;
-    }
-
-    .metric-value {
-        font-family: var(--font-serif);
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: var(--safari-green);
-    }
-
-    .metric-label {
-        font-family: var(--font-sans);
-        font-size: 0.7rem;
-        color: var(--ink-light);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        margin-top: 2px;
-    }
-
-    /* ========================================
-       HABITAT MIGRATION TIMELINE
-       ======================================== */
-
-    .migration-timeline {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .habitat-card {
-        display: flex;
-        gap: 20px;
-        align-items: flex-start;
-    }
-
-    .habitat-marker {
-        flex-shrink: 0;
-        width: 44px;
-        height: 44px;
-        background: var(--safari-green);
-        color: var(--canvas);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-sans);
-        font-size: 0.75rem;
-        font-weight: 600;
-        margin-top: 4px;
-    }
-
-    .habitat-content {
-        flex: 1;
-    }
-
-    .habitat-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 8px;
-    }
-
-    .habitat-name {
-        font-family: var(--font-serif);
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: var(--earth-brown);
-    }
-
-    .habitat-location {
-        font-family: var(--font-sans);
-        font-size: 0.75rem;
-        color: var(--ink-light);
-        letter-spacing: 0.03em;
-    }
-
-    .observation-entry {
-        padding: 10px 0;
-        border-top: 1px dotted var(--dusty-khaki);
-    }
-
-    .observation-entry:first-child {
-        border-top: none;
-        padding-top: 0;
-    }
-
-    .observation-role {
-        font-family: var(--font-serif);
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--ink);
-    }
-
-    .observation-period {
-        font-family: var(--font-sans);
-        font-size: 0.75rem;
-        color: var(--ink-light);
-        margin-bottom: 6px;
-    }
-
-    .observation-desc {
-        font-family: var(--font-serif);
-        font-size: 0.88rem;
-        line-height: 1.7;
-        color: var(--ink);
-        margin-bottom: 8px;
-    }
-
-    .observation-findings {
-        list-style: none;
-        padding: 0;
-    }
-
-    .observation-findings li {
-        font-family: var(--font-sans);
-        font-size: 0.82rem;
-        color: var(--ink);
-        padding: 3px 0 3px 18px;
-        position: relative;
-        line-height: 1.5;
-    }
-
-    .observation-findings li::before {
-        content: '\25C6';
-        position: absolute;
-        left: 0;
-        color: var(--savanna-gold);
-        font-size: 0.6rem;
-        top: 6px;
-    }
-
-    /* ========================================
-       SPECIMEN CATALOG CARDS (SKILLS)
-       ======================================== */
-
-    .catalog-group {
-        margin-bottom: 24px;
-    }
-
-    .catalog-group:last-child {
-        margin-bottom: 0;
-    }
-
-    .catalog-subhead {
-        font-family: var(--font-handwriting);
-        font-size: 1.25rem;
-        color: var(--safari-green);
-        margin-bottom: 12px;
-    }
-
-    .specimen-cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .specimen-card {
-        position: relative;
-        background: #fff;
-        border: 1px solid var(--dusty-khaki);
-        padding: 8px 16px 8px 26px;
-        font-family: var(--font-sans);
-        font-size: 0.8rem;
-        font-weight: 400;
-        color: var(--ink);
-        border-radius: 2px;
-        box-shadow: 1px 1px 4px rgba(0,0,0,0.06);
-        transition: transform 0.15s, box-shadow 0.15s;
-    }
-
-    .specimen-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 2px 3px 8px rgba(0,0,0,0.1);
-    }
-
-    .card-pin {
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 6px;
-        height: 6px;
-        background: var(--savanna-gold);
-        border-radius: 50%;
-    }
-
-    .territory-card {
-        border-color: var(--safari-green);
-        border-left: 3px solid var(--safari-green);
-    }
-
-    .lang-card {
-        border-color: var(--sunset-orange);
-        border-left: 3px solid var(--sunset-orange);
-    }
-
-    /* ========================================
-       NOTABLE ENCOUNTERS
-       ======================================== */
-
-    .encounter-log {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .encounter-row {
-        display: grid;
-        grid-template-columns: 1fr 1.2fr 1fr;
-        gap: 12px;
-        align-items: center;
-        background: var(--canvas-dark);
-        border: 1px solid var(--dusty-khaki);
-        padding: 14px 18px;
-        border-radius: 2px;
-    }
-
-    .encounter-client {
-        font-family: var(--font-serif);
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: var(--earth-brown);
-        text-transform: capitalize;
-    }
-
-    .encounter-detail {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-    }
-
-    .encounter-sector {
-        font-family: var(--font-sans);
-        font-size: 0.72rem;
-        font-weight: 600;
-        color: var(--ink-light);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-    }
-
-    .encounter-scope {
-        font-family: var(--font-sans);
-        font-size: 0.8rem;
-        color: var(--ink);
-    }
-
-    .encounter-impact {
-        font-family: var(--font-sans);
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--safari-green);
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .trend-indicator.positive {
-        color: var(--safari-green);
-    }
-
-    .trend-indicator.neutral {
-        color: var(--savanna-gold);
-    }
-
-    /* ========================================
-       NATURALIST TRAINING
-       ======================================== */
-
-    .training-entries {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .training-card {
-        background: var(--canvas-dark);
-        border-left: 3px solid var(--savanna-gold);
-        padding: 16px 20px;
-        border-radius: 0 2px 2px 0;
-    }
-
-    .training-institution {
-        font-family: var(--font-serif);
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--earth-brown);
-    }
-
-    .training-degree {
-        font-family: var(--font-serif);
-        font-size: 0.9rem;
-        color: var(--ink);
-        margin-bottom: 4px;
-    }
-
-    .training-meta {
-        font-family: var(--font-sans);
-        font-size: 0.75rem;
-        color: var(--ink-light);
-        display: flex;
-        gap: 6px;
-    }
-
-    .training-distinction {
-        display: inline-block;
-        margin-top: 6px;
-        font-family: var(--font-sans);
-        font-size: 0.72rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--savanna-gold);
-        border: 1px solid var(--savanna-gold);
-        padding: 2px 10px;
-        border-radius: 2px;
-    }
-
-    /* ========================================
-       CREDENTIALS
-       ======================================== */
-
-    .credentials-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 12px;
-    }
-
-    .credential-badge {
-        background: #fff;
-        border: 1px solid var(--dusty-khaki);
-        padding: 14px 16px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border-radius: 2px;
-        box-shadow: 1px 1px 4px rgba(0,0,0,0.04);
-    }
-
-    .badge-seal {
-        font-size: 1.2rem;
-        color: var(--savanna-gold);
-        flex-shrink: 0;
-    }
-
-    .badge-text {
-        font-family: var(--font-sans);
-        font-size: 0.82rem;
-        color: var(--ink);
-    }
-
-    /* ========================================
-       ONGOING FIELDWORK
-       ======================================== */
-
-    .fieldwork-list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .fieldwork-entry {
-        display: flex;
-        align-items: baseline;
-        gap: 10px;
-        font-family: var(--font-sans);
-        font-size: 0.88rem;
-        color: var(--ink);
-    }
-
-    .fieldwork-bullet {
-        color: var(--savanna-gold);
-        font-size: 0.6rem;
-        flex-shrink: 0;
-        margin-top: 2px;
-    }
-
-    /* ========================================
-       JOURNAL FOOTER
-       ======================================== */
-
-    .journal-footer {
-        text-align: center;
-        padding: 40px 20px;
-        border-top: 2px solid var(--earth-brown);
-        margin-top: 40px;
-    }
-
-    .footer-stamp {
-        font-family: var(--font-serif);
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        color: var(--earth-brown);
-        margin-bottom: 12px;
-    }
-
-    .footer-note {
-        font-family: var(--font-handwriting);
-        font-size: 1.1rem;
-        color: var(--ink-light);
-        margin-bottom: 16px;
-    }
-
-    .footer-links {
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-        flex-wrap: wrap;
-        margin-bottom: 16px;
-    }
-
-    .footer-links a {
-        font-family: var(--font-sans);
-        font-size: 0.82rem;
-        font-weight: 600;
-    }
-
-    .footer-copy {
-        font-family: var(--font-sans);
-        font-size: 0.7rem;
-        color: var(--ink-light);
-    }
-
-    /* ========================================
-       RESPONSIVE — 1200px
-       ======================================== */
-
-    @media (max-width: 1200px) {
-        .journal {
-            max-width: 800px;
-        }
-
-        .margin-note {
-            display: none;
-        }
-    }
-
     /* ========================================
        RESPONSIVE — 768px
        ======================================== */
 
     @media (max-width: 768px) {
-        .journal {
-            padding: 0 16px 40px;
+        .habitat {
+            font-size: 0.72rem;
         }
 
-        .section {
-            padding: 24px 20px;
-        }
-
-        .journal-cover {
-            padding: 40px 24px 36px;
-        }
-
-        .cover-title {
-            font-size: 1.8rem;
-        }
-
-        .specimen-photo-section {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .polaroid {
-            transform: rotate(-1deg);
-        }
-
-        .encounter-row {
-            grid-template-columns: 1fr;
-            gap: 6px;
-        }
-
-        .field-metrics {
-            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-        }
-
-        .habitat-card {
-            gap: 14px;
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-        }
-
-        .credentials-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    /* ========================================
-       RESPONSIVE — 480px
-       ======================================== */
-
-    @media (max-width: 480px) {
-        .journal {
-            padding: 0 10px 30px;
-        }
-
-        .section {
-            padding: 18px 14px;
-        }
-
-        .journal-cover {
-            padding: 30px 16px 28px;
-        }
-
-        .cover-title {
-            font-size: 1.5rem;
-        }
-
-        .cover-stamp {
-            font-size: 0.6rem;
-            padding: 3px 10px;
-        }
-
-        .cover-subject {
-            font-size: 1.3rem;
-        }
-
-        .section-title {
-            font-size: 1.15rem;
-        }
-
-        .habitat-card {
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .habitat-marker {
-            width: 36px;
-            height: 36px;
-            font-size: 0.65rem;
-        }
-
-        .specimen-img {
-            width: 180px;
-            height: 180px;
-        }
-
-        .tag-row {
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .tag-key {
-            min-width: auto;
-        }
-
-        .field-metrics {
-            grid-template-columns: repeat(2, 1fr);
+        .safari-narrative {
+            padding: 1rem;
         }
 
         .intro-line {
@@ -1527,15 +509,6 @@ import { experience, education, certifications, skills, engagements, continuousL
         .intro-line:first-child {
             font-size: 0.85rem;
         }
-
-        .specimen-cards {
-            gap: 8px;
-        }
-
-        .specimen-card {
-            padding: 6px 12px 6px 22px;
-            font-size: 0.75rem;
-        }
     }
 
     /* ========================================
@@ -1543,56 +516,11 @@ import { experience, education, certifications, skills, engagements, continuousL
        ======================================== */
 
     @media (max-width: 380px) {
-        .journal-cover {
-            padding: 24px 12px 22px;
-        }
-
-        .journal-binding {
-            width: 10px;
-        }
-
-        .cover-title {
-            font-size: 1.3rem;
-            margin-left: 6px;
-        }
-
-        .cover-stamp,
-        .cover-subject,
-        .cover-meta {
-            margin-left: 6px;
-        }
-
-        .section {
-            padding: 14px 10px;
-        }
-
-        .section-header {
-            flex-direction: column;
-        }
-
         .compass-bearing {
             top: 8px;
             right: 8px;
             padding: 4px 8px;
             font-size: 0.65rem;
-        }
-
-        .field-metrics {
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-
-        .metric-value {
-            font-size: 1.1rem;
-        }
-
-        .links-row {
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .footer-links {
-            gap: 14px;
         }
     }
 </style>

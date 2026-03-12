@@ -1,6 +1,5 @@
 ---
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, metrics, industries, managementSkills, languages } from "../data/resume";
 ---
 
 <!doctype html>
@@ -128,223 +127,40 @@ import { experience, education, certifications, skills, engagements, continuousL
     <!-- MAIN CONTENT -->
     <main class="console-main" id="consoleMain">
 
-        <!-- CONSOLE HEADER -->
-        <section class="section console-header" data-section="header">
-            <div class="console-title-bar">
-                <span class="console-badge">submarine ops console v3.7</span>
-                <span class="console-classification">classified // deep water ops</span>
-            </div>
-            <div class="header-grid">
-                <div class="header-info">
-                    <h1 class="captain-name">{siteMetadata.name.toLowerCase()}</h1>
-                    <div class="captain-rank">captain // {siteMetadata.description}</div>
-                    <div class="header-metrics">
-                        <span class="metric-chip">loc: {siteMetadata.location.toLowerCase()}</span>
-                        <span class="metric-chip active">status: submerged</span>
-                        <span class="metric-chip depth">depth: 4,200m</span>
-                    </div>
-                    <div class="nav-links">
-                        <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">[sonar.link//github]</a>
-                        <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">[sonar.link//linkedin]</a>
-                        <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener">[sonar.link//bluesky]</a>
-                        <a href={`mailto:${siteMetadata.email}`}>[comms.radio]</a>
-                    </div>
-                </div>
-                <div class="periscope-viewport">
-                    <div class="periscope-frame">
-                        <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="140" height="140" />
-                        <div class="periscope-overlay"></div>
-                        <div class="periscope-crosshair"></div>
-                    </div>
-                    <span class="periscope-label">periscope // subj_001</span>
-                </div>
+        <div class="sub-narrative">
+            <h1 class="scan-title">DEEP SCAN — TECHNICAL PROFILE</h1>
+            <div class="scan-meta">depth: full stack | pressure: enterprise-grade | status: operational</div>
+
+            <div class="layer">
+                <h2>LAYER 1: LANGUAGES</h2>
+                <p>python · java · go · rust · sql · bash — six-language capability. polyglot architecture.</p>
             </div>
 
-            <!-- Key metrics -->
-            <div class="metrics-bar">
-                {metrics.map(m => (
-                    <div class="metric-block">
-                        <span class="metric-value">{m.value.toLowerCase()}</span>
-                        <span class="metric-label">{m.label.toLowerCase()}</span>
-                    </div>
-                ))}
+            <div class="layer">
+                <h2>LAYER 2: ML & AI</h2>
+                <p>ml pipelines · deep learning · reinforcement learning · llms & generative ai · rag systems · mlops — stanford-trained. deeplearning.ai certified.</p>
             </div>
-        </section>
 
-        <hr class="depth-line" />
-
-        <!-- CAPTAIN'S PROFILE (Summary) -->
-        <section class="section reveal" data-section="summary">
-            <div class="sec-head">
-                <span class="tag sonar">[sonar.scan]</span>
-                <span class="sec-title">captain's log</span>
-                <span class="sec-depth">~~ 200m</span>
+            <div class="layer">
+                <h2>LAYER 3: INFRASTRUCTURE</h2>
+                <p>cloud (aws/azure/gcp) · data engineering · data integration · solution architecture · enterprise architecture · gitops · linux</p>
             </div>
-            <p class="body-text">{summary.toLowerCase()}</p>
-            <div class="industry-tags">
-                <span class="industry-label">// operational waters</span>
-                <div class="industry-list">
-                    {industries.map(ind => (
-                        <span class="industry-chip">{ind.toLowerCase()}</span>
-                    ))}
-                </div>
+
+            <div class="layer">
+                <h2>LAYER 4: SECURITY</h2>
+                <p>penetration testing · reverse engineering · security tooling — msc ethical hacking (distinction, gchq-certified). active on hack the box.</p>
             </div>
-        </section>
 
-        <hr class="depth-line" />
-
-        <!-- DEPTH CHART (Experience) -->
-        <section class="section reveal" data-section="experience">
-            <div class="sec-head">
-                <span class="tag depth-tag">[depth.chart]</span>
-                <span class="sec-title">dive record</span>
-                <span class="sec-depth">~~ 800m</span>
+            <div class="surface-reading">
+                <p>SURFACE READING: what the org chart says: senior engagement manager, c3 ai. what the stack says: full-spectrum engineer who chose to lead.</p>
             </div>
-            {experience.map((exp, i) => (
-                <div class="depth-block reveal">
-                    <div class="depth-marker">
-                        <span class="depth-level">{(i + 1) * 800}m</span>
-                        <div class="depth-indicator"></div>
-                    </div>
-                    <div class="depth-content">
-                        <div class="depth-top">
-                            <span class="depth-company">{exp.company.toLowerCase()}</span>
-                            <span class="depth-location">{exp.location.split(',')[0].toLowerCase()}</span>
-                        </div>
-                        {exp.roles.map(role => (
-                            <div class="depth-role">
-                                <div class="role-head">
-                                    <span class="role-name">{role.title.toLowerCase()}</span>
-                                    <span class="role-period">{role.period.toLowerCase()}</span>
-                                </div>
-                                {role.description && <p class="role-desc">{role.description.toLowerCase()}</p>}
-                                {role.bullets && role.bullets.length > 0 && (
-                                    <ul class="role-list">
-                                        {role.bullets.map(b => <li>{b.toLowerCase()}</li>)}
-                                    </ul>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            ))}
-        </section>
 
-        <hr class="depth-line" />
-
-        <!-- ONBOARD SYSTEMS (Skills) -->
-        <section class="section reveal" data-section="skills">
-            <div class="sec-head">
-                <span class="tag systems">[sys.check]</span>
-                <span class="sec-title">onboard systems</span>
-                <span class="sec-depth">~~ 2000m</span>
+            <div class="sub-footer">
+                <a href="mailto:daniele@dagnelli.net">[ping]</a>
+                <a href="https://github.com/danieledagnelli">[github]</a>
+                <a href="https://linkedin.com/in/dagnelli">[linkedin]</a>
             </div>
-            <div class="systems-container">
-                <div class="system-group">
-                    <span class="system-label">// technical_systems</span>
-                    <div class="system-grid">
-                        {skills.map((s, i) => (
-                            <span class="system-module" style={`--i:${i}`}>{s.toLowerCase()}</span>
-                        ))}
-                    </div>
-                </div>
-                <div class="system-group">
-                    <span class="system-label">// command_systems</span>
-                    <div class="system-grid">
-                        {managementSkills.map((s, i) => (
-                            <span class="system-module command" style={`--i:${i}`}>{s.toLowerCase()}</span>
-                        ))}
-                    </div>
-                </div>
-                <div class="system-group">
-                    <span class="system-label">// comms_array</span>
-                    <div class="system-grid">
-                        {languages.map((l, i) => (
-                            <span class="system-module comms" style={`--i:${i}`}>{l.toLowerCase()}</span>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <hr class="depth-line" />
-
-        <!-- MISSION LOGS (Engagements) -->
-        <section class="section reveal" data-section="engagements">
-            <div class="sec-head">
-                <span class="tag mission">[ops.log]</span>
-                <span class="sec-title">mission logs</span>
-                <span class="sec-depth">~~ 3000m</span>
-            </div>
-            <div class="mission-grid">
-                {engagements.map(eng => (
-                    <div class="mission-card reveal">
-                        <div class="mission-header">
-                            <span class="mission-client">{eng.client}</span>
-                            <span class="mission-sector">{eng.sector}</span>
-                        </div>
-                        <div class="mission-body">
-                            <span class="mission-scope">scope: {eng.scope}</span>
-                            <span class={`mission-impact ${eng.trend}`}>impact: {eng.impact}</span>
-                        </div>
-                        <div class="mission-status">
-                            <span class={`status-dot ${eng.trend}`}></span>
-                            <span class="status-text">{eng.trend === 'positive' ? 'mission success' : 'mission complete'}</span>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <hr class="depth-line" />
-
-        <!-- CREW CERTIFICATIONS (Education + Certs) -->
-        <section class="section reveal" data-section="education">
-            <div class="sec-head">
-                <span class="tag cert">[crew.cert]</span>
-                <span class="sec-title">crew certifications</span>
-                <span class="sec-depth">~~ 3800m</span>
-            </div>
-            <div class="cert-groups">
-                <div class="cert-group">
-                    <span class="cert-label">// naval_academy</span>
-                    {education.map(edu => (
-                        <div class="cert-item">
-                            <span class="cert-name">{edu.degree.toLowerCase()}</span>
-                            <span class="cert-meta">{edu.institution.toLowerCase()} — {edu.period} — {edu.location.toLowerCase()}</span>
-                            {edu.distinction && <span class="cert-badge">{edu.distinction.toLowerCase()}</span>}
-                        </div>
-                    ))}
-                </div>
-                <div class="cert-group">
-                    <span class="cert-label">// officer_qualifications</span>
-                    {certifications.map(c => (
-                        <div class="cert-item">
-                            <span class="cert-name">{c.toLowerCase()}</span>
-                        </div>
-                    ))}
-                </div>
-                <div class="cert-group">
-                    <span class="cert-label">// advanced_training_log</span>
-                    {continuousLearning.map(l => (
-                        <div class="cert-item">
-                            <span class="cert-name">{l.toLowerCase()}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <hr class="depth-line" />
-
-        <!-- SURFACE FOOTER -->
-        <section class="section surface-footer" data-section="footer">
-            <div class="surface-ascii">~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
-            <span>// initiating surface protocol</span>
-            <span>// all systems nominal</span>
-            <span>// submarine ops console — session end</span>
-            <span class="cursor-blink">_</span>
-        </section>
+        </div>
 
     </main>
 </body>
@@ -598,429 +414,72 @@ import { experience, education, certifications, skills, engagements, continuousL
        MAIN CONTENT
        ========================================= */
     .console-main {
-        max-width: 820px;
-        margin: 0 auto;
-        padding: 60px 24px 120px;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         opacity: 0;
         transition: opacity 0.6s ease 0.2s;
     }
     .console-main.visible { opacity: 1; }
 
     /* =========================================
-       SECTIONS
+       SUB NARRATIVE
        ========================================= */
-    .section { margin-bottom: 0; }
-
-    .sec-head {
-        display: flex; align-items: center; gap: 10px;
-        margin-bottom: 14px;
-        font-size: 11px; text-transform: lowercase; letter-spacing: 1.5px;
+    .sub-narrative {
+        max-width: 600px;
+        padding: 1.5rem;
     }
-    .sec-title { color: #667788; font-family: var(--heading); font-weight: 600; }
-    .sec-depth { margin-left: auto; color: var(--depth-blue); font-size: 10px; }
-
-    .tag {
-        padding: 2px 8px;
-        font-size: 9px; font-weight: 700; letter-spacing: 1px;
-        border: 1px solid;
-    }
-    .tag.sonar { color: var(--sonar); border-color: var(--sonar); }
-    .tag.depth-tag { color: var(--depth-blue); border-color: var(--depth-blue); }
-    .tag.systems { color: var(--amber); border-color: var(--amber); }
-    .tag.mission { color: var(--warning); border-color: var(--warning); }
-    .tag.cert { color: #8899aa; border-color: #445566; }
-
-    /* REVEAL ANIMATION */
-    .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* DEPTH DIVIDER */
-    .depth-line {
-        border: none;
-        height: 1px;
-        margin: 2.5rem 0;
-        background: linear-gradient(
-            90deg,
-            transparent 0%,
-            var(--dim) 15%,
-            var(--depth-blue) 40%,
-            var(--sonar) 50%,
-            var(--depth-blue) 60%,
-            var(--dim) 85%,
-            transparent 100%
-        );
-        opacity: 0.25;
-        position: relative;
-    }
-    .depth-line::after {
-        content: '\25C6';
-        position: absolute;
-        left: 50%; top: 50%;
-        transform: translate(-50%, -50%);
-        color: var(--dim);
-        font-size: 8px;
-        background: var(--abyss);
-        padding: 0 8px;
-    }
-
-    /* =========================================
-       CONSOLE HEADER
-       ========================================= */
-    .console-title-bar {
-        display: flex; justify-content: space-between; align-items: center;
-        margin-bottom: 18px; flex-wrap: wrap; gap: 8px;
-    }
-    .console-badge {
-        font-family: var(--mono); font-size: 10px; letter-spacing: 2px;
-        color: var(--sonar); border: 1px solid var(--sonar);
-        padding: 3px 12px; text-transform: lowercase;
-        animation: consolePulse 4s ease-in-out infinite;
-    }
-    .console-classification {
-        font-size: 9px; letter-spacing: 2px; color: var(--warning);
-        border: 1px solid var(--warning); padding: 2px 10px;
-        opacity: 0.7; text-transform: lowercase;
-    }
-
-    .header-grid {
-        display: flex; justify-content: space-between;
-        align-items: flex-start; gap: 24px;
-    }
-
-    .captain-name {
+    .scan-title {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 0.2rem;
+        color: var(--sonar);
         font-family: var(--heading);
-        font-size: clamp(28px, 5vw, 48px);
-        font-weight: 900;
-        color: #c0d0e0;
-        line-height: 1.1;
-        margin-bottom: 6px;
-        text-shadow: 0 0 30px rgba(0,102,204,0.2);
+        font-weight: 700;
+        letter-spacing: 0.1em;
     }
-
-    .captain-rank {
-        font-size: 13px;
-        color: var(--sonar);
-        margin-bottom: 14px;
-        letter-spacing: 0.5px;
-    }
-
-    .header-metrics {
-        display: flex; flex-wrap: wrap; gap: 8px;
-        margin-bottom: 14px;
-    }
-    .metric-chip {
-        font-size: 10px; letter-spacing: 1px; text-transform: lowercase;
-        padding: 2px 8px;
-        border: 1px solid var(--dim);
+    .scan-meta {
+        font-size: 0.7rem;
+        text-align: center;
+        opacity: 0.7;
+        margin-bottom: 1rem;
         color: var(--text-dim);
+        letter-spacing: 0.05em;
     }
-    .metric-chip.active { color: var(--sonar); border-color: var(--sonar); }
-    .metric-chip.depth { color: var(--depth-blue); border-color: var(--depth-blue); }
-
-    .nav-links {
-        display: flex; gap: 14px; font-size: 11px; flex-wrap: wrap;
+    .layer {
+        margin-bottom: 0.6rem;
     }
-
-    /* PERISCOPE VIEWPORT */
-    .periscope-viewport {
-        flex-shrink: 0; width: 140px;
-        display: flex; flex-direction: column; align-items: center;
-    }
-    .periscope-frame {
-        position: relative; width: 140px; height: 140px;
-        border-radius: 50%; overflow: hidden;
-        border: 2px solid var(--sonar);
-        box-shadow: 0 0 20px rgba(0,204,102,0.15), inset 0 0 30px rgba(0,0,0,0.5);
-    }
-    .periscope-frame img {
-        width: 100%; height: 100%; object-fit: cover;
-        filter: contrast(1.1) brightness(0.8) saturate(0.7) hue-rotate(10deg);
-    }
-    .periscope-overlay {
-        position: absolute; inset: 0;
-        background: radial-gradient(circle, transparent 50%, rgba(10,15,20,0.8) 100%);
-        pointer-events: none;
-    }
-    .periscope-crosshair {
-        position: absolute; inset: 0; pointer-events: none;
-    }
-    .periscope-crosshair::before {
-        content: '';
-        position: absolute; top: 50%; left: 10%; right: 10%;
-        height: 1px; background: rgba(0,204,102,0.3);
-        transform: translateY(-50%);
-    }
-    .periscope-crosshair::after {
-        content: '';
-        position: absolute; left: 50%; top: 10%; bottom: 10%;
-        width: 1px; background: rgba(0,204,102,0.3);
-        transform: translateX(-50%);
-    }
-    .periscope-label {
-        font-size: 9px; color: var(--text-dim); letter-spacing: 2px;
-        margin-top: 6px; text-transform: lowercase;
-    }
-
-    /* METRICS BAR */
-    .metrics-bar {
-        display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px;
-        padding: 14px;
-        border: 1px solid var(--dim);
-        background: rgba(26,32,48,0.4);
-    }
-    .metric-block {
-        display: flex; flex-direction: column; gap: 2px;
-        flex: 1; min-width: 80px; text-align: center;
-    }
-    .metric-value {
-        font-family: var(--heading); font-size: 18px; font-weight: 700;
-        color: var(--sonar);
-    }
-    .metric-label {
-        font-size: 9px; color: var(--text-dim);
-        letter-spacing: 1px; text-transform: lowercase;
-    }
-
-    /* =========================================
-       BODY TEXT + INDUSTRIES
-       ========================================= */
-    .body-text {
-        color: #7a8a9a;
-        font-size: 12.5px;
-        line-height: 1.7;
-    }
-    .industry-tags { margin-top: 14px; }
-    .industry-label {
-        display: block; font-size: 10px; color: var(--text-dim);
-        letter-spacing: 1px; margin-bottom: 8px; font-style: italic;
-    }
-    .industry-list { display: flex; flex-wrap: wrap; gap: 6px; }
-    .industry-chip {
-        font-size: 10px; padding: 2px 8px;
-        border: 1px solid var(--dim);
+    .layer h2 {
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.2rem;
         color: var(--depth-blue);
-        transition: border-color 0.2s, color 0.2s;
+        font-family: var(--heading);
+        font-weight: 600;
     }
-    .industry-chip:hover {
-        border-color: var(--depth-blue);
-        color: var(--sonar);
+    .layer p {
+        font-size: 0.78rem;
+        line-height: 1.5;
+        color: #8899aa;
     }
-
-    /* =========================================
-       DEPTH CHART (EXPERIENCE)
-       ========================================= */
-    .depth-block {
-        display: flex; gap: 16px;
-        margin-bottom: 22px;
-        position: relative;
+    .surface-reading {
+        font-size: 0.75rem;
+        opacity: 0.8;
+        margin: 0.8rem 0;
+        color: #8899aa;
+        line-height: 1.5;
     }
-    .depth-marker {
-        display: flex; flex-direction: column; align-items: center;
-        gap: 4px; min-width: 50px; flex-shrink: 0;
+    .sub-footer {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 0.8rem;
     }
-    .depth-level {
-        font-size: 10px; color: var(--depth-blue);
-        font-variant-numeric: tabular-nums; letter-spacing: 1px;
-    }
-    .depth-indicator {
-        width: 2px; flex: 1; min-height: 20px;
-        background: linear-gradient(180deg, var(--depth-blue), transparent);
-        opacity: 0.4;
-    }
-    .depth-content {
-        flex: 1;
-        border-left: 2px solid var(--dim);
-        padding-left: 16px;
-    }
-    .depth-top {
-        display: flex; justify-content: space-between; align-items: baseline;
-        margin-bottom: 4px;
-    }
-    .depth-company {
-        font-family: var(--heading); font-weight: 700;
-        color: var(--amber); font-size: 14px; letter-spacing: 0.5px;
-    }
-    .depth-location { color: var(--text-dim); font-size: 11px; }
-
-    .depth-role { margin-bottom: 8px; }
-    .role-head {
-        display: flex; justify-content: space-between; align-items: baseline;
-        flex-wrap: wrap; gap: 8px;
-    }
-    .role-name { color: #b0c0d0; font-size: 12px; }
-    .role-period { color: var(--text-dim); font-size: 10px; letter-spacing: 0.5px; }
-    .role-desc { color: #6a7a8a; font-size: 11.5px; margin-top: 4px; }
-    .role-list { list-style: none; margin-top: 4px; }
-    .role-list li {
-        color: #607080; font-size: 11px; line-height: 1.7;
-        padding-left: 14px; position: relative;
-    }
-    .role-list li::before {
-        content: '\25B8'; position: absolute; left: 0;
-        color: var(--sonar); font-size: 10px;
-    }
-
-    /* =========================================
-       ONBOARD SYSTEMS (SKILLS)
-       ========================================= */
-    .systems-container {
-        display: flex; flex-direction: column; gap: 16px;
-    }
-    .system-group { }
-    .system-label {
-        display: block; font-size: 10px; color: var(--text-dim);
-        letter-spacing: 1px; margin-bottom: 8px; font-style: italic;
-    }
-    .system-grid {
-        display: flex; flex-wrap: wrap; gap: 6px;
-    }
-    .system-module {
-        font-size: 11px;
-        padding: 3px 10px;
-        border: 1px solid rgba(0,204,102,0.2);
-        color: var(--sonar);
-        position: relative;
-        overflow: hidden;
-        transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    }
-    .system-module:hover {
-        border-color: var(--sonar);
-        box-shadow: 0 0 10px rgba(0,204,102,0.15);
-        color: #c0e0d0;
-    }
-    .system-module::after {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(0,204,102,0.08), transparent);
-        animation: systemScan 5s ease-in-out infinite;
-        animation-delay: calc(var(--i) * 0.12s);
-    }
-    .system-module.command {
-        border-color: rgba(0,102,204,0.2);
-        color: var(--depth-blue);
-    }
-    .system-module.command:hover {
-        border-color: var(--depth-blue);
-        box-shadow: 0 0 10px rgba(0,102,204,0.15);
-    }
-    .system-module.command::after {
-        background: linear-gradient(90deg, transparent, rgba(0,102,204,0.08), transparent);
-    }
-    .system-module.comms {
-        border-color: rgba(255,170,0,0.2);
-        color: var(--amber);
-    }
-    .system-module.comms:hover {
-        border-color: var(--amber);
-        box-shadow: 0 0 10px rgba(255,170,0,0.15);
-    }
-    .system-module.comms::after {
-        background: linear-gradient(90deg, transparent, rgba(255,170,0,0.08), transparent);
-    }
-
-    /* =========================================
-       MISSION LOGS
-       ========================================= */
-    .mission-grid {
-        display: flex; flex-direction: column; gap: 8px;
-    }
-    .mission-card {
-        border: 1px solid var(--dim);
-        padding: 12px 16px;
-        background: rgba(26,32,48,0.3);
-        transition: border-color 0.2s, background 0.2s;
-    }
-    .mission-card:hover {
-        border-color: var(--text-dim);
-        background: rgba(26,32,48,0.5);
-    }
-    .mission-header {
-        display: flex; justify-content: space-between; align-items: baseline;
-        margin-bottom: 6px;
-    }
-    .mission-client {
-        font-family: var(--heading); color: var(--amber);
-        font-size: 12px; font-weight: 700;
-    }
-    .mission-sector {
-        color: var(--text-dim); font-size: 9px;
-        text-transform: uppercase; letter-spacing: 1px;
-    }
-    .mission-body {
-        display: flex; justify-content: space-between; align-items: baseline;
-        margin-bottom: 6px;
-    }
-    .mission-scope { color: #6a7a8a; font-size: 11px; }
-    .mission-impact { font-size: 11px; font-weight: 700; }
-    .mission-impact.positive { color: var(--sonar); }
-    .mission-impact.neutral { color: #6a7a8a; }
-    .mission-status {
-        display: flex; align-items: center; gap: 6px;
-    }
-    .status-dot {
-        width: 6px; height: 6px; border-radius: 50%;
-    }
-    .status-dot.positive {
-        background: var(--sonar);
-        box-shadow: 0 0 4px var(--sonar);
-    }
-    .status-dot.neutral {
-        background: var(--text-dim);
-    }
-    .status-text {
-        font-size: 9px; color: var(--text-dim);
-        letter-spacing: 1px; text-transform: lowercase;
-    }
-
-    /* =========================================
-       CREW CERTIFICATIONS
-       ========================================= */
-    .cert-groups {
-        display: flex; flex-direction: column; gap: 18px;
-    }
-    .cert-label {
-        display: block; color: var(--text-dim); font-size: 10px;
-        letter-spacing: 1px; margin-bottom: 6px; font-style: italic;
-    }
-    .cert-item {
-        display: flex; flex-direction: column;
-        margin-bottom: 4px;
-    }
-    .cert-name { color: #a0b0c0; font-size: 12px; }
-    .cert-meta { color: var(--text-dim); font-size: 10px; }
-    .cert-badge {
-        color: var(--sonar); font-size: 10px; text-transform: lowercase;
-        letter-spacing: 1px;
-    }
-
-    /* =========================================
-       SURFACE FOOTER
-       ========================================= */
-    .surface-footer {
-        display: flex; flex-direction: column; align-items: center;
-        gap: 4px;
-        color: var(--text-dim);
-        font-size: 12px;
-        padding: 3rem 0;
-        letter-spacing: 1px;
-    }
-    .surface-ascii {
-        color: var(--depth-blue); opacity: 0.4;
-        font-size: 14px; letter-spacing: 2px;
-        animation: waveMotion 3s ease-in-out infinite;
-    }
-    .cursor-blink {
-        color: var(--sonar);
-        animation: blink 1s step-end infinite;
+    .sub-footer a {
+        text-decoration: none;
     }
 
     /* =========================================
@@ -1093,136 +552,23 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       RESPONSIVE -- TABLET (601-1024px)
+       RESPONSIVE -- MOBILE
        ========================================= */
-    @media (max-width: 1024px) {
-        body { font-size: 13px; }
-        .console-main { max-width: 680px; padding: 54px 20px 100px; }
-        .captain-name { font-size: clamp(24px, 4.5vw, 38px); }
-        .periscope-viewport { width: 120px; }
-        .periscope-frame { width: 120px; height: 120px; }
-        .system-module { font-size: 10.5px; padding: 3px 8px; }
-        .mission-card { padding: 10px 12px; }
-        .depth-line { margin: 2rem 0; }
-        .sonar-hud { width: 50px; height: 50px; top: 45px; right: 40px; }
-        .metrics-bar { gap: 8px; padding: 10px; }
-        .metric-value { font-size: 15px; }
-    }
-
-    /* =========================================
-       RESPONSIVE -- SMALL TABLET / LARGE PHONE (481-600px)
-       ========================================= */
-    @media (max-width: 600px) {
-        body { font-size: 12.5px; }
-        .console-main { padding: 48px 14px 80px; }
-
-        .header-grid {
-            flex-direction: column-reverse;
-            align-items: flex-start;
-            gap: 16px;
-        }
-        .periscope-viewport { width: 90px; }
-        .periscope-frame { width: 90px; height: 90px; }
-        .periscope-label { font-size: 8px; }
-        .captain-name { font-size: 24px; }
-        .captain-rank { font-size: 11px; }
-
-        .console-title-bar { gap: 6px; }
-        .console-badge { font-size: 8px; letter-spacing: 1px; padding: 2px 8px; }
-        .console-classification { font-size: 7px; padding: 2px 6px; }
-
-        .header-metrics { gap: 4px; }
-        .metric-chip { font-size: 9px; padding: 1px 6px; }
-        .nav-links { gap: 10px; font-size: 10px; flex-wrap: wrap; }
-
-        .metrics-bar { padding: 8px; gap: 6px; }
-        .metric-value { font-size: 14px; }
-        .metric-label { font-size: 8px; }
-        .metric-block { min-width: 60px; }
-
-        .sec-head { gap: 6px; font-size: 10px; flex-wrap: wrap; }
-        .sec-depth { font-size: 9px; }
-        .tag { font-size: 8px; padding: 1px 5px; }
-
-        .depth-block { gap: 10px; }
-        .depth-marker { min-width: 40px; }
-        .depth-level { font-size: 9px; }
-        .depth-top { flex-direction: column; gap: 0; }
-        .depth-company { font-size: 13px; }
-        .depth-location { font-size: 10px; }
-        .role-head { flex-direction: column; gap: 2px; }
-        .role-name { font-size: 11.5px; }
-        .role-period { font-size: 9.5px; }
-        .role-desc { font-size: 11px; }
-        .role-list li { font-size: 10.5px; }
-        .depth-content { padding-left: 12px; }
-
-        .system-grid { gap: 4px; }
-        .system-module { font-size: 10px; padding: 2px 7px; }
-
-        .mission-card { padding: 8px 10px; }
-        .mission-client { font-size: 11px; }
-        .mission-sector { font-size: 8px; }
-        .mission-scope { font-size: 10px; }
-        .mission-impact { font-size: 10px; }
-        .mission-body { flex-wrap: wrap; gap: 4px; }
-        .mission-header { flex-wrap: wrap; gap: 4px; }
-
-        .cert-name { font-size: 11px; }
-        .cert-meta { font-size: 9.5px; }
-        .cert-label { font-size: 9px; }
-
-        .body-text { font-size: 11.5px; }
-        .industry-chip { font-size: 9px; }
-
-        .depth-line { margin: 1.5rem 0; }
-
+    @media (max-width: 768px) {
+        .layer p { font-size: 0.72rem; }
+        .sub-narrative { padding: 1rem; }
         .status-bar { font-size: 9px; padding: 6px 10px; }
-
-        .surface-footer { font-size: 11px; padding: 2rem 0; }
-
         .depth-gauge { display: none; }
         .pressure-gauge { display: none; }
         .sonar-hud { width: 40px; height: 40px; top: 38px; right: 14px; }
     }
 
-    /* =========================================
-       RESPONSIVE -- SMALL PHONE (<=380px)
-       ========================================= */
     @media (max-width: 380px) {
-        body { font-size: 12px; }
-        .console-main { padding: 44px 10px 60px; }
-        .captain-name { font-size: 20px; }
-        .periscope-viewport { width: 70px; }
-        .periscope-frame { width: 70px; height: 70px; }
-        .nav-links { gap: 8px; font-size: 9px; }
-        .metric-chip { font-size: 8px; }
-        .system-module { font-size: 9px; padding: 2px 5px; }
         .status-bar { font-size: 8px; padding: 4px 8px; }
         .status-coord { display: none; }
         .sonar-hud { display: none; }
         .intro-terminal { font-size: 10px; }
         .depth-number { font-size: 48px; }
-        .metrics-bar { padding: 6px; }
-        .metric-value { font-size: 12px; }
-    }
-
-    /* =========================================
-       TOUCH: larger tap targets on mobile
-       ========================================= */
-    @media (hover: none) and (pointer: coarse) {
-        .nav-links a {
-            padding: 6px 4px;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-        }
-        .system-module {
-            padding: 6px 10px;
-            min-height: 36px;
-            display: inline-flex;
-            align-items: center;
-        }
     }
 </style>
 
@@ -1442,20 +788,6 @@ import { experience, education, certifications, skills, engagements, continuousL
     });
 
     runIntro();
-
-    /* =============================================
-       SCROLL REVEAL (Intersection Observer)
-       ============================================= */
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    revealEls.forEach(el => observer.observe(el));
 
     /* =============================================
        INTRO STYLE INJECTION

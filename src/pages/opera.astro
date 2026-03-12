@@ -1,6 +1,6 @@
 ---
+import Main from "../layouts/Main.astro";
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, metrics, industries, managementSkills, languages } from "../data/resume";
 ---
 
 <!doctype html>
@@ -82,239 +82,36 @@ import { experience, education, certifications, skills, engagements, continuousL
     <!-- MAIN CONTENT -->
     <main class="playbill" id="playbill">
 
-        <!-- PLAYBILL COVER -->
-        <section class="section cover" data-section="header">
-            <div class="cover-border">
-                <div class="ornament-top">&#10045;</div>
-                <div class="filigree-line"></div>
-                <div class="theater-name">Teatro D'Agnelli</div>
-                <div class="season-label">Season {new Date().getFullYear()}</div>
-                <h1 class="opera-title">La Trasformazione Digitale</h1>
-                <div class="opera-subtitle">An Opera in Five Acts</div>
-                <div class="filigree-line"></div>
-                <div class="cover-meta">
-                    <span class="meta-item">{siteMetadata.location}</span>
-                    <span class="meta-divider">&#8226;</span>
-                    <span class="meta-item">Est. 2012</span>
-                    <span class="meta-divider">&#8226;</span>
-                    <span class="meta-item">15 Seasons</span>
-                </div>
-                <div class="ornament-bottom">&#10045;</div>
-            </div>
-        </section>
+        <div class="opera-narrative">
+            <h1 class="opera-title">THE GRAND OPERA OF CLIENT EXCELLENCE</h1>
+            <div class="opera-meta">a performance in four acts | libretto by daniele d'agnelli</div>
 
-        <div class="program-divider"><span class="divider-ornament">&#9733;</span></div>
-
-        <!-- PRINCIPAL CAST -->
-        <section class="section reveal" data-section="summary">
-            <div class="section-header">
-                <div class="header-ornament-left">&#10048;</div>
-                <h2 class="section-title">Principal Cast</h2>
-                <div class="header-ornament-right">&#10048;</div>
+            <div class="act">
+                <h2>ACT I — THE OVERTURE</h2>
+                <p>fifteen years of professional services. from the conservatory of bari to the grand stages of london. every performance, a new client. every client, a new aria.</p>
             </div>
-            <div class="cast-grid">
-                <div class="cast-photo-frame">
-                    <div class="photo-inner">
-                        <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="180" height="180" />
-                    </div>
-                    <div class="photo-nameplate">{siteMetadata.name}</div>
-                </div>
-                <div class="cast-details">
-                    <div class="cast-role-title">Primo Maestro &mdash; Lead Conductor</div>
-                    <p class="cast-bio">{summary}</p>
-                    <div class="cast-contacts">
-                        <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
-                        <span class="contact-dot">&#8226;</span>
-                        <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
-                        <span class="contact-dot">&#8226;</span>
-                        <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener">Bluesky</a>
-                        <span class="contact-dot">&#8226;</span>
-                        <a href={`mailto:${siteMetadata.email}`}>Correspondence</a>
-                    </div>
-                    <div class="cast-languages">
-                        <span class="lang-label">Languages Performed In:</span>
-                        {languages.map((lang, i) => (
-                            <span class="lang-item">{lang}{i < languages.length - 1 ? ',' : ''}</span>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <div class="program-divider"><span class="divider-ornament">&#9733;</span></div>
-
-        <!-- OVERTURE: METRICS -->
-        <section class="section reveal" data-section="experience">
-            <div class="section-header">
-                <div class="header-ornament-left">&#10048;</div>
-                <h2 class="section-title">Overture &mdash; Career Highlights</h2>
-                <div class="header-ornament-right">&#10048;</div>
+            <div class="act">
+                <h2>ACT II — THE ARIAS</h2>
+                <p>the swiss manufacturer: a sweeping production across 100+ venues. 2,000 in the audience. standing ovation: $18m ebit. the british telco: seven movements, one unified score. the american bank: 75,000 voices harmonised.</p>
             </div>
-            <div class="metrics-grid">
-                {metrics.map(m => (
-                    <div class="metric-card reveal">
-                        <span class="metric-value">{m.value}</span>
-                        <span class="metric-label">{m.label}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
 
-        <div class="program-divider"><span class="divider-ornament">&#9733;</span></div>
-
-        <!-- ACTS & SCENES (EXPERIENCE) -->
-        <section class="section reveal" data-section="skills">
-            <div class="section-header">
-                <div class="header-ornament-left">&#10048;</div>
-                <h2 class="section-title">Acts &amp; Scenes</h2>
-                <div class="header-ornament-right">&#10048;</div>
+            <div class="act">
+                <h2>ACT III — THE REVIEWS</h2>
+                <p>"nps above 70" — sustained across all engagements. "known for building trust-based client relationships." "adept at navigating ambiguity." the critics agree: this is not performance. this is presence.</p>
             </div>
-            <div class="acts-container">
-                {experience.map((exp, actNum) => (
-                    <div class="act-block reveal">
-                        <div class="act-header">
-                            <span class="act-number">Act {actNum + 1}</span>
-                            <span class="act-company">{exp.company}</span>
-                            <span class="act-location">{exp.location}</span>
-                        </div>
-                        {exp.roles.map(role => (
-                            <div class="scene">
-                                <div class="scene-header">
-                                    <span class="scene-role">{role.title}</span>
-                                    <span class="scene-period">{role.period}</span>
-                                </div>
-                                {role.description && <p class="scene-direction">{role.description}</p>}
-                                {role.bullets && role.bullets.length > 0 && (
-                                    <ul class="scene-notes">
-                                        {role.bullets.map(b => <li>{b}</li>)}
-                                    </ul>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                ))}
-            </div>
-        </section>
 
-        <div class="program-divider"><span class="divider-ornament">&#9733;</span></div>
-
-        <!-- ORCHESTRA (SKILLS) -->
-        <section class="section reveal" data-section="engagements">
-            <div class="section-header">
-                <div class="header-ornament-left">&#10048;</div>
-                <h2 class="section-title">The Orchestra</h2>
-                <div class="header-ornament-right">&#10048;</div>
+            <div class="act">
+                <h2>ACT IV — THE ENCORE</h2>
+                <p>the maestro continues. c3 ai. $15m production budget. 70+ in the ensemble. genai and rag systems now in the repertoire. the curtain does not fall.</p>
             </div>
-            <div class="orchestra-sections">
-                <div class="orchestra-group">
-                    <h3 class="group-name">First Chairs &mdash; Technical Instruments</h3>
-                    <div class="instrument-grid">
-                        {skills.map(s => (
-                            <span class="instrument">{s}</span>
-                        ))}
-                    </div>
-                </div>
-                <div class="orchestra-group">
-                    <h3 class="group-name">Second Chairs &mdash; Management Repertoire</h3>
-                    <div class="instrument-grid">
-                        {managementSkills.map(s => (
-                            <span class="instrument">{s}</span>
-                        ))}
-                    </div>
-                </div>
-                <div class="orchestra-group">
-                    <h3 class="group-name">Stage &mdash; Industries Performed</h3>
-                    <div class="instrument-grid">
-                        {industries.map(ind => (
-                            <span class="instrument industry">{ind}</span>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <div class="program-divider"><span class="divider-ornament">&#9733;</span></div>
-
-        <!-- FEATURED PERFORMANCES (ENGAGEMENTS) -->
-        <section class="section reveal" data-section="education">
-            <div class="section-header">
-                <div class="header-ornament-left">&#10048;</div>
-                <h2 class="section-title">Featured Performances</h2>
-                <div class="header-ornament-right">&#10048;</div>
+            <div class="opera-footer">
+                <a href="mailto:daniele@dagnelli.net">[stage door]</a>
+                <a href="https://linkedin.com/in/dagnelli">[programme]</a>
+                <a href="https://github.com/danieledagnelli">[github]</a>
             </div>
-            <div class="performances-grid">
-                {engagements.map(eng => (
-                    <div class="performance-card reveal">
-                        <div class="perf-header">
-                            <span class="perf-client">{eng.client}</span>
-                            <span class="perf-sector">{eng.sector}</span>
-                        </div>
-                        <div class="perf-body">
-                            <span class="perf-scope">{eng.scope}</span>
-                            <span class={`perf-impact ${eng.trend}`}>{eng.impact}</span>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="program-divider"><span class="divider-ornament">&#9733;</span></div>
-
-        <!-- ARTIST'S TRAINING (EDUCATION + CERTS) -->
-        <section class="section reveal" data-section="certifications">
-            <div class="section-header">
-                <div class="header-ornament-left">&#10048;</div>
-                <h2 class="section-title">Conservatory Training</h2>
-                <div class="header-ornament-right">&#10048;</div>
-            </div>
-            <div class="training-container">
-                <div class="training-group">
-                    <h3 class="training-label">Formal Education</h3>
-                    {education.map(edu => (
-                        <div class="training-item reveal">
-                            <div class="training-degree">{edu.degree}</div>
-                            <div class="training-institution">{edu.institution} &mdash; {edu.location}</div>
-                            <div class="training-period">{edu.period}</div>
-                            {edu.distinction && <div class="training-distinction">{edu.distinction}</div>}
-                        </div>
-                    ))}
-                </div>
-                <div class="training-group">
-                    <h3 class="training-label">Certifications &amp; Honours</h3>
-                    {certifications.map(c => (
-                        <div class="training-item">
-                            <div class="training-degree">{c}</div>
-                        </div>
-                    ))}
-                </div>
-                <div class="training-group">
-                    <h3 class="training-label">Continued Studies &amp; Masterclasses</h3>
-                    {continuousLearning.map(l => (
-                        <div class="training-item">
-                            <div class="training-degree">{l}</div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="program-divider"><span class="divider-ornament">&#9733;</span></div>
-
-        <!-- STANDING OVATION / FINALE -->
-        <section class="section finale" data-section="footer">
-            <div class="finale-ornament">&#10045; &#10045; &#10045;</div>
-            <div class="finale-text">Standing Ovation</div>
-            <div class="finale-sub">The curtain falls. The audience rises.</div>
-            <div class="finale-links">
-                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
-                <span class="finale-dot">&#8226;</span>
-                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
-                <span class="finale-dot">&#8226;</span>
-                <a href={`mailto:${siteMetadata.email}`}>Write to the Maestro</a>
-            </div>
-            <div class="finale-ornament">&#10045; &#10045; &#10045;</div>
-            <div class="finale-copyright">&copy; {new Date().getFullYear()} {siteMetadata.name}. All rights reserved.</div>
-        </section>
+        </div>
 
     </main>
 </body>
@@ -341,8 +138,6 @@ import { experience, education, certifications, skills, engagements, continuousL
         --heading: 'Cinzel', 'Times New Roman', serif;
         --body: 'Cormorant Garamond', 'Georgia', serif;
         --accent: 'Italiana', 'Cinzel', serif;
-        scrollbar-width: thin;
-        scrollbar-color: var(--gold) var(--burgundy);
     }
 
     body {
@@ -351,8 +146,8 @@ import { experience, education, certifications, skills, engagements, continuousL
         font-family: var(--body);
         font-size: 17px;
         line-height: 1.7;
-        overflow-x: hidden;
-        min-height: 100vh;
+        overflow: hidden;
+        margin: 0;
     }
 
     a { color: var(--velvet); text-decoration: none; transition: color 0.3s; }
@@ -492,747 +287,105 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       MAIN PLAYBILL
+       MAIN PLAYBILL — VIEWPORT LOCKED
        ========================================= */
     .playbill {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 60px 40px 80px;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         opacity: 0;
         transition: opacity 0.8s ease 0.3s;
         background: var(--cream);
         position: relative;
     }
-    .playbill::before,
-    .playbill::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background: linear-gradient(
-            180deg,
-            transparent 0%,
-            var(--gold) 5%,
-            var(--gold) 95%,
-            transparent 100%
-        );
-        opacity: 0.3;
-    }
-    .playbill::before { left: 12px; }
-    .playbill::after { right: 12px; }
     .playbill.visible { opacity: 1; }
 
     /* =========================================
-       SECTION STRUCTURE
+       OPERA NARRATIVE
        ========================================= */
-    .section { margin-bottom: 0; }
-
-    .section-header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        margin-bottom: 28px;
+    .opera-narrative {
+        max-width: 600px;
+        padding: 1.5rem;
         text-align: center;
-    }
-    .section-title {
-        font-family: var(--heading);
-        font-size: clamp(20px, 3vw, 28px);
-        font-weight: 600;
-        color: var(--burgundy);
-        letter-spacing: 3px;
-        text-transform: uppercase;
-    }
-    .header-ornament-left,
-    .header-ornament-right {
-        color: var(--gold);
-        font-size: 18px;
-        opacity: 0.6;
-    }
-
-    /* REVEAL ANIMATION */
-    .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* PROGRAM DIVIDER */
-    .program-divider {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 2.5rem 0;
-        position: relative;
-    }
-    .program-divider::before,
-    .program-divider::after {
-        content: '';
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
-        opacity: 0.4;
-    }
-    .divider-ornament {
-        padding: 0 20px;
-        color: var(--gold);
-        font-size: 14px;
-        opacity: 0.5;
-    }
-
-    /* =========================================
-       PLAYBILL COVER
-       ========================================= */
-    .cover { text-align: center; }
-
-    .cover-border {
-        border: 2px solid var(--border-gold);
-        padding: 48px 32px;
-        position: relative;
-        background: linear-gradient(
-            135deg,
-            rgba(212, 167, 68, 0.03) 0%,
-            transparent 50%,
-            rgba(212, 167, 68, 0.03) 100%
-        );
-    }
-    .cover-border::before {
-        content: '';
-        position: absolute;
-        inset: 6px;
-        border: 1px solid var(--border-gold);
-        opacity: 0.3;
-        pointer-events: none;
-    }
-
-    .ornament-top,
-    .ornament-bottom {
-        color: var(--gold);
-        font-size: 20px;
-        opacity: 0.5;
-        letter-spacing: 8px;
-    }
-
-    .filigree-line {
-        width: 200px;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        margin: 16px auto;
-        opacity: 0.5;
-    }
-
-    .theater-name {
-        font-family: var(--heading);
-        font-size: clamp(14px, 2vw, 18px);
-        color: var(--gold-dim);
-        letter-spacing: 8px;
-        text-transform: uppercase;
-        margin-bottom: 4px;
-    }
-
-    .season-label {
-        font-family: var(--accent);
-        font-size: 14px;
-        color: var(--text-light);
-        letter-spacing: 4px;
-        margin-bottom: 16px;
     }
 
     .opera-title {
         font-family: var(--heading);
-        font-size: clamp(28px, 5vw, 48px);
+        font-size: 1.1rem;
         font-weight: 700;
         color: var(--burgundy);
-        line-height: 1.2;
-        margin-bottom: 8px;
         letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 0.2rem;
     }
 
-    .opera-subtitle {
+    .opera-meta {
         font-family: var(--accent);
-        font-size: clamp(16px, 2.5vw, 22px);
-        color: var(--text-light);
-        font-style: italic;
-        letter-spacing: 3px;
-        margin-bottom: 16px;
-    }
-
-    .cover-meta {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        font-family: var(--accent);
-        font-size: 14px;
-        color: var(--text-light);
+        font-size: 0.7rem;
+        opacity: 0.7;
+        margin-bottom: 1rem;
         letter-spacing: 2px;
-    }
-    .meta-divider { color: var(--gold); opacity: 0.5; }
-
-    /* =========================================
-       PRINCIPAL CAST
-       ========================================= */
-    .cast-grid {
-        display: flex;
-        gap: 32px;
-        align-items: flex-start;
+        color: var(--text-light);
     }
 
-    .cast-photo-frame {
-        flex-shrink: 0;
+    .act {
+        margin-bottom: 0.7rem;
+        text-align: left;
+    }
+
+    .act h2 {
+        font-family: var(--heading);
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.2rem;
         text-align: center;
-    }
-    .photo-inner {
-        width: 180px;
-        height: 180px;
-        border: 3px solid var(--border-gold);
-        padding: 4px;
-        position: relative;
-        overflow: hidden;
-        background: var(--cream);
-    }
-    .photo-inner::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border: 1px solid var(--gold);
-        opacity: 0.2;
-        z-index: 1;
-        pointer-events: none;
-    }
-    .photo-inner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        filter: sepia(0.2) contrast(1.05);
-        transition: filter 0.5s ease;
-    }
-    .photo-inner:hover img {
-        filter: sepia(0) contrast(1.1);
-    }
-    .photo-nameplate {
-        font-family: var(--heading);
-        font-size: 13px;
         color: var(--burgundy);
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        margin-top: 10px;
-        padding: 4px 12px;
-        border: 1px solid var(--border-gold);
-        border-top: none;
-        display: inline-block;
-        background: linear-gradient(180deg, transparent, rgba(212,167,68,0.05));
+        font-weight: 600;
     }
 
-    .cast-role-title {
-        font-family: var(--heading);
-        font-size: 18px;
-        color: var(--burgundy);
-        letter-spacing: 2px;
-        margin-bottom: 12px;
-    }
-    .cast-bio {
-        font-size: 16px;
-        line-height: 1.8;
-        color: var(--text-body);
-        margin-bottom: 16px;
-    }
-    .cast-contacts {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 8px;
-        font-family: var(--accent);
-        font-size: 15px;
-        margin-bottom: 12px;
-    }
-    .contact-dot { color: var(--gold); opacity: 0.5; }
-
-    .cast-languages {
-        font-size: 14px;
-        color: var(--text-light);
-        font-style: italic;
-    }
-    .lang-label {
-        color: var(--gold-dim);
-        margin-right: 6px;
-    }
-
-    /* =========================================
-       METRICS (OVERTURE)
-       ========================================= */
-    .metrics-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-    }
-    .metric-card {
-        text-align: center;
-        padding: 20px 12px;
-        border: 1px solid rgba(196, 154, 60, 0.25);
-        background: linear-gradient(135deg, rgba(212,167,68,0.04), transparent);
-        transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .metric-card:hover {
-        border-color: var(--gold);
-        box-shadow: 0 4px 20px rgba(212, 167, 68, 0.1);
-    }
-    .metric-value {
-        display: block;
-        font-family: var(--heading);
-        font-size: clamp(22px, 3vw, 30px);
-        font-weight: 700;
-        color: var(--velvet);
-        letter-spacing: 1px;
-    }
-    .metric-label {
-        display: block;
-        font-family: var(--accent);
-        font-size: 13px;
-        color: var(--text-light);
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-top: 4px;
-    }
-
-    /* =========================================
-       ACTS & SCENES (EXPERIENCE)
-       ========================================= */
-    .acts-container {
-        display: flex;
-        flex-direction: column;
-        gap: 28px;
-    }
-    .act-block {
-        border-left: 3px solid var(--gold);
-        padding-left: 24px;
-        position: relative;
-    }
-    .act-block::before {
-        content: '';
-        position: absolute;
-        left: -8px;
-        top: 6px;
-        width: 13px;
-        height: 13px;
-        background: var(--gold);
-        border-radius: 50%;
-        border: 2px solid var(--cream);
-    }
-    .act-header {
-        display: flex;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-bottom: 8px;
-    }
-    .act-number {
-        font-family: var(--heading);
-        font-size: 12px;
-        color: var(--gold-dim);
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        background: rgba(212,167,68,0.1);
-        padding: 2px 10px;
-        border: 1px solid rgba(196,154,60,0.3);
-    }
-    .act-company {
-        font-family: var(--heading);
-        font-size: 20px;
-        font-weight: 700;
-        color: var(--burgundy);
-        letter-spacing: 1px;
-    }
-    .act-location {
-        font-family: var(--accent);
-        font-size: 14px;
-        color: var(--text-light);
-        font-style: italic;
-    }
-
-    .scene {
-        margin-bottom: 12px;
-        padding-left: 8px;
-    }
-    .scene-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .scene-role {
+    .act p {
         font-family: var(--body);
-        font-size: 17px;
-        font-weight: 600;
-        color: var(--text-dark);
-    }
-    .scene-period {
-        font-family: var(--accent);
-        font-size: 13px;
-        color: var(--text-light);
-        letter-spacing: 1px;
-    }
-    .scene-direction {
-        font-size: 15px;
-        font-style: italic;
+        font-size: 0.78rem;
+        line-height: 1.5;
         color: var(--text-body);
-        margin-top: 4px;
-        line-height: 1.7;
-    }
-    .scene-notes {
-        list-style: none;
-        margin-top: 8px;
-    }
-    .scene-notes li {
-        font-size: 14px;
-        color: var(--text-body);
-        line-height: 1.7;
-        padding-left: 16px;
-        position: relative;
-    }
-    .scene-notes li::before {
-        content: '\2726';
-        position: absolute;
-        left: 0;
-        color: var(--gold);
-        font-size: 10px;
-        top: 3px;
     }
 
-    /* =========================================
-       ORCHESTRA (SKILLS)
-       ========================================= */
-    .orchestra-sections {
+    .opera-footer {
         display: flex;
-        flex-direction: column;
-        gap: 28px;
-    }
-    .orchestra-group {
-        text-align: center;
-    }
-    .group-name {
-        font-family: var(--accent);
-        font-size: 16px;
-        color: var(--gold-dim);
-        letter-spacing: 2px;
-        margin-bottom: 14px;
-        font-weight: 400;
-    }
-    .instrument-grid {
-        display: flex;
-        flex-wrap: wrap;
+        gap: 1rem;
         justify-content: center;
-        gap: 8px;
-    }
-    .instrument {
-        font-family: var(--body);
-        font-size: 14px;
-        padding: 6px 16px;
-        border: 1px solid rgba(196, 154, 60, 0.3);
-        color: var(--text-dark);
-        background: linear-gradient(135deg, rgba(212,167,68,0.04), transparent);
-        transition: all 0.3s ease;
-        cursor: default;
-    }
-    .instrument:hover {
-        border-color: var(--gold);
-        background: linear-gradient(135deg, rgba(212,167,68,0.12), rgba(212,167,68,0.04));
-        box-shadow: 0 2px 12px rgba(212, 167, 68, 0.15);
-        transform: translateY(-2px);
-        color: var(--burgundy);
-    }
-    .instrument.industry {
-        border-style: dashed;
+        margin-top: 1rem;
     }
 
-    /* =========================================
-       FEATURED PERFORMANCES (ENGAGEMENTS)
-       ========================================= */
-    .performances-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-    .performance-card {
-        border: 1px solid rgba(196, 154, 60, 0.25);
-        padding: 16px 20px;
-        background: linear-gradient(135deg, rgba(212,167,68,0.03), transparent);
-        transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .performance-card:hover {
-        border-color: var(--gold);
-        box-shadow: 0 4px 20px rgba(212, 167, 68, 0.08);
-    }
-    .perf-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 4px;
-    }
-    .perf-client {
-        font-family: var(--heading);
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--burgundy);
-        text-transform: capitalize;
-    }
-    .perf-sector {
+    .opera-footer a {
+        text-decoration: none;
         font-family: var(--accent);
-        font-size: 12px;
-        color: var(--text-light);
-        letter-spacing: 2px;
-        text-transform: uppercase;
-    }
-    .perf-body {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-    }
-    .perf-scope {
-        font-size: 14px;
-        color: var(--text-body);
-    }
-    .perf-impact {
-        font-family: var(--heading);
-        font-size: 13px;
-        font-weight: 600;
+        font-size: 0.8rem;
         letter-spacing: 1px;
     }
-    .perf-impact.positive { color: var(--velvet); }
-    .perf-impact.neutral { color: var(--text-light); }
 
     /* =========================================
-       CONSERVATORY TRAINING
+       RESPONSIVE -- MOBILE
        ========================================= */
-    .training-container {
-        display: flex;
-        flex-direction: column;
-        gap: 28px;
-    }
-    .training-group { }
-    .training-label {
-        font-family: var(--accent);
-        font-size: 16px;
-        color: var(--gold-dim);
-        letter-spacing: 2px;
-        margin-bottom: 12px;
-        font-weight: 400;
-        text-align: center;
-    }
-    .training-item {
-        padding: 8px 0;
-        border-bottom: 1px solid rgba(196, 154, 60, 0.15);
-    }
-    .training-item:last-child { border-bottom: none; }
-    .training-degree {
-        font-family: var(--body);
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text-dark);
-    }
-    .training-institution {
-        font-size: 14px;
-        color: var(--text-body);
-        font-style: italic;
-    }
-    .training-period {
-        font-family: var(--accent);
-        font-size: 13px;
-        color: var(--text-light);
-        letter-spacing: 1px;
-    }
-    .training-distinction {
-        font-family: var(--heading);
-        font-size: 12px;
-        color: var(--velvet);
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-top: 2px;
+    @media (max-width: 768px) {
+        .act p {
+            font-size: 0.72rem;
+        }
+        .act {
+            margin-bottom: 0.5rem;
+        }
     }
 
-    /* =========================================
-       FINALE
-       ========================================= */
-    .finale {
-        text-align: center;
-        padding: 3rem 0 2rem;
-    }
-    .finale-ornament {
-        color: var(--gold);
-        font-size: 16px;
-        letter-spacing: 8px;
-        opacity: 0.5;
-        margin: 8px 0;
-    }
-    .finale-text {
-        font-family: var(--heading);
-        font-size: clamp(24px, 4vw, 36px);
-        font-weight: 700;
-        color: var(--burgundy);
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        margin: 12px 0 8px;
-    }
-    .finale-sub {
-        font-family: var(--accent);
-        font-size: 16px;
-        color: var(--text-light);
-        font-style: italic;
-        letter-spacing: 2px;
-        margin-bottom: 20px;
-    }
-    .finale-links {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        font-family: var(--accent);
-        font-size: 15px;
-        margin-bottom: 16px;
-    }
-    .finale-dot { color: var(--gold); opacity: 0.5; }
-    .finale-copyright {
-        font-size: 12px;
-        color: var(--text-light);
-        letter-spacing: 1px;
-        margin-top: 8px;
-    }
-
-    /* =========================================
-       KEYFRAMES
-       ========================================= */
-    @keyframes spotlightPulse {
-        0%, 100% { opacity: 0.6; }
-        50% { opacity: 1; }
-    }
-
-    /* =========================================
-       RESPONSIVE -- TABLET (601-1024px)
-       ========================================= */
-    @media (max-width: 1024px) {
-        body { font-size: 16px; }
-        .playbill { max-width: 680px; padding: 50px 30px 70px; }
-        .cover-border { padding: 36px 24px; }
-        .opera-title { font-size: clamp(24px, 4.5vw, 38px); }
-        .cast-grid { gap: 24px; }
-        .photo-inner { width: 150px; height: 150px; }
-        .metrics-grid { gap: 12px; }
-        .metric-card { padding: 16px 10px; }
-        .program-divider { margin: 2rem 0; }
-        .act-block { padding-left: 20px; }
-    }
-
-    /* =========================================
-       RESPONSIVE -- SMALL TABLET / LARGE PHONE (481-600px)
-       ========================================= */
     @media (max-width: 600px) {
-        body { font-size: 15px; }
-        .playbill { padding: 40px 18px 60px; }
-        .playbill::before,
-        .playbill::after { display: none; }
-
-        /* Cover */
-        .cover-border { padding: 28px 16px; }
-        .theater-name { font-size: 12px; letter-spacing: 4px; }
-        .opera-title { font-size: 24px; }
-        .opera-subtitle { font-size: 16px; }
-        .filigree-line { width: 120px; }
-        .cover-meta { flex-wrap: wrap; justify-content: center; gap: 6px; font-size: 12px; }
-
-        /* Cast: stack */
-        .cast-grid { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
-        .photo-inner { width: 140px; height: 140px; }
-        .cast-role-title { font-size: 16px; }
-        .cast-bio { font-size: 14px; }
-        .cast-contacts { justify-content: center; font-size: 13px; }
-        .cast-languages { font-size: 13px; text-align: center; }
-
-        /* Metrics */
-        .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-        .metric-value { font-size: 22px; }
-        .metric-label { font-size: 11px; }
-
-        /* Section headers */
-        .section-title { font-size: 18px; letter-spacing: 2px; }
-        .header-ornament-left,
-        .header-ornament-right { font-size: 14px; }
-
-        /* Acts */
-        .act-header { flex-direction: column; gap: 4px; }
-        .act-company { font-size: 17px; }
-        .scene-header { flex-direction: column; gap: 2px; }
-        .scene-role { font-size: 15px; }
-        .act-block { padding-left: 16px; }
-        .act-block::before { left: -7px; width: 11px; height: 11px; }
-
-        /* Skills */
-        .instrument { font-size: 13px; padding: 4px 12px; }
-        .group-name { font-size: 14px; }
-
-        /* Performances */
-        .perf-header { flex-direction: column; gap: 2px; }
-        .perf-body { flex-direction: column; gap: 2px; }
-        .perf-client { font-size: 14px; }
-
-        /* Training */
-        .training-degree { font-size: 14px; }
-        .training-institution { font-size: 13px; }
-
-        /* Dividers */
-        .program-divider { margin: 1.5rem 0; }
-
-        /* Finale */
-        .finale-text { font-size: 22px; }
-        .finale-links { flex-wrap: wrap; font-size: 13px; }
-
-        /* Curtain */
         .curtain-name { font-size: 28px; letter-spacing: 2px; }
     }
 
-    /* =========================================
-       RESPONSIVE -- SMALL PHONE (<=380px)
-       ========================================= */
     @media (max-width: 380px) {
-        body { font-size: 14px; }
-        .playbill { padding: 32px 12px 50px; }
-        .cover-border { padding: 20px 12px; }
-        .opera-title { font-size: 20px; }
-        .theater-name { font-size: 10px; }
-        .photo-inner { width: 110px; height: 110px; }
-        .metrics-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-        .metric-card { padding: 12px 8px; }
-        .metric-value { font-size: 18px; }
-        .instrument { font-size: 12px; padding: 3px 8px; }
-        .section-title { font-size: 16px; }
         .curtain-name { font-size: 22px; }
         .curtain-subtitle { font-size: 14px; }
-        .finale-text { font-size: 18px; }
-    }
-
-    /* =========================================
-       TOUCH: larger tap targets
-       ========================================= */
-    @media (hover: none) and (pointer: coarse) {
-        .cast-contacts a,
-        .finale-links a {
-            padding: 6px 4px;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-        }
-        .instrument {
-            padding: 8px 14px;
-            min-height: 36px;
-            display: inline-flex;
-            align-items: center;
-        }
     }
 </style>
 
@@ -1288,20 +441,6 @@ import { experience, education, certifications, skills, engagements, continuousL
     });
 
     runIntro();
-
-    /* =============================================
-       SCROLL REVEAL (Intersection Observer)
-       ============================================= */
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    revealEls.forEach(el => observer.observe(el));
 
     /* =============================================
        SPOTLIGHT FOLLOW (subtle mouse tracking)

@@ -1,6 +1,5 @@
 ---
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, managementSkills, languages, industries, metrics } from "../data/resume";
 ---
 
 <!doctype html>
@@ -74,307 +73,38 @@ import { experience, education, certifications, skills, engagements, continuousL
 
     <!-- MAIN CONTENT -->
     <main class="sheet" id="sheet">
-
-        <!-- CHARACTER HEADER -->
-        <section class="section char-header" data-section="header">
-            <div class="portrait-frame">
-                <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli — Character Portrait" width="160" height="160" class="portrait-img" />
-                <div class="frame-corner tl" aria-hidden="true"></div>
-                <div class="frame-corner tr" aria-hidden="true"></div>
-                <div class="frame-corner bl" aria-hidden="true"></div>
-                <div class="frame-corner br" aria-hidden="true"></div>
-            </div>
+        <div class="character-sheet">
+            <h1 class="sheet-title">═══ CHARACTER SHEET ═══</h1>
             <div class="char-info">
-                <h1 class="char-name">Daniele D'Agnelli</h1>
-                <div class="char-title">Level 15 Archmage of Engineering</div>
-                <div class="char-meta">
-                    <span class="meta-tag">Human</span>
-                    <span class="meta-tag">Engagement Manager</span>
-                    <span class="meta-tag">Lawful Neutral</span>
-                </div>
-                <div class="char-links">
-                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener" class="guild-link">Guild: GitHub</a>
-                    <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener" class="guild-link">Guild: LinkedIn</a>
-                    <a href={`mailto:${siteMetadata.email}`} class="guild-link">Send Raven</a>
-                </div>
+                <div class="char-name">DANIELE D'AGNELLI</div>
+                <div class="char-meta">class: senior engagement manager | level: 15<br>guild: c3 ai, london | alignment: chaotic productive</div>
             </div>
-        </section>
-
-        <!-- STAT BLOCK -->
-        <section class="section stat-block" data-section="extra-1">
-            <h2 class="section-title">Ability Scores</h2>
-            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">18</div>
-                    <div class="stat-mod">+4</div>
-                    <div class="stat-name">STR</div>
-                    <div class="stat-source">$15M Directed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">15</div>
-                    <div class="stat-mod">+2</div>
-                    <div class="stat-name">DEX</div>
-                    <div class="stat-source">Agile & Waterfall</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">19</div>
-                    <div class="stat-mod">+4</div>
-                    <div class="stat-name">INT</div>
-                    <div class="stat-source">MSc + ML + GenAI</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">16</div>
-                    <div class="stat-mod">+3</div>
-                    <div class="stat-name">WIS</div>
-                    <div class="stat-source">15 Years XP</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">17</div>
-                    <div class="stat-mod">+3</div>
-                    <div class="stat-name">CHA</div>
-                    <div class="stat-source">NPS >70</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">14</div>
-                    <div class="stat-mod">+2</div>
-                    <div class="stat-name">CON</div>
-                    <div class="stat-source">100+ Plants</div>
-                </div>
+            <div class="attributes">
+                <h2>━━ ATTRIBUTES ━━</h2>
+                <div class="attr">STR [programme mgmt]  ████████░░  8/10</div>
+                <div class="attr">DEX [solution arch]   ███████░░░  7/10</div>
+                <div class="attr">INT [ml & genai]      █████████░  9/10</div>
+                <div class="attr">WIS [stakeholder mgmt]████████░░  8/10</div>
+                <div class="attr">CHA [client relations] ████████░░  8/10</div>
             </div>
-        </section>
-
-        <!-- VITAL BARS -->
-        <section class="section vitals" data-section="extra-2">
-            <div class="bar-group">
-                <div class="bar-label"><span class="bar-icon hp" aria-hidden="true">&#10084;</span> HP (Years Active)</div>
-                <div class="bar-track hp-track">
-                    <div class="bar-fill hp-fill" data-value="15" data-max="20" style="--bar-pct: 75%;">15 / 20</div>
-                </div>
+            <div class="achievements">
+                <h2>━━ ACHIEVEMENTS UNLOCKED ━━</h2>
+                <div class="achievement">⚔ $15m programme directed</div>
+                <div class="achievement">⚔ $18m ebit impact</div>
+                <div class="achievement">⚔ 100+ plants deployed</div>
+                <div class="achievement">⚔ nps >70 sustained</div>
+                <div class="achievement">⚔ gchq-certified ethical hacker</div>
             </div>
-            <div class="bar-group">
-                <div class="bar-label"><span class="bar-icon mp" aria-hidden="true">&#9733;</span> MP (Certifications)</div>
-                <div class="bar-track mp-track">
-                    <div class="bar-fill mp-fill" data-value="6" data-max="10" style="--bar-pct: 60%;">6 / 10</div>
-                </div>
+            <div class="quest-log">
+                <h2>━━ QUEST LOG ━━</h2>
+                <p>"from apprentice in the bari academy to commander of a 70-strong fellowship. every dungeon cleared — manufacturing, healthcare, oil & gas, telecom, financial services. the grind never stops."</p>
             </div>
-            <div class="bar-group">
-                <div class="bar-label"><span class="bar-icon xp" aria-hidden="true">&#9670;</span> XP (To Next Level)</div>
-                <div class="bar-track xp-track">
-                    <div class="bar-fill xp-fill" data-value="85" data-max="100" style="--bar-pct: 85%;">85%</div>
-                </div>
+            <div class="sheet-footer">
+                <a href="mailto:daniele@dagnelli.net">[tavern]</a>
+                <a href="https://github.com/danieledagnelli">[github]</a>
+                <a href="https://linkedin.com/in/dagnelli">[linkedin]</a>
             </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
-
-        <!-- HERO'S LEGEND -->
-        <section class="section legend reveal" data-section="summary">
-            <h2 class="section-title">Hero's Legend</h2>
-            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
-            <div class="scroll-box">
-                <p class="legend-text">{summary}</p>
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
-
-        <!-- QUEST CHRONICLE -->
-        <section class="section quests reveal" data-section="experience">
-            <h2 class="section-title">Quest Chronicle</h2>
-            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
-            {experience.map((exp, i) => (
-                <div class="quest-entry">
-                    <div class="quest-header">
-                        <span class="quest-guild">{exp.company}</span>
-                        <span class="quest-realm">{exp.location}</span>
-                    </div>
-                    {exp.roles.map((role) => (
-                        <div class="quest-role">
-                            <div class="quest-role-head">
-                                <span class="quest-title">{role.title}</span>
-                                <span class="quest-period">{role.period}</span>
-                            </div>
-                            {role.description && (
-                                <p class="quest-desc">{role.description}</p>
-                            )}
-                            {role.bullets && role.bullets.length > 0 && (
-                                <ul class="quest-loot">
-                                    {role.bullets.map((b) => (
-                                        <li><span class="loot-icon" aria-hidden="true">&#9670;</span> {b}</li>
-                                    ))}
-                                </ul>
-                            )}
-                            <div class="quest-xp" aria-hidden="true">+{(5 - i) * 500} XP</div>
-                        </div>
-                    ))}
-                </div>
-            ))}
-        </section>
-
-        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
-
-        <!-- SKILL TREE -->
-        <section class="section skill-tree reveal" data-section="skills">
-            <h2 class="section-title">Skill Tree</h2>
-            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
-
-            <h3 class="skill-branch-title">Technical Arts</h3>
-            <div class="skill-nodes">
-                {skills.map((s, i) => {
-                    const level = Math.max(1, Math.min(5, 5 - Math.floor(i / 5)));
-                    return (
-                        <div class="skill-node">
-                            <div class="skill-name">{s}</div>
-                            <div class="skill-dots" aria-label={`Level ${level} of 5`}>
-                                {[1,2,3,4,5].map(d => (
-                                    <span class={`dot ${d <= level ? 'filled' : ''}`} aria-hidden="true"></span>
-                                ))}
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-
-            <h3 class="skill-branch-title">Leadership Spells</h3>
-            <div class="skill-nodes">
-                {managementSkills.map((s, i) => {
-                    const level = Math.max(2, Math.min(5, 5 - Math.floor(i / 3)));
-                    return (
-                        <div class="skill-node">
-                            <div class="skill-name">{s}</div>
-                            <div class="skill-dots" aria-label={`Level ${level} of 5`}>
-                                {[1,2,3,4,5].map(d => (
-                                    <span class={`dot ${d <= level ? 'filled' : ''}`} aria-hidden="true"></span>
-                                ))}
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-
-            <h3 class="skill-branch-title">Tongues Known</h3>
-            <div class="skill-nodes">
-                {languages.map((l) => (
-                    <div class="skill-node">
-                        <div class="skill-name">{l}</div>
-                        <div class="skill-dots" aria-label="Level 5 of 5">
-                            {[1,2,3,4,5].map(() => (
-                                <span class="dot filled" aria-hidden="true"></span>
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
-
-        <!-- LEGENDARY QUESTS -->
-        <section class="section legendary reveal" data-section="engagements">
-            <h2 class="section-title">Legendary Quests</h2>
-            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
-            <div class="legendary-grid">
-                {engagements.map((eng, i) => {
-                    const skulls = Math.max(1, Math.min(5, 5 - i));
-                    return (
-                        <div class="legendary-card">
-                            <div class="legendary-top">
-                                <span class="legendary-client">{eng.client}</span>
-                                <span class="legendary-difficulty" aria-label={`Difficulty ${skulls} of 5`}>
-                                    {Array.from({length: skulls}).map(() => '&#9760;').join('')}
-                                </span>
-                            </div>
-                            <div class="legendary-sector">{eng.sector}</div>
-                            <div class="legendary-scope">{eng.scope}</div>
-                            <div class="legendary-reward">
-                                <span class="reward-label">Reward:</span> {eng.impact}
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
-
-        <!-- TRAINING GROUNDS -->
-        <section class="section training reveal" data-section="education">
-            <h2 class="section-title">Training Grounds</h2>
-            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
-            {education.map((edu) => (
-                <div class="training-entry">
-                    <div class="training-header">
-                        <span class="training-school">{edu.institution}</span>
-                        <span class="training-period">{edu.period}</span>
-                    </div>
-                    <div class="training-degree">{edu.degree}</div>
-                    <div class="training-loc">{edu.location}</div>
-                    {edu.distinction && (
-                        <div class="training-distinction">&#9733; {edu.distinction}</div>
-                    )}
-                </div>
-            ))}
-        </section>
-
-        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
-
-        <!-- ACHIEVEMENTS UNLOCKED -->
-        <section class="section achievements reveal" data-section="certifications">
-            <h2 class="section-title">Achievements Unlocked</h2>
-            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
-            <div class="achievement-grid">
-                {certifications.map((cert) => (
-                    <div class="achievement-item">
-                        <div class="achievement-icon" aria-hidden="true">&#9733;</div>
-                        <div class="achievement-name">{cert}</div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
-
-        <!-- SIDE QUESTS -->
-        <section class="section sidequests reveal" data-section="training">
-            <h2 class="section-title">Side Quests</h2>
-            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
-            <div class="sidequest-list">
-                {continuousLearning.map((item) => (
-                    <div class="sidequest-item">
-                        <span class="sidequest-icon" aria-hidden="true">&#9670;</span>
-                        <span class="sidequest-name">{item}</span>
-                        <span class="sidequest-status">COMPLETE</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true"><span>&#9876;</span> &#9876; <span>&#9876;</span></div>
-
-        <!-- REALMS EXPLORED -->
-        <section class="section realms reveal" data-section="extra-3">
-            <h2 class="section-title">Realms Explored</h2>
-            <div class="divider" aria-hidden="true"><span>&#9876; &#9876; &#9876;</span></div>
-            <div class="realm-grid">
-                {industries.map((ind) => (
-                    <div class="realm-tag">{ind}</div>
-                ))}
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="rpg-footer">
-            <div class="footer-rune" aria-hidden="true">&#10038;</div>
-            <p>&copy; {new Date().getFullYear()} Daniele D'Agnelli. All quests documented.</p>
-            <div class="footer-links">
-                <a href="/">Main Realm</a>
-                <span aria-hidden="true">&bull;</span>
-                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
-                <span aria-hidden="true">&bull;</span>
-                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-        </footer>
+        </div>
     </main>
 </body>
 </html>
@@ -555,11 +285,14 @@ import { experience, education, certifications, skills, engagements, continuousL
         100% { opacity: 0; transform: translate(var(--sx), var(--sy)) scale(0); }
     }
 
-    /* ===== MAIN SHEET ===== */
+    /* ===== MAIN SHEET (viewport-locked) ===== */
     .sheet {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         opacity: 0;
         transition: opacity 0.8s ease;
         position: relative;
@@ -568,13 +301,13 @@ import { experience, education, certifications, skills, engagements, continuousL
 
     .sheet.visible { opacity: 1; }
 
-    /* ===== SECTIONS ===== */
-    .section {
-        margin-bottom: 2.5rem;
+    /* ===== CHARACTER SHEET ===== */
+    .character-sheet {
+        max-width: 550px;
+        padding: 1.5rem;
         background: var(--paper);
         border: 1px solid var(--border);
         border-radius: 4px;
-        padding: 1.5rem;
         position: relative;
         animation: torch-flicker 4s ease-in-out infinite alternate;
     }
@@ -585,12 +318,12 @@ import { experience, education, certifications, skills, engagements, continuousL
         100% { box-shadow: 0 0 12px rgba(232, 114, 42, 0.06), inset 0 0 30px rgba(0,0,0,0.35); }
     }
 
-    .section-title {
+    .sheet-title {
         font-family: 'MedievalSharp', cursive;
-        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        font-size: clamp(1.2rem, 3vw, 1.6rem);
         color: var(--gold);
         text-align: center;
-        margin-bottom: 0.3rem;
+        margin-bottom: 1rem;
         background: linear-gradient(90deg, var(--gold), #f0d080, var(--gold));
         background-size: 200% 100%;
         -webkit-background-clip: text;
@@ -604,722 +337,209 @@ import { experience, education, certifications, skills, engagements, continuousL
         50% { background-position: 100% 50%; }
     }
 
-    .divider {
-        text-align: center;
-        color: var(--gold-dim);
-        font-size: 0.8rem;
+    .char-info {
         margin-bottom: 1rem;
-        letter-spacing: 0.5em;
-    }
-
-    .section-divider {
         text-align: center;
-        color: var(--gold-dim);
-        font-size: 0.9rem;
-        padding: 0.5rem 0;
-        letter-spacing: 0.3em;
-        opacity: 0.5;
     }
-
-    /* ===== REVEAL ANIMATION ===== */
-    .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* ===== CHARACTER HEADER ===== */
-    .char-header {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .portrait-frame {
-        position: relative;
-        width: 160px;
-        height: 160px;
-        flex-shrink: 0;
-        border: 3px solid var(--gold);
-        border-radius: 4px;
-        overflow: hidden;
-        box-shadow: 0 0 15px rgba(212, 167, 68, 0.3), inset 0 0 10px rgba(0,0,0,0.5);
-    }
-
-    .portrait-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        filter: sepia(0.15) contrast(1.05);
-    }
-
-    .frame-corner {
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        border-color: var(--gold);
-        border-style: solid;
-    }
-
-    .frame-corner.tl { top: 3px; left: 3px; border-width: 2px 0 0 2px; }
-    .frame-corner.tr { top: 3px; right: 3px; border-width: 2px 2px 0 0; }
-    .frame-corner.bl { bottom: 3px; left: 3px; border-width: 0 0 2px 2px; }
-    .frame-corner.br { bottom: 3px; right: 3px; border-width: 0 2px 2px 0; }
-
-    .char-info { flex: 1; min-width: 200px; }
 
     .char-name {
         font-family: 'MedievalSharp', cursive;
-        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        font-size: clamp(1.3rem, 4vw, 1.8rem);
         color: var(--gold);
         line-height: 1.2;
         text-shadow: 0 0 10px rgba(212, 167, 68, 0.3);
     }
 
-    .char-title {
-        font-family: 'Crimson Text', serif;
-        font-size: 1.1rem;
-        color: var(--silver);
-        margin-top: 0.3rem;
-    }
-
     .char-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 0.6rem;
-    }
-
-    .meta-tag {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.72rem;
-        padding: 0.2rem 0.6rem;
-        border: 1px solid var(--border);
-        border-radius: 3px;
-        color: var(--text-dim);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    .char-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-        margin-top: 0.8rem;
-    }
-
-    .guild-link {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.75rem;
-        padding: 0.3rem 0.7rem;
-        border: 1px solid var(--gold-dim);
-        border-radius: 3px;
-        color: var(--gold);
-        transition: background 0.2s, border-color 0.2s;
-    }
-
-    .guild-link:hover, .guild-link:focus {
-        background: rgba(212, 167, 68, 0.1);
-        border-color: var(--gold);
-        text-decoration: none;
-    }
-
-    /* ===== STAT BLOCK ===== */
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 0.8rem;
-    }
-
-    .stat-card {
-        text-align: center;
-        padding: 0.8rem 0.3rem;
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        background: rgba(0,0,0,0.2);
-        transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .stat-card:hover {
-        border-color: var(--gold-dim);
-        box-shadow: 0 0 8px rgba(212, 167, 68, 0.15);
-    }
-
-    .stat-value {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: clamp(1.4rem, 3vw, 1.8rem);
-        font-weight: 700;
-        color: var(--gold);
-        line-height: 1;
-    }
-
-    .stat-mod {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.75rem;
-        color: var(--silver);
-        margin-top: 0.15rem;
-    }
-
-    .stat-name {
-        font-family: 'MedievalSharp', cursive;
-        font-size: 0.85rem;
-        color: var(--text);
-        margin-top: 0.3rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-    }
-
-    .stat-source {
-        font-family: 'Crimson Text', serif;
-        font-size: 0.65rem;
-        color: var(--text-dim);
-        margin-top: 0.2rem;
-    }
-
-    /* ===== VITAL BARS ===== */
-    .vitals { display: flex; flex-direction: column; gap: 0.8rem; }
-
-    .bar-group { display: flex; flex-direction: column; gap: 0.3rem; }
-
-    .bar-label {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.75rem;
-        color: var(--text-dim);
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-    }
-
-    .bar-icon.hp { color: var(--blood); }
-    .bar-icon.mp { color: var(--mana); }
-    .bar-icon.xp { color: var(--gold); }
-
-    .bar-track {
-        height: 24px;
-        background: rgba(0,0,0,0.4);
-        border: 1px solid var(--border);
-        border-radius: 3px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .bar-fill {
-        height: 100%;
-        width: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.7rem;
-        color: #fff;
-        font-weight: 700;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        transition: width 1.5s ease;
-        border-radius: 2px;
-    }
-
-    .bar-fill.animated { width: var(--bar-pct); }
-
-    .hp-fill { background: linear-gradient(90deg, #6b1515, var(--blood), #a02020); }
-    .mp-fill { background: linear-gradient(90deg, #1a3c6e, var(--mana), #3a7cd8); }
-    .xp-fill { background: linear-gradient(90deg, var(--gold-dim), var(--gold), #e8c860); }
-
-    /* ===== HERO'S LEGEND ===== */
-    .scroll-box {
-        background: rgba(0,0,0,0.15);
-        border: 1px solid var(--border);
-        border-radius: 3px;
-        padding: 1.2rem;
-    }
-
-    .legend-text {
-        font-size: 1.05rem;
-        line-height: 1.75;
-        color: var(--text);
-        font-style: italic;
-    }
-
-    /* ===== QUEST CHRONICLE ===== */
-    .quest-entry {
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        background: rgba(0,0,0,0.15);
-    }
-
-    .quest-entry:last-child { margin-bottom: 0; }
-
-    .quest-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 0.6rem;
-        padding-bottom: 0.4rem;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .quest-guild {
-        font-family: 'MedievalSharp', cursive;
-        font-size: 1.2rem;
-        color: var(--gold);
-    }
-
-    .quest-realm {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.72rem;
         color: var(--text-dim);
-    }
-
-    .quest-role { margin-top: 0.6rem; }
-
-    .quest-role-head {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        align-items: baseline;
-    }
-
-    .quest-title {
-        font-family: 'Crimson Text', serif;
-        font-weight: 700;
-        font-size: 1rem;
-        color: var(--text);
-    }
-
-    .quest-period {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.7rem;
-        color: var(--text-dim);
-    }
-
-    .quest-desc {
-        font-size: 0.95rem;
-        color: var(--text-dim);
-        margin-top: 0.3rem;
-        font-style: italic;
-    }
-
-    .quest-loot {
-        list-style: none;
-        margin-top: 0.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-    }
-
-    .quest-loot li {
-        font-size: 0.9rem;
-        color: var(--text);
-        padding-left: 0.2rem;
-    }
-
-    .loot-icon { color: var(--gold); margin-right: 0.3rem; }
-
-    .quest-xp {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.72rem;
-        color: var(--health);
-        text-align: right;
         margin-top: 0.4rem;
+        line-height: 1.6;
     }
 
-    /* ===== SKILL TREE ===== */
-    .skill-branch-title {
+    .attributes {
+        margin-bottom: 1rem;
+    }
+
+    .attributes h2,
+    .achievements h2,
+    .quest-log h2 {
         font-family: 'MedievalSharp', cursive;
-        font-size: 1.1rem;
-        color: var(--silver);
-        margin: 1rem 0 0.6rem;
-        padding-left: 0.2rem;
-        border-left: 3px solid var(--gold-dim);
-        padding-left: 0.6rem;
-    }
-
-    .skill-nodes {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 0.5rem;
-    }
-
-    .skill-node {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.4rem 0.6rem;
-        border: 1px solid rgba(74, 61, 42, 0.5);
-        border-radius: 3px;
-        background: rgba(0,0,0,0.1);
-        transition: border-color 0.2s, background 0.2s;
-    }
-
-    .skill-node:hover {
-        border-color: var(--gold-dim);
-        background: rgba(212, 167, 68, 0.05);
-    }
-
-    .skill-name {
-        font-family: 'Crimson Text', serif;
-        font-size: 0.88rem;
-        color: var(--text);
-    }
-
-    .skill-dots {
-        display: flex;
-        gap: 3px;
-        flex-shrink: 0;
-    }
-
-    .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        border: 1px solid var(--gold-dim);
-        background: transparent;
-        transition: background 0.3s;
-    }
-
-    .dot.filled { background: var(--gold); border-color: var(--gold); }
-
-    /* ===== LEGENDARY QUESTS ===== */
-    .legendary-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 0.8rem;
-    }
-
-    .legendary-card {
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        padding: 1rem;
-        background: rgba(0,0,0,0.15);
-        transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .legendary-card:hover {
-        border-color: var(--blood);
-        box-shadow: 0 0 10px rgba(139, 26, 26, 0.2);
-    }
-
-    .legendary-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 0.3rem;
-    }
-
-    .legendary-client {
-        font-family: 'MedievalSharp', cursive;
-        font-size: 1.05rem;
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
         color: var(--gold);
-        text-transform: capitalize;
-    }
-
-    .legendary-difficulty {
-        font-size: 0.75rem;
-        color: var(--blood);
-        letter-spacing: 0.1em;
-    }
-
-    .legendary-sector {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.68rem;
-        color: var(--text-dim);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-    }
-
-    .legendary-scope {
-        font-family: 'Crimson Text', serif;
-        font-size: 0.9rem;
-        color: var(--silver);
-        margin-top: 0.3rem;
-    }
-
-    .legendary-reward {
-        margin-top: 0.5rem;
-        padding-top: 0.4rem;
-        border-top: 1px solid var(--border);
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.72rem;
-        color: var(--health);
-    }
-
-    .reward-label { color: var(--text-dim); }
-
-    /* ===== TRAINING GROUNDS ===== */
-    .training-entry {
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        padding: 1rem;
-        margin-bottom: 0.8rem;
-        background: rgba(0,0,0,0.15);
-    }
-
-    .training-entry:last-child { margin-bottom: 0; }
-
-    .training-header {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        align-items: baseline;
-    }
-
-    .training-school {
-        font-family: 'MedievalSharp', cursive;
-        font-size: 1.1rem;
-        color: var(--gold);
-    }
-
-    .training-period {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.72rem;
-        color: var(--text-dim);
-    }
-
-    .training-degree {
-        font-family: 'Crimson Text', serif;
-        font-size: 0.95rem;
-        color: var(--text);
-        margin-top: 0.2rem;
-    }
-
-    .training-loc {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.7rem;
-        color: var(--text-dim);
-    }
-
-    .training-distinction {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.75rem;
-        color: var(--gold);
-        margin-top: 0.3rem;
-    }
-
-    /* ===== ACHIEVEMENTS ===== */
-    .achievement-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 0.6rem;
-    }
-
-    .achievement-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 0.7rem;
-        border: 1px solid var(--border);
-        border-radius: 3px;
-        background: rgba(0,0,0,0.15);
-        transition: border-color 0.3s;
-    }
-
-    .achievement-item:hover { border-color: var(--gold-dim); }
-
-    .achievement-icon {
-        font-size: 1.2rem;
-        color: var(--gold);
-        flex-shrink: 0;
-    }
-
-    .achievement-name {
-        font-family: 'Crimson Text', serif;
-        font-size: 0.88rem;
-        color: var(--text);
-    }
-
-    /* ===== SIDE QUESTS ===== */
-    .sidequest-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-    }
-
-    .sidequest-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.4rem 0.6rem;
-        border: 1px solid rgba(74, 61, 42, 0.4);
-        border-radius: 3px;
-        background: rgba(0,0,0,0.1);
-    }
-
-    .sidequest-icon { color: var(--gold); font-size: 0.7rem; flex-shrink: 0; }
-
-    .sidequest-name {
-        font-family: 'Crimson Text', serif;
-        font-size: 0.9rem;
-        color: var(--text);
-        flex: 1;
-    }
-
-    .sidequest-status {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.62rem;
-        color: var(--health);
-        letter-spacing: 0.1em;
-        flex-shrink: 0;
-    }
-
-    /* ===== REALMS ===== */
-    .realm-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .realm-tag {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.72rem;
-        padding: 0.3rem 0.7rem;
-        border: 1px solid var(--border);
-        border-radius: 3px;
-        color: var(--silver);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        transition: border-color 0.2s, color 0.2s;
-    }
-
-    .realm-tag:hover {
-        border-color: var(--gold-dim);
-        color: var(--gold);
-    }
-
-    /* ===== FOOTER ===== */
-    .rpg-footer {
         text-align: center;
-        padding: 2rem 0;
-        border-top: 1px solid var(--border);
-        margin-top: 1rem;
-    }
-
-    .footer-rune {
-        font-size: 1.5rem;
-        color: var(--gold-dim);
         margin-bottom: 0.5rem;
     }
 
-    .rpg-footer p {
-        font-family: 'Crimson Text', serif;
-        font-size: 0.85rem;
-        color: var(--text-dim);
+    .attr {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        line-height: 1.8;
+        color: var(--text);
+        white-space: pre;
     }
 
-    .footer-links {
-        margin-top: 0.5rem;
+    .achievements {
+        margin-bottom: 1rem;
+    }
+
+    .achievement {
+        font-family: 'Crimson Text', Georgia, serif;
+        font-size: 0.78rem;
+        color: var(--text);
+        line-height: 1.7;
+    }
+
+    .quest-log {
+        margin-bottom: 1rem;
+    }
+
+    .quest-log p {
+        font-family: 'Crimson Text', Georgia, serif;
+        font-size: 0.78rem;
+        font-style: italic;
+        color: var(--text);
+        line-height: 1.7;
+    }
+
+    .sheet-footer {
+        text-align: center;
+        padding-top: 0.8rem;
+        border-top: 1px solid var(--border);
         display: flex;
         justify-content: center;
-        gap: 0.6rem;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.72rem;
+        gap: 1.2rem;
     }
 
-    .footer-links span { color: var(--text-dim); }
+    .sheet-footer a {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--gold);
+        transition: color 0.2s;
+    }
 
-    /* ===== RESPONSIVE: 1200px ===== */
-    @media (max-width: 1200px) {
-        .sheet { max-width: 800px; }
+    .sheet-footer a:hover,
+    .sheet-footer a:focus {
+        color: #f0c860;
+        text-decoration: none;
     }
 
     /* ===== RESPONSIVE: 768px ===== */
     @media (max-width: 768px) {
-        body { font-size: 16px; }
-        .sheet { padding: 1.5rem 1rem; }
-
-        .stats-grid {
-            grid-template-columns: repeat(3, 1fr);
+        .character-sheet {
+            max-width: 90vw;
+            padding: 1.2rem;
         }
 
-        .char-header {
-            flex-direction: column;
-            align-items: flex-start;
+        .sheet-title {
+            font-size: clamp(1rem, 3vw, 1.3rem);
         }
 
-        .portrait-frame {
-            width: 120px;
-            height: 120px;
+        .char-name {
+            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
         }
 
-        .skill-nodes {
-            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        .attr {
+            font-size: 0.68rem;
+            line-height: 1.7;
         }
 
-        .legendary-grid {
-            grid-template-columns: 1fr;
+        .achievement {
+            font-size: 0.7rem;
         }
 
-        .achievement-grid {
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        .quest-log p {
+            font-size: 0.7rem;
+        }
+
+        .char-meta {
+            font-size: 0.65rem;
+        }
+
+        .attributes h2,
+        .achievements h2,
+        .quest-log h2 {
+            font-size: 0.85rem;
         }
     }
 
     /* ===== RESPONSIVE: 480px ===== */
     @media (max-width: 480px) {
-        body { font-size: 15px; }
-        .sheet { padding: 1rem 0.75rem; }
-        .section { padding: 1rem; }
-
-        .stats-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
+        .character-sheet {
+            padding: 1rem;
         }
 
-        .stat-card { padding: 0.5rem 0.2rem; }
-        .stat-value { font-size: 1.3rem; }
-
-        .skill-nodes {
-            grid-template-columns: 1fr;
+        .sheet-title {
+            font-size: 0.95rem;
+            margin-bottom: 0.7rem;
         }
 
-        .quest-role-head {
-            flex-direction: column;
-            gap: 0.2rem;
+        .char-name {
+            font-size: 1.1rem;
         }
 
-        .char-links { flex-direction: column; gap: 0.4rem; }
-
-        .guild-link {
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .attr {
+            font-size: 0.62rem;
+            line-height: 1.6;
         }
 
-        .achievement-grid {
-            grid-template-columns: 1fr;
+        .achievement {
+            font-size: 0.65rem;
+        }
+
+        .quest-log p {
+            font-size: 0.65rem;
+        }
+
+        .char-meta {
+            font-size: 0.6rem;
+        }
+
+        .attributes h2,
+        .achievements h2,
+        .quest-log h2 {
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .sheet-footer a {
+            font-size: 0.68rem;
+        }
+
+        .attributes,
+        .achievements,
+        .quest-log,
+        .char-info {
+            margin-bottom: 0.7rem;
         }
     }
 
     /* ===== RESPONSIVE: 380px ===== */
     @media (max-width: 380px) {
-        .sheet { padding: 0.75rem 0.5rem; }
-        .section { padding: 0.75rem; }
-
-        .stats-grid {
-            grid-template-columns: repeat(2, 1fr);
+        .character-sheet {
+            padding: 0.75rem;
         }
 
-        .portrait-frame {
-            width: 100px;
-            height: 100px;
+        .attr {
+            font-size: 0.56rem;
+            line-height: 1.5;
         }
 
-        .meta-tag, .guild-link, .realm-tag {
-            min-height: 44px;
-            display: flex;
-            align-items: center;
+        .achievement {
+            font-size: 0.6rem;
+        }
+
+        .quest-log p {
+            font-size: 0.6rem;
+        }
+
+        .sheet-footer {
+            gap: 0.8rem;
+        }
+
+        .sheet-footer a {
+            font-size: 0.62rem;
         }
     }
 </style>
@@ -1497,39 +717,7 @@ import { experience, education, certifications, skills, engagements, continuousL
         }, 4200);
     }
 
-    // ===== SCROLL REVEAL =====
-    function initReveal() {
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        reveals.forEach(el => observer.observe(el));
-    }
-
-    // ===== BAR ANIMATION ON SCROLL =====
-    function initBars() {
-        const bars = document.querySelectorAll('.bar-fill');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    (entry.target as HTMLElement).classList.add('animated');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        bars.forEach(el => observer.observe(el));
-    }
-
     // ===== INIT =====
     createEmbers();
     runIntro();
-    initReveal();
-    initBars();
 </script>

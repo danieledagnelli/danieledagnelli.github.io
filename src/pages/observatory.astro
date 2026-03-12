@@ -1,6 +1,5 @@
 ---
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, managementSkills, languages, industries, metrics } from "../data/resume";
 ---
 
 <!doctype html>
@@ -111,273 +110,26 @@ import { experience, education, certifications, skills, engagements, continuousL
 
     <!-- MAIN CONTENT -->
     <main class="catalog" id="catalog">
+        <div class="obs-narrative">
+            <h1 class="obs-title">OBSERVATION LOG — D'AGNELLI OBSERVATORY</h1>
+            <div class="obs-meta">session: 2012-present | seeing: excellent | location: london</div>
 
-        <!-- CATALOG HEADER -->
-        <section class="section catalog-header" data-section="header">
-            <div class="header-grid">
-                <div class="celestial-body">
-                    <div class="body-glow"></div>
-                    <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="160" height="160" class="body-image" />
-                    <div class="body-corona"></div>
-                    <span class="body-label">OBJ #D4N-13L3</span>
-                </div>
-                <div class="header-info">
-                    <div class="catalog-id">CELESTIAL OBJECT CATALOG</div>
-                    <h1 class="object-name">{siteMetadata.name}</h1>
-                    <div class="object-class">CLASS G2V — MAIN SEQUENCE STAR</div>
-                    <div class="data-readouts">
-                        {metrics.map((m, i) => (
-                            <div class="readout">
-                                <span class="readout-value">{m.value}</span>
-                                <span class="readout-label">{m.label}</span>
-                            </div>
-                        ))}
-                    </div>
-                    <div class="coord-line">
-                        <span class="coord">RA 51.5074 N</span>
-                        <span class="coord">DEC 0.1278 W</span>
-                        <span class="coord">DIST: LONDON STATION</span>
-                    </div>
-                    <div class="link-row">
-                        <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener" class="obs-link">github</a>
-                        <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener" class="obs-link">linkedin</a>
-                        <a href={`mailto:${siteMetadata.email}`} class="obs-link">comms</a>
-                    </div>
-                </div>
+            <h2 class="catalog-title">CATALOGUED OBJECTS</h2>
+
+            <div class="star-entry">★ CLOUD CLUSTER (AWS/AZURE/GCP) — magnitude: primary infrastructure. three-body system. enterprise-grade orbital deployments.</div>
+            <div class="star-entry">★ ML NEBULA — composition: ml pipelines, deep learning, reinforcement learning. stanford-calibrated instruments. deeplearning.ai spectral analysis.</div>
+            <div class="star-entry">★ GENAI SUPERNOVA — first observed: 2023. expanding rapidly. llms & generative ai. rag systems deployed across enterprise knowledge base.</div>
+            <div class="star-entry">★ ENGINEERING CONSTELLATION — python · java · go · rust · sql · bash. six-star formation. visible year-round.</div>
+            <div class="star-entry">★ SECURITY BINARY — twin system: ethical hacking + penetration testing. gchq-certified optics. reverse engineering capability.</div>
+
+            <div class="observer-info">OBSERVER: daniele d'agnelli | senior engagement manager, c3 ai</div>
+
+            <div class="obs-footer">
+                <a href="mailto:daniele@dagnelli.net">[contact frequency]</a>
+                <a href="https://github.com/danieledagnelli">[github]</a>
+                <a href="https://linkedin.com/in/dagnelli">[linkedin]</a>
             </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-star"></span>
         </div>
-
-        <!-- OBJECT CLASSIFICATION (summary) -->
-        <section class="section reveal" id="sec-classification" data-section="summary">
-            <div class="sec-head">
-                <span class="sec-marker"></span>
-                <h2 class="sec-title">Object Classification</h2>
-                <span class="sec-coord">RA 00h 00m</span>
-            </div>
-            <div class="classification-box">
-                <p class="body-text">{summary}</p>
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-star"></span>
-        </div>
-
-        <!-- ORBITAL HISTORY (experience) -->
-        <section class="section reveal" id="sec-orbital" data-section="experience">
-            <div class="sec-head">
-                <span class="sec-marker"></span>
-                <h2 class="sec-title">Orbital History</h2>
-                <span class="sec-coord">RA 06h 45m</span>
-            </div>
-            <div class="orbital-timeline">
-                {experience.map((exp, i) => (
-                    <div class="orbit-entry reveal">
-                        <div class="orbit-marker">
-                            <div class="orbit-dot"></div>
-                            <div class="orbit-line"></div>
-                        </div>
-                        <div class="orbit-content">
-                            <div class="orbit-header">
-                                <span class="orbit-body-name">{exp.company}</span>
-                                <span class="orbit-location">{exp.location}</span>
-                            </div>
-                            {exp.roles.map(role => (
-                                <div class="orbit-phase">
-                                    <div class="phase-head">
-                                        <span class="phase-title">{role.title}</span>
-                                        <span class="phase-period">{role.period}</span>
-                                    </div>
-                                    {role.description && <p class="phase-desc">{role.description}</p>}
-                                    {role.bullets && role.bullets.length > 0 && (
-                                        <ul class="phase-observations">
-                                            {role.bullets.map(b => <li>{b}</li>)}
-                                        </ul>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-star"></span>
-        </div>
-
-        <!-- SPECTRAL ANALYSIS (skills) -->
-        <section class="section reveal" id="sec-spectral" data-section="skills">
-            <div class="sec-head">
-                <span class="sec-marker"></span>
-                <h2 class="sec-title">Spectral Analysis</h2>
-                <span class="sec-coord">RA 12h 30m</span>
-            </div>
-            <div class="spectrum-container">
-                <div class="spectrum-bands">
-                    {skills.map((s, i) => (
-                        <div class="spectrum-line" style={`--i:${i}; --total:${skills.length}`}>
-                            <span class="spectrum-label">{s}</span>
-                            <div class="spectrum-bar">
-                                <div class="spectrum-fill"></div>
-                                <div class="spectrum-glow"></div>
-                            </div>
-                            <span class="spectrum-wavelength">{(380 + (i * 20)).toString()}nm</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div class="management-spectrum">
-                <h3 class="sub-heading">Command Frequencies</h3>
-                <div class="freq-grid">
-                    {managementSkills.map((ms, i) => (
-                        <span class="freq-chip" style={`--i:${i}`}>{ms}</span>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-star"></span>
-        </div>
-
-        <!-- NOTABLE OBSERVATIONS (engagements) -->
-        <section class="section reveal" id="sec-observations" data-section="engagements">
-            <div class="sec-head">
-                <span class="sec-marker"></span>
-                <h2 class="sec-title">Notable Observations</h2>
-                <span class="sec-coord">RA 16h 15m</span>
-            </div>
-            <div class="observation-log">
-                {engagements.map((eng, i) => (
-                    <div class="log-entry reveal">
-                        <div class="log-number">OBS-{(i + 1).toString().padStart(3, '0')}</div>
-                        <div class="log-details">
-                            <div class="log-row">
-                                <span class="log-field">TARGET</span>
-                                <span class="log-value">{eng.client}</span>
-                            </div>
-                            <div class="log-row">
-                                <span class="log-field">SECTOR</span>
-                                <span class="log-value">{eng.sector}</span>
-                            </div>
-                            <div class="log-row">
-                                <span class="log-field">SCOPE</span>
-                                <span class="log-value">{eng.scope}</span>
-                            </div>
-                            <div class="log-row">
-                                <span class="log-field">IMPACT</span>
-                                <span class={`log-value log-impact ${eng.trend}`}>{eng.impact}</span>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-star"></span>
-        </div>
-
-        <!-- CALIBRATION RECORDS (education) -->
-        <section class="section reveal" id="sec-calibration" data-section="education">
-            <div class="sec-head">
-                <span class="sec-marker"></span>
-                <h2 class="sec-title">Calibration Records</h2>
-                <span class="sec-coord">RA 19h 00m</span>
-            </div>
-            <div class="calibration-entries">
-                {education.map((edu, i) => (
-                    <div class="cal-entry reveal">
-                        <div class="cal-icon">
-                            <div class="cal-ring"></div>
-                        </div>
-                        <div class="cal-info">
-                            <span class="cal-degree">{edu.degree}</span>
-                            <span class="cal-institution">{edu.institution} — {edu.location}</span>
-                            <span class="cal-period">{edu.period}</span>
-                            {edu.distinction && <span class="cal-distinction">{edu.distinction}</span>}
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-star"></span>
-        </div>
-
-        <!-- VERIFIED DISCOVERIES (certifications) -->
-        <section class="section reveal" id="sec-discoveries" data-section="certifications">
-            <div class="sec-head">
-                <span class="sec-marker"></span>
-                <h2 class="sec-title">Verified Discoveries</h2>
-                <span class="sec-coord">RA 21h 30m</span>
-            </div>
-            <div class="discovery-grid">
-                {certifications.map((c, i) => (
-                    <div class="discovery-card reveal" style={`--i:${i}`}>
-                        <div class="discovery-star-icon"></div>
-                        <span class="discovery-name">{c}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-star"></span>
-        </div>
-
-        <!-- ONGOING SURVEY (continuousLearning) -->
-        <section class="section reveal" id="sec-survey" data-section="training">
-            <div class="sec-head">
-                <span class="sec-marker"></span>
-                <h2 class="sec-title">Ongoing Survey</h2>
-                <span class="sec-coord">RA 23h 45m</span>
-            </div>
-            <div class="survey-list">
-                {continuousLearning.map((item, i) => (
-                    <div class="survey-item reveal" style={`--i:${i}`}>
-                        <span class="survey-dot"></span>
-                        <span class="survey-text">{item}</span>
-                    </div>
-                ))}
-            </div>
-            <div class="languages-block">
-                <h3 class="sub-heading">Communication Frequencies</h3>
-                <div class="lang-chips">
-                    {languages.map(l => (
-                        <span class="lang-chip">{l}</span>
-                    ))}
-                </div>
-            </div>
-            <div class="industries-block">
-                <h3 class="sub-heading">Observed Sectors</h3>
-                <div class="sector-chips">
-                    {industries.map((ind, i) => (
-                        <span class="sector-chip" style={`--i:${i}`}>{ind}</span>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <span class="divider-star"></span>
-        </div>
-
-        <!-- END OF OBSERVATION -->
-        <section class="section end-observation" data-section="footer">
-            <div class="end-text">
-                <span>END OF OBSERVATION LOG</span>
-                <span>TELESCOPE RETURNING TO STANDBY</span>
-                <span class="cursor-blink">_</span>
-            </div>
-        </section>
-
     </main>
 </body>
 </html>
@@ -650,9 +402,12 @@ import { experience, education, certifications, skills, engagements, continuousL
     .catalog {
         position: relative;
         z-index: 5;
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 60px 24px 80px;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         opacity: 0;
         transition: opacity 0.8s ease;
     }
@@ -661,790 +416,77 @@ import { experience, education, certifications, skills, engagements, continuousL
         opacity: 1;
     }
 
-    .section {
-        margin-bottom: 48px;
-    }
-
-    /* Reveal animation */
-    .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
     /* =========================================
-       SECTION DIVIDER
+       OBSERVATION NARRATIVE
        ========================================= */
-    .section-divider {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 24px 0;
-        position: relative;
-    }
-
-    .section-divider::before,
-    .section-divider::after {
-        content: '';
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--dim-star), transparent);
-    }
-
-    .divider-star {
-        display: block;
-        width: 6px;
-        height: 6px;
-        background: var(--solar-gold);
-        border-radius: 50%;
-        margin: 0 16px;
-        box-shadow: 0 0 8px var(--solar-gold);
-        animation: twinkle 3s ease-in-out infinite;
-    }
-
-    @keyframes twinkle {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.4; }
-    }
-
-    /* =========================================
-       CATALOG HEADER
-       ========================================= */
-    .header-grid {
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        gap: 40px;
-        align-items: center;
-    }
-
-    .celestial-body {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .body-glow {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(74, 138, 255, 0.3) 0%, transparent 70%);
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -55%);
-        animation: pulseGlow 4s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-        0%, 100% { transform: translate(-50%, -55%) scale(1); opacity: 0.8; }
-        50% { transform: translate(-50%, -55%) scale(1.1); opacity: 1; }
-    }
-
-    .body-image {
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid var(--blue-giant);
-        position: relative;
-        z-index: 2;
-        box-shadow: 0 0 30px rgba(74, 138, 255, 0.4), 0 0 60px rgba(74, 138, 255, 0.15);
-    }
-
-    .body-corona {
-        position: absolute;
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        border: 1px solid rgba(74, 138, 255, 0.2);
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -55%);
-        animation: coronaPulse 6s ease-in-out infinite;
-    }
-
-    @keyframes coronaPulse {
-        0%, 100% { transform: translate(-50%, -55%) scale(1); opacity: 0.5; }
-        50% { transform: translate(-50%, -55%) scale(1.15); opacity: 0.2; }
-    }
-
-    .body-label {
+    .obs-narrative {
+        max-width: 620px;
+        padding: 1.5rem;
         font-family: var(--mono);
-        font-size: 11px;
-        color: var(--dim-star);
-        margin-top: 12px;
-        letter-spacing: 2px;
-    }
-
-    .header-info {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .catalog-id {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--dim-star);
-        letter-spacing: 3px;
-        text-transform: uppercase;
-    }
-
-    .object-name {
-        font-family: var(--sans);
-        font-size: 36px;
-        font-weight: 700;
-        color: var(--star-white);
-        letter-spacing: -0.5px;
-        line-height: 1.1;
-    }
-
-    .object-class {
-        font-family: var(--mono);
-        font-size: 13px;
-        color: var(--solar-gold);
-        letter-spacing: 1px;
-    }
-
-    .data-readouts {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        margin-top: 8px;
-    }
-
-    .readout {
-        display: flex;
-        flex-direction: column;
-        padding: 6px 12px;
-        border: 1px solid rgba(106, 106, 138, 0.3);
-        border-radius: 4px;
-        background: rgba(5, 5, 16, 0.6);
-    }
-
-    .readout-value {
-        font-family: var(--mono);
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--blue-giant);
-    }
-
-    .readout-label {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--dim-star);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .coord-line {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-    }
-
-    .coord {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--dim-star);
-        letter-spacing: 1px;
-    }
-
-    .link-row {
-        display: flex;
-        gap: 16px;
-        margin-top: 4px;
-    }
-
-    .obs-link {
-        font-family: var(--mono);
-        font-size: 13px;
-        padding: 4px 12px;
-        border: 1px solid var(--blue-giant);
-        border-radius: 3px;
-        transition: all 0.2s;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-    }
-
-    .obs-link:hover {
-        background: var(--blue-giant);
-        color: var(--cosmos);
-    }
-
-    /* =========================================
-       SECTION HEADERS
-       ========================================= */
-    .sec-head {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 24px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid rgba(106, 106, 138, 0.2);
-    }
-
-    .sec-marker {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--solar-gold);
-        box-shadow: 0 0 8px var(--solar-gold);
-        flex-shrink: 0;
-    }
-
-    .sec-title {
-        font-family: var(--sans);
-        font-size: 22px;
-        font-weight: 600;
-        color: var(--star-white);
-        flex: 1;
-    }
-
-    .sec-coord {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--dim-star);
-        letter-spacing: 1px;
-    }
-
-    .sub-heading {
-        font-family: var(--sans);
-        font-size: 16px;
-        font-weight: 500;
-        color: var(--dim-star);
-        margin-bottom: 12px;
-        margin-top: 24px;
-    }
-
-    /* =========================================
-       OBJECT CLASSIFICATION
-       ========================================= */
-    .classification-box {
-        padding: 20px;
-        border-left: 3px solid var(--blue-giant);
-        background: rgba(74, 138, 255, 0.04);
-        border-radius: 0 6px 6px 0;
-    }
-
-    .body-text {
-        color: rgba(240, 240, 255, 0.85);
-        font-size: 14px;
-        line-height: 1.8;
-    }
-
-    /* =========================================
-       ORBITAL HISTORY
-       ========================================= */
-    .orbital-timeline {
-        position: relative;
-        padding-left: 32px;
-    }
-
-    .orbit-entry {
-        position: relative;
-        margin-bottom: 32px;
-    }
-
-    .orbit-entry:last-child .orbit-line {
-        display: none;
-    }
-
-    .orbit-marker {
-        position: absolute;
-        left: -32px;
-        top: 4px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .orbit-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--cosmos);
-        border: 2px solid var(--blue-giant);
-        box-shadow: 0 0 8px rgba(74, 138, 255, 0.4);
-        z-index: 1;
-    }
-
-    .orbit-line {
-        width: 2px;
-        background: linear-gradient(180deg, var(--blue-giant), rgba(74, 138, 255, 0.1));
-        position: absolute;
-        top: 14px;
-        bottom: -36px;
-        left: 5px;
-    }
-
-    .orbit-content {
-        padding: 16px 20px;
-        background: rgba(42, 26, 74, 0.15);
-        border: 1px solid rgba(106, 106, 138, 0.15);
-        border-radius: 6px;
-        transition: border-color 0.3s;
-    }
-
-    .orbit-content:hover {
-        border-color: rgba(74, 138, 255, 0.3);
-    }
-
-    .orbit-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 8px;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .orbit-body-name {
-        font-family: var(--sans);
-        font-size: 18px;
-        font-weight: 600;
-        color: var(--star-white);
-    }
-
-    .orbit-location {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--dim-star);
-    }
-
-    .orbit-phase {
-        margin-top: 12px;
-    }
-
-    .phase-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .phase-title {
-        font-family: var(--sans);
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--solar-gold);
-    }
-
-    .phase-period {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--dim-star);
-    }
-
-    .phase-desc {
-        font-size: 13px;
-        color: rgba(240, 240, 255, 0.7);
-        margin-top: 6px;
-        line-height: 1.7;
-    }
-
-    .phase-observations {
-        list-style: none;
-        margin-top: 8px;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .phase-observations li {
-        font-size: 13px;
-        color: rgba(240, 240, 255, 0.7);
-        padding-left: 16px;
-        position: relative;
-    }
-
-    .phase-observations li::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 10px;
-        width: 6px;
-        height: 2px;
-        background: var(--blue-giant);
-    }
-
-    /* =========================================
-       SPECTRAL ANALYSIS
-       ========================================= */
-    .spectrum-container {
-        padding: 16px 0;
-    }
-
-    .spectrum-bands {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .spectrum-line {
-        display: grid;
-        grid-template-columns: 180px 1fr 60px;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .spectrum-label {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: rgba(240, 240, 255, 0.8);
-        text-align: right;
-    }
-
-    .spectrum-bar {
-        height: 4px;
-        background: rgba(106, 106, 138, 0.15);
-        border-radius: 2px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .spectrum-fill {
-        position: absolute;
-        inset: 0;
-        border-radius: 2px;
-        width: 0%;
-        transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        transition-delay: calc(var(--i) * 60ms);
-    }
-
-    .in-view .spectrum-fill {
-        width: calc(60% + (var(--i) * 1.5%));
-    }
-
-    .spectrum-line:nth-child(7n+1) .spectrum-fill { background: linear-gradient(90deg, #ff4a4a, #ff4a4a88); }
-    .spectrum-line:nth-child(7n+2) .spectrum-fill { background: linear-gradient(90deg, #ff8c4a, #ff8c4a88); }
-    .spectrum-line:nth-child(7n+3) .spectrum-fill { background: linear-gradient(90deg, #ffd700, #ffd70088); }
-    .spectrum-line:nth-child(7n+4) .spectrum-fill { background: linear-gradient(90deg, #4aff4a, #4aff4a88); }
-    .spectrum-line:nth-child(7n+5) .spectrum-fill { background: linear-gradient(90deg, #4a8aff, #4a8aff88); }
-    .spectrum-line:nth-child(7n+6) .spectrum-fill { background: linear-gradient(90deg, #8a4aff, #8a4aff88); }
-    .spectrum-line:nth-child(7n+7) .spectrum-fill { background: linear-gradient(90deg, #ff4aaa, #ff4aaa88); }
-
-    .spectrum-glow {
-        position: absolute;
-        inset: -2px 0;
-        border-radius: 4px;
-        opacity: 0;
-        transition: opacity 0.6s;
-    }
-
-    .in-view .spectrum-glow {
-        opacity: 0.4;
-    }
-
-    .spectrum-line:nth-child(7n+1) .spectrum-glow { box-shadow: 0 0 8px #ff4a4a; }
-    .spectrum-line:nth-child(7n+2) .spectrum-glow { box-shadow: 0 0 8px #ff8c4a; }
-    .spectrum-line:nth-child(7n+3) .spectrum-glow { box-shadow: 0 0 8px #ffd700; }
-    .spectrum-line:nth-child(7n+4) .spectrum-glow { box-shadow: 0 0 8px #4aff4a; }
-    .spectrum-line:nth-child(7n+5) .spectrum-glow { box-shadow: 0 0 8px #4a8aff; }
-    .spectrum-line:nth-child(7n+6) .spectrum-glow { box-shadow: 0 0 8px #8a4aff; }
-    .spectrum-line:nth-child(7n+7) .spectrum-glow { box-shadow: 0 0 8px #ff4aaa; }
-
-    .spectrum-wavelength {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--dim-star);
-        text-align: right;
-    }
-
-    .freq-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .freq-chip {
-        font-family: var(--mono);
-        font-size: 12px;
-        padding: 6px 14px;
-        border: 1px solid rgba(106, 106, 138, 0.25);
-        border-radius: 20px;
-        color: rgba(240, 240, 255, 0.75);
-        background: rgba(42, 26, 74, 0.2);
-        transition: all 0.3s;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-    }
-
-    .freq-chip:hover {
-        border-color: var(--solar-gold);
-        color: var(--solar-gold);
-    }
-
-    /* =========================================
-       NOTABLE OBSERVATIONS
-       ========================================= */
-    .observation-log {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .log-entry {
-        display: grid;
-        grid-template-columns: 80px 1fr;
-        gap: 16px;
-        padding: 16px;
-        background: rgba(5, 5, 16, 0.6);
-        border: 1px solid rgba(106, 106, 138, 0.15);
-        border-radius: 6px;
-        transition: border-color 0.3s;
-    }
-
-    .log-entry:hover {
-        border-color: rgba(74, 138, 255, 0.3);
-    }
-
-    .log-number {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--blue-giant);
-        letter-spacing: 1px;
-        padding-top: 2px;
-    }
-
-    .log-details {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .log-row {
-        display: flex;
-        gap: 12px;
-        align-items: baseline;
-    }
-
-    .log-field {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--dim-star);
-        letter-spacing: 1px;
-        min-width: 56px;
-        text-transform: uppercase;
-    }
-
-    .log-value {
-        font-size: 13px;
         color: rgba(240, 240, 255, 0.85);
     }
 
-    .log-impact.positive {
-        color: var(--solar-gold);
-    }
-
-    .log-impact.neutral {
-        color: var(--blue-giant);
-    }
-
-    /* =========================================
-       CALIBRATION RECORDS
-       ========================================= */
-    .calibration-entries {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .cal-entry {
-        display: flex;
-        gap: 20px;
-        align-items: flex-start;
-    }
-
-    .cal-icon {
-        flex-shrink: 0;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .cal-ring {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        border: 2px solid var(--solar-gold);
-        box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-    }
-
-    .cal-info {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-    }
-
-    .cal-degree {
-        font-family: var(--sans);
-        font-size: 16px;
-        font-weight: 500;
-        color: var(--star-white);
-    }
-
-    .cal-institution {
-        font-size: 13px;
-        color: rgba(240, 240, 255, 0.7);
-    }
-
-    .cal-period {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--dim-star);
-    }
-
-    .cal-distinction {
-        display: inline-block;
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--solar-gold);
-        border: 1px solid var(--solar-gold);
-        padding: 2px 8px;
-        border-radius: 3px;
-        margin-top: 4px;
-        width: fit-content;
-    }
-
-    /* =========================================
-       VERIFIED DISCOVERIES
-       ========================================= */
-    .discovery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 12px;
-    }
-
-    .discovery-card {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 16px;
-        background: rgba(42, 26, 74, 0.15);
-        border: 1px solid rgba(106, 106, 138, 0.15);
-        border-radius: 6px;
-        transition: all 0.3s;
-        min-height: 44px;
-    }
-
-    .discovery-card:hover {
-        border-color: var(--solar-gold);
-        background: rgba(42, 26, 74, 0.25);
-    }
-
-    .discovery-star-icon {
-        width: 8px;
-        height: 8px;
-        background: var(--solar-gold);
-        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-        flex-shrink: 0;
-    }
-
-    .discovery-name {
-        font-size: 13px;
-        color: rgba(240, 240, 255, 0.85);
-    }
-
-    /* =========================================
-       ONGOING SURVEY
-       ========================================= */
-    .survey-list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .survey-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 8px 0;
-    }
-
-    .survey-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--blue-giant);
-        flex-shrink: 0;
-        box-shadow: 0 0 6px rgba(74, 138, 255, 0.4);
-    }
-
-    .survey-text {
-        font-size: 14px;
-        color: rgba(240, 240, 255, 0.8);
-    }
-
-    .lang-chips, .sector-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .lang-chip, .sector-chip {
-        font-family: var(--mono);
-        font-size: 12px;
-        padding: 6px 14px;
-        border: 1px solid rgba(106, 106, 138, 0.25);
-        border-radius: 20px;
-        color: rgba(240, 240, 255, 0.7);
-        background: rgba(5, 5, 16, 0.4);
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-    }
-
-    .lang-chip:hover, .sector-chip:hover {
-        border-color: var(--blue-giant);
-        color: var(--blue-giant);
-    }
-
-    /* =========================================
-       END OF OBSERVATION
-       ========================================= */
-    .end-observation {
+    .obs-title {
+        font-size: 1rem;
         text-align: center;
-        padding: 48px 0;
-    }
-
-    .end-text {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
+        margin-bottom: 0.2rem;
         font-family: var(--mono);
-        font-size: 12px;
-        color: var(--dim-star);
-        letter-spacing: 2px;
+        font-weight: 600;
+        color: var(--solar-gold);
     }
 
-    .cursor-blink {
-        animation: blink 1s step-end infinite;
+    .obs-meta {
+        font-size: 0.7rem;
+        text-align: center;
+        opacity: 0.7;
+        margin-bottom: 1rem;
+    }
+
+    .catalog-title {
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.5rem;
+        font-family: var(--mono);
+        font-weight: 500;
         color: var(--blue-giant);
     }
 
-    @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
+    .star-entry {
+        font-size: 0.78rem;
+        line-height: 1.5;
+        margin-bottom: 0.5rem;
     }
 
+    .observer-info {
+        font-size: 0.7rem;
+        opacity: 0.7;
+        margin: 0.8rem 0;
+    }
+
+    .obs-footer {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 0.8rem;
+    }
+
+    .obs-footer a {
+        text-decoration: none;
+    }
+
+    /* (unused legacy styles removed) */
+
     /* =========================================
-       RESPONSIVE: 1200px
+       RESPONSIVE: 768px
        ========================================= */
-    @media (max-width: 1200px) {
-        .catalog {
-            max-width: 760px;
+    @media (max-width: 768px) {
+        .star-entry {
+            font-size: 0.72rem;
+        }
+
+        .viewfinder {
+            width: 180px;
+            height: 180px;
         }
 
         .nebula-1 { width: 400px; height: 400px; }
@@ -1453,147 +495,9 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       RESPONSIVE: 768px
-       ========================================= */
-    @media (max-width: 768px) {
-        .header-grid {
-            grid-template-columns: 1fr;
-            text-align: center;
-            gap: 24px;
-        }
-
-        .celestial-body {
-            order: -1;
-        }
-
-        .header-info {
-            align-items: center;
-        }
-
-        .data-readouts {
-            justify-content: center;
-        }
-
-        .coord-line {
-            justify-content: center;
-        }
-
-        .link-row {
-            justify-content: center;
-        }
-
-        .object-name {
-            font-size: 28px;
-        }
-
-        .sec-title {
-            font-size: 18px;
-        }
-
-        .spectrum-line {
-            grid-template-columns: 120px 1fr 50px;
-        }
-
-        .spectrum-label {
-            font-size: 11px;
-        }
-
-        .log-entry {
-            grid-template-columns: 1fr;
-        }
-
-        .log-number {
-            margin-bottom: 4px;
-        }
-
-        .discovery-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .viewfinder {
-            width: 180px;
-            height: 180px;
-        }
-    }
-
-    /* =========================================
        RESPONSIVE: 480px
        ========================================= */
     @media (max-width: 480px) {
-        body {
-            font-size: 14px;
-        }
-
-        .catalog {
-            padding: 40px 16px 60px;
-        }
-
-        .object-name {
-            font-size: 24px;
-        }
-
-        .body-image {
-            width: 120px;
-            height: 120px;
-        }
-
-        .body-glow {
-            width: 160px;
-            height: 160px;
-        }
-
-        .body-corona {
-            width: 140px;
-            height: 140px;
-        }
-
-        .sec-head {
-            flex-wrap: wrap;
-        }
-
-        .sec-coord {
-            width: 100%;
-            margin-top: 4px;
-        }
-
-        .spectrum-line {
-            grid-template-columns: 1fr;
-            gap: 2px;
-            margin-bottom: 8px;
-        }
-
-        .spectrum-label {
-            text-align: left;
-        }
-
-        .spectrum-wavelength {
-            display: none;
-        }
-
-        .readout {
-            padding: 4px 8px;
-        }
-
-        .readout-value {
-            font-size: 14px;
-        }
-
-        .data-readouts {
-            gap: 8px;
-        }
-
-        .orbit-content {
-            padding: 12px;
-        }
-
-        .orbital-timeline {
-            padding-left: 24px;
-        }
-
-        .orbit-marker {
-            left: -24px;
-        }
-
         .viewfinder {
             width: 140px;
             height: 140px;
@@ -1606,51 +510,6 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       RESPONSIVE: 380px
-       ========================================= */
-    @media (max-width: 380px) {
-        .catalog {
-            padding: 32px 12px 48px;
-        }
-
-        .object-name {
-            font-size: 20px;
-        }
-
-        .sec-title {
-            font-size: 16px;
-        }
-
-        .orbit-header {
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .phase-head {
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .data-readouts {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .readout {
-            width: 100%;
-            text-align: center;
-        }
-
-        .freq-grid {
-            flex-direction: column;
-        }
-
-        .freq-chip {
-            justify-content: center;
-        }
-    }
-
-    /* =========================================
        REDUCED MOTION
        ========================================= */
     @media (prefers-reduced-motion: reduce) {
@@ -1658,11 +517,6 @@ import { experience, education, certifications, skills, engagements, continuousL
             animation-duration: 0.01ms !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
-        }
-
-        .reveal {
-            opacity: 1;
-            transform: none;
         }
 
         .shooting-star {
@@ -1856,103 +710,5 @@ import { experience, education, certifications, skills, engagements, continuousL
             if (skipped) return;
             typeWriter();
         }, 2000);
-    })();
-
-    /* =========================================
-       SCROLL REVEAL (IntersectionObserver)
-       ========================================= */
-    (function initReveal() {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                    }
-                });
-            },
-            { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-        );
-
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    })();
-
-    /* =========================================
-       CONSTELLATION LINES (connect section markers)
-       ========================================= */
-    (function initConstellations() {
-        const svg = document.getElementById('constellationSvg') as unknown as SVGSVGElement;
-        if (!svg) return;
-
-        function drawLines() {
-            svg.innerHTML = '';
-            const markers = document.querySelectorAll('.sec-marker');
-            if (markers.length < 2) return;
-
-            const points: { x: number; y: number }[] = [];
-            markers.forEach((m) => {
-                const rect = m.getBoundingClientRect();
-                points.push({
-                    x: rect.left + rect.width / 2 + window.scrollX,
-                    y: rect.top + rect.height / 2 + window.scrollY,
-                });
-            });
-
-            svg.setAttribute('width', document.documentElement.scrollWidth.toString());
-            svg.setAttribute('height', document.documentElement.scrollHeight.toString());
-            svg.style.position = 'absolute';
-            svg.style.top = '0';
-            svg.style.left = '0';
-            svg.style.width = document.documentElement.scrollWidth + 'px';
-            svg.style.height = document.documentElement.scrollHeight + 'px';
-
-            for (let i = 0; i < points.length - 1; i++) {
-                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                line.setAttribute('x1', points[i].x.toString());
-                line.setAttribute('y1', points[i].y.toString());
-                line.setAttribute('x2', points[i + 1].x.toString());
-                line.setAttribute('y2', points[i + 1].y.toString());
-                line.setAttribute('stroke', 'rgba(106, 106, 138, 0.12)');
-                line.setAttribute('stroke-width', '1');
-                line.setAttribute('stroke-dasharray', '4,8');
-                svg.appendChild(line);
-            }
-
-            /* dots at each point */
-            points.forEach((p) => {
-                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                circle.setAttribute('cx', p.x.toString());
-                circle.setAttribute('cy', p.y.toString());
-                circle.setAttribute('r', '2');
-                circle.setAttribute('fill', 'rgba(255, 215, 0, 0.3)');
-                svg.appendChild(circle);
-            });
-        }
-
-        /* Draw after intro finishes and content is visible */
-        const catalog = document.getElementById('catalog');
-        if (catalog) {
-            const mo = new MutationObserver(() => {
-                if (catalog.classList.contains('visible')) {
-                    setTimeout(drawLines, 300);
-                    mo.disconnect();
-                }
-            });
-            mo.observe(catalog, { attributes: true, attributeFilter: ['class'] });
-
-            /* Also draw if already visible */
-            if (catalog.classList.contains('visible')) {
-                setTimeout(drawLines, 300);
-            }
-        }
-
-        let resizeTimer: ReturnType<typeof setTimeout>;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(drawLines, 200);
-        });
-
-        window.addEventListener('scroll', () => {
-            /* Redraw on scroll since positions are absolute */
-        }, { passive: true });
     })();
 </script>

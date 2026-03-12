@@ -1,6 +1,5 @@
 ---
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, managementSkills, languages, industries, metrics } from "../data/resume";
 ---
 
 <!doctype html>
@@ -129,277 +128,35 @@ import { experience, education, certifications, skills, engagements, continuousL
 
     <!-- MAIN CONTENT -->
     <main class="logbook" id="logbook">
+        <div class="log-narrative">
+            <h1 class="log-title">CAPTAIN'S LOG — DANIELE D'AGNELLI</h1>
 
-        <!-- WANTED POSTER & CAPTAIN HEADER -->
-        <section class="section header-section" data-section="header">
-            <div class="wanted-poster">
-                <div class="wanted-label">WANTED</div>
-                <div class="wanted-frame">
-                    <img src="/assets/dani.jpeg" alt="Captain Daniele D'Agnelli" width="180" height="180" class="wanted-photo" />
-                </div>
-                <div class="wanted-name">{siteMetadata.name}</div>
-                <div class="wanted-alias">a.k.a. "The Digital Corsair"</div>
-                <div class="wanted-reward">Reward: 15 Years of Expertise</div>
-                <div class="wanted-ports">
-                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">Flag Signal</a>
-                    <span class="port-sep">&bull;</span>
-                    <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">Port Registry</a>
-                    <span class="port-sep">&bull;</span>
-                    <a href={`mailto:${siteMetadata.email}`}>Bottle Post</a>
-                </div>
+            <div class="log-entry">
+                <h2>PORT OF ORIGIN: BARI, ITALY</h2>
+                <p>set sail 2012. first commission as software engineer under the accenture fleet. three years learning the ropes. built the foundations of a technical arsenal.</p>
             </div>
-            <h1 class="logbook-title">
-                <span class="title-ornament" aria-hidden="true">&#x2693;</span>
-                The Logbook of Captain D'Agnelli
-                <span class="title-ornament" aria-hidden="true">&#x2693;</span>
-            </h1>
-            <p class="logbook-subtitle">Voyages & Conquests Across the Digital Seas</p>
-        </section>
 
-        <!-- SECTION DIVIDER -->
-        <div class="divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-icon">&#x2620;</span>
-            <span class="divider-line"></span>
-        </div>
-
-        <!-- CAPTAIN'S DECLARATION (summary) -->
-        <section class="section reveal" aria-label="Captain's Declaration" data-section="summary">
-            <h2 class="section-heading">Captain's Declaration</h2>
-            <div class="log-entry declaration">
-                <span class="drop-cap">{summary.charAt(0)}</span>
-                <p class="entry-text">{summary.slice(1)}</p>
+            <div class="log-entry">
+                <h2>DUBLIN HARBOUR, IRELAND (2015-2017)</h2>
+                <p>transferred to the codec vessel. senior consultant. new waters, new crew. the atlantic crossing that changed everything.</p>
             </div>
-        </section>
 
-        <div class="divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-icon">&#x2693;</span>
-            <span class="divider-line"></span>
-        </div>
-
-        <!-- VOYAGES & CAMPAIGNS (experience) -->
-        <section class="section reveal" aria-label="Voyages and Campaigns" data-section="experience">
-            <h2 class="section-heading">Voyages & Campaigns</h2>
-            <div class="voyage-timeline">
-                {experience.map((exp, i) => (
-                    <div class="voyage-entry reveal">
-                        <div class="voyage-marker" aria-hidden="true">
-                            <span class="marker-dot"></span>
-                            {i < experience.length - 1 && <span class="marker-line"></span>}
-                        </div>
-                        <div class="voyage-content">
-                            <div class="voyage-header">
-                                <span class="voyage-ship">{exp.company}</span>
-                                <span class="voyage-port">{exp.location}</span>
-                            </div>
-                            {exp.roles.map(role => (
-                                <div class="voyage-role">
-                                    <div class="role-row">
-                                        <span class="role-rank">{role.title}</span>
-                                        <span class="role-date">{role.period}</span>
-                                    </div>
-                                    {role.description && (
-                                        <p class="role-orders">{role.description}</p>
-                                    )}
-                                    {role.bullets && role.bullets.length > 0 && (
-                                        <ul class="role-conquests">
-                                            {role.bullets.map(b => <li>{b}</li>)}
-                                        </ul>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ))}
+            <div class="log-entry">
+                <h2>LONDON DOCKS, ENGLAND (2017-PRESENT)</h2>
+                <p>the crown port. accenture again, then deloitte — where we built an entire fleet from nothing. 25+ sailors recruited. now commanding the c3 ai flagship: $15m cargo, 70+ crew, operations across 100+ ports.</p>
             </div>
-        </section>
 
-        <div class="divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-icon">&#x2620;</span>
-            <span class="divider-line"></span>
-        </div>
-
-        <!-- ARSENAL & ABILITIES (skills) -->
-        <section class="section reveal" aria-label="Arsenal and Abilities" data-section="skills">
-            <h2 class="section-heading">Arsenal & Abilities</h2>
-            <div class="cargo-manifest">
-                <div class="cargo-header" aria-hidden="true">
-                    <span>CARGO MANIFEST</span>
-                    <span>HMS D'Agnelli</span>
-                </div>
-                <div class="cargo-grid">
-                    {skills.map((s, i) => (
-                        <div class="cargo-item" style={`--delay: ${i * 0.05}s`}>
-                            <span class="cargo-icon" aria-hidden="true">&#x2694;</span>
-                            <span class="cargo-name">{s}</span>
-                        </div>
-                    ))}
-                </div>
-                <div class="cargo-section">
-                    <span class="cargo-subtitle">Command & Navigation</span>
-                    <div class="cargo-grid">
-                        {managementSkills.map((s, i) => (
-                            <div class="cargo-item" style={`--delay: ${(skills.length + i) * 0.05}s`}>
-                                <span class="cargo-icon" aria-hidden="true">&#x2699;</span>
-                                <span class="cargo-name">{s}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div class="cargo-section">
-                    <span class="cargo-subtitle">Tongues Spoken</span>
-                    <div class="cargo-grid">
-                        {languages.map((l, i) => (
-                            <div class="cargo-item" style={`--delay: ${i * 0.05}s`}>
-                                <span class="cargo-icon" aria-hidden="true">&#x1F5E3;</span>
-                                <span class="cargo-name">{l}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+            <div class="log-details">
+                <p>LANGUAGES SPOKEN: italian (native tongue) · english (fluent, the king's own)</p>
+                <p>TREASURES CLAIMED: $18m ebit · nps >70 · 2,000+ souls served</p>
             </div>
-        </section>
 
-        <div class="divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-icon">&#x2693;</span>
-            <span class="divider-line"></span>
-        </div>
-
-        <!-- PLUNDER & CONQUESTS (engagements) -->
-        <section class="section reveal" aria-label="Plunder and Conquests" data-section="engagements">
-            <h2 class="section-heading">Plunder & Conquests</h2>
-            <div class="conquest-grid">
-                {engagements.map(eng => (
-                    <div class="conquest-card reveal">
-                        <div class="conquest-header">
-                            <span class="conquest-territory">{eng.client}</span>
-                            <span class={`conquest-trend ${eng.trend}`}>{eng.trend === 'positive' ? 'Treasure Seized' : 'Territory Mapped'}</span>
-                        </div>
-                        <div class="conquest-details">
-                            <div class="conquest-row">
-                                <span class="conquest-label">Waters:</span>
-                                <span class="conquest-value">{eng.sector}</span>
-                            </div>
-                            <div class="conquest-row">
-                                <span class="conquest-label">Fleet Size:</span>
-                                <span class="conquest-value">{eng.scope}</span>
-                            </div>
-                            <div class="conquest-row">
-                                <span class="conquest-label">Bounty:</span>
-                                <span class="conquest-value bounty">{eng.impact}</span>
-                            </div>
-                        </div>
-                    </div>
-                ))}
+            <div class="log-footer">
+                <a href="mailto:daniele@dagnelli.net">[send word]</a>
+                <a href="https://github.com/danieledagnelli">[github]</a>
+                <a href="https://linkedin.com/in/dagnelli">[linkedin]</a>
             </div>
-        </section>
-
-        <div class="divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-icon">&#x2620;</span>
-            <span class="divider-line"></span>
         </div>
-
-        <!-- NAVIGATION TRAINING (education) -->
-        <section class="section reveal" aria-label="Navigation Training" data-section="education">
-            <h2 class="section-heading">Navigation Training</h2>
-            {education.map(edu => (
-                <div class="training-entry reveal">
-                    <div class="training-crest" aria-hidden="true">&#x2388;</div>
-                    <div class="training-content">
-                        <div class="training-school">{edu.institution}</div>
-                        <div class="training-degree">{edu.degree}</div>
-                        <div class="training-meta">
-                            <span>{edu.period}</span>
-                            <span class="training-sep">&mdash;</span>
-                            <span>{edu.location}</span>
-                        </div>
-                        {edu.distinction && (
-                            <div class="training-distinction">
-                                <span class="distinction-seal" aria-hidden="true">&#x2605;</span>
-                                {edu.distinction}
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ))}
-        </section>
-
-        <div class="divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-icon">&#x2693;</span>
-            <span class="divider-line"></span>
-        </div>
-
-        <!-- LETTERS OF MARQUE (certifications) -->
-        <section class="section reveal" aria-label="Letters of Marque" data-section="certifications">
-            <h2 class="section-heading">Letters of Marque</h2>
-            <div class="marque-grid">
-                {certifications.map(c => (
-                    <div class="marque-card reveal">
-                        <div class="marque-seal" aria-hidden="true">&#x2756;</div>
-                        <div class="marque-text">{c}</div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-icon">&#x2620;</span>
-            <span class="divider-line"></span>
-        </div>
-
-        <!-- SAILOR'S STUDIES (continuousLearning) -->
-        <section class="section reveal" aria-label="Sailor's Studies" data-section="training">
-            <h2 class="section-heading">Sailor's Studies</h2>
-            <div class="studies-list">
-                {continuousLearning.map((item, i) => (
-                    <div class="study-entry reveal" style={`--delay: ${i * 0.08}s`}>
-                        <span class="study-bullet" aria-hidden="true">&#x2318;</span>
-                        <span class="study-text">{item}</span>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-icon">&#x2693;</span>
-            <span class="divider-line"></span>
-        </div>
-
-        <!-- SEAS CHARTED (industries) -->
-        <section class="section reveal" aria-label="Seas Charted" data-section="extra-1">
-            <h2 class="section-heading">Seas Charted</h2>
-            <div class="seas-grid">
-                {industries.map(ind => (
-                    <span class="sea-tag">{ind}</span>
-                ))}
-            </div>
-        </section>
-
-        <!-- END OF LOG -->
-        <div class="divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-icon">&#x2620;</span>
-            <span class="divider-line"></span>
-        </div>
-
-        <section class="section end-log" data-section="footer">
-            <p class="end-text">Here Ends the Log of Captain D'Agnelli</p>
-            <p class="end-subtext">May Fair Winds Follow Ye</p>
-            <div class="end-links">
-                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
-                <span class="port-sep">&bull;</span>
-                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
-                <span class="port-sep">&bull;</span>
-                <a href={`mailto:${siteMetadata.email}`}>{siteMetadata.email}</a>
-            </div>
-        </section>
     </main>
 </body>
 </html>
@@ -742,14 +499,17 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       MAIN LOGBOOK CONTENT
+       MAIN LOGBOOK CONTENT (viewport-locked)
        ========================================= */
     .logbook {
         position: relative;
         z-index: 4;
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 60px 32px 160px;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         opacity: 0;
         transition: opacity 0.6s ease 0.3s;
     }
@@ -757,662 +517,59 @@ import { experience, education, certifications, skills, engagements, continuousL
     .logbook.visible { opacity: 1; }
 
     /* =========================================
-       SECTIONS BASE
+       LOG NARRATIVE
        ========================================= */
-    .section { margin-bottom: 0; }
-
-    .section-heading {
-        font-family: var(--heading);
-        font-size: clamp(28px, 5vw, 42px);
-        color: var(--ink);
-        margin-bottom: 1.2rem;
-        position: relative;
-        display: inline-block;
-    }
-
-    .section-heading::after {
-        content: '';
-        display: block;
-        width: 60%;
-        height: 2px;
-        background: linear-gradient(90deg, var(--gold), transparent);
-        margin-top: 4px;
-    }
-
-    /* REVEAL ANIMATION */
-    .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* =========================================
-       DIVIDERS
-       ========================================= */
-    .divider {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin: 2.5rem 0;
-    }
-
-    .divider-line {
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--rope), transparent);
-        opacity: 0.4;
-    }
-
-    .divider-icon {
-        font-size: 18px;
-        color: var(--rope);
-        opacity: 0.5;
-        line-height: 1;
-    }
-
-    /* =========================================
-       WANTED POSTER & HEADER
-       ========================================= */
-    .header-section {
-        text-align: center;
-        padding-top: 1rem;
-    }
-
-    .wanted-poster {
-        display: inline-block;
-        background: var(--parchment-light);
-        border: 3px solid var(--rope);
-        padding: 1.5rem 2rem 1.2rem;
-        margin-bottom: 2rem;
-        position: relative;
-        box-shadow:
-            0 4px 20px rgba(44, 24, 16, 0.15),
-            inset 0 0 30px rgba(44, 24, 16, 0.04);
-        transform: rotate(-1deg);
-    }
-
-    .wanted-poster::before {
-        content: '';
-        position: absolute;
-        inset: 4px;
-        border: 1px solid var(--rope-light);
-        pointer-events: none;
-        opacity: 0.5;
-    }
-
-    .wanted-label {
-        font-family: var(--heading);
-        font-size: clamp(32px, 6vw, 48px);
-        color: var(--red);
-        letter-spacing: 6px;
-        line-height: 1;
-        margin-bottom: 0.8rem;
-        text-shadow: 1px 1px 0 rgba(139, 58, 58, 0.2);
-    }
-
-    .wanted-frame {
-        width: 180px;
-        height: 180px;
-        margin: 0 auto 0.8rem;
-        border: 3px solid var(--ink-light);
-        padding: 4px;
-        background: var(--parchment-dark);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .wanted-photo {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: sepia(40%) contrast(1.1) brightness(0.95);
-    }
-
-    .wanted-name {
-        font-family: var(--heading);
-        font-size: clamp(20px, 4vw, 28px);
-        color: var(--ink);
-        margin-bottom: 2px;
-    }
-
-    .wanted-alias {
-        font-family: var(--handwritten);
-        font-size: 18px;
-        color: var(--rope);
-        margin-bottom: 6px;
-    }
-
-    .wanted-reward {
-        font-family: var(--body);
-        font-size: 14px;
-        font-style: italic;
-        color: var(--red);
-        margin-bottom: 10px;
-        letter-spacing: 0.5px;
-    }
-
-    .wanted-ports {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        font-size: 14px;
-        flex-wrap: wrap;
-    }
-
-    .wanted-ports a {
-        min-height: 44px;
-        min-width: 44px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .port-sep {
-        color: var(--rope);
-        opacity: 0.4;
-    }
-
-    .logbook-title {
-        font-family: var(--heading);
-        font-size: clamp(28px, 5vw, 44px);
-        color: var(--ink);
-        line-height: 1.2;
-        margin-bottom: 0.5rem;
-    }
-
-    .title-ornament {
-        color: var(--gold);
-        font-size: 0.7em;
-        vertical-align: middle;
-        margin: 0 0.3em;
-    }
-
-    .logbook-subtitle {
-        font-family: var(--handwritten);
-        font-size: clamp(18px, 3vw, 24px);
-        color: var(--rope);
-    }
-
-    /* =========================================
-       CAPTAIN'S DECLARATION (summary)
-       ========================================= */
-    .declaration {
-        position: relative;
+    .log-narrative {
+        max-width: 600px;
         padding: 1.5rem;
-        border-left: 3px solid var(--gold);
-        background: linear-gradient(90deg, rgba(201, 168, 76, 0.06), transparent);
     }
 
-    .drop-cap {
-        float: left;
+    .log-title {
         font-family: var(--heading);
-        font-size: 4rem;
-        line-height: 0.8;
-        color: var(--red);
-        margin-right: 8px;
-        margin-top: 6px;
-    }
-
-    .entry-text {
-        font-size: 16px;
-        color: var(--ink-light);
-        text-align: justify;
-    }
-
-    /* =========================================
-       VOYAGES & CAMPAIGNS (experience)
-       ========================================= */
-    .voyage-timeline {
-        position: relative;
-        padding-left: 2rem;
-    }
-
-    .voyage-entry {
-        display: flex;
-        gap: 1.2rem;
-        margin-bottom: 2rem;
-        position: relative;
-    }
-
-    .voyage-entry:last-child { margin-bottom: 0; }
-
-    .voyage-marker {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-shrink: 0;
-        width: 20px;
-        position: relative;
-    }
-
-    .marker-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: 2px solid var(--gold);
-        background: var(--parchment);
-        z-index: 1;
-        flex-shrink: 0;
-        margin-top: 6px;
-    }
-
-    .marker-line {
-        width: 2px;
-        flex: 1;
-        background: repeating-linear-gradient(
-            180deg,
-            var(--rope) 0px,
-            var(--rope) 4px,
-            transparent 4px,
-            transparent 8px
-        );
-        opacity: 0.4;
-        margin-top: 4px;
-    }
-
-    .voyage-content {
-        flex: 1;
-        min-width: 0;
-    }
-
-    .voyage-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 0.5rem;
-    }
-
-    .voyage-ship {
-        font-family: var(--heading);
-        font-size: clamp(22px, 3.5vw, 28px);
-        color: var(--ink);
-    }
-
-    .voyage-port {
-        font-family: var(--handwritten);
-        font-size: 16px;
-        color: var(--rope);
-    }
-
-    .voyage-role { margin-bottom: 1rem; }
-    .voyage-role:last-child { margin-bottom: 0; }
-
-    .role-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 4px;
-    }
-
-    .role-rank {
-        font-weight: 600;
-        color: var(--ink-light);
-        font-size: 15px;
-    }
-
-    .role-date {
-        font-family: var(--handwritten);
-        font-size: 15px;
-        color: var(--rope);
-        white-space: nowrap;
-    }
-
-    .role-orders {
-        font-size: 15px;
-        color: var(--ink-light);
-        margin-bottom: 6px;
-        font-style: italic;
-    }
-
-    .role-conquests {
-        list-style: none;
-        padding: 0;
-    }
-
-    .role-conquests li {
-        font-size: 14px;
-        color: var(--ink-light);
-        padding: 3px 0 3px 20px;
-        position: relative;
-    }
-
-    .role-conquests li::before {
-        content: '\2694';
-        position: absolute;
-        left: 0;
-        color: var(--gold);
-        font-size: 12px;
-    }
-
-    /* =========================================
-       ARSENAL & ABILITIES (skills)
-       ========================================= */
-    .cargo-manifest {
-        border: 2px solid var(--rope);
-        border-radius: 4px;
-        overflow: hidden;
-        background: linear-gradient(
-            180deg,
-            rgba(242, 230, 206, 0.5),
-            rgba(232, 213, 176, 0.3)
-        );
-    }
-
-    .cargo-header {
-        display: flex;
-        justify-content: space-between;
-        padding: 0.8rem 1.2rem;
-        font-family: var(--heading);
-        font-size: 16px;
-        color: var(--ink);
-        border-bottom: 1px solid var(--rope-light);
-        background: rgba(160, 132, 92, 0.1);
-    }
-
-    .cargo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 0;
-        padding: 0.5rem;
-    }
-
-    .cargo-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 0.5rem 0.8rem;
-        font-size: 14px;
-        color: var(--ink-light);
-        border-bottom: 1px dotted rgba(160, 132, 92, 0.2);
-    }
-
-    .cargo-icon {
-        color: var(--gold);
-        font-size: 12px;
-        flex-shrink: 0;
-    }
-
-    .cargo-name { flex: 1; min-width: 0; }
-
-    .cargo-section {
-        border-top: 1px solid var(--rope-light);
-        padding-top: 0.3rem;
-    }
-
-    .cargo-subtitle {
-        display: block;
-        font-family: var(--handwritten);
-        font-size: 18px;
-        color: var(--rope);
-        padding: 0.5rem 1.2rem 0;
-    }
-
-    /* =========================================
-       PLUNDER & CONQUESTS (engagements)
-       ========================================= */
-    .conquest-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1rem;
-    }
-
-    .conquest-card {
-        border: 2px solid var(--rope);
-        border-radius: 4px;
-        padding: 1.2rem;
-        background: linear-gradient(
-            135deg,
-            rgba(242, 230, 206, 0.6),
-            rgba(232, 213, 176, 0.3)
-        );
-        position: relative;
-        overflow: hidden;
-    }
-
-    .conquest-card::before {
-        content: '';
-        position: absolute;
-        top: -20px;
-        right: -20px;
-        width: 60px;
-        height: 60px;
-        background: radial-gradient(circle, rgba(201, 168, 76, 0.15), transparent);
-        border-radius: 50%;
-        pointer-events: none;
-    }
-
-    .conquest-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0.8rem;
-        gap: 8px;
-        flex-wrap: wrap;
-    }
-
-    .conquest-territory {
-        font-family: var(--heading);
-        font-size: 20px;
-        color: var(--ink);
-        text-transform: capitalize;
-    }
-
-    .conquest-trend {
-        font-family: var(--handwritten);
-        font-size: 13px;
-        padding: 2px 8px;
-        border-radius: 3px;
-        white-space: nowrap;
-    }
-
-    .conquest-trend.positive {
-        color: var(--gold-dark);
-        background: rgba(201, 168, 76, 0.15);
-        border: 1px solid rgba(201, 168, 76, 0.3);
-    }
-
-    .conquest-trend.neutral {
-        color: var(--sea);
-        background: rgba(26, 74, 107, 0.08);
-        border: 1px solid rgba(26, 74, 107, 0.2);
-    }
-
-    .conquest-details { font-size: 14px; }
-
-    .conquest-row {
-        display: flex;
-        justify-content: space-between;
-        padding: 3px 0;
-        border-bottom: 1px dotted rgba(160, 132, 92, 0.2);
-    }
-
-    .conquest-row:last-child { border-bottom: none; }
-
-    .conquest-label { color: var(--rope); }
-    .conquest-value { color: var(--ink-light); font-weight: 600; }
-    .conquest-value.bounty { color: var(--gold-dark); }
-
-    /* =========================================
-       NAVIGATION TRAINING (education)
-       ========================================= */
-    .training-entry {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-        padding: 1.2rem;
-        border: 1px solid rgba(160, 132, 92, 0.3);
-        border-radius: 4px;
-        background: rgba(242, 230, 206, 0.3);
-    }
-
-    .training-entry:last-child { margin-bottom: 0; }
-
-    .training-crest {
-        font-size: 28px;
-        color: var(--gold);
-        flex-shrink: 0;
-        margin-top: 2px;
-    }
-
-    .training-content { flex: 1; min-width: 0; }
-
-    .training-school {
-        font-family: var(--heading);
-        font-size: 22px;
-        color: var(--ink);
-        margin-bottom: 2px;
-    }
-
-    .training-degree {
-        font-weight: 600;
-        color: var(--ink-light);
-        margin-bottom: 4px;
-    }
-
-    .training-meta {
-        font-size: 14px;
-        color: var(--rope);
-    }
-
-    .training-sep { margin: 0 4px; }
-
-    .training-distinction {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        margin-top: 6px;
-        font-family: var(--handwritten);
-        font-size: 16px;
-        color: var(--gold-dark);
-        font-weight: 700;
-    }
-
-    .distinction-seal {
-        color: var(--gold);
-        font-size: 14px;
-    }
-
-    /* =========================================
-       LETTERS OF MARQUE (certifications)
-       ========================================= */
-    .marque-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 0.8rem;
-    }
-
-    .marque-card {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 0.8rem 1rem;
-        border: 1px solid var(--rope-light);
-        border-radius: 4px;
-        background: rgba(242, 230, 206, 0.4);
-    }
-
-    .marque-seal {
-        color: var(--red);
-        font-size: 18px;
-        flex-shrink: 0;
-    }
-
-    .marque-text {
-        font-size: 14px;
-        color: var(--ink-light);
-    }
-
-    /* =========================================
-       SAILOR'S STUDIES (continuousLearning)
-       ========================================= */
-    .studies-list {
-        columns: 2;
-        column-gap: 2rem;
-    }
-
-    .study-entry {
-        display: flex;
-        align-items: baseline;
-        gap: 8px;
-        padding: 6px 0;
-        break-inside: avoid;
-        font-size: 15px;
-    }
-
-    .study-bullet {
-        color: var(--sea);
-        font-size: 12px;
-        flex-shrink: 0;
-    }
-
-    .study-text { color: var(--ink-light); }
-
-    /* =========================================
-       SEAS CHARTED (industries)
-       ========================================= */
-    .seas-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-    }
-
-    .sea-tag {
-        font-family: var(--handwritten);
-        font-size: 16px;
-        padding: 4px 14px;
-        border: 1px solid var(--sea);
-        border-radius: 20px;
-        color: var(--sea);
-        background: rgba(26, 74, 107, 0.05);
-        white-space: nowrap;
-    }
-
-    /* =========================================
-       END OF LOG
-       ========================================= */
-    .end-log {
+        font-size: 1.1rem;
         text-align: center;
-        padding: 2rem 0;
-    }
-
-    .end-text {
-        font-family: var(--heading);
-        font-size: clamp(22px, 4vw, 32px);
-        color: var(--ink);
-        margin-bottom: 0.3rem;
-    }
-
-    .end-subtext {
-        font-family: var(--handwritten);
-        font-size: 20px;
-        color: var(--rope);
-        font-style: italic;
         margin-bottom: 1rem;
+        color: var(--ink);
     }
 
-    .end-links {
+    .log-entry {
+        margin-bottom: 0.7rem;
+    }
+
+    .log-entry h2 {
+        font-family: var(--heading);
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.2rem;
+        color: var(--ink);
+    }
+
+    .log-entry p {
+        font-size: 0.78rem;
+        line-height: 1.5;
+        color: var(--ink-light);
+    }
+
+    .log-details {
+        font-size: 0.72rem;
+        opacity: 0.8;
+        margin: 0.8rem 0;
+        color: var(--ink-light);
+    }
+
+    .log-details p {
+        margin-bottom: 0.2rem;
+    }
+
+    .log-footer {
         display: flex;
+        gap: 1rem;
         justify-content: center;
-        align-items: center;
-        gap: 12px;
-        font-size: 14px;
-        flex-wrap: wrap;
+        margin-top: 1rem;
     }
 
-    .end-links a {
-        min-height: 44px;
-        display: inline-flex;
-        align-items: center;
+    .log-footer a {
+        text-decoration: none;
     }
 
     /* =========================================
@@ -1438,8 +595,6 @@ import { experience, education, certifications, skills, engagements, continuousL
     @media (max-width: 768px) {
         body { font-size: 16px; }
 
-        .logbook { padding: 40px 20px 140px; }
-
         .compass-ambient {
             width: 80px;
             height: 80px;
@@ -1455,32 +610,8 @@ import { experience, education, certifications, skills, engagements, continuousL
         .parchment-burn-left,
         .parchment-burn-right { width: 30px; }
 
-        .wanted-poster {
-            padding: 1.2rem 1.5rem 1rem;
-            transform: rotate(0deg);
-        }
-
-        .wanted-frame {
-            width: 150px;
-            height: 150px;
-        }
-
-        .voyage-timeline { padding-left: 1rem; }
-
-        .cargo-grid {
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        }
-
-        .conquest-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .studies-list {
-            columns: 1;
-        }
-
-        .marque-grid {
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        .log-entry p {
+            font-size: 0.72rem;
         }
     }
 
@@ -1490,51 +621,11 @@ import { experience, education, certifications, skills, engagements, continuousL
     @media (max-width: 480px) {
         body { font-size: 15px; }
 
-        .logbook { padding: 30px 16px 130px; }
-
         .compass-ambient { display: none; }
 
         .skull-watermark { width: 160px; height: 184px; }
 
         .intro-scroll { padding: 2rem 1.5rem; }
-
-        .wanted-poster { padding: 1rem 1.2rem 0.8rem; }
-
-        .wanted-frame {
-            width: 120px;
-            height: 120px;
-        }
-
-        .wanted-label { letter-spacing: 3px; }
-
-        .drop-cap { font-size: 3rem; }
-
-        .voyage-entry { gap: 0.8rem; }
-        .voyage-timeline { padding-left: 0.5rem; }
-        .voyage-marker { width: 16px; }
-
-        .cargo-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .cargo-header {
-            flex-direction: column;
-            gap: 2px;
-            text-align: center;
-        }
-
-        .training-entry {
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .training-crest { font-size: 22px; }
-
-        .marque-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .divider { margin: 1.8rem 0; }
 
         .ocean { height: 80px; }
     }
@@ -1544,23 +635,6 @@ import { experience, education, certifications, skills, engagements, continuousL
        ========================================= */
     @media (max-width: 380px) {
         body { font-size: 14px; }
-
-        .logbook { padding: 24px 12px 120px; }
-
-        .wanted-frame {
-            width: 100px;
-            height: 100px;
-        }
-
-        .voyage-header { flex-direction: column; gap: 2px; }
-        .role-row { flex-direction: column; gap: 2px; }
-
-        .conquest-header { flex-direction: column; align-items: flex-start; }
-
-        .seas-grid { gap: 0.4rem; }
-        .sea-tag { font-size: 14px; padding: 3px 10px; }
-
-        .drop-cap { font-size: 2.5rem; }
 
         .ocean { height: 60px; }
     }
@@ -1606,7 +680,6 @@ import { experience, education, certifications, skills, engagements, continuousL
                 if (intro) { intro.style.display = 'none'; intro.classList.add('done'); }
                 if (logbook) { logbook.style.opacity = '1'; logbook.classList.add('visible'); }
                 dismissed = true;
-                initReveal();
                 return;
             }
         } catch (e) { /* noop */ }
@@ -1654,40 +727,6 @@ import { experience, education, certifications, skills, engagements, continuousL
         function cleanup() {
             document.removeEventListener('keydown', skipHandler);
             if (intro) intro.removeEventListener('click', skipHandler);
-        }
-
-        // After content shown, init reveals
-        const origShowContent = showContent;
-
-        function initReveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            if (!reveals.length) return;
-
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('in-view');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                },
-                { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-            );
-
-            reveals.forEach((el) => observer.observe(el));
-        }
-
-        // Observe for content visibility
-        const contentObserver = new MutationObserver(() => {
-            if (logbook && logbook.classList.contains('visible')) {
-                initReveal();
-                contentObserver.disconnect();
-            }
-        });
-
-        if (logbook) {
-            contentObserver.observe(logbook, { attributes: true, attributeFilter: ['class'] });
         }
     })();
 </script>

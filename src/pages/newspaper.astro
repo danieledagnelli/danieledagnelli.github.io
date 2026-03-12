@@ -1,6 +1,6 @@
 ---
+import Main from "../layouts/Main.astro";
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, metrics, industries, managementSkills, languages } from "../data/resume";
 
 const today = new Date();
 const dateStr = today.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -105,243 +105,19 @@ const issueNo = Math.floor((today.getTime() - new Date('1920-01-01').getTime()) 
             <div class="masthead-bottom-rule"></div>
         </header>
 
-        <!-- EXTRA BANNER -->
-        <div class="extra-banner reveal">
-            <span class="extra-text">&#9733; EXTRA! EXTRA! &#9733;</span>
+        <!-- FRONT PAGE NARRATIVE -->
+        <div class="front-page">
+            <h1 class="headline">LOCAL MAN DEPLOYS AI ACROSS 100+ MANUFACTURING PLANTS, NOBODY STOPS HIM</h1>
+            <div class="front-page-body">
+                <p>LONDON — In what sources describe as "an unusually productive career," Daniele D'Agnelli, Senior Engagement Manager at C3 AI, has been directing a $15M programme across all business units, managing over 70 resources, and somehow maintaining an NPS above 70.</p>
+                <p>The CEO-sponsored initiative — a predictive maintenance rollout across 100+ plants serving 2,000+ end users — has generated an estimated $18M in EBIT impact, according to internal figures obtained by this publication.</p>
+                <p>"He also deployed a GenAI RAG system across the enterprise knowledge base," said a source close to the programme, speaking on condition of anonymity because they were not authorized to be impressed.</p>
+                <p>Previously at Deloitte, D'Agnelli grew the UK Anaplan practice from zero to 25+ practitioners. Before that: Accenture, Codec, Accenture again. The man has range.</p>
+            </div>
+            <div class="classifieds-strip">
+                CLASSIFIEDS: <a href="mailto:daniele@dagnelli.net">daniele@dagnelli.net</a> | <a href="https://github.com/danieledagnelli">github</a> | <a href="https://linkedin.com/in/dagnelli">linkedin</a>
+            </div>
         </div>
-
-        <!-- LEAD STORY -->
-        <section class="lead-story reveal" data-section="summary">
-            <div class="lead-columns">
-                <div class="lead-main">
-                    <h2 class="headline">Senior Engagement Manager Commands $15M Programme, Delivers $18M Impact</h2>
-                    <div class="byline">By Our Special Correspondent &mdash; {siteMetadata.location}</div>
-                    <div class="rule-thin"></div>
-                    <div class="article-body">
-                        <p class="drop-cap">{summary}</p>
-                    </div>
-                    <div class="metrics-box">
-                        <div class="metrics-title">By The Numbers</div>
-                        <div class="metrics-grid">
-                            {metrics.map(m => (
-                                <div class="metric-item">
-                                    <span class="metric-value">{m.value}</span>
-                                    <span class="metric-label">{m.label}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div class="lead-sidebar">
-                    <div class="portrait-frame">
-                        <img src="/assets/dani.jpeg" alt={`Portrait of ${siteMetadata.name}`} width="220" height="220" class="portrait-img" />
-                        <div class="portrait-caption">{siteMetadata.name}, Esq.<br/>Pictured at his {siteMetadata.location} offices</div>
-                    </div>
-                    <div class="sidebar-box">
-                        <div class="sidebar-title">Correspondent Details</div>
-                        <div class="sidebar-items">
-                            <div class="sidebar-item">
-                                <span class="sidebar-label">Telegram:</span>
-                                <a href={`mailto:${siteMetadata.email}`}>{siteMetadata.email}</a>
-                            </div>
-                            <div class="sidebar-item">
-                                <span class="sidebar-label">Registry:</span>
-                                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
-                            </div>
-                            <div class="sidebar-item">
-                                <span class="sidebar-label">Society:</span>
-                                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
-                            </div>
-                            <div class="sidebar-item">
-                                <span class="sidebar-label">Wire:</span>
-                                <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener">Bluesky</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sidebar-box">
-                        <div class="sidebar-title">Languages Spoken</div>
-                        <div class="sidebar-items">
-                            {languages.map(l => (
-                                <div class="sidebar-item">{l}</div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-rule" aria-hidden="true">
-            <span class="rule-ornament">&#9830;</span>
-        </div>
-
-        <!-- CAREER CHRONICLE -->
-        <section class="career-section reveal" data-section="experience">
-            <h2 class="section-heading">The Career Chronicle</h2>
-            <div class="section-subhead">A Complete Account of Professional Endeavours, Herein Faithfully Recorded</div>
-            <div class="news-columns">
-                {experience.map((exp, i) => (
-                    <article class="news-article reveal">
-                        <h3 class="article-headline">{exp.company} Appoints {exp.roles[0].title}</h3>
-                        <div class="dateline">{exp.location} &mdash; {exp.roles[0].period}</div>
-                        <div class="article-body">
-                            {exp.roles.map(role => (
-                                <div class="role-block">
-                                    {role.description && <p class="drop-cap-small">{role.description}</p>}
-                                    {role.bullets && role.bullets.length > 0 && (
-                                        <ul class="article-list">
-                                            {role.bullets.map(b => <li>{b}</li>)}
-                                        </ul>
-                                    )}
-                                    {!role.description && (!role.bullets || role.bullets.length === 0) && (
-                                        <p>Served with distinction in the role of {role.title}, contributing to the firm's enterprise endeavours from {exp.location}.</p>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </article>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-rule" aria-hidden="true">
-            <span class="rule-ornament">&#9830;</span>
-        </div>
-
-        <!-- CLASSIFIEDS: SKILLS -->
-        <section class="classifieds-section reveal" data-section="skills">
-            <h2 class="section-heading">Classified Advertisements</h2>
-            <div class="section-subhead">Professional Capabilities &amp; Technical Proficiencies Available for Engagement</div>
-            <div class="classifieds-columns">
-                <div class="classified-group">
-                    <div class="classified-header">&#9998; Technical Skills</div>
-                    <div class="classified-border">
-                        <div class="classified-items">
-                            {skills.map(s => (
-                                <span class="classified-tag">{s}</span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div class="classified-group">
-                    <div class="classified-header">&#9881; Management &amp; Leadership</div>
-                    <div class="classified-border">
-                        <div class="classified-items">
-                            {managementSkills.map(s => (
-                                <span class="classified-tag">{s}</span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div class="classified-group">
-                    <div class="classified-header">&#9878; Industries Served</div>
-                    <div class="classified-border">
-                        <div class="classified-items">
-                            {industries.map(ind => (
-                                <span class="classified-tag">{ind}</span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-rule" aria-hidden="true">
-            <span class="rule-ornament">&#9830;</span>
-        </div>
-
-        <!-- BUSINESS SECTION: ENGAGEMENTS -->
-        <section class="business-section reveal" data-section="engagements">
-            <h2 class="section-heading">The Business Section</h2>
-            <div class="section-subhead">Notable Client Engagements &amp; Commercial Dispatches</div>
-            <div class="business-columns">
-                {engagements.map(eng => (
-                    <div class="business-card reveal">
-                        <div class="business-headline">{eng.client.charAt(0).toUpperCase() + eng.client.slice(1)}</div>
-                        <div class="business-sector">{eng.sector.toUpperCase()}</div>
-                        <div class="business-rule"></div>
-                        <div class="business-detail">
-                            <span class="business-label">Scope:</span> {eng.scope}
-                        </div>
-                        <div class="business-detail">
-                            <span class="business-label">Impact:</span>
-                            <span class={eng.trend === 'positive' ? 'impact-positive' : 'impact-neutral'}>{eng.impact}</span>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="section-rule" aria-hidden="true">
-            <span class="rule-ornament">&#9830;</span>
-        </div>
-
-        <!-- ANNOUNCEMENTS: EDUCATION & CERTS -->
-        <section class="announcements-section reveal" data-section="education">
-            <h2 class="section-heading">Public Announcements</h2>
-            <div class="section-subhead">Degrees Conferred, Certifications Awarded &amp; Scholarly Pursuits</div>
-            <div class="announcements-columns">
-                <div class="announcement-group">
-                    <div class="announcement-header">&#127891; Academic Degrees</div>
-                    {education.map(edu => (
-                        <div class="announcement-card reveal">
-                            <div class="announcement-degree">{edu.degree}</div>
-                            <div class="announcement-inst">{edu.institution}, {edu.location}</div>
-                            <div class="announcement-period">{edu.period}</div>
-                            {edu.distinction && <div class="announcement-distinction">Awarded with {edu.distinction}</div>}
-                        </div>
-                    ))}
-                </div>
-                <div class="announcement-group">
-                    <div class="announcement-header">&#128220; Certifications &amp; Honours</div>
-                    {certifications.map(c => (
-                        <div class="announcement-item">{c}</div>
-                    ))}
-                </div>
-                <div class="announcement-group">
-                    <div class="announcement-header">&#128214; Continuous Learning</div>
-                    {continuousLearning.map(l => (
-                        <div class="announcement-item">{l}</div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="section-rule" aria-hidden="true">
-            <span class="rule-ornament">&#9830;</span>
-        </div>
-
-        <!-- FOOTER / BACK PAGE -->
-        <footer class="paper-footer">
-            <div class="footer-rule"></div>
-            <div class="footer-content">
-                <div class="footer-col">
-                    <span class="footer-label">Published by</span>
-                    <span class="footer-value">{siteMetadata.name}</span>
-                </div>
-                <div class="footer-col">
-                    <span class="footer-label">Offices at</span>
-                    <span class="footer-value">{siteMetadata.location}</span>
-                </div>
-                <div class="footer-col">
-                    <span class="footer-label">Telegraphic Address</span>
-                    <a href={`mailto:${siteMetadata.email}`} class="footer-value">{siteMetadata.email}</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>&copy; {today.getFullYear()} The D'Agnelli Chronicle. All Rights Reserved.</span>
-                <span class="footer-ornament" aria-hidden="true">&#10045; &#10045; &#10045;</span>
-                <span class="footer-links">
-                    <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">GitHub</a>
-                    <span class="footer-dot">&bull;</span>
-                    <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">LinkedIn</a>
-                    <span class="footer-dot">&bull;</span>
-                    <a href={`https://bsky.app/profile/${siteMetadata.bsky_handle}`} target="_blank" rel="noopener">Bluesky</a>
-                </span>
-            </div>
-            <div class="footer-fine-print">
-                Printed on the finest digital parchment. No trees were harmed in the production of this broadsheet.
-            </div>
-        </footer>
 
     </main>
 </body>
@@ -363,8 +139,6 @@ const issueNo = Math.floor((today.getTime() - new Date('1920-01-01').getTime()) 
         --headline-font: 'Playfair Display', Georgia, 'Times New Roman', serif;
         --body-font: 'Lora', Georgia, 'Times New Roman', serif;
         --masthead-font: 'UnifrakturMaguntia', 'Playfair Display', Georgia, serif;
-        scrollbar-width: thin;
-        scrollbar-color: var(--faded-ink) var(--newsprint);
     }
 
     body {
@@ -373,8 +147,8 @@ const issueNo = Math.floor((today.getTime() - new Date('1920-01-01').getTime()) 
         font-family: var(--body-font);
         font-size: 15px;
         line-height: 1.7;
-        overflow-x: hidden;
-        min-height: 100vh;
+        overflow: hidden;
+        height: 100dvh;
     }
 
     a { color: var(--accent); text-decoration: none; }
@@ -487,12 +261,17 @@ const issueNo = Math.floor((today.getTime() - new Date('1920-01-01').getTime()) 
     }
 
     /* =========================================
-       MAIN BROADSHEET
+       MAIN BROADSHEET — VIEWPORT-LOCKED
        ========================================= */
     .broadsheet {
         max-width: 960px;
         margin: 0 auto;
-        padding: 20px 30px 60px;
+        padding: 20px 30px;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         opacity: 0;
         transition: opacity 0.6s ease 0.2s;
     }
@@ -504,7 +283,8 @@ const issueNo = Math.floor((today.getTime() - new Date('1920-01-01').getTime()) 
        ========================================= */
     .masthead {
         text-align: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
+        flex-shrink: 0;
     }
 
     .masthead-top-rule,
@@ -578,576 +358,58 @@ const issueNo = Math.floor((today.getTime() - new Date('1920-01-01').getTime()) 
     }
 
     /* =========================================
-       EXTRA BANNER
+       FRONT PAGE NARRATIVE
        ========================================= */
-    .extra-banner {
-        text-align: center;
-        padding: 0.5rem 0;
-        margin-bottom: 1.5rem;
-        border-top: 2px solid var(--ink);
-        border-bottom: 2px solid var(--ink);
-        background: var(--ink);
-    }
-
-    .extra-text {
-        font-family: var(--headline-font);
-        font-size: 1.3rem;
-        font-weight: 900;
-        color: var(--newsprint);
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-    }
-
-    /* =========================================
-       SECTION HEADINGS & RULES
-       ========================================= */
-    .section-heading {
-        font-family: var(--headline-font);
-        font-size: 2rem;
-        font-weight: 900;
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--ink);
-        margin-bottom: 0.3rem;
-    }
-
-    .section-subhead {
-        font-family: var(--body-font);
-        font-style: italic;
-        font-size: 0.85rem;
-        text-align: center;
-        color: var(--faded-ink);
-        margin-bottom: 1.2rem;
-    }
-
-    .section-rule {
-        text-align: center;
-        margin: 2rem 0;
-        border-top: 1px solid var(--rule-color);
-        position: relative;
-    }
-
-    .rule-ornament {
-        position: relative;
-        top: -0.6em;
-        background: var(--newsprint);
-        padding: 0 1rem;
-        color: var(--rule-color);
-        font-size: 0.9rem;
-    }
-
-    .rule-thin {
-        height: 1px;
-        background: var(--rule-color);
-        margin: 0.6rem 0;
-    }
-
-    /* =========================================
-       LEAD STORY
-       ========================================= */
-    .lead-story {
-        margin-bottom: 1rem;
-    }
-
-    .lead-columns {
-        display: grid;
-        grid-template-columns: 1fr 280px;
-        gap: 1.5rem;
+    .front-page {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 0;
     }
 
     .headline {
         font-family: var(--headline-font);
-        font-size: 2.2rem;
+        font-size: 1.1rem;
         font-weight: 900;
-        line-height: 1.15;
+        line-height: 1.3;
         color: var(--ink);
-        margin-bottom: 0.5rem;
+        text-align: center;
+        margin-bottom: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
     }
 
-    .byline {
+    .front-page-body {
         font-family: var(--body-font);
-        font-style: italic;
-        font-size: 0.8rem;
-        color: var(--faded-ink);
-        margin-bottom: 0.5rem;
-    }
-
-    .dateline {
-        font-family: var(--body-font);
-        font-style: italic;
-        font-size: 0.75rem;
-        color: var(--faded-ink);
-        margin-bottom: 0.5rem;
-    }
-
-    .article-body {
-        font-family: var(--body-font);
-        font-size: 0.95rem;
-        line-height: 1.7;
         color: var(--faded-ink);
         text-align: justify;
         hyphens: auto;
     }
 
-    .drop-cap::first-letter {
-        float: left;
-        font-family: var(--headline-font);
-        font-size: 4rem;
-        font-weight: 900;
-        line-height: 0.8;
-        padding: 0.05em 0.1em 0 0;
-        color: var(--ink);
-    }
-
-    .drop-cap-small::first-letter {
-        float: left;
-        font-family: var(--headline-font);
-        font-size: 2.5rem;
-        font-weight: 900;
-        line-height: 0.85;
-        padding: 0.05em 0.08em 0 0;
-        color: var(--ink);
-    }
-
-    /* =========================================
-       METRICS BOX
-       ========================================= */
-    .metrics-box {
-        margin-top: 1.2rem;
-        border: 2px solid var(--ink);
-        padding: 0.8rem;
-    }
-
-    .metrics-title {
-        font-family: var(--headline-font);
-        font-size: 0.85rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        text-align: center;
-        margin-bottom: 0.6rem;
-        color: var(--ink);
-    }
-
-    .metrics-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.6rem;
-        text-align: center;
-    }
-
-    .metric-item {
-        display: flex;
-        flex-direction: column;
-        border-right: 1px solid var(--rule-color);
-        padding: 0.2rem 0.4rem;
-    }
-
-    .metric-item:nth-child(3n) { border-right: none; }
-
-    .metric-value {
-        font-family: var(--headline-font);
-        font-size: 1.3rem;
-        font-weight: 900;
-        color: var(--ink);
-    }
-
-    .metric-label {
-        font-family: var(--body-font);
-        font-size: 0.65rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--faded-ink);
-    }
-
-    /* =========================================
-       PORTRAIT / SIDEBAR
-       ========================================= */
-    .portrait-frame {
-        border: 3px solid var(--ink);
-        padding: 6px;
-        background: var(--aged-paper);
-        margin-bottom: 1rem;
-    }
-
-    .portrait-img {
-        width: 100%;
-        height: auto;
-        display: block;
-        filter: sepia(40%) contrast(1.1) brightness(0.95);
-    }
-
-    .portrait-caption {
-        font-family: var(--body-font);
-        font-style: italic;
-        font-size: 0.7rem;
-        text-align: center;
-        color: var(--faded-ink);
-        padding-top: 0.4rem;
-        border-top: 1px solid var(--rule-color);
-        margin-top: 0.4rem;
-        line-height: 1.4;
-    }
-
-    .sidebar-box {
-        border: 1px solid var(--rule-color);
-        padding: 0.7rem;
-        margin-bottom: 0.8rem;
-        background: linear-gradient(to bottom, var(--aged-paper), var(--newsprint));
-    }
-
-    .sidebar-title {
-        font-family: var(--headline-font);
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        text-align: center;
-        border-bottom: 1px solid var(--rule-color);
-        padding-bottom: 0.3rem;
-        margin-bottom: 0.5rem;
-        color: var(--ink);
-    }
-
-    .sidebar-items {
-        font-size: 0.8rem;
-    }
-
-    .sidebar-item {
-        padding: 0.15rem 0;
-        line-height: 1.4;
-    }
-
-    .sidebar-label {
-        font-weight: 700;
-        color: var(--ink);
-    }
-
-    /* =========================================
-       CAREER / NEWS COLUMNS
-       ========================================= */
-    .news-columns {
-        column-count: 2;
-        column-gap: 2rem;
-        column-rule: 1px solid var(--rule-color);
-    }
-
-    .news-article {
-        break-inside: avoid;
-        margin-bottom: 1.5rem;
-        border-bottom: 1px dashed var(--rule-color);
-        padding-bottom: 1rem;
-    }
-
-    .article-headline {
-        font-family: var(--headline-font);
-        font-size: 1.2rem;
-        font-weight: 700;
-        line-height: 1.25;
-        color: var(--ink);
-        margin-bottom: 0.3rem;
-    }
-
-    .article-list {
-        list-style: none;
-        padding: 0;
-        margin: 0.5rem 0;
-    }
-
-    .article-list li {
-        position: relative;
-        padding-left: 1.2em;
-        margin-bottom: 0.3rem;
-        font-size: 0.85rem;
+    .front-page-body p {
+        font-size: 0.82rem;
         line-height: 1.5;
-    }
-
-    .article-list li::before {
-        content: "\25AA";
-        position: absolute;
-        left: 0;
-        color: var(--ink);
-    }
-
-    .role-block {
         margin-bottom: 0.5rem;
     }
 
-    /* =========================================
-       CLASSIFIEDS
-       ========================================= */
-    .classifieds-columns {
-        column-count: 3;
-        column-gap: 1.5rem;
-        column-rule: 1px solid var(--rule-color);
+    .front-page-body p:last-child {
+        margin-bottom: 0;
     }
 
-    .classified-group {
-        break-inside: avoid;
-        margin-bottom: 1.2rem;
-    }
-
-    .classified-header {
-        font-family: var(--headline-font);
-        font-size: 0.9rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        text-align: center;
-        color: var(--ink);
-        margin-bottom: 0.5rem;
-        border-bottom: 1px solid var(--rule-color);
-        padding-bottom: 0.3rem;
-    }
-
-    .classified-border {
-        border: 1px solid var(--ink);
-        padding: 0.6rem;
-        background: linear-gradient(135deg, var(--newsprint), var(--aged-paper));
-    }
-
-    .classified-items {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.3rem;
-        justify-content: center;
-    }
-
-    .classified-tag {
-        font-family: var(--body-font);
-        font-size: 0.75rem;
-        padding: 0.15rem 0.5rem;
-        border: 1px solid var(--faded-ink);
-        background: var(--newsprint);
-        color: var(--faded-ink);
-        display: inline-block;
-    }
-
-    /* =========================================
-       BUSINESS SECTION
-       ========================================= */
-    .business-columns {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-    }
-
-    .business-card {
-        border: 1px solid var(--ink);
-        padding: 0.8rem;
-        background: linear-gradient(to bottom, var(--newsprint), var(--aged-paper));
-    }
-
-    .business-headline {
-        font-family: var(--headline-font);
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--ink);
-        text-transform: capitalize;
-    }
-
-    .business-sector {
-        font-family: var(--body-font);
-        font-size: 0.65rem;
-        letter-spacing: 0.15em;
-        color: var(--faded-ink);
-        margin-bottom: 0.3rem;
-    }
-
-    .business-rule {
-        height: 1px;
-        background: var(--rule-color);
-        margin: 0.4rem 0;
-    }
-
-    .business-detail {
-        font-size: 0.8rem;
-        margin-bottom: 0.15rem;
-    }
-
-    .business-label {
-        font-weight: 700;
-        color: var(--ink);
-    }
-
-    .impact-positive { color: #2d5016; font-weight: 700; }
-    .impact-neutral { color: var(--faded-ink); }
-
-    /* =========================================
-       ANNOUNCEMENTS
-       ========================================= */
-    .announcements-columns {
-        column-count: 3;
-        column-gap: 1.5rem;
-        column-rule: 1px solid var(--rule-color);
-    }
-
-    .announcement-group {
-        break-inside: avoid;
-        margin-bottom: 1.2rem;
-    }
-
-    .announcement-header {
-        font-family: var(--headline-font);
-        font-size: 0.9rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        text-align: center;
-        color: var(--ink);
-        margin-bottom: 0.6rem;
-        border-bottom: 2px solid var(--ink);
-        padding-bottom: 0.3rem;
-    }
-
-    .announcement-card {
-        border: 1px solid var(--rule-color);
-        padding: 0.6rem;
-        margin-bottom: 0.6rem;
-        background: var(--aged-paper);
-        text-align: center;
-    }
-
-    .announcement-degree {
-        font-family: var(--headline-font);
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: var(--ink);
-        line-height: 1.3;
-    }
-
-    .announcement-inst {
-        font-family: var(--body-font);
-        font-size: 0.8rem;
-        color: var(--faded-ink);
-    }
-
-    .announcement-period {
+    .classifieds-strip {
         font-family: var(--body-font);
         font-size: 0.7rem;
-        font-style: italic;
-        color: var(--rule-color);
-    }
-
-    .announcement-distinction {
-        font-family: var(--headline-font);
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: var(--accent);
-        margin-top: 0.2rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-    }
-
-    .announcement-item {
-        font-family: var(--body-font);
-        font-size: 0.8rem;
-        padding: 0.25rem 0;
-        border-bottom: 1px dotted var(--rule-color);
-        color: var(--faded-ink);
-    }
-
-    .announcement-item:last-child {
-        border-bottom: none;
-    }
-
-    /* =========================================
-       FOOTER
-       ========================================= */
-    .paper-footer {
-        margin-top: 2rem;
         text-align: center;
-    }
-
-    .footer-rule {
-        height: 4px;
-        background: var(--ink);
-        margin-bottom: 1rem;
-    }
-
-    .footer-content {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .footer-col {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-label {
-        font-family: var(--body-font);
-        font-size: 0.65rem;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: var(--rule-color);
-    }
-
-    .footer-value {
-        font-family: var(--headline-font);
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: var(--ink);
-    }
-
-    a.footer-value { color: var(--accent); }
-
-    .footer-bottom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.4rem;
-        font-size: 0.75rem;
-        color: var(--faded-ink);
-        padding-top: 0.5rem;
-        border-top: 1px solid var(--rule-color);
-    }
-
-    .footer-ornament {
-        color: var(--rule-color);
-        letter-spacing: 0.3em;
-        font-size: 0.7rem;
-    }
-
-    .footer-links {
-        display: flex;
-        gap: 0.3rem;
-        align-items: center;
-    }
-
-    .footer-links a {
-        color: var(--accent);
-        font-size: 0.75rem;
-    }
-
-    .footer-dot { color: var(--rule-color); }
-
-    .footer-fine-print {
-        font-family: var(--body-font);
-        font-style: italic;
-        font-size: 0.65rem;
-        color: var(--rule-color);
         margin-top: 0.8rem;
-        padding-bottom: 1rem;
+        opacity: 0.7;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        flex-shrink: 0;
     }
 
-    /* =========================================
-       SCROLL REVEAL
-       ========================================= */
-    .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
+    .classifieds-strip a {
+        color: var(--accent);
     }
 
     /* =========================================
@@ -1155,52 +417,26 @@ const issueNo = Math.floor((today.getTime() - new Date('1920-01-01').getTime()) 
        ========================================= */
     @media (max-width: 768px) {
         .broadsheet {
-            padding: 12px 14px 40px;
+            padding: 12px 14px;
         }
 
         .masthead-title {
             font-size: 2.4rem;
         }
 
-        .lead-columns {
-            grid-template-columns: 1fr;
-        }
-
-        .lead-sidebar {
-            order: -1;
-        }
-
-        .portrait-frame {
-            max-width: 200px;
-            margin: 0 auto 1rem;
-        }
-
         .headline {
-            font-size: 1.6rem;
+            font-size: 1rem;
         }
 
-        .news-columns {
-            column-count: 1;
+        .front-page-body p {
+            font-size: 0.78rem;
+            line-height: 1.45;
+            margin-bottom: 0.4rem;
         }
 
-        .classifieds-columns {
-            column-count: 1;
+        .classifieds-strip {
+            font-size: 0.65rem;
         }
-
-        .announcements-columns {
-            column-count: 1;
-        }
-
-        .business-columns {
-            grid-template-columns: 1fr;
-        }
-
-        .metrics-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .metric-item:nth-child(3n) { border-right: 1px solid var(--rule-color); }
-        .metric-item:nth-child(2n) { border-right: none; }
 
         .spin-headline {
             font-size: 2rem;
@@ -1208,20 +444,6 @@ const issueNo = Math.floor((today.getTime() - new Date('1920-01-01').getTime()) 
 
         .spin-story {
             font-size: 1rem;
-        }
-
-        .section-heading {
-            font-size: 1.5rem;
-        }
-
-        .extra-text {
-            font-size: 1rem;
-            letter-spacing: 0.15em;
-        }
-
-        .footer-content {
-            flex-direction: column;
-            align-items: center;
         }
 
         .masthead-meta-row {
@@ -1236,11 +458,12 @@ const issueNo = Math.floor((today.getTime() - new Date('1920-01-01').getTime()) 
         }
 
         .headline {
-            font-size: 1.3rem;
+            font-size: 0.9rem;
         }
 
-        .drop-cap::first-letter {
-            font-size: 2.8rem;
+        .front-page-body p {
+            font-size: 0.74rem;
+            line-height: 1.4;
         }
 
         .spin-headline {
@@ -1249,29 +472,6 @@ const issueNo = Math.floor((today.getTime() - new Date('1920-01-01').getTime()) 
 
         .spinning-paper {
             padding: 1rem 1.5rem;
-        }
-
-        .metrics-grid {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .section-heading {
-            font-size: 1.2rem;
-        }
-    }
-
-    @media (min-width: 769px) and (max-width: 1024px) {
-        .news-columns {
-            column-count: 2;
-            column-gap: 1.5rem;
-        }
-
-        .classifieds-columns {
-            column-count: 2;
-        }
-
-        .announcements-columns {
-            column-count: 2;
         }
     }
 </style>
@@ -1311,24 +511,6 @@ const issueNo = Math.floor((today.getTime() - new Date('1920-01-01').getTime()) 
             };
             document.addEventListener('click', skipHandler);
             document.addEventListener('keydown', skipHandler);
-        }
-
-        /* IntersectionObserver scroll reveal */
-        const revealEls = document.querySelectorAll('.reveal');
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-            revealEls.forEach(el => observer.observe(el));
-        } else {
-            /* Fallback: show all immediately */
-            revealEls.forEach(el => el.classList.add('visible'));
         }
     });
 </script>

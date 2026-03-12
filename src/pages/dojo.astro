@@ -1,6 +1,6 @@
 ---
+import Main from "../layouts/Main.astro";
 import { siteMetadata } from "../siteMetadata";
-import { experience, education, certifications, skills, engagements, continuousLearning, summary, metrics, industries, managementSkills, languages } from "../data/resume";
 ---
 
 <!doctype html>
@@ -75,216 +75,36 @@ import { experience, education, certifications, skills, engagements, continuousL
 
     <!-- MAIN CONTENT -->
     <main class="scroll-body" id="scrollBody">
+        <div class="dojo-narrative">
+            <h1 class="scroll-title">THE WAY OF CONTINUOUS MASTERY</h1>
+            <div class="scroll-meta">master: daniele d'agnelli | years of practice: 15 | rank: senior</div>
 
-        <!-- SCROLL HEADER WITH SEAL -->
-        <section class="section scroll-header" data-section="header">
-            <div class="enso-circle" aria-hidden="true"></div>
-            <div class="header-content">
-                <h1 class="master-name">{siteMetadata.name}</h1>
-                <div class="master-title">師範 Shihan — Master of Digital Arts</div>
-                <div class="seal-stamp" aria-hidden="true">
-                    <span class="seal-text">印</span>
-                </div>
+            <div class="path-section">
+                <h2>THE PATH</h2>
+                <p>a true master never stops training. the journey began at the university of bari — bsc computer science. the foundation. the first kata. years of practice followed, through four dojos across three countries.</p>
+                <p>then, at the height of professional rank, the master returned to study. msc ethical hacking & cybersecurity at abertay university. gchq-certified. graduated with distinction. not because the career required it — because the discipline demanded it.</p>
             </div>
-            <div class="header-meta">
-                <span class="meta-item">道場 {siteMetadata.location}</span>
-                <span class="meta-separator">|</span>
-                <span class="meta-item">修行 15+ Years</span>
-            </div>
-            <div class="header-links">
-                <a href={`https://github.com/${siteMetadata.github_handle}`} target="_blank" rel="noopener">[ GitHub ]</a>
-                <a href={`https://www.linkedin.com/in/${siteMetadata.linkedin_handle}`} target="_blank" rel="noopener">[ LinkedIn ]</a>
-                <a href={`mailto:${siteMetadata.email}`}>[ 書簡 Letter ]</a>
-            </div>
-        </section>
 
-        <div class="brush-divider" aria-hidden="true"><span></span></div>
+            <div class="techniques-section">
+                <h2>TECHNIQUES ACQUIRED</h2>
+                <div class="technique">prince2 practitioner — the way of the programme</div>
+                <div class="technique">stanford machine learning — the art of prediction</div>
+                <div class="technique">deeplearning.ai — the neural path</div>
+                <div class="technique">deep reinforcement learning — the adaptive strike</div>
+                <div class="technique">imperial college mathematics for ml — the foundations of power</div>
+                <div class="technique">probabilistic graphical models (with honors) — the pattern sight</div>
+                <div class="technique">hack the box — the proving ground</div>
+                <div class="technique">claude code / ai engineering — the emerging form</div>
+            </div>
 
-        <!-- MASTER'S PORTRAIT -->
-        <section class="section reveal" data-section="summary">
-            <div class="section-header">
-                <span class="section-kanji">肖像</span>
-                <h2 class="section-title">Master's Portrait</h2>
-            </div>
-            <div class="portrait-grid">
-                <div class="portrait-frame">
-                    <img src="/assets/dani.jpeg" alt="Daniele D'Agnelli" width="180" height="180" />
-                    <div class="portrait-seal" aria-hidden="true">真</div>
-                </div>
-                <div class="portrait-text">
-                    <p class="scroll-text">{summary}</p>
-                    <div class="metric-stones">
-                        {metrics.map(m => (
-                            <div class="metric-stone">
-                                <span class="stone-value">{m.value}</span>
-                                <span class="stone-label">{m.label}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
+            <div class="teaching">"the master is not the one who knows the most techniques. the master is the one who never stops learning new ones."</div>
 
-        <div class="brush-divider" aria-hidden="true"><span></span></div>
-
-        <!-- TRAINING ARCS (Experience) -->
-        <section class="section reveal" data-section="experience">
-            <div class="section-header">
-                <span class="section-kanji">修行</span>
-                <h2 class="section-title">Training Arcs</h2>
+            <div class="dojo-footer">
+                <a href="mailto:daniele@dagnelli.net">[dojo]</a>
+                <a href="https://github.com/danieledagnelli">[scroll]</a>
+                <a href="https://linkedin.com/in/dagnelli">[linkedin]</a>
             </div>
-            {experience.map((exp, i) => (
-                <div class="training-arc reveal">
-                    <div class="arc-header">
-                        <div class="arc-dojo">
-                            <span class="dojo-name">{exp.company}</span>
-                            <span class="dojo-location">{exp.location}</span>
-                        </div>
-                        <div class="arc-rank">修行 Arc {experience.length - i}</div>
-                    </div>
-                    {exp.roles.map(role => (
-                        <div class="arc-role">
-                            <div class="role-header">
-                                <span class="role-title">{role.title}</span>
-                                <span class="role-era">{role.period}</span>
-                            </div>
-                            {role.description && <p class="role-teaching">{role.description}</p>}
-                            {role.bullets && role.bullets.length > 0 && (
-                                <ul class="role-victories">
-                                    {role.bullets.map(b => <li><span class="victory-mark">⊕</span> {b}</li>)}
-                                </ul>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            ))}
-        </section>
-
-        <div class="brush-divider" aria-hidden="true"><span></span></div>
-
-        <!-- TECHNIQUES MASTERED (Skills) -->
-        <section class="section reveal" data-section="skills">
-            <div class="section-header">
-                <span class="section-kanji">技</span>
-                <h2 class="section-title">Techniques Mastered</h2>
-            </div>
-            <div class="technique-group">
-                <h3 class="technique-category">Technical Arts</h3>
-                <div class="technique-grid">
-                    {skills.map((s, i) => (
-                        <span class="technique" style={`--i:${i}`}>{s}</span>
-                    ))}
-                </div>
-            </div>
-            <div class="technique-group">
-                <h3 class="technique-category">Leadership Arts</h3>
-                <div class="technique-grid">
-                    {managementSkills.map((s, i) => (
-                        <span class="technique management" style={`--i:${i}`}>{s}</span>
-                    ))}
-                </div>
-            </div>
-            <div class="technique-group">
-                <h3 class="technique-category">Domains of Battle</h3>
-                <div class="technique-grid">
-                    {industries.map((s, i) => (
-                        <span class="technique domain" style={`--i:${i}`}>{s}</span>
-                    ))}
-                </div>
-            </div>
-            <div class="technique-group">
-                <h3 class="technique-category">Spoken Tongues</h3>
-                <div class="technique-grid">
-                    {languages.map((l, i) => (
-                        <span class="technique language" style={`--i:${i}`}>{l}</span>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="brush-divider" aria-hidden="true"><span></span></div>
-
-        <!-- TOURNAMENT RECORD (Engagements) -->
-        <section class="section reveal" data-section="engagements">
-            <div class="section-header">
-                <span class="section-kanji">戦</span>
-                <h2 class="section-title">Tournament Record</h2>
-            </div>
-            <div class="tournament-grid">
-                {engagements.map(eng => (
-                    <div class="tournament-card reveal">
-                        <div class="tournament-top">
-                            <span class="tournament-opponent">{eng.client}</span>
-                            <span class={`tournament-result ${eng.trend}`}>
-                                {eng.trend === 'positive' ? '勝 Victory' : '決 Decisive'}
-                            </span>
-                        </div>
-                        <div class="tournament-details">
-                            <span class="tournament-arena">{eng.sector}</span>
-                            <span class="tournament-scope">{eng.scope}</span>
-                        </div>
-                        <div class="tournament-impact">{eng.impact}</div>
-                    </div>
-                ))}
-            </div>
-        </section>
-
-        <div class="brush-divider" aria-hidden="true"><span></span></div>
-
-        <!-- BELT RANKS & LINEAGE (Education / Certs) -->
-        <section class="section reveal" data-section="education">
-            <div class="section-header">
-                <span class="section-kanji">段</span>
-                <h2 class="section-title">Belt Ranks & Lineage</h2>
-            </div>
-            <div class="ranks-container">
-                <div class="rank-group">
-                    <h3 class="rank-category">Formal Training</h3>
-                    {education.map(edu => (
-                        <div class="rank-item">
-                            <div class="rank-belt" aria-hidden="true"></div>
-                            <div class="rank-info">
-                                <span class="rank-degree">{edu.degree}</span>
-                                <span class="rank-school">{edu.institution} — {edu.location}</span>
-                                <span class="rank-period">{edu.period}</span>
-                                {edu.distinction && <span class="rank-distinction">{edu.distinction}</span>}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                <div class="rank-group">
-                    <h3 class="rank-category">Certifications & Seals</h3>
-                    {certifications.map(c => (
-                        <div class="rank-item cert">
-                            <div class="cert-seal" aria-hidden="true">認</div>
-                            <span class="rank-degree">{c}</span>
-                        </div>
-                    ))}
-                </div>
-                <div class="rank-group">
-                    <h3 class="rank-category">Continuous Training</h3>
-                    {continuousLearning.map(l => (
-                        <div class="rank-item training">
-                            <span class="training-mark" aria-hidden="true">修</span>
-                            <span class="rank-degree">{l}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <div class="brush-divider" aria-hidden="true"><span></span></div>
-
-        <!-- WAY OF THE WARRIOR FOOTER -->
-        <section class="section footer-section" data-section="footer">
-            <div class="enso-footer" aria-hidden="true"></div>
-            <p class="footer-quote">"The way is in training."</p>
-            <p class="footer-attribution">— Miyamoto Musashi, The Book of Five Rings</p>
-            <div class="footer-seal" aria-hidden="true">
-                <span class="seal-text">道</span>
-            </div>
-            <p class="footer-end">End of Scroll</p>
-        </section>
+        </div>
     </main>
 </body>
 </html>
@@ -479,12 +299,15 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       MAIN SCROLL BODY
+       MAIN SCROLL BODY — VIEWPORT LOCKED
        ========================================= */
     .scroll-body {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 40px 32px 100px;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         opacity: 0;
         transition: opacity 0.6s ease 0.2s;
         position: relative;
@@ -492,658 +315,84 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
     .scroll-body.visible { opacity: 1; }
 
-    /* Rolled edge effect */
-    .scroll-body::before,
-    .scroll-body::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 20px;
-        pointer-events: none;
-        z-index: 3;
-    }
-    .scroll-body::before {
-        left: 0;
-        background: linear-gradient(90deg, rgba(200,170,110,0.15), transparent);
-    }
-    .scroll-body::after {
-        right: 0;
-        background: linear-gradient(270deg, rgba(200,170,110,0.15), transparent);
-    }
-
     /* =========================================
-       SECTIONS
+       DOJO NARRATIVE
        ========================================= */
-    .section { margin-bottom: 0; }
-
-    .section-header {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 20px;
+    .dojo-narrative {
+        max-width: 600px;
+        padding: 1.5rem;
     }
 
-    .section-kanji {
-        font-family: var(--serif);
-        font-size: 36px;
-        font-weight: 900;
-        color: var(--vermillion);
-        line-height: 1;
-        opacity: 0.8;
-    }
-
-    .section-title {
-        font-family: var(--brush);
-        font-size: 26px;
-        color: var(--ink);
-        letter-spacing: 1px;
-    }
-
-    /* REVEAL ANIMATION */
-    .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* BRUSH STROKE DIVIDER */
-    .brush-divider {
-        margin: 2.5rem 0;
+    .scroll-title {
+        font-size: 1.1rem;
         text-align: center;
-        position: relative;
-        height: 20px;
-    }
-    .brush-divider::before {
-        content: '';
-        position: absolute;
-        left: 10%;
-        right: 10%;
-        top: 50%;
-        height: 3px;
-        background: linear-gradient(
-            90deg,
-            transparent 0%,
-            var(--ink) 15%,
-            var(--ink) 40%,
-            var(--vermillion) 50%,
-            var(--ink) 60%,
-            var(--ink) 85%,
-            transparent 100%
-        );
-        opacity: 0.15;
-        border-radius: 2px;
-    }
-    .brush-divider span::before {
-        content: '☯';
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 16px;
-        color: var(--gold);
-        background: var(--cream);
-        padding: 0 12px;
-        opacity: 0.6;
-    }
-
-    /* =========================================
-       ENSO CIRCLE
-       ========================================= */
-    .enso-circle {
-        position: absolute;
-        top: -20px;
-        right: -20px;
-        width: 120px;
-        height: 120px;
-        border: 4px solid var(--ink);
-        border-radius: 50%;
-        opacity: 0.04;
-        border-top-color: transparent;
-        border-left-width: 6px;
-        transform: rotate(-30deg);
-    }
-
-    /* =========================================
-       SCROLL HEADER
-       ========================================= */
-    .scroll-header {
-        text-align: center;
-        position: relative;
-        padding-top: 20px;
-    }
-
-    .master-name {
+        margin-bottom: 0.2rem;
         font-family: var(--serif);
-        font-size: clamp(32px, 6vw, 56px);
-        font-weight: 900;
         color: var(--ink);
-        line-height: 1.1;
-        margin-bottom: 8px;
-        letter-spacing: 2px;
+        letter-spacing: 0.1em;
     }
 
-    .master-title {
-        font-family: var(--body);
-        font-size: 15px;
-        color: var(--vermillion);
-        font-weight: 300;
-        letter-spacing: 2px;
-        margin-bottom: 16px;
-    }
-
-    .seal-stamp {
-        display: inline-block;
-        width: 60px;
-        height: 60px;
-        border: 3px solid var(--vermillion);
-        border-radius: 6px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 12px auto;
-        transform: rotate(8deg);
+    .scroll-meta {
+        font-size: 0.7rem;
+        text-align: center;
         opacity: 0.7;
-        position: relative;
-    }
-    .seal-stamp .seal-text {
-        font-family: var(--serif);
-        font-size: 32px;
-        font-weight: 900;
-        color: var(--vermillion);
-    }
-    .seal-stamp::after {
-        content: '';
-        position: absolute;
-        inset: -2px;
-        border: 1px solid var(--vermillion);
-        border-radius: 8px;
-        opacity: 0.3;
-    }
-
-    .header-meta {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        font-size: 13px;
-        color: var(--ink-light);
-        margin-bottom: 12px;
-    }
-    .meta-separator { color: var(--gold); opacity: 0.5; }
-    .meta-item { letter-spacing: 0.5px; }
-
-    .header-links {
-        display: flex;
-        justify-content: center;
-        gap: 18px;
-        font-size: 13px;
-        font-family: var(--body);
-    }
-
-    /* =========================================
-       MASTER'S PORTRAIT
-       ========================================= */
-    .portrait-grid {
-        display: flex;
-        gap: 28px;
-        align-items: flex-start;
-    }
-
-    .portrait-frame {
-        flex-shrink: 0;
-        position: relative;
-        width: 180px;
-    }
-    .portrait-frame img {
-        width: 180px;
-        height: 180px;
-        object-fit: cover;
-        filter: sepia(0.3) contrast(1.1) brightness(0.95);
-        display: block;
-        border: 2px solid var(--gold);
-        border-radius: 2px;
-    }
-    .portrait-seal {
-        position: absolute;
-        bottom: -8px;
-        right: -8px;
-        width: 36px;
-        height: 36px;
-        background: var(--vermillion);
-        color: var(--cream);
-        font-family: var(--serif);
-        font-size: 20px;
-        font-weight: 900;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transform: rotate(-15deg);
-        box-shadow: 0 2px 8px rgba(204,51,51,0.3);
-    }
-
-    .portrait-text {
-        flex: 1;
-    }
-
-    .scroll-text {
-        font-size: 14px;
-        line-height: 1.8;
-        color: var(--ink-light);
-        margin-bottom: 20px;
-    }
-
-    .metric-stones {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-    }
-
-    .metric-stone {
-        text-align: center;
-        padding: 10px 6px;
-        background: rgba(201,168,76,0.08);
-        border: 1px solid rgba(201,168,76,0.2);
-        border-radius: 2px;
-    }
-    .stone-value {
-        display: block;
-        font-family: var(--serif);
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--vermillion);
-    }
-    .stone-label {
-        display: block;
-        font-size: 10px;
-        color: var(--ink-light);
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        margin-top: 2px;
-    }
-
-    /* =========================================
-       TRAINING ARCS (Experience)
-       ========================================= */
-    .training-arc {
-        border-left: 3px solid var(--gold);
-        padding-left: 20px;
-        margin-bottom: 24px;
-        position: relative;
-    }
-    .training-arc::before {
-        content: '';
-        position: absolute;
-        left: -7px;
-        top: 6px;
-        width: 11px;
-        height: 11px;
-        background: var(--vermillion);
-        border-radius: 50%;
-        border: 2px solid var(--cream);
-    }
-
-    .arc-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 6px;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .dojo-name {
-        font-family: var(--serif);
-        font-weight: 700;
-        font-size: 18px;
-        color: var(--ink);
-        display: block;
-    }
-    .dojo-location {
-        font-size: 12px;
-        color: var(--bamboo);
-        display: block;
-    }
-    .arc-rank {
-        font-size: 11px;
-        color: var(--gold);
-        font-family: var(--body);
-        letter-spacing: 0.5px;
-        padding: 2px 8px;
-        border: 1px solid var(--gold);
-        border-radius: 2px;
-        white-space: nowrap;
-    }
-
-    .arc-role { margin-bottom: 10px; }
-    .role-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .role-title {
-        font-family: var(--body);
-        font-weight: 600;
-        font-size: 14px;
-        color: var(--ink);
-    }
-    .role-era {
-        font-size: 12px;
-        color: var(--gold);
-        font-style: italic;
-    }
-    .role-teaching {
-        font-size: 13px;
-        color: var(--ink-light);
-        margin-top: 4px;
-        line-height: 1.7;
-    }
-    .role-victories {
-        list-style: none;
-        margin-top: 6px;
-    }
-    .role-victories li {
-        font-size: 12.5px;
-        color: var(--ink-light);
-        line-height: 1.8;
-        padding-left: 4px;
-    }
-    .victory-mark {
-        color: var(--vermillion);
-        font-size: 11px;
-        margin-right: 4px;
-    }
-
-    /* =========================================
-       TECHNIQUES MASTERED (Skills)
-       ========================================= */
-    .technique-group {
-        margin-bottom: 18px;
-    }
-    .technique-category {
-        font-family: var(--body);
-        font-size: 12px;
-        font-weight: 600;
-        color: var(--gold);
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin-bottom: 8px;
-    }
-    .technique-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .technique {
-        font-size: 12px;
-        padding: 5px 14px;
-        border: 1px solid rgba(26,26,26,0.15);
-        color: var(--ink);
-        background: rgba(244,232,200,0.5);
-        border-radius: 2px;
-        position: relative;
-        overflow: hidden;
-        transition: border-color 0.2s, background 0.2s, transform 0.2s;
-    }
-    .technique:hover {
-        border-color: var(--vermillion);
-        background: rgba(204,51,51,0.05);
-        transform: translateY(-1px);
-    }
-    .technique::after {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(201,168,76,0.1), transparent);
-        animation: techniqueSweep 5s ease-in-out infinite;
-        animation-delay: calc(var(--i) * 0.2s);
-    }
-    .technique.management {
-        border-color: rgba(74,124,89,0.2);
-    }
-    .technique.management:hover {
-        border-color: var(--bamboo);
-        background: rgba(74,124,89,0.05);
-    }
-    .technique.domain {
-        border-color: rgba(201,168,76,0.25);
-    }
-    .technique.domain:hover {
-        border-color: var(--gold);
-        background: rgba(201,168,76,0.08);
-    }
-    .technique.language {
-        border-color: rgba(45,24,16,0.15);
-        font-style: italic;
-    }
-
-    @keyframes techniqueSweep {
-        0%, 100% { left: -100%; }
-        50% { left: 100%; }
-    }
-
-    /* =========================================
-       TOURNAMENT RECORD (Engagements)
-       ========================================= */
-    .tournament-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    .tournament-card {
-        border: 1px solid rgba(201,168,76,0.2);
-        padding: 14px 18px;
-        background: rgba(244,232,200,0.3);
-        border-radius: 2px;
-        transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .tournament-card:hover {
-        border-color: var(--gold);
-        box-shadow: 0 2px 12px rgba(201,168,76,0.1);
-    }
-    .tournament-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 4px;
-    }
-    .tournament-opponent {
-        font-family: var(--serif);
-        font-weight: 700;
-        font-size: 14px;
-        color: var(--ink);
-        text-transform: capitalize;
-    }
-    .tournament-result {
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        padding: 2px 8px;
-        border-radius: 2px;
-    }
-    .tournament-result.positive {
-        color: var(--vermillion);
-        background: rgba(204,51,51,0.08);
-        border: 1px solid rgba(204,51,51,0.2);
-    }
-    .tournament-result.neutral {
-        color: var(--bamboo);
-        background: rgba(74,124,89,0.06);
-        border: 1px solid rgba(74,124,89,0.15);
-    }
-    .tournament-details {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 4px;
-    }
-    .tournament-arena {
-        font-size: 11px;
-        color: var(--gold);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    .tournament-scope {
-        font-size: 12px;
-        color: var(--ink-light);
-    }
-    .tournament-impact {
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--vermillion);
-    }
-
-    /* =========================================
-       BELT RANKS & LINEAGE
-       ========================================= */
-    .ranks-container {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-    }
-    .rank-category {
-        font-family: var(--body);
-        font-size: 12px;
-        font-weight: 600;
-        color: var(--gold);
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin-bottom: 10px;
-        padding-bottom: 4px;
-        border-bottom: 1px solid rgba(201,168,76,0.2);
-    }
-    .rank-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        margin-bottom: 10px;
-    }
-    .rank-belt {
-        width: 8px;
-        height: 8px;
-        background: var(--ink);
-        border-radius: 50%;
-        margin-top: 6px;
-        flex-shrink: 0;
-        border: 2px solid var(--gold);
-    }
-    .rank-info {
-        display: flex;
-        flex-direction: column;
-    }
-    .rank-degree {
-        font-size: 14px;
-        color: var(--ink);
-        font-weight: 600;
-    }
-    .rank-school {
-        font-size: 12px;
-        color: var(--ink-light);
-    }
-    .rank-period {
-        font-size: 11px;
-        color: var(--gold);
-        font-style: italic;
-    }
-    .rank-distinction {
-        font-size: 11px;
-        color: var(--vermillion);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .rank-item.cert {
-        align-items: center;
-    }
-    .cert-seal {
-        width: 28px;
-        height: 28px;
-        background: rgba(204,51,51,0.08);
-        border: 1px solid var(--vermillion);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--serif);
-        font-size: 14px;
-        color: var(--vermillion);
-        flex-shrink: 0;
-        transform: rotate(5deg);
-    }
-
-    .rank-item.training {
-        align-items: center;
-    }
-    .training-mark {
-        font-family: var(--serif);
-        font-size: 16px;
-        color: var(--bamboo);
-        flex-shrink: 0;
-        width: 28px;
-        text-align: center;
-    }
-
-    /* =========================================
-       FOOTER
-       ========================================= */
-    .footer-section {
-        text-align: center;
-        padding: 3rem 0 1rem;
-    }
-    .enso-footer {
-        width: 80px;
-        height: 80px;
-        border: 3px solid var(--ink);
-        border-radius: 50%;
-        margin: 0 auto 1.5rem;
-        opacity: 0.08;
-        border-top-color: transparent;
-        border-right-width: 5px;
-        transform: rotate(15deg);
-    }
-    .footer-quote {
-        font-family: var(--serif);
-        font-size: 18px;
-        font-style: italic;
-        color: var(--ink);
-        margin-bottom: 4px;
-    }
-    .footer-attribution {
-        font-size: 12px;
-        color: var(--ink-light);
-        margin-bottom: 1.5rem;
-    }
-    .footer-seal {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        border: 2px solid var(--vermillion);
-        border-radius: 4px;
         margin-bottom: 1rem;
-        transform: rotate(-5deg);
-        opacity: 0.5;
+        font-family: var(--body);
+        color: var(--ink-light);
+        letter-spacing: 0.05em;
     }
-    .footer-seal .seal-text {
-        font-family: var(--serif);
-        font-size: 24px;
-        font-weight: 900;
+
+    .path-section h2,
+    .techniques-section h2 {
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.3rem;
+        font-family: var(--brush);
         color: var(--vermillion);
     }
-    .footer-end {
-        font-size: 12px;
-        color: var(--gold);
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0.6;
+
+    .path-section p {
+        font-size: 0.78rem;
+        line-height: 1.5;
+        margin-bottom: 0.4rem;
+        color: var(--ink-light);
+    }
+
+    .techniques-section {
+        margin: 0.6rem 0;
+    }
+
+    .technique {
+        font-size: 0.72rem;
+        line-height: 1.6;
+        color: var(--ink);
+    }
+
+    .teaching {
+        font-size: 0.75rem;
+        font-style: italic;
+        text-align: center;
+        opacity: 0.8;
+        margin: 0.8rem 0;
+        font-family: var(--serif);
+        color: var(--ink);
+    }
+
+    .dojo-footer {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 0.8rem;
+    }
+
+    .dojo-footer a {
+        text-decoration: none;
+        font-size: 0.75rem;
+        color: var(--vermillion);
+        font-family: var(--body);
+    }
+    .dojo-footer a:hover {
+        color: var(--wood);
     }
 
     /* =========================================
@@ -1155,139 +404,26 @@ import { experience, education, certifications, skills, engagements, continuousL
     }
 
     /* =========================================
-       RESPONSIVE — TABLET (601-1024px)
+       RESPONSIVE — MOBILE
        ========================================= */
-    @media (max-width: 1024px) {
-        body { font-size: 14px; }
-        .scroll-body { max-width: 700px; padding: 36px 24px 80px; }
-        .master-name { font-size: clamp(28px, 5vw, 44px); }
-        .portrait-frame { width: 150px; }
-        .portrait-frame img { width: 150px; height: 150px; }
-        .metric-stones { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .stone-value { font-size: 16px; }
-        .technique { font-size: 11.5px; padding: 4px 12px; }
-        .brush-divider { margin: 2rem 0; }
-        .bamboo-left, .bamboo-right { width: 30px; opacity: 0.08; }
-    }
-
-    /* =========================================
-       RESPONSIVE — SMALL TABLET / LARGE PHONE (481-600px)
-       ========================================= */
-    @media (max-width: 600px) {
-        body { font-size: 13px; }
-        .scroll-body { padding: 32px 16px 60px; }
-        .bamboo-left, .bamboo-right { display: none; }
-
-        /* Header */
-        .master-name { font-size: 28px; }
-        .master-title { font-size: 13px; letter-spacing: 1px; }
-        .seal-stamp { width: 48px; height: 48px; }
-        .seal-stamp .seal-text { font-size: 26px; }
-        .header-meta { flex-direction: column; gap: 4px; font-size: 12px; }
-        .meta-separator { display: none; }
-        .header-links { gap: 12px; font-size: 12px; flex-wrap: wrap; }
-
-        /* Section headers */
-        .section-header { gap: 10px; margin-bottom: 16px; }
-        .section-kanji { font-size: 28px; }
-        .section-title { font-size: 20px; }
-
-        /* Portrait: stack vertically */
-        .portrait-grid {
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-        .portrait-frame { width: 120px; }
-        .portrait-frame img { width: 120px; height: 120px; }
-        .portrait-seal { width: 28px; height: 28px; font-size: 16px; bottom: -6px; right: -6px; }
-
-        /* Metrics */
-        .metric-stones { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-        .stone-value { font-size: 15px; }
-        .stone-label { font-size: 9px; }
-        .metric-stone { padding: 8px 4px; }
-
-        /* Training arcs */
-        .arc-header { flex-direction: column; gap: 4px; }
-        .dojo-name { font-size: 16px; }
-        .dojo-location { font-size: 11px; }
-        .arc-rank { font-size: 10px; align-self: flex-start; }
-        .role-header { flex-direction: column; gap: 2px; }
-        .role-title { font-size: 13px; }
-        .role-era { font-size: 11px; }
-        .role-teaching { font-size: 12px; }
-        .role-victories li { font-size: 11.5px; }
-        .training-arc { padding-left: 14px; margin-bottom: 18px; }
-
-        /* Techniques */
-        .technique-grid { gap: 5px; }
-        .technique { font-size: 11px; padding: 4px 10px; }
-        .technique-category { font-size: 11px; }
-
-        /* Tournament */
-        .tournament-card { padding: 10px 12px; }
-        .tournament-opponent { font-size: 13px; }
-        .tournament-result { font-size: 10px; }
-        .tournament-arena { font-size: 10px; }
-        .tournament-scope { font-size: 11px; }
-        .tournament-impact { font-size: 12px; }
-        .tournament-top { flex-wrap: wrap; gap: 4px; }
-
-        /* Ranks */
-        .rank-degree { font-size: 13px; }
-        .rank-school { font-size: 11px; }
-        .rank-period { font-size: 10px; }
-
-        /* Body text */
-        .scroll-text { font-size: 13px; }
-
-        /* Dividers */
-        .brush-divider { margin: 1.5rem 0; }
-
-        /* Footer */
-        .footer-quote { font-size: 16px; }
-        .footer-section { padding: 2rem 0 1rem; }
-
-        /* Enso */
-        .enso-circle { width: 80px; height: 80px; }
-    }
-
-    /* =========================================
-       RESPONSIVE — SMALL PHONE (<=380px)
-       ========================================= */
-    @media (max-width: 380px) {
-        body { font-size: 12px; }
-        .scroll-body { padding: 24px 10px 50px; }
-        .master-name { font-size: 22px; letter-spacing: 1px; }
-        .portrait-frame { width: 100px; }
-        .portrait-frame img { width: 100px; height: 100px; }
-        .metric-stones { grid-template-columns: repeat(2, 1fr); }
-        .stone-value { font-size: 14px; }
-        .technique { font-size: 10px; padding: 3px 8px; }
-        .header-links { gap: 8px; font-size: 11px; }
-        .section-kanji { font-size: 24px; }
-        .section-title { font-size: 18px; }
-        .scroll-unroll { width: 260px; }
-        .brush-kanji { font-size: 48px; }
-        .brush-name { font-size: 14px; }
-    }
-
-    /* =========================================
-       TOUCH: larger tap targets on mobile
-       ========================================= */
-    @media (hover: none) and (pointer: coarse) {
-        .header-links a {
-            padding: 6px 4px;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
+    @media (max-width: 768px) {
+        .path-section p {
+            font-size: 0.72rem;
         }
         .technique {
-            padding: 8px 14px;
-            min-height: 36px;
-            display: inline-flex;
-            align-items: center;
+            font-size: 0.68rem;
+        }
+        .bamboo-left, .bamboo-right {
+            display: none;
+        }
+        .scroll-unroll {
+            width: 260px;
+        }
+        .brush-kanji {
+            font-size: 48px;
+        }
+        .brush-name {
+            font-size: 14px;
         }
     }
 </style>
@@ -1335,21 +471,7 @@ import { experience, education, certifications, skills, engagements, continuousL
     runIntro();
 
     /* =============================================
-       SCROLL REVEAL (Intersection Observer)
-       ============================================= */
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    revealEls.forEach(el => observer.observe(el));
-
-    /* =============================================
-       INK WASH: subtle parallax on scroll
+       INK WASH: subtle parallax ambient effect
        ============================================= */
     let ticking = false;
     window.addEventListener('scroll', () => {
