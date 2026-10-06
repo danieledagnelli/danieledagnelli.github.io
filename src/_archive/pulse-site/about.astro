@@ -1,0 +1,25 @@
+---
+import { signals } from '../data/signals';
+import { siteMetadata } from '../siteMetadata';
+import '../styles/pulse.css';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="The person behind the pulse. Get to know Daniele D’Agnelli." />
+    <title>The person behind the pulse — Daniele D’Agnelli</title>
+    <link rel="canonical" href={`${siteMetadata.website}/about/`} />
+    <link rel="icon" type="image/svg+xml" href="/pulse.svg" />
+  </head>
+  <body class="reading-page">
+    <header class="site-header"><a class="wordmark" href="/">daniele d’agnelli</a><span class="version">v.02</span></header>
+    <main class="reading-main">
+      <div class="reading-intro"><p class="eyebrow">the person behind the pulse</p><h1>Ciao. I’m Daniele.</h1><p>Six little pieces of the picture, at your own pace.</p><a href="/">follow the pulse instead ↗</a></div>
+      {signals.map((signal, index) => <article id={signal.id}><p class="eyebrow">{String(index + 1).padStart(2, '0')} / {signal.label}</p><h2>{signal.title}</h2><p>{signal.text}</p></article>)}
+      <div class="reading-links"><a href={siteMetadata.contact_url}>say hello ↗</a><a href={`https://github.com/${siteMetadata.github_handle}`}>GitHub ↗</a></div>
+    </main>
+  </body>
+</html>

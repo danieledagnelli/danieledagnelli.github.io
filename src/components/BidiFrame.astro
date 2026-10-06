@@ -1,0 +1,21 @@
+---
+const src = 'https://bidi.unplatform.dev/';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+    <title>bidi world</title>
+    <link rel="icon" type="image/svg+xml" href="/pulse.svg" />
+    <style is:inline>
+      html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none;background:#000}
+      iframe{position:fixed;inset:0;width:100%;height:100%;border:0}
+    </style>
+  </head>
+  <body>
+    <iframe src={src} title="bidi world" allow="fullscreen"></iframe>
+    <noscript><a href={src}>bidi world</a></noscript>
+  </body>
+</html>

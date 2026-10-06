@@ -1,115 +1,26 @@
-# CLAUDE.md
+# Project guide
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This is Daniele D’Agnelli’s Astro personal website at dagnelli.net. Every path currently shows https://bidi.unplatform.dev/ in a full-viewport iframe (`src/components/BidiFrame.astro`, rendered by `src/pages/index.astro` and `src/pages/404.astro`). bidi is a live app with its own backend, so it is framed, not copied.
 
-## Overview
+The previous homepage, Follow the pulse (six mini-games that reveal personal stories, plus a hidden code-breaking bonus), is archived: its pages and Playwright tests are in `src/_archive/pulse-site`, and its modules remain in `src/pulse`, `src/mirror`, `src/data`, and `src/styles`. The notes below about the game apply only if it is restored.
 
-This is Daniele D'Agnelli's personal website built with Astro, featuring a retro terminal/hacker aesthetic. The site is deployed on GitHub Pages at https://dagnelli.net.
+## Commands
 
-## Development Commands
+- `npm run dev -- --host 0.0.0.0`: preview on port 4321.
+- `npm run check:game`: strict TypeScript checks for the current game.
+- `npm test`: Playwright checks for the bidi frame (`tests/bidi.spec.ts`).
+- `npm run build -- --outDir /tmp/heartbeat-v2-build`: isolated production build.
 
-```bash
-# Start development server (http://localhost:4321)
-npm run dev
+## Structure and constraints
 
-# Build for production (outputs to dist/)
-npm run build
+- Archived: `/` and `/v2` rendered `src/components/PulseExperience.astro`; `/about` provided the stories without JavaScript.
+- Game flow and timer: `src/pulse/game.ts`. Individual mechanics: `src/pulse/minigames.ts`. Stories: `src/data/signals.ts`. Styles: `src/styles/pulse.css`.
+- Professional facts reference `src/data/resume.ts`; contact metadata comes from `src/siteMetadata.js`. Do not invent personal facts.
+- Preserve the black canvas, green heartbeat, calm pacing, and lightweight implementation. Prefer SVG/CSS animation and event-driven controls.
+- Support keyboard, mouse, touch, reduced motion, pause, and blocked or invalid storage. Track active elapsed time and main progress out of six; count the bonus separately. Pause the timer during breaks, hidden tabs, and the bonus game. Every mini-game needs a hint and a direct story reveal; distinguish solved from revealed chapters.
+- Keep stories and contact accessible without playing or JavaScript.
+- The Pineapple homepage, tests, and documentation are archived in `src/_archive`; its supporting modules remain in `src/game`. They are not the active experience.
+- Older themes remain in `src/_archive/legacy-site` and must not become live routes accidentally.
+- Publishing is separate from local development. GitHub Pages builds on pushes to main.
 
-# Preview production build locally
-npm run preview
-```
-
-## Architecture & Key Patterns
-
-### Project Structure
-```
-src/
-├── components/    # Reusable Astro components (Navigation, Matrix effect, etc.)
-├── layouts/       # Page layout templates (Main.astro wraps all pages)
-├── pages/         # File-based routing (index.astro → /, bio.astro → /bio)
-└── styles/        # Global CSS (global.css defines CSS variables)
-
-public/            # Static assets served as-is
-└── assets/        # Images, PDFs (resume, favicon)
-```
-
-### Astro Component Pattern
-Components follow this structure:
-```astro
----
-// Frontmatter: imports, props, logic
-import { siteMetadata } from "../siteMetadata";
-
-type Props = {
-    title: string;
-};
-
-const { title } = Astro.props;
----
-
-<!-- HTML template -->
-<div>{title}</div>
-
-<style>
-    /* Scoped component styles */
-</style>
-
-<script>
-    /* Client-side JavaScript */
-</script>
-```
-
-### Page Creation Pattern
-All pages use the Main layout:
-```astro
----
-import Main from "../layouts/Main.astro";
-import { siteMetadata } from "../siteMetadata";
----
-
-<Main title={`${siteMetadata.title} → page-name`} last_modified="2024-01-01">
-    <!-- Page content -->
-</Main>
-```
-
-### Styling Approach
-- **Global variables** in `src/styles/global.css` define the terminal aesthetic:
-  - Background: `#101010` (dark)
-  - Text color: `#39ff14` (terminal green)
-  - Font: `Courier New` monospace
-  - Text transform: lowercase
-- **Component styles** are scoped within `<style>` blocks
-- **No CSS frameworks** - pure CSS with flexbox for layouts
-
-### Key Features & Effects
-1. **Matrix Effect**: Terminal-style falling characters (3-second timeout)
-2. **Glitch Effect**: Random text glitching animation
-3. **Dynamic Content**: Fade-in animation after effects complete
-4. **Responsive Design**: Media queries adjust layout for mobile
-
-### Site Configuration
-The `siteMetadata.js` file contains all site configuration:
-- Author information (name, email, location)
-- Social handles (GitHub, Bluesky, LinkedIn)
-- Effect timings and configurations
-- Site title and description
-
-### Deployment
-- Deployed via GitHub Pages to custom domain (dagnelli.net)
-- CNAME file must contain: `dagnelli.net`
-- Build output goes to `dist/` directory
-- No CI/CD workflow - uses GitHub Pages default build
-
-## Important Notes
-
-1. **Minimalist Approach**: This project intentionally uses only Astro with no additional dependencies. Maintain this philosophy when adding features.
-
-2. **Terminal Aesthetic**: All UI elements should maintain the retro terminal look with green-on-black color scheme and monospace fonts.
-
-3. **File-Based Routing**: New pages are created by adding `.astro` files to `src/pages/`. The file path becomes the URL route.
-
-4. **TypeScript**: Configured but primarily using JavaScript. Type checking is strict when TypeScript is used.
-
-5. **No Testing Framework**: Project has no tests configured. Manual testing via dev server is the current approach.
-
-6. **Static Site**: All pages are pre-rendered at build time. No server-side functionality.
+The repository historically tracks generated `.astro`, `dist`, and `node_modules` files. Avoid sweeping changes to these artifacts or existing user modifications.

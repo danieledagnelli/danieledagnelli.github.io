@@ -1,0 +1,125 @@
+---
+import { siteMetadata } from '../siteMetadata';
+import { signals } from '../data/signals';
+import { education } from '../data/resume';
+import '../styles/pulse.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Six little games. Six stories about Daniele D’Agnelli. Follow the heartbeat, find your way through, and look for a hidden extra." />
+    <title>Follow the pulse — Daniele D’Agnelli</title>
+    <link rel="canonical" href={siteMetadata.website} />
+    <link rel="icon" type="image/svg+xml" href="/pulse.svg" />
+    <meta property="og:title" content="Follow the pulse — Daniele D’Agnelli" />
+    <meta property="og:description" content="Six mini-games. A person behind the screen. And something hiding in the heartbeat." />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="pulse-page" data-state="intro">
+    <header class="site-header">
+      <h1>daniele d’agnelli</h1>
+      <div class="run-hud" hidden>
+        <div><span class="hud-label">elapsed</span><span id="elapsed" role="timer" aria-live="off">00:00</span></div>
+        <div><span class="hud-label">discovered</span><span id="hud-progress">00 / 06</span></div>
+      </div>
+    </header>
+
+    <main class="game-main">
+      <div class="experience">
+        <div class="wave-wrap">
+          <svg class="heartbeat" viewBox="0 0 600 200" fill="none" aria-hidden="true">
+            <defs>
+              <path id="wave" pathLength="1000" d="M16 100H200C208 100 211 94 218 94S228 100 236 100H263L275 111L291 43L308 146L324 100H356C366 100 371 84 382 84S397 100 410 100H584" />
+            </defs>
+            <use href="#wave" class="baseline" />
+            <use href="#wave" class="resonance" />
+            <g class="sweep">
+              <use href="#wave" class="pulse halo" />
+              <use href="#wave" class="pulse trace" />
+            </g>
+          </svg>
+          <button id="secret-trigger" class="secret-spark" type="button" aria-label="An unusual signal" title="Something in the signal…" hidden><span aria-hidden="true">✧</span></button>
+        </div>
+
+        <div class="stage">
+          <section data-panel id="intro" class="panel">
+            <p class="eyebrow">six small games. one human.</p>
+            <h2>follow the pulse.</h2>
+            <p id="intro-copy" class="intro-copy">A different little challenge for every part of me.<br />And something extra, if you know where to look.</p>
+            <button id="start" class="primary-button" type="button" hidden>start exploring <span aria-hidden="true">↗</span></button>
+            <p class="trail-note">6 games + 1 secret · at your own pace</p>
+            <noscript><a class="primary-button" href="/about/">read my story <span aria-hidden="true">↗</span></a></noscript>
+          </section>
+
+          <section data-panel id="playing" class="panel" hidden aria-labelledby="game-title">
+            <p class="eyebrow" id="game-chapter"></p>
+            <h2 id="game-title" tabindex="-1"></h2>
+            <p class="instruction" id="game-instruction"></p>
+            <fieldset id="challenge" aria-labelledby="game-title" aria-describedby="game-instruction">
+              <div id="mini-game"></div>
+              <p id="game-feedback" class="mini-feedback" role="status"></p>
+              <div class="game-helpers"><button id="hint" class="text-button" type="button">a little hint</button><button id="skip" class="text-button" type="button">just reveal the story</button></div>
+            </fieldset>
+            <p id="paused-note" class="paused-note" role="status" hidden>Paused. Take a breath.</p>
+          </section>
+
+          {signals.map((signal, index) => (
+            <article data-panel data-signal={signal.id} data-game-title={signal.gameTitle} data-instruction={signal.instruction} data-label={signal.label} class="panel discovery" hidden>
+              <p class="eyebrow">{String(index + 1).padStart(2, '0')} / {signal.label}<span class="found-label">story discovered</span></p>
+              <h2 tabindex="-1">{signal.title}</h2>
+              <p class="story-copy">{signal.text}</p>
+              <button data-next class="primary-button" type="button">next game <span aria-hidden="true">→</span></button>
+            </article>
+          ))}
+
+          <section data-panel id="complete" class="panel" hidden>
+            <p class="eyebrow">06 / 06 · the main trail is complete</p>
+            <h2 tabindex="-1">a little less of a stranger.</h2>
+            <p class="story-copy">That’s a little of me. Thanks for taking the time.<br />Now I’d love to hear something about you.</p>
+            <p id="run-summary" class="run-summary"></p>
+            <p id="secret-clue" class="secret-clue">Something is still hiding in the heartbeat.</p>
+            <a class="primary-button" href={siteMetadata.contact_url}>your turn. say hello <span aria-hidden="true">↗</span></a>
+            <button id="restart" class="text-button restart-button" type="button">start a fresh run</button>
+          </section>
+        </div>
+
+        <nav class="discoveries" aria-label="Your discoveries" hidden>
+          <div class="discovery-dots">
+            {signals.map((signal, index) => <button type="button" data-revisit={signal.id} disabled aria-label={`${signal.label} — undiscovered`} title={signal.label}><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span></button>)}
+            <button id="bonus-nav" type="button" disabled aria-label="Secret game undiscovered" title="One more signal, somewhere…"><span aria-hidden="true">?</span></button>
+          </div>
+          <div class="trail-progress" role="progressbar" aria-label="Main stories discovered" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0"><span id="progress-fill"></span></div>
+          <p id="progress-count">00 / 06 stories · secret ?</p>
+        </nav>
+        <p id="save-note" class="save-note" role="status" hidden>Progress stays with you for this visit.</p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <button id="pause-pulse" type="button" aria-pressed="false" hidden>
+        <span class="pause-icon" aria-hidden="true">Ⅱ</span><span class="play-icon" aria-hidden="true">▷</span>
+        <span id="pulse-label">pause</span>
+      </button>
+      <a class="read-link" href="/about/">read instead</a>
+      <a href={siteMetadata.contact_url}>say hello <span aria-hidden="true">↗</span></a>
+    </footer>
+    <dialog id="bonus-dialog" aria-labelledby="bonus-title">
+      <div class="bonus-header"><p class="eyebrow">? / the hidden extra</p><button id="close-bonus" type="button" aria-label="Close secret game">×</button></div>
+      <h2 id="bonus-title" tabindex="-1">Crack the code.</h2>
+      <div id="bonus-play">
+        <p class="instruction">Three symbols. One code. Tap each slot to change it, then check your guess.</p>
+        <fieldset id="bonus-challenge" aria-label="Secret code puzzle"><div id="bonus-game"></div><p id="bonus-feedback" class="mini-feedback" role="status"></p><button id="bonus-hint" class="text-button" type="button">a secret hint</button></fieldset>
+      </div>
+      <div id="bonus-reward" hidden><p class="eyebrow">bonus / 01 unlocked</p><h3>A little ethical hacking energy.</h3><p>I earned an {education[0].degree} at {education[0].institution}, with {education[0].distinction?.toLowerCase()}. The curiosity goes a little deeper than the games.</p><p class="bonus-stamp">secret found. code cracked.</p></div>
+      <button id="return-to-trail" class="text-button" type="button">back to the trail →</button>
+    </dialog>
+    <script>
+      import { startPulseGame } from '../pulse/game';
+      startPulseGame();
+    </script>
+  </body>
+</html>

@@ -6,6 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "test": "playwright test",
+    "check:game": "tsc --noEmit --strict --target ES2022 --module ESNext --moduleResolution bundler --lib ES2022,DOM src/pulse/game.ts",
     "astro": "astro"
   },
   "dependencies": {

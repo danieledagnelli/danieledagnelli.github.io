@@ -5,7 +5,6 @@ export const siteMetadata = {
   github_handle: "danieledagnelli",
   bsky_handle: "dagnelli.net",
   linkedin_handle: "dagnelli",
-  contact_url: "https://www.linkedin.com/in/dagnelli/",
   statusEmoji: "🍕",
   statusMessage: "probably eating pizza",
   bio: "old school",

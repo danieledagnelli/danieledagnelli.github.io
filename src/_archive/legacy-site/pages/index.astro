@@ -1,0 +1,882 @@
+---
+import { siteMetadata } from "../siteMetadata";
+import { themes } from "../data/themes";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>{siteMetadata.name} — Senior Engagement Manager | AI & Cybersecurity</title>
+    <meta name="description" content="Daniele D'Agnelli — Senior Engagement Manager with 15+ years in Professional Services. Explore 21 cinematic portfolio experiences." />
+    <meta name="author" content="Daniele D'Agnelli" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://dagnelli.net/" />
+
+    <meta property="og:title" content="Daniele D'Agnelli — Senior Engagement Manager | AI & Cybersecurity" />
+    <meta property="og:description" content="15+ years leading high-impact digital transformations. AI deployments, cybersecurity, and programme management." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dagnelli.net/" />
+    <meta property="og:image" content="https://dagnelli.net/assets/og-image.png" />
+    <meta property="og:image:alt" content="Daniele D'Agnelli — Senior Engagement Manager" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Daniele D'Agnelli" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Daniele D'Agnelli — Senior Engagement Manager | AI & Cybersecurity" />
+    <meta name="twitter:description" content="15+ years leading high-impact digital transformations." />
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Daniele D'Agnelli",
+      "url": "https://dagnelli.net",
+      "jobTitle": "Senior Engagement Manager",
+      "email": "daniele@dagnelli.net",
+      "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+      "sameAs": [
+        "https://github.com/danieledagnelli",
+        "https://linkedin.com/in/dagnelli",
+        "https://bsky.app/profile/dagnelli.net"
+      ]
+    })} />
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            width: 100%; height: 100%;
+            overflow: hidden;
+            background: #000;
+            font-family: 'Courier New', monospace;
+        }
+
+        .stage {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .stage.active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 2;
+        }
+        .stage.transitioning {
+            z-index: 3;
+        }
+
+        #transition-canvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 10;
+            pointer-events: none;
+            display: none;
+        }
+
+        #transition-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 11;
+            pointer-events: none;
+            display: none;
+        }
+
+        /* Controls */
+        /* Theme picker grid */
+        #theme-picker {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 200;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(20px);
+            display: none;
+            place-items: center;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+        #theme-picker.open {
+            display: grid;
+        }
+        #theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            max-width: 900px;
+            width: 100%;
+        }
+        .theme-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 16px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            text-transform: lowercase;
+        }
+        .theme-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.03);
+        }
+        .theme-card.current {
+            border-color: rgba(57, 255, 20, 0.6);
+            background: rgba(57, 255, 20, 0.08);
+        }
+        #picker-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 44px; height: 44px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Noscript fallback */
+        .noscript-list {
+            color: #39ff14;
+            background: #101010;
+            padding: 40px;
+            font-family: 'Courier New', monospace;
+        }
+        .noscript-list a {
+            color: #39ff14;
+            display: block;
+            padding: 8px 0;
+        }
+
+        @media (max-width: 600px) {
+            #theme-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+
+        #cycle-progress {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            z-index: 100;
+            pointer-events: none;
+            transform-origin: right center;
+            transform: scaleX(0);
+            opacity: 0;
+        }
+        #cycle-progress.running {
+            opacity: 1;
+            animation: progress-shrink var(--progress-duration, 15s) linear forwards;
+        }
+        #cycle-progress.paused {
+            animation-play-state: paused;
+        }
+        @keyframes progress-shrink {
+            from { transform: scaleX(1); }
+            to   { transform: scaleX(0); }
+        }
+
+        @media (max-width: 768px) {
+            #cycle-progress {
+                height: 5px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .stage, #transition-overlay {
+                transition: none !important;
+            }
+            #cycle-progress { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <iframe id="stage-a" class="stage" scrolling="no"></iframe>
+    <iframe id="stage-b" class="stage" scrolling="no"></iframe>
+    <canvas id="transition-canvas"></canvas>
+    <div id="transition-overlay"></div>
+
+    <div id="cycle-progress"></div>
+
+    <div id="theme-picker">
+        <button id="picker-close" aria-label="Close theme picker">&times;</button>
+        <div id="theme-grid">
+            {themes.map(t => (
+                <div class="theme-card" data-theme-id={t.id}>
+                    {t.label}
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <noscript>
+        <div class="noscript-list">
+            <h1>daniele d'agnelli — portfolio experiences</h1>
+            {themes.map(t => (
+                <a href={t.path}>{t.label}</a>
+            ))}
+        </div>
+    </noscript>
+
+    <script define:vars={{ themesData: themes }}>
+    (function() {
+        const THEMES = themesData;
+        const TARGET_TOTAL = 12000;
+        const MIN_CONTENT = 5000;
+        const PRELOAD_AHEAD = 5000;
+        const IDLE_RESUME_MS = 60000;
+        let playlist = [];
+        let currentIndex = 0;
+        let isPaused = false;
+        let isTransitioning = false;
+        let cycleTimer = null;
+        let preloadTimer = null;
+        let idleTimer = null;
+        let lastVisibleSection = null;
+
+        const stageA = document.getElementById('stage-a');
+        const stageB = document.getElementById('stage-b');
+        const canvas = document.getElementById('transition-canvas');
+        const ctx = canvas.getContext('2d');
+        const overlay = document.getElementById('transition-overlay');
+        const picker = document.getElementById('theme-picker');
+        const pickerClose = document.getElementById('picker-close');
+        const progressBar = document.getElementById('cycle-progress');
+
+        let activeStage = stageA;
+        let hiddenStage = stageB;
+
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function getCurrentThemeColor() {
+            const theme = playlist[currentIndex];
+            return theme?.accentColor || '#39ff14';
+        }
+
+        function startProgress(color, duration) {
+            progressBar.style.background = color;
+            progressBar.style.boxShadow = `0 0 8px ${color}40`;
+            progressBar.style.setProperty('--progress-duration', `${duration}ms`);
+            progressBar.classList.remove('paused', 'running');
+            void progressBar.offsetWidth;
+            progressBar.classList.add('running');
+        }
+
+        function stopProgress() {
+            progressBar.classList.remove('running', 'paused');
+        }
+
+        function shuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        function buildPlaylist() {
+            const last = playlist.length > 0 ? playlist[playlist.length - 1] : null;
+            let newList = shuffle(THEMES);
+            if (last && newList[0].id === last.id) {
+                const swap = Math.floor(Math.random() * (newList.length - 1)) + 1;
+                [newList[0], newList[swap]] = [newList[swap], newList[0]];
+            }
+            return newList;
+        }
+
+        function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+        function waitForIntroComplete(theme, timeoutMs = 15000) {
+            return new Promise((resolve) => {
+                const poll = setInterval(() => {
+                    try {
+                        if (sessionStorage.getItem(theme.storageKey)) {
+                            clearInterval(poll);
+                            resolve();
+                        }
+                    } catch (e) {}
+                }, 150);
+                setTimeout(() => { clearInterval(poll); resolve(); }, timeoutMs);
+            });
+        }
+
+        function resetOverlay() {
+            overlay.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;z-index:11;pointer-events:none;display:none;';
+        }
+
+        // === 14 Cinematic Transitions ===
+        const transitions = [];
+
+        // 1. Star Wars Wipe (L→R)
+        transitions.push({
+            name: 'Star Wars Wipe', duration: 1200,
+            async play(from, to) {
+                to.style.clipPath = 'inset(0 100% 0 0)';
+                to.classList.add('active', 'transitioning');
+                to.style.transition = 'clip-path 1.2s ease-in-out';
+                await wait(50);
+                to.style.clipPath = 'inset(0 0% 0 0)';
+                await wait(1200);
+                from.classList.remove('active');
+                to.classList.remove('transitioning');
+                to.style.clipPath = '';
+                to.style.transition = '';
+            }
+        });
+
+        // 2. Vertigo Zoom
+        transitions.push({
+            name: 'Vertigo Zoom', duration: 1500,
+            async play(from, to) {
+                overlay.style.display = 'block';
+                overlay.style.background = '#000';
+                overlay.style.opacity = '0';
+                overlay.style.transition = 'opacity 0.75s ease-in';
+                from.style.transition = 'transform 0.75s ease-in, filter 0.75s ease-in';
+                from.style.transform = 'scale(2)';
+                from.style.filter = 'blur(20px)';
+                await wait(50);
+                overlay.style.opacity = '1';
+                await wait(750);
+                from.classList.remove('active');
+                from.style.transform = ''; from.style.filter = ''; from.style.transition = '';
+                to.classList.add('active');
+                overlay.style.transition = 'opacity 0.75s ease-out';
+                overlay.style.opacity = '0';
+                await wait(750);
+                overlay.style.display = 'none';
+                resetOverlay();
+            }
+        });
+
+        // 3. Stargate (canvas radial streaks)
+        transitions.push({
+            name: 'Stargate', duration: 2000,
+            async play(from, to) {
+                canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+                canvas.style.display = 'block';
+                const cx = canvas.width / 2, cy = canvas.height / 2;
+                const colors = ['#00f','#0ff','#f0f','#ff0','#0f0','#f00'];
+                const streaks = Array.from({length: 80}, () => ({
+                    angle: Math.random() * Math.PI * 2, speed: 2 + Math.random() * 6,
+                    dist: 0, color: colors[Math.floor(Math.random() * colors.length)],
+                    width: 1 + Math.random() * 3
+                }));
+                let elapsed = 0; const step = 16;
+                while (elapsed < 1000) {
+                    ctx.fillStyle = 'rgba(0,0,0,0.15)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    for (const s of streaks) {
+                        s.dist += s.speed * 2;
+                        const x = cx + Math.cos(s.angle) * s.dist;
+                        const y = cy + Math.sin(s.angle) * s.dist;
+                        ctx.strokeStyle = s.color; ctx.lineWidth = s.width;
+                        ctx.beginPath();
+                        ctx.moveTo(cx + Math.cos(s.angle) * (s.dist - 20), cy + Math.sin(s.angle) * (s.dist - 20));
+                        ctx.lineTo(x, y); ctx.stroke();
+                    }
+                    elapsed += step; await wait(step);
+                }
+                ctx.fillStyle = '#000'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                from.classList.remove('active'); to.classList.add('active');
+                elapsed = 0;
+                while (elapsed < 1000) {
+                    ctx.fillStyle = `rgba(0,0,0,${1 - elapsed / 1000})`;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    elapsed += step; await wait(step);
+                }
+                canvas.style.display = 'none';
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        });
+
+        // 4. Matrix Rain
+        transitions.push({
+            name: 'Matrix Rain', duration: 1500,
+            async play(from, to) {
+                canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+                canvas.style.display = 'block';
+                const fontSize = 14, cols = Math.ceil(canvas.width / fontSize);
+                const drops = new Array(cols).fill(0);
+                const chars = 'アイウエオカキクケコサシスセソタチツテト0123456789';
+                let elapsed = 0; const step = 33;
+                while (elapsed < 750) {
+                    ctx.fillStyle = 'rgba(0,0,0,0.05)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#39ff14'; ctx.font = `${fontSize}px monospace`;
+                    for (let i = 0; i < drops.length; i++) {
+                        const char = chars[Math.floor(Math.random() * chars.length)];
+                        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+                        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                        drops[i]++;
+                    }
+                    elapsed += step; await wait(step);
+                }
+                ctx.fillStyle = '#000'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                from.classList.remove('active'); to.classList.add('active');
+                elapsed = 0;
+                while (elapsed < 750) {
+                    ctx.fillStyle = `rgba(0,0,0,${1 - elapsed / 750})`;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    elapsed += step; await wait(step);
+                }
+                canvas.style.display = 'none';
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        });
+
+        // 5. Film Burn
+        transitions.push({
+            name: 'Film Burn', duration: 1200,
+            async play(from, to) {
+                overlay.style.display = 'block';
+                overlay.style.background = 'radial-gradient(circle, rgba(255,140,0,0.9), rgba(180,60,0,0.8), #000)';
+                overlay.style.opacity = '0';
+                overlay.style.transition = 'opacity 0.6s ease-in';
+                await wait(50); overlay.style.opacity = '1'; await wait(600);
+                from.classList.remove('active'); to.classList.add('active');
+                overlay.style.transition = 'opacity 0.6s ease-out';
+                overlay.style.opacity = '0'; await wait(600);
+                overlay.style.display = 'none'; resetOverlay();
+            }
+        });
+
+        // 6. Iris
+        transitions.push({
+            name: 'Iris', duration: 1000,
+            async play(from, to) {
+                overlay.style.display = 'block';
+                overlay.style.background = '#000';
+                overlay.style.clipPath = 'circle(0% at 50% 50%)';
+                overlay.style.transition = 'clip-path 0.5s ease-in';
+                await wait(50);
+                overlay.style.clipPath = 'circle(150% at 50% 50%)';
+                await wait(500);
+                from.classList.remove('active'); to.classList.add('active');
+                overlay.style.transition = 'clip-path 0.5s ease-out';
+                overlay.style.clipPath = 'circle(0% at 50% 50%)';
+                await wait(500);
+                overlay.style.display = 'none'; resetOverlay();
+            }
+        });
+
+        // 7. Oz Color Shift
+        transitions.push({
+            name: 'Oz Color Shift', duration: 1500,
+            async play(from, to) {
+                from.style.transition = 'filter 0.75s ease-in';
+                from.style.filter = 'grayscale(1) sepia(0.8) brightness(0.3)';
+                await wait(750);
+                from.classList.remove('active');
+                from.style.filter = ''; from.style.transition = '';
+                to.style.filter = 'sepia(1) brightness(0.5)';
+                to.classList.add('active');
+                to.style.transition = 'filter 0.75s ease-out';
+                await wait(50);
+                to.style.filter = 'none';
+                await wait(750);
+                to.style.transition = ''; to.style.filter = '';
+            }
+        });
+
+        // 8. Projector Countdown
+        transitions.push({
+            name: 'Projector Countdown', duration: 3000,
+            async play(from, to) {
+                overlay.style.display = 'block';
+                overlay.style.background = '#1a1a1a';
+                overlay.style.color = '#ccc';
+                overlay.style.fontSize = '120px';
+                overlay.style.fontFamily = "'Courier New', monospace";
+                overlay.style.textAlign = 'center';
+                overlay.style.lineHeight = '100vh';
+                overlay.style.opacity = '1';
+                for (let n = 5; n >= 1; n--) {
+                    overlay.innerHTML = n.toString();
+                    overlay.style.opacity = String(0.7 + Math.random() * 0.3);
+                    await wait(500);
+                }
+                overlay.innerHTML = '';
+                overlay.style.background = '#000'; await wait(250);
+                from.classList.remove('active'); to.classList.add('active');
+                overlay.style.transition = 'opacity 0.25s';
+                overlay.style.opacity = '0'; await wait(250);
+                overlay.style.display = 'none'; overlay.innerHTML = '';
+                resetOverlay();
+            }
+        });
+
+        // 9. Smash Cut
+        transitions.push({
+            name: 'Smash Cut', duration: 700,
+            async play(from, to) {
+                overlay.style.display = 'block';
+                overlay.style.background = '#fff'; overlay.style.opacity = '1';
+                await wait(100);
+                overlay.style.background = '#cc0000'; await wait(150);
+                overlay.style.background = '#000'; await wait(100);
+                from.classList.remove('active'); to.classList.add('active');
+                overlay.style.transition = 'opacity 0.35s ease-out';
+                overlay.style.opacity = '0'; await wait(350);
+                overlay.style.display = 'none'; resetOverlay();
+            }
+        });
+
+        // 10. Whip Pan
+        transitions.push({
+            name: 'Whip Pan', duration: 800,
+            async play(from, to) {
+                from.style.transition = 'transform 0.4s ease-in, filter 0.4s ease-in';
+                from.style.transform = 'translateX(-100vw)'; from.style.filter = 'blur(30px)';
+                await wait(400);
+                from.classList.remove('active');
+                from.style.transform = ''; from.style.filter = ''; from.style.transition = '';
+                to.style.transform = 'translateX(100vw)'; to.style.filter = 'blur(30px)';
+                to.classList.add('active');
+                to.style.transition = 'transform 0.4s ease-out, filter 0.4s ease-out';
+                await wait(50);
+                to.style.transform = 'translateX(0)'; to.style.filter = 'none';
+                await wait(400);
+                to.style.transition = ''; to.style.filter = '';
+            }
+        });
+
+        // 11. Symmetry Split (Kubrick)
+        transitions.push({
+            name: 'Symmetry Split', duration: 1200,
+            async play(from, to) {
+                overlay.style.display = 'block';
+                overlay.style.background = '#000';
+                overlay.style.clipPath = 'polygon(0 0, 0 0, 0 100%, 0 100%, 100% 100%, 100% 100%, 100% 0, 100% 0)';
+                overlay.style.transition = 'clip-path 0.6s ease-in';
+                await wait(50);
+                overlay.style.clipPath = 'polygon(0 0, 50% 0, 50% 100%, 0 100%, 100% 100%, 50% 100%, 50% 0, 100% 0)';
+                await wait(600);
+                from.classList.remove('active'); to.classList.add('active');
+                overlay.style.transition = 'clip-path 0.6s ease-out';
+                overlay.style.clipPath = 'polygon(0 0, 0 0, 0 100%, 0 100%, 100% 100%, 100% 100%, 100% 0, 100% 0)';
+                await wait(600);
+                overlay.style.display = 'none'; resetOverlay();
+            }
+        });
+
+        // 12. Inception Fold
+        transitions.push({
+            name: 'Inception Fold', duration: 1500,
+            async play(from, to) {
+                from.style.transformOrigin = 'center top';
+                from.style.transition = 'transform 0.75s ease-in, opacity 0.75s ease-in';
+                from.style.transform = 'perspective(800px) rotateX(90deg)'; from.style.opacity = '0';
+                await wait(750);
+                from.classList.remove('active');
+                from.style.transform = ''; from.style.opacity = ''; from.style.transition = ''; from.style.transformOrigin = '';
+                to.style.transformOrigin = 'center bottom';
+                to.style.transform = 'perspective(800px) rotateX(-90deg)'; to.style.opacity = '0';
+                to.classList.add('active');
+                to.style.transition = 'transform 0.75s ease-out, opacity 0.75s ease-out';
+                await wait(50);
+                to.style.transform = 'perspective(800px) rotateX(0deg)'; to.style.opacity = '1';
+                await wait(750);
+                to.style.transition = ''; to.style.transformOrigin = ''; to.style.transform = ''; to.style.opacity = '';
+            }
+        });
+
+        // 13. Cross Dissolve
+        transitions.push({
+            name: 'Cross Dissolve', duration: 2000,
+            async play(from, to) {
+                to.style.opacity = '0'; to.classList.add('active');
+                to.style.transition = 'opacity 2s ease';
+                from.style.transition = 'opacity 2s ease';
+                await wait(50);
+                to.style.opacity = '1'; from.style.opacity = '0';
+                await wait(2000);
+                from.classList.remove('active');
+                from.style.opacity = ''; from.style.transition = '';
+                to.style.transition = '';
+            }
+        });
+
+        // 14. Zoetrope Spin
+        transitions.push({
+            name: 'Zoetrope Spin', duration: 1000,
+            async play(from, to) {
+                from.style.transition = 'transform 0.5s ease-in';
+                from.style.transform = 'perspective(600px) rotateY(90deg)';
+                await wait(500);
+                from.classList.remove('active');
+                from.style.transform = ''; from.style.transition = '';
+                to.style.transform = 'perspective(600px) rotateY(-90deg)';
+                to.classList.add('active');
+                to.style.transition = 'transform 0.5s ease-out';
+                await wait(50);
+                to.style.transform = 'perspective(600px) rotateY(0deg)';
+                await wait(500);
+                to.style.transition = ''; to.style.transform = '';
+            }
+        });
+
+        // === Transition deck ===
+        let transitionDeck = [];
+        function nextTransition() {
+            if (prefersReduced) {
+                const safe = transitions.filter(t => t.name === 'Cross Dissolve' || t.name === 'Iris');
+                return safe[Math.floor(Math.random() * safe.length)];
+            }
+            if (transitionDeck.length === 0) transitionDeck = shuffle(transitions);
+            return transitionDeck.pop();
+        }
+
+        function clearIntroKey(theme) {
+            try { sessionStorage.removeItem(theme.storageKey); } catch (e) {}
+        }
+
+        function loadTheme(stage, theme) {
+            return new Promise((resolve) => {
+                clearIntroKey(theme);
+                stage.onload = () => {
+                    try {
+                        const doc = stage.contentDocument;
+                        if (doc) {
+                            doc.documentElement.style.overflow = 'hidden';
+                            doc.body.style.overflow = 'hidden';
+                        }
+                    } catch (e) {}
+                    resolve();
+                };
+                stage.src = theme.path;
+            });
+        }
+
+        function scrollToSection(stage, sectionName) {
+            if (!sectionName) return;
+            try {
+                const win = stage.contentWindow;
+                const doc = win.document;
+                const target = doc.querySelector(`[data-section="${sectionName}"]`);
+                if (!target) return;
+                // Find the scrollable container inside the iframe
+                let container = target.parentElement;
+                while (container && container !== doc.documentElement) {
+                    const style = win.getComputedStyle(container);
+                    if (/(auto|scroll)/.test(style.overflow + style.overflowY)) break;
+                    container = container.parentElement;
+                }
+                if (container && container !== doc.documentElement) {
+                    const containerRect = container.getBoundingClientRect();
+                    const targetRect = target.getBoundingClientRect();
+                    container.scrollTop += targetRect.top - containerRect.top;
+                } else {
+                    target.scrollIntoView({ behavior: 'instant', block: 'start' });
+                }
+            } catch (e) {
+                // Cross-origin or not loaded yet
+            }
+        }
+
+        async function cycleToNext() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex++;
+            if (currentIndex >= playlist.length) { playlist = buildPlaylist(); currentIndex = 0; }
+            const nextTheme = playlist[currentIndex];
+            const transition = nextTransition();
+            const introStart = Date.now();
+            await loadTheme(hiddenStage, nextTheme);
+            await transition.play(activeStage, hiddenStage);
+            const temp = activeStage; activeStage = hiddenStage; hiddenStage = temp;
+            updatePickerHighlight();
+            isTransitioning = false;
+            if (!isPaused) {
+                await waitForIntroComplete(nextTheme);
+                scrollToSection(activeStage, lastVisibleSection);
+                const introElapsed = Date.now() - introStart;
+                const contentDuration = Math.max(TARGET_TOTAL - introElapsed, MIN_CONTENT);
+                if (!isPaused) scheduleCycle(contentDuration);
+            }
+        }
+
+        async function cycleToPrev() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex--;
+            if (currentIndex < 0) currentIndex = playlist.length - 1;
+            const prevTheme = playlist[currentIndex];
+            const transition = nextTransition();
+            const introStart = Date.now();
+            await loadTheme(hiddenStage, prevTheme);
+            await transition.play(activeStage, hiddenStage);
+            const temp = activeStage; activeStage = hiddenStage; hiddenStage = temp;
+            updatePickerHighlight();
+            isTransitioning = false;
+            if (!isPaused) {
+                await waitForIntroComplete(prevTheme);
+                scrollToSection(activeStage, lastVisibleSection);
+                const introElapsed = Date.now() - introStart;
+                const contentDuration = Math.max(TARGET_TOTAL - introElapsed, MIN_CONTENT);
+                if (!isPaused) scheduleCycle(contentDuration);
+            }
+        }
+
+        async function jumpToTheme(themeId) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            closePicker();
+            const idx = playlist.findIndex(t => t.id === themeId);
+            if (idx >= 0) {
+                currentIndex = idx;
+            } else {
+                const theme = THEMES.find(t => t.id === themeId);
+                if (!theme) { isTransitioning = false; return; }
+                playlist.splice(currentIndex + 1, 0, theme);
+                currentIndex++;
+            }
+            const theme = playlist[currentIndex];
+            const transition = nextTransition();
+            const introStart = Date.now();
+            await loadTheme(hiddenStage, theme);
+            await transition.play(activeStage, hiddenStage);
+            const temp = activeStage; activeStage = hiddenStage; hiddenStage = temp;
+            updatePickerHighlight();
+            isTransitioning = false;
+            if (!isPaused) {
+                await waitForIntroComplete(theme);
+                const introElapsed = Date.now() - introStart;
+                const contentDuration = Math.max(TARGET_TOTAL - introElapsed, MIN_CONTENT);
+                if (!isPaused) scheduleCycle(contentDuration);
+            }
+        }
+
+        function scheduleCycle(duration) {
+            clearTimers();
+            const d = duration || TARGET_TOTAL;
+            startProgress(getCurrentThemeColor(), d);
+            preloadTimer = setTimeout(() => {
+                let nextIdx = currentIndex + 1;
+                if (nextIdx >= playlist.length) nextIdx = 0;
+                const nextTheme = playlist[nextIdx];
+                clearIntroKey(nextTheme);
+                hiddenStage.src = nextTheme.path;
+            }, Math.max(d - PRELOAD_AHEAD, 0));
+        }
+
+        progressBar.addEventListener('animationend', () => {
+            if (!isPaused) cycleToNext();
+        });
+
+        function clearTimers() {
+            if (preloadTimer) clearTimeout(preloadTimer);
+            stopProgress();
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            if (isPaused) clearTimers();
+            else scheduleCycle(TARGET_TOTAL);
+        }
+
+        function openPicker() { picker.classList.add('open'); updatePickerHighlight(); }
+        function closePicker() { picker.classList.remove('open'); }
+        function togglePicker() {
+            if (picker.classList.contains('open')) closePicker(); else openPicker();
+        }
+        function updatePickerHighlight() {
+            const current = playlist[currentIndex];
+            document.querySelectorAll('.theme-card').forEach(card => {
+                card.classList.toggle('current', card.dataset.themeId === current?.id);
+            });
+        }
+
+        function onIframeActivity() {
+            if (!isPaused) {
+                isPaused = true;
+                clearTimers();
+            }
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(() => {
+                if (isPaused) {
+                    isPaused = false;
+                    scheduleCycle(TARGET_TOTAL);
+                }
+            }, IDLE_RESUME_MS);
+        }
+
+        // Event listeners
+        pickerClose.addEventListener('click', closePicker);
+
+        document.querySelectorAll('.theme-card').forEach(card => {
+            card.addEventListener('click', () => jumpToTheme(card.dataset.themeId));
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') cycleToPrev();
+            else if (e.key === 'ArrowRight') cycleToNext();
+            else if (e.key === ' ') { e.preventDefault(); togglePause(); }
+            else if (e.key === 'Escape') closePicker();
+            else if (e.key === 'p' || e.key === 'P') togglePicker();
+        });
+
+        // Scroll detection from iframes
+        window.addEventListener('message', (e) => {
+            if (e.data === 'user-scroll') onIframeActivity();
+            if (e.data && e.data.type === 'section-visible') {
+                lastVisibleSection = e.data.section;
+            }
+        });
+
+        // Hash support
+        function getStartTheme() {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                const theme = THEMES.find(t => t.id === hash);
+                if (theme) return theme;
+            }
+            return null;
+        }
+
+        // Init
+        async function init() {
+            playlist = buildPlaylist();
+            const startTheme = getStartTheme();
+            if (startTheme) {
+                const idx = playlist.findIndex(t => t.id === startTheme.id);
+                if (idx >= 0) [playlist[0], playlist[idx]] = [playlist[idx], playlist[0]];
+            }
+            currentIndex = 0;
+            const introStart = Date.now();
+            await loadTheme(activeStage, playlist[0]);
+            activeStage.classList.add('active');
+            updatePickerHighlight();
+            await waitForIntroComplete(playlist[0]);
+            const introElapsed = Date.now() - introStart;
+            const contentDuration = Math.max(TARGET_TOTAL - introElapsed, MIN_CONTENT);
+            scheduleCycle(contentDuration);
+        }
+
+        init();
+    })();
+    </script>
+</body>
+</html>
