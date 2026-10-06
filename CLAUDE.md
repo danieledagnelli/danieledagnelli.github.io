@@ -1,6 +1,6 @@
 # Project guide
 
-This is Daniele D’Agnelli’s Astro personal website at dagnelli.net. Every path currently shows https://bidi.unplatform.dev/ in a full-viewport iframe (`src/components/BidiFrame.astro`, rendered by `src/pages/index.astro` and `src/pages/404.astro`). bidi is a live app with its own backend, so it is framed, not copied.
+This is Daniele D’Agnelli’s Astro personal website at dagnelli.net. For now every path shows only the name, centred on a black page (`src/components/NamePage.astro`, rendered by `src/pages/index.astro` and `src/pages/404.astro`). `src/components/BidiFrame.astro`, a full-viewport iframe of https://bidi.unplatform.dev/, is kept but not rendered.
 
 The previous homepage, Follow the pulse (six mini-games that reveal personal stories, plus a hidden code-breaking bonus), is archived: its pages and Playwright tests are in `src/_archive/pulse-site`, and its modules remain in `src/pulse`, `src/mirror`, `src/data`, and `src/styles`. The notes below about the game apply only if it is restored.
 
@@ -8,7 +8,7 @@ The previous homepage, Follow the pulse (six mini-games that reveal personal sto
 
 - `npm run dev -- --host 0.0.0.0`: preview on port 4321.
 - `npm run check:game`: strict TypeScript checks for the current game.
-- `npm test`: Playwright checks for the bidi frame (`tests/bidi.spec.ts`).
+- `npm test`: Playwright checks for the name page (`tests/home.spec.ts`).
 - `npm run build -- --outDir /tmp/heartbeat-v2-build`: isolated production build.
 
 ## Structure and constraints

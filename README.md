@@ -1,6 +1,6 @@
 # dagnelli.net
 
-Daniele D’Agnelli’s personal website. Every path currently shows [bidi world](https://bidi.unplatform.dev/) in a full-viewport iframe: `src/components/BidiFrame.astro`, rendered by `src/pages/index.astro` and `src/pages/404.astro` (GitHub Pages serves the latter for unknown paths). bidi is a live app with its own backend, so it is framed, not copied. `tests/bidi.spec.ts` checks the frame.
+Daniele D’Agnelli’s personal website. For now every path shows only the name, centred on a black page: `src/components/NamePage.astro`, rendered by `src/pages/index.astro` and `src/pages/404.astro` (GitHub Pages serves the latter for unknown paths). `tests/home.spec.ts` checks it. `src/components/BidiFrame.astro`, a full-viewport iframe of [bidi world](https://bidi.unplatform.dev/), is kept but not rendered.
 
 The previous homepage, Follow the pulse, is archived and described below. Its pages and tests are in `src/_archive/pulse-site`; its modules are still in `src`.
 
